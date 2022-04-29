@@ -85,5 +85,5 @@ Our data model is now complete an should look like this:
 
 You've now created a data model including persistence in CAP (Cloud Application Programming model) that can be later used to be deployed to the SAP HANA database we will use. Note that you have not seen any CAP related commands or syntax.
 
-Continue to - [Exercise 2](../ex1.5/README.md)
+Continue to - [Exercise 1.5](../ex1.5/README.md)
 
