@@ -1,4 +1,4 @@
-# Exercise 1 - Create a data model with the SAP Business Application Studio
+# Exercise 1.5 - Reference An S/4 Service In Your Data Model
 
 In this exercise, we will use the new low-code perspective in the SAP Business Application Studio to create a service that persists our business data and exposes the data as an OData service for our consuming applications later on.
 We will also test the service and see whether it runs or not.
@@ -85,5 +85,5 @@ Our data model is now complete an should look like this:
 
 You've now created a data model including persistence in CAP (Cloud Application Programming model) that can be later used to be deployed to the SAP HANA database we will use. Note that you have not seen any CAP related commands or syntax.
 
-Continue to - [Exercise 2](../ex1.5/README.md)
+Continue to - [Exercise 2](../ex2/README.md)
 
