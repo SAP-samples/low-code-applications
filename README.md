@@ -26,7 +26,7 @@ The prerequisites if not otherwise noted are normally just a browser ( preferabl
 
 ## Contents
 
-- [Accelerate Application Development with Low-Code in the SAP Business Application Studio](bas_capex_2204/README.md) based on the release 2204
+- [Accelerate Application Development with Low-Code in the SAP Business Application Studio](https://github.com/SAP-samples/low-code-applications/tree/bas_capex_2204) based on the release 2204
 
 ## How to obtain support
 [Create an issue](https://github.com/SAP-samples/low-code-applications/issues) in this repository if you find a bug or have questions about the content.
