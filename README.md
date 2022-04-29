@@ -9,10 +9,7 @@ In most cases, the license for SAP sample projects is `Apache 2.0`.
 2. The .reuse/dep5 file: 
 The [Reuse Tool](https://reuse.software/) must be used for your samples project. You can find the .reuse/dep5 in the project initial. Please replace the parts inside the single angle quotation marks < > by the specific information for your repository.
 
-3. The README.md file (this file):
-Please edit this file as it is the primary description file for your project. You can find some placeholder titles for sections below.
-
-# [Title]
+# Hands On Projects For Low Code Application Development
 <!-- Please include descriptive title -->
 
 <!--- Register repository https://api.reuse.software/register, then add REUSE badge:
@@ -20,17 +17,19 @@ Please edit this file as it is the primary description file for your project. Yo
 -->
 
 ## Description
-<!-- Please include SEO-friendly description -->
+
+This repository contains descriptions for hands on projects on low code development using SAP tools.
 
 ## Requirements
 
-## Download and Installation
+The prerequisites if not otherwise noted are normally just a browser ( preferably Chrome ) with Internet access
 
-## Known Issues
-<!-- You may simply state "No known issues. -->
+## Contents
+
+- [Accelerate Application Development with Low-Code in the SAP Business Application Studio](tree/bas_capex_2204/README.md) based on the release 2204
 
 ## How to obtain support
-[Create an issue](https://github.com/SAP-samples/<repository-name>/issues) in this repository if you find a bug or have questions about the content.
+[Create an issue](https://github.com/SAP-samples/low-code-applications/issues) in this repository if you find a bug or have questions about the content.
  
 For additional support, [ask a question in SAP Community](https://answers.sap.com/questions/ask.html).
 
