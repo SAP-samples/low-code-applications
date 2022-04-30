@@ -2,22 +2,30 @@
 
 After the creation of the service with several entities, we will create a list report with an object page based on the Fiori elements technology.
 
-Note that this will be a read only version of the application. For a list report that also allows the creation, editing and deletion of records, we need a so-called "draft enabled" service, which requires a slightly different service entity. 
+Go back to the **Home** tab in the Application Studio. (Note: If you accidentally closed all the tabs you can find your **Home** tab by clicking on the **Project Explorer** icon on the left hand-side and click **Home**.)
 
-Go back to the **Home** tab in the Application Studio. (Note: If you accidentally closed all the tabs you can find your "Home" tab by clicking on the "Project Explorer" icon on the left hand-side and click "Home".)
+Press **+**  under **User interfaces**
 
-Add a new user interface
+![](/exercises/ex4/images/LCAP_41.png)
 
-Now enter a display Name **My List Report** or another name of your liking. The **application name** should be defaulted with a technical version of your display name without spaces, add your user number **XXX** at the end of the application name, so it becomes **MyListReportXXX**, e.g. MyListReport001 if 001 is your user name. 
+Now enter a display Name **My List Report** or another name of your liking. The **application name** should be defaulted with a technical version of your display name without spaces, so it becomes for example **MyListReport**.
 
-In the next step you can choose the technology you want to use to create your new UI app. You have a choice between "template based, responsive application" representing Fiori elements (FE) and "Mobile centric, freestyle application" representing the Mobile Development Kit (MDK). Choose template based, responsive application" on the left.
+![](/exercises/ex4/images/LCAP_42.png)
 
-( Some background that you can choose to skip reading:
-Both create responsive apps that can be used on mobile devices and on desktops, however it is fair to say that with FE users rather start with desktops and MDK apps rather with mobile. Both adhere to templates, however in the MDK case it is a copy template that can be changed in whatever way the user wants to. FE is more restricted with respect to changes to the template, however the resulting app always adheres to the newest Fiori guidelines and comes with a lot of functionality out of the box. )
+In the next step you can choose the technology you want to use to create your new UI app. You have a choice between "template based, responsive application" representing Fiori elements (FE) and "Mobile centric, freestyle application" representing the Mobile Development Kit (MDK). Choose **Template based, responsive application** on the left.
 
-Next up you have a choice of templates, choose the "List Report Object Page".
+![](/exercises/ex4/images/LCAP_43.png)
 
-As a last step choose the (service) entity on which the new app should be created. Choose "CapexFlat".
+Some background that you can choose to skip reading:
+Both create responsive apps that can be used on mobile devices and on desktops, however it is fair to say that with FE users rather start with desktops and MDK apps rather with mobile. Both adhere to templates, however in the MDK case it is a copy template that can be changed in whatever way the user wants to. FE is more restricted with respect to changes to the template, however the resulting app always adheres to the newest Fiori guidelines and comes with a lot of functionality out of the box.
+
+**Press Next**
+
+Next up you have a choice of templates, choose the **List Report Object Page**.
+
+![](/exercises/ex4/images/LCAP_44.png)
+
+As a last step choose the (service) entity on which the new app should be created. Choose **Capex**.
 
 And there you go, with just 4 steps you have created a complete UI app on top of your service entity. After some seconds you will see the new UI app showing up in the **User Interface** box on the **Home** tab. After some more seconds an editor pops up to the side which shows the pages that are generated for the UI app, the so-called page map.
 
