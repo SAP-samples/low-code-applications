@@ -4,7 +4,7 @@ We will now populate our data model with some sample data so that we can test ou
 - fixed values that are part of you application and should be deployed along with the application. An example could be the data for **Category** if there is only a fixed set of categories that cannot be changed
 - sample data that is really only used to test the services and applications that you create and that should not be part of a productive deployment
 
-On the "Home" screen add **Sample Data**. Choose "Create" and "Category".
+On the **Home** screen add **Sample Data**. Choose **Create** and **Category**.
 
 An editor will appear. Change the **Mock Data** switch to **Off** and enter 3 as the number of rows. 
 
@@ -18,30 +18,18 @@ Now enter the following data:
 
 ![](/exercises/ex2/images/LCAP_22.png)  
 
-Now return to the **Home** tab and add some more sample. This time choose "Create" and "Capex"
+Now return to the **Home** tab and add some more sample. This time choose **Create** and **API_Business_Partner.A_BusinessPartner**
 
 This time change the **Mock Data** switch to **On** and enter 3 as the number of rows.  Now there are 3 entries created and the data with it, you should see something like this:
 
 ![](/exercises/ex2/images/LCAP_23.png)  
 
-Note how the ID field this time is a read only field. This is because it is of type UUID and noone can bexpected to create or change such an ID, the system will always generate it for you.
+With respect to the Business Partner we have a special situation: It gets its data from the S/4 HANA Cloud system. So we would not need to have sample data even for testing later, we could get data even for testing from the backend, the set up automatically created the connnectivity to the backend. Indeed, when it comes to testing, there will be 2 options, either use the backend ("live") data or the sample data. The latter comes in handy during development when one does not want to get to the backend each time and play around with data.
 
-You can now leave the data like it is or overwrite it with some nice values and make use of some more built in functionality of the sample data editor:
-
-| ID | DESCRIPTION | COSTCENTER | TOTALCOST | FIRSTNAME | LASTNAME | CATEGORY_ID |
-| ----------- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
-| < generated number > | Office Chairs | 10010 | 3000 | Tom | Teller | 1 |
-| < generated number > | Notebooks | 10020 | 15000 | Fred | Fresh | 2 |
-| < generated number > | 27 inch Flatscreens | 10031 | 5000 | Greg | Guang | 3 |
-
-Note how in the **CATEGORY_ID** fields there is a value help that shows you all the categories that you have maintained before:
-
-![](/exercises/ex2/images/LCAP_24.png)  
-
-We have now added all the sample data
+We have now added the sample data that we need. We could have of course also added sample data for the Capex entity as well, but in this project we rather create its data with the resulting application.
 
 ## Summary
 
-We have now added some sample data to both data models that we can later use to test the service we are going to create.
+We have now added some sample data to two data models that we can later use to test the service we are going to create.
 
 Continue to - [Exercise 3](../ex3/README.md)
