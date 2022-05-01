@@ -63,3 +63,24 @@ It looks very much like the preview page from last chapter. Indeed it is almost 
 If you enter the **My List Report** application and press the **Create** buttión, you get the same features like in preview mode, only that the business partner is now always served from the S/4 HANA Cloud system in the back:
 
 ![](/exercises/ex6/images/LCAP_610.png)
+
+## Summary
+
+This concludes this hands on. In just a few chapters without having to code you have created an OData service based on CAP and a corresponding UI application based on Fiori elements and you have deployed it to SAP's Business Technology Platform. Your application complies to standard designs and comes with a lot of functionality out of the box.
+
+There are a lot of features of the low code perspective in BAS that we haven't covered in this workshop. So, for completeness let's have a look what you could have also done on top:
+- Use authentications for different user roles
+    - The service in our project is set up that it can be used for any CRUD operation by users that have a user and password for the corresponding BTP subaccount. However, this is not always what's wanted. While some users might only have read access to our applications others can read and write
+    - To support such scenarios one can define authorizations for the service entites and assign different privileges for different user roles. These roles then have to be assigned to users by an administrator after deployment
+- Share you project
+    - You can enable sharing your project by assigning it to a Git repository
+    - You can then not only push your changes to the central Git repo but also allow others to collaborate on the project by sharing the project with them
+    - In case of conflicts when several people work on the same project, there are simplified processes to overcome this
+- Create a mobile first application with MDK
+- Create a workflow
+    - the workflows in the low code perspective can be easily connected to service entites, which become the trigger for the workflow once there is a new entity created
+    - using one of the MDK templates, a task UI which contains the information from the entity can be easily created and assigned to user taks in an approval process
+
+
+
+
