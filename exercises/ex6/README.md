@@ -66,7 +66,7 @@ If you enter the **My List Report** application and press the **Create** buttió
 
 ## Summary
 
-This concludes this hands on. In just a few chapters without having to code you have created an OData service based on CAP and a corresponding UI application based on Fiori elements and you have deployed it to SAP's Business Technology Platform. Your application complies to standard designs and comes with a lot of functionality out of the box.
+This concludes this hands on. In just a few chapters without having to code, you have created an OData service based on CAP and a corresponding UI application based on Fiori elements and you have deployed it to SAP's Business Technology Platform. Your application complies to standard designs and comes with a lot of functionality out of the box.
 
 There are a lot of features of the low code perspective in BAS that we haven't covered in this workshop. So, for completeness let's have a look what you could have also done on top:
 - Use authentications for different user roles
