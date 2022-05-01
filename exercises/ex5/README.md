@@ -2,6 +2,8 @@
 
 We now have a running service and a UI application on top of it, we can now preview both without having to deploy to the cloud. Actually, we could have done that already earlier, at the point where we had created the service. However, to save some time, we are only doing it here to preview all that we have done so far in one go.
 
+## Preview with Sample Data
+
 On the **Home** screen you find a **Preview** button in the upper right corner. There are 2 options: **With Sample Data** and **With Live Data**. We will try both of them out. 
 
 First we will choose **With Sample Data**. This option only uses the sample data that we have created in an earlier setp. It uses this sample data for the category as well as for the business partner. Remember the business partner comes with automatic connectivity to an S/4 HANA Cloud system and data for the service could retreived from there as well. With the sample option however, the data is served from our local business partner data that we generated.
@@ -51,6 +53,8 @@ Notice how it says "Draft saved" in the bottom right corner of the screen everyt
 Now press the **<** button in the upper left corner of the screen next to the SAP sign. This will take you back to the list page. Press **Go** and you should see the entry that you just created.
 
 ![](/exercises/ex5/images/LCAP_58.png) 
+
+## Preview with Live Data
 
 Now switch back to the tab that has the Business Application Studio with your project. We will now look at the second version of the preview which uses the live data. This time for the business partner the data is actually fetched from the S/4 HANA Cloud system instead from the sample data. For the categories though, where there is no backend connection still the sample data will be shown.
 

@@ -2,100 +2,64 @@
 
 In this section we will deploy the project to the Business Technology Platform (BTP). 
 
-
-## Adjustment of the service
-
-Actually, before we deploy, we need to slightly adjust our new service for usage in AppGyver. As per the default that we now have created, the new service would be secured with specific roles when deployed to BTP. So, any user that wanted to access the service on BTP would have to have this role assigned via a so-called role collection. To ease this process and usage of the service in AppGyver, we will remove the need for such a role.
-
-For this on the Home Page delete the role **LCAPXXXManager** (where again XXX is your user number) under **User Roles**
-
-
-
-
 ## Deploy the project to BTP
 
 Switch back to the **Home** tab. 
 
-Now that the project is developed, click "Deploy" on the "Home" screen. You are then asked to log on to a Cloud Foundry account in BTP. 
+Now that the project is developed, click **Deploy** on the "Home" screen. You are then asked to log on to a Cloud Foundry account in BTP. 
 
 ![](/exercises/ex6/images/LCAP_64.png)  
 
-Press **Log In** and then in the top part of the screen enter one after another:
+Press the **Log In** button
+
+![](/exercises/ex6/images/LCAP_65.png)  
+
+Then in the top part of the screen enter one after another:
 - the Cloud Foundry Endpoint **https://api.cf.eu10.hana.ondemand.com**
-- your SAP email address 
-- Your global SAP password
+- the email address of the user that was assigned to you
+- the password for the user that was assigned to you
 - confirm the organization **TechEdLCAP_lcapteched2021**
 - confirm the space **dev**
 
-It is then confirmed in the lower right corner that you have logged on. Now press the **Deploy** button again. This starts the deployment and in the lower part of the screen a new tab **Task: Deploy** appears.
-It will now take several minutes for the application to be deployed. When the process is finished you will see in the task tab something like this:
+It is then confirmed in the lower right corner that you have logged on. Now the deployment starts and in the lower part of the screen a new tab **Task: Deploy** appears.
+It will now take several minutes for the application to be deployed. 
 
-![](/exercises/ex6/images/LCAP_65.png) 
+## Check what's going on behind the scenes: The code of the project
 
-You can now either use the link in the output to go to the application overview page or use the link that after the deployment pops up in the upper part of the screen:
+While you are waiting for the project to be deployed to the BTP, we can use the time for a look behind the scenes. It is not necessary that you know any of this for developing our project, it is just meant to give you some background and show you options how you can decide to work with code at any point also.
+
+To create the project up to this point you have not seen any code, everything was built using visual editors. However, under the hood code is created using the technologies that are part of the low code perspective of the Business Application Studio. In this project it is CAP and Fiori elements. There is also the Mobile Development Kit (MDK) and the BTP Workflow that are not covered in this hands on.
+
+For all these technolgies whenever you change something in the visual editors code is created. The code that is created is very much the code that a developer could have written in the same way using just text editors.
+
+In fact you can see the code. And what's more you can decide at any point in the project that from now on you'd rather carry on with textual editors adding more code / changing the generated code. With this is becomes possible not only to use the low code tools to create complete applications but also to jump start any kind of development that involves CAP, Fiori elements, MDK or the workflow. You can use the visual tools to a certain point and then switch to the code. Get the straight forward things done really easily and fast and if the editors do not provide enough functionality to do the final 20% of the resulting applications, one can switch to the code editors and finish it there.
+
+How do switch to the code? Let's do this now.
+
+Press the button in the left sidebar at the very top, then choose **View** and **Explorer** as entries
 
 ![](/exercises/ex6/images/LCAP_66.png) 
 
-This link will from now on (after the first deployment) always be present in the project. When you click on it you will be taken to this page:
+Now a new side pane opens at the left and it contains the file structure of our project. You can see a **db** and a **srv** folder there, both are standard CAP folders that hold the data models and the services respectively. There is also the **app** folder which holds our Fiori elements UI application, if there are more than one and additional MDK applications you can also find them in this folder.
 
 ![](/exercises/ex6/images/LCAP_67.png) 
 
-It looks very much like the preview page from last chapter. Indeed it is almost the same page, only that now everything is deployed to a an account in the BTP. Again you can click on the service links on the right and / or the UI application.
+Let's open the file **schema.cds** in the **db** folder. You can now see a text file which reflects the data models for Capex and Category that we have created using the graphical modeler. This is code in the Core Data Service (CDS) format and you could now edit it and enhance it. For CDS files this even works in both directions. You can either change the CDS file and the change is reflected in the graphical modeler and vice versa. Being able to edit in both direction doesn't work for all file types (e.g. not for Javascript files) but as a general rule you can always at any point leave the graphical editors, switch to the file structure and from then on code in text editors.
 
-### Retrieve the service URL for use in AppGyver
+Another file that is worth mentioning is the **mta.yaml** file. If you open it, you can see that it contains almost 200 lines. This file was automatically created for you when you hit the deploy button just moments ago. This file contains important information for the deployment, what should be deployed and what depends on what, which services should instantiated on BTP and much more. Under normal circumstances a developer has to create this file manually or at best gets some parts of it generated by frameworks. Note that using the low code perspective of the Business Application Studio this is done for you behind the scenes and wouldn't it be for the background information of this current chapter you wouldn't even know that the file exists.
 
-In order for you to continue in the next exercise to create a new AppGyver based application which users can create new Capex requests, you need to retrieve the URL of the deployed service. Unfortunately, at this point this is not very user friendly at this point and needs to be improved: 
+## Check the running service and UI after deplyomemnt
 
-Click on the **service details** link:
+Meanwhile the deployment might be finished. If it is you will see a URL in the task tab. Also when you press the **Deploy** button at the top you will also see an entry **View last deployed**. This link will from now on always be available in your project.
 
 ![](/exercises/ex6/images/LCAP_68.png) 
 
-Once again, a new browser tab opens. The URL of this new tab will be an ugly one like this:
+Press either of them. This will take you to this page:
 
-```
-https://lcapteched2021.launchpad.cfapps.eu10.hana.ondemand.com/lcapLCAPXXX.LCAPXXXLaunchpad-1.0.0/service/LCAPXXX/
-```
+![](/exercises/ex6/images/LCAP_69.png) 
 
-where as always XXX is the number of your user. From this URL just copy the last part behind ***/service***
+It looks very much like the preview page from last chapter. Indeed it is almost the same page, only that now everything is deployed to a an account in the BTP. Again you can click on the service links on the right and / or the UI application.
 
-``` 
-/service/LCAPXXX/
-```
-and add this to 
+If you enter the **My List Report** application and press the **Create** buttión, you get the same features like in preview mode, only that the business partner is now always served from the S/4 HANA Cloud system in the back:
 
-```
-https://techedlcap-lcapteched2021-dev-lcapXXX-srv.cfapps.eu10.hana.ondemand.com
-```
-
-so, you get a URL like this
-
-```
-https://techedlcap-lcapteched2021-dev-lcapXXX-srv.cfapps.eu10.hana.ondemand.com/service/LCAPXXX/
-```
-
-( Note that there are 2 times XXX in this above email that you have to exchange! )
-
-Copy this URL into your clipboard, you will need it in AppGyer.
-
-
-### Addendum: Generated Code behind the scenes
-
-You have now prepared everything to create an AppGyver application. This chapter is about additional infos about the way the project is created. If you couldn't care less and don't want to know, you can simply switch to the next exercise: [Exercise A](../exA/README.md)
-
-We will now have a look at the code that was generated by the low code perspective in BAS while your were handling the previous chapters.
-
-It will reveal that while we used visual editors so far for everything we did, there is actually normal code created behind the scene. This code could have been written in the same way by a developer that is more inclined to work on text based editors. ( "Could" because the developer has more degrees of freedom who the developer structures the project, while the generated code follows certain best practices ).
-
-To enter the text based code editors you have to invoke the file explorer. To do so, select the "hamburger" like menu at the top of the left hand side pane in the Business Application Studio. Then choose View->Explorer
-
-![](/exercises/ex6/images/LCAP_61.png)  
-
-In the file structure that now comes up, open the **srv** folder and locate the **service.cds** file. On this file invoke a context menu and choose Open **With...->Code Editor**. You should now see the text based version of the service definition that you have created, it is in the CDS (Core Data Services) format. 
-
-![](/exercises/ex6/images/LCAP_62.png)  
-
-You could now change something in this text editor directly, it would immediately affect what you would see in the graphical modeler for the services. 
-
-Such a switch of going back and forward between the text based and the visual editors does not always work (Javascript files are a problem). However, the one way hand over from the visual editors / the low code perspective to the text based editors for more professional / free style coding is one of the value propositions of low code in BAS: Get the straight forward things done really easily and fast and if the editors do not provide enough functionality to do the final 20% of the resulting applications, one can switch to the code editors and finish it there.
-
-Continue to - [Exercise A](../exA/README.md)
+![](/exercises/ex6/images/LCAP_610.png)

@@ -2,6 +2,8 @@
 
 After the creation of the service with several entities, we will create a list report with an object page based on the Fiori elements technology.
 
+## Create a new UI Application
+
 Go back to the **Home** tab in the Application Studio. (Note: If you accidentally closed all the tabs you can find your **Home** tab by clicking on the **Project Explorer** icon on the left hand-side and click **Home**.)
 
 Press **+**  under **User interfaces**
@@ -37,6 +39,8 @@ We now have a fully functional list report and and object page. Both pages are a
 
 While we could now already start testing our UI application and would get a nice application, we will optimize the UI at a couple of places.
 
+## Adjust the List Page of your UI Application
+
 Click **list Report** Page in the page map.
 
 ![](/exercises/ex4/images/LCAP_47.png)
@@ -52,6 +56,8 @@ We will now add more columns for our list than were generated. We will add the a
 In the dialog's dropdown that now shows up select the **BusinessPartner** property and the **name** of the **category**, then close the dropdown and press **Add**. This will close the dialog and add the 2 new columns to the list
 
 ![](/exercises/ex4/images/LCAP_48_3.png)
+
+## Adjust the Object Page of your UI Application and add Value Helps
 
 Now press **Page Map** on the upper part of the editor to be taken back to the page map. Now edit the **Object Page**. Expand the **Fields** under **Form** in the **General Information** section. You can now see all the properties that were automaticlly added to the form. 
 
