@@ -2,6 +2,8 @@
 
 After the creation of the data model ( persistence layer ) we will now select what to expose to the outside world as an API. This API can then be consumed by UI apps, workflows, etc. .For this we will add several entities to a service. CAP will expose this service automatically as a full blown OData service.
 
+## Create new service entities
+
 Go back to the **Home** tab in the Application Studio.
 
 Your home tab displays the two new entities and the external one in your model and the corresponding sample data. You can easily navigate back to the Data Model Editor by clicking on of the entities if you like.
@@ -26,6 +28,7 @@ Add a third entity, this time choose **API_BUSINESS_PARTNER.A_BusinessPartner**.
 
 ![](/exercises/ex3/images/LCAP_33.png)
 
+## Enable Draft Editing for Capex 
 
 There is an important part we still have to do for the particular **Capex** entity: Mark it for **Draft Editing**. This means that the service entity supports storing incomplete or wrong data in a draft which is only exposed to the user that created the entity while the entity is not active and not visible for other users. This is an important UX feature: If there are applications where there are mandatory fields or validations for a field (e.g. an email field should contain a valid email address) and the user is not able to resolve these issues before the timeout of the operation (for example because the user needs to attend a meeting before finsihing) without a draft mode, all the data would get lost. Drafts make sure that all the data that is entered gets saved in a draft and only when the data is complete and validated the data is turned into a real active object. 
 
