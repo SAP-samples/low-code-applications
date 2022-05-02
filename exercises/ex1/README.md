@@ -81,7 +81,7 @@ Associate your **Capex** entity with the **Category** entity and take over the s
 Our data model is now complete an should look like this:
 
 ![](/exercises/ex1/images/LCAP_08.png)
-
+ 
 ## Summary
 
 You've now created a data model including persistence in CAP (Cloud Application Programming model) that can be later used to be deployed to the SAP HANA database we will use. Note that you have not seen any CAP related commands or syntax.
