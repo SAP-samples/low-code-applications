@@ -53,13 +53,12 @@ Entity Name: Capex
 ![](/exercises/ex1/images/LCAP_02.png)
 
 
-
 We will now add another entity. This time we will create a **Category** entity, which will contain some categories in which a Capex request will fall.
 
 Entity Name: Category
 
-| Property Name | Property Type |
-| ----------- | ----------- |
+| Property Name | Property Type | Key Property
+| ----------- | ----------- | - |
 | ID | Integer | X |
 | name | String |   |
 
@@ -76,6 +75,8 @@ Click on the header area of the **Capex** entity and click "Add Relationship" in
 ![](/exercises/ex1/images/LCAP_04.png)
 
 Associate your **Capex** entity with the **Category** entity and take over the suggested values (like **Category** and the target entity type **LCAPXXX.Category** where XXX is your user's number) for that.
+
+![](/exercises/ex1/images/LCAP_04_2.png)
 
 Our data model is now complete an should look like this:
 
