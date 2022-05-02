@@ -79,7 +79,7 @@ Now we will also carry out similar steps for the Business Partner. Only this tim
 
 Select property **BusinessPartner_BusinessPartner**, then in the panel on the right, under **Label** change the text to **BusinessPartner**. Then below under **Display Type** select **Value Help** again.
 
-On the dialog, switch the **Display as Dropdown** option off, then press **Add Cokumn** and select **FirstName**. Then do the same and add **LastName**. Finally press **Apply**
+On the dialog, switch the **Display as Dropdown** option off, then press **Add Column** and select **FirstName**. Then do the same and add **LastName**. Finally press **Apply**
 
 ![](/exercises/ex4/images/LCAP_49_3.png)
 
