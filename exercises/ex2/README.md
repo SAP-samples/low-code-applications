@@ -20,6 +20,8 @@ Now enter the following data:
 
 Now return to the **Home** tab and add some more sample. This time choose **Create** and **API_Business_Partner.A_BusinessPartner**
 
+![](/exercises/ex2/images/LCAP_22_2.png)  
+
 This time change the **Mock Data** switch to **On** and enter 3 as the number of rows.  Now there are 3 entries created and the data with it, you should see something like this:
 
 ![](/exercises/ex2/images/LCAP_23.png)  
