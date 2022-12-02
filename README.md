@@ -1,9 +1,6 @@
-# Hands On Projects For Low Code Application Development
-<!-- Please include descriptive title -->
+[![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/low-code-applications)](https://api.reuse.software/info/github.com/SAP-samples/low-code-applications)
 
-<!--- Register repository https://api.reuse.software/register, then add REUSE badge:
-[![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/REPO-NAME)](https://api.reuse.software/info/github.com/SAP-samples/REPO-NAME)
--->
+# Hands On Projects For Low Code Application Development
 
 ## Description
 
