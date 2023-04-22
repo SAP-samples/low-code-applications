@@ -4,8 +4,6 @@
 
 [![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/low-code-applications)](https://api.reuse.software/info/github.com/SAP-samples/low-code-applications)
 
-# Hands On Projects For Low Code Application Development
-
 ## Description
 
 This repository contains descriptions for hands on projects on low code development using SAP tools, for example SAP Build.
