@@ -26,8 +26,8 @@ The users for the development environment during the course are email addresses 
 - [Exercise 1 - Create a data model with the SAP Business Application Studio ](exercises/ex1/README.md)
 
 Start the exercises [here](exercises/ex0/README.md).
-
-## How to obtain support
+ 
+## How to obtain support!
 
 Support for the content in this repository is available during the actual time of the session by the hosts. 
 
