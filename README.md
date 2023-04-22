@@ -1,6 +1,5 @@
 # Create SAP S/4HANA Extensions Using ABAP Cloud and SAP Build
 
-
 ## Description
 
 This repository contains the material for the workshop "Create SAP S/4HANA Extensions Using ABAP Cloud and SAP Build".  
@@ -16,14 +15,18 @@ This session covers the basic app development steps using the ABAP Development T
 
 ## Requirements
 
-The local requirement is to preferably use the Google Chrome browser to access the SAP Build Design time. 
+To carry out the exercises of this repository, you need to
+- install the ABAP Development Tools (ADT) for the ABAP development parts
+- have a browser ready, referably Google Chrome, to access the SAP Build
 
 The users for the development environment during the course are email addresses which are provided to you by the hosts.
 
+Go to [Getting Started - Preparation](exercises/ex0/README.md) to find out the installation details, URLs, then start with the first exercise.
+
 ## Exercises
 
-- [Getting Started - Preparation Part 1](exercises/ex0/README.md)
-- [Exercise 1 - Create a data model with the SAP Business Application Studio ](exercises/ex1/README.md)
+- [Getting Started - Preparation](exercises/ex0/README.md)
+- [Exercise 1 - TODO ](exercises/ex1/README.md)
 
 Start the exercises [here](exercises/ex0/README.md).
  
