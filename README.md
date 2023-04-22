@@ -1,4 +1,4 @@
-# Hands On Projects For Low Code Application Development
+# Hands On Projects For Low Code Development on the Business Technology Platform (BTP)
 <!-- Please include descriptive title -->
 
 <!--- Register repository https://api.reuse.software/register, then add REUSE badge:
@@ -7,7 +7,7 @@
 
 ## Description
 
-This repository contains descriptions for hands on projects on low code development using SAP tools.
+This repository contains descriptions for hands on projects on low code development using SAP tools, for example SAP Build.
 
 ## Requirements
 
@@ -16,6 +16,7 @@ The prerequisites if not otherwise noted are normally just a browser ( preferabl
 ## Contents
 
 - [Accelerate Application Development with Low-Code in the SAP Business Application Studio](https://github.com/SAP-samples/low-code-applications/tree/bas_capex_2204) based on the release 2204
+- [Create SAP S/4HANA Extensions Using ABAP Cloud and SAP Build](https://github.com/SAP-samples/low-code-applications/tree/abao_build_2305)
 
 ## How to obtain support
 [Create an issue](https://github.com/SAP-samples/low-code-applications/issues) in this repository if you find a bug or have questions about the content.
