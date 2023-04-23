@@ -30,13 +30,13 @@ There are many use cases where you can make a difference using SAP Build Process
 
 2. Pick **Build an Automated Process**.
 
-    <!-- border -->![Create a Project](002.png)
+    ![Create a Project](002.png)
 
 3. Select **Business Process**.
 
     > Business Process Projects are a collection of skills in SAP Build Process Automation. Projects are part of the internal business processes of a company and are defined based on business scenarios. A project can contain a set of processes, forms, automations and decisions, which are reusable artifacts.
 
-    <!-- border -->![Create a Project](003.png)
+    ![Create a Project](003.png)
 
 
 4. In the **Create a Business Process** dialog box, do the following:
@@ -45,7 +45,7 @@ There are many use cases where you can make a difference using SAP Build Process
     - Enter a **Short Description**: Sales Orders Management Project.
     - Choose **Create**.
 
-    <!-- border -->![Project information](004.png)
+    ![Project information](004.png)
 
 
 ### Create a business process
@@ -62,7 +62,7 @@ There are many use cases where you can make a difference using SAP Build Process
 
     > Inside a project, you can create a process. This process is equivalent to a workflow in any business scenario. You can create this process from different skills such as forms, decisions, automations.
 
-    <!-- border -->![Create Process](005.png)
+    ![Create Process](005.png)
 
     > The form **Identifier** field is auto-filled.
 
@@ -70,15 +70,15 @@ There are many use cases where you can make a difference using SAP Build Process
 
 1.  Click on **+** > **Create** > **Data Type**.
 
-    <!-- border -->![6](6.png)
+    ![6](6.png)
 
 2.  Create a datatype **Sales Order**.
 
-    <!-- border -->![6.1](6.1.png)
+    ![6.1](6.1.png)
 
 3. Click on **New Field** to add new fields to the datatype **Sales Order**.
 
-    <!-- border -->![6.2](6.2.png)
+    ![6.2](6.2.png)
 
 
 4.  Repeat the  process to add all the fields of the type as shown below.
@@ -98,23 +98,23 @@ There are many use cases where you can make a difference using SAP Build Process
 
     Your final data type looks as below.
 
-    <!-- border -->![DataType](6.3.png)
+    ![DataType](6.3.png)
 
 ### Create and configure API trigger
 
 1.  Click on **+** > **API** > **New API Trigger**.
 
-    <!-- border -->![7](7.png)
+    ![7](7.png)
 
 
 2.  Enter the name as **Sales Order Trigger**.
 
-    <!-- border -->![7.1](7.1.png)
+    ![7.1](7.1.png)
 
 
 3.  Choose **Inputs**. Then choose **Configure** to configure inputs.
 
-    <!-- border -->![Inputs](7.2.png)
+    ![Inputs](7.2.png)
 
 4.  In the **Configure Process Inputs** window, choose **Add Input** to add parameters.
 
@@ -126,7 +126,7 @@ There are many use cases where you can make a difference using SAP Build Process
 
     **Apply** changes.
 
-    <!-- border -->![Add Inputs](7.3.png)
+    ![Add Inputs](7.3.png)
 
 5. **Save**  the project.
 
@@ -135,15 +135,15 @@ There are many use cases where you can make a difference using SAP Build Process
 
 1. Click on **+** > **Approval** > **New Approval Form**.
 
-    <!-- border -->![8](8.png)
+    ![8](8.png)
 
 2. Enter the name as **Approval Form**.
 
-    <!-- border -->![8.1](8.1.png)
+    ![8.1](8.1.png)
 
 3. Click on **Edit form**.
 
-    <!-- border -->![8.2](8.3.png)
+    ![8.2](8.3.png)
 
 4. Design the form by dragging and dropping the corresponding form elements as shown below.
 
@@ -158,7 +158,7 @@ There are many use cases where you can make a difference using SAP Build Process
     | I acknowledge that we have received your order and will process it based on the availability | Checkbox |
     | Message to Buyer | Text Area | X
 
-    <!-- border -->![8.4](8.4.png)
+    ![8.4](8.4.png)
 
 
 5. **Save** the form.
@@ -172,26 +172,26 @@ There are many use cases where you can make a difference using SAP Build Process
 
     Enter your login credentials(emailID) in the **Recipients** section.
 
-    <!-- border -->![8.5](8.5.png)
+    ![8.5](8.5.png)
 
 7. Configure the inputs of **Approval Form**. Navigate to Inputs and map the fields accordingly.
 
-    <!-- border -->![8.6](8.6.png)
+    ![8.6](8.6.png)
 
 
 ### Create and configure Order Approval Notification form
 
 1.  Click on **+** > **Forms** > **New Form**.
 
-    <!-- border -->![9](9.png)
+    ![9](9.png)
 
 2.  Enter the name as **Order Confirmation Form**.
 
-    <!-- border -->![9.1](9.1.png)
+    ![9.1](9.1.png)
 
 3.  Click on **Edit form**.
 
-    <!-- border -->![9.2](9.2.png)
+    ![9.2](9.2.png)
 
 4.  Design the form by dragging and dropping the corresponding Form elements as shown below.
 
@@ -205,7 +205,7 @@ There are many use cases where you can make a difference using SAP Build Process
     | Date | Expected Delivery Date | X
     | Paragraph | Please press the SUBMIT button to acknowledge the order status.|
 
-    <!-- border -->![9.3](9.3.png)
+    ![9.3](9.3.png)
 
 5. **Save** the form.
 
@@ -220,11 +220,11 @@ There are many use cases where you can make a difference using SAP Build Process
     Enter your login credentials(emailID) in the **Recipients** section.
 
 
-    <!-- border -->![9.4](9.4.png)
+    ![9.4](9.4.png)
 
 7. Configure the inputs of **Order Approval Form**.Navigate to Inputs and map the fields accordingly.
 
-    <!-- border -->![9.5](9.5.png)
+    ![9.5](9.5.png)
 
 
 ### Create and configure Order Rejection Notification form
@@ -234,11 +234,11 @@ There are many use cases where you can make a difference using SAP Build Process
     - Find **Order Confirmation Form** under the Artifacts section and select three dots **(...)**.
     - Choose **Duplicate**.
 
-    <!-- border -->![10](10.png)
+    ![10](10.png)
 
 2. In the duplicate artifact pop-up window change the name to **Order Rejection Notification** and select **Duplicate**.
 
-    <!-- border -->![10.1](10.1.png)
+    ![10.1](10.1.png)
 
 3. The form is automatically opened in the form builder. Change the order rejection form in the form builder to reflect the data for rejection case.
 
@@ -247,13 +247,13 @@ There are many use cases where you can make a difference using SAP Build Process
     | Headline 1 | Order Rejection
     | Paragraph  | We are sorry to inform you that your order cannot be accepted. Any inconvenience caused due to the refusal of the order is regretted. You can find the reason of the rejection and the details of your order below, please confirm the request:
 
-    <!-- border -->![10.3](10.3.png)
+    ![10.3](10.3.png)
 
 4. **Save** the form.
 
 5. Go back to the process builder and add the order rejection notification form to the process. Select **Approval Form** and choose **+** option for the **Reject**. Choose **Forms** and select **Order Rejection Form**.
 
-    <!-- border -->![10.2](10.2.png)
+    ![10.2](10.2.png)
 
 6.	Configure the order rejection form. In the General section configure in the **Subject** box:
 
@@ -263,7 +263,7 @@ There are many use cases where you can make a difference using SAP Build Process
 
 7. Under Recipients Enter your login credentials(emailID).
 
-    <!-- border -->![10.4](10.4.png)
+    ![10.4](10.4.png)
 
 8. Configure the **Inputs** section.
 
@@ -274,11 +274,11 @@ There are many use cases where you can make a difference using SAP Build Process
     | Order Amount | Order Amount
     | Material Name| Material Name
 
-    <!-- border -->![10.5](10.5.png)
+    ![10.5](10.5.png)
 
 9.	Finally, connect the outgoing flow of the order rejection form to the **End** activity.
 
-    <!-- border -->![10.6](10.6.png)
+    ![10.6](10.6.png)
 
 10. **Save** your work.
 
@@ -291,11 +291,11 @@ Once the process with forms is designed, define which process flow should run ba
 
 1. To add a condition to a process open the **Process Builder**. Choose **+** next to the Trigger. Select **Controls** then **Condition**.
 
-    <!-- border -->![Process Condition](11.png)
+    ![Process Condition](11.png)
 
 2. To configure the condition, choose **Open Condition Editor**.
 
-    <!-- border -->![Process Condition](11.1.png)
+    ![Process Condition](11.1.png)
 
     > Process content will contain a list of attributes that have been defined in previous skills. For example: in the screenshot, you can see attributes from the API trigger. You will use this process content to configure different skills during business process modelling.
 
@@ -306,26 +306,26 @@ Once the process with forms is designed, define which process flow should run ba
     - Enter **100000** as the value.
     - Choose **Apply**.
 
-    <!-- border -->![Process Condition](11.2.png)
+    ![Process Condition](11.2.png)
 
     You have configured your **if** branch to: **if Order Amount is less than 100000**.
 
 
 4. Link your **Default** branch to **Approval Form**.
 
-    <!-- border -->![Process Condition](11.3.png)
+    ![Process Condition](11.3.png)
 
     With this process condition, only the sales order above a specific amount will be sent for approval and the rest will be auto-approved.    
 
 5.	Decide the process flow if the condition criteria is met. First, you have to remove the connection from If-route to Approval Form and then create a new form to notify the requester of the auto-approval.
 
-    <!-- border -->![Process Condition](11.33.png)
+    ![Process Condition](11.33.png)
 
 ### Create and configure Auto Approval Notification    
 
 1. To create the new form, add the **New Form** from the **If-route**.
 
-    <!-- border -->![Process Condition](11.4.png)
+    ![Process Condition](11.4.png)
 
 2. In the Create Form window:
 
@@ -333,7 +333,7 @@ Once the process with forms is designed, define which process flow should run ba
     - Enter a Description: **Notification form to inform auto approval of the sales order**.
     - Choose **Create**.
 
-    <!-- border -->![Auto Approval](11.5.png)
+    ![Auto Approval](11.5.png)
 
 3. Edit the form using **Edit Form** Button. Design the notification form, the same way as in the previous steps, to send another notification to the  requester about auto-approval.
 
@@ -350,7 +350,7 @@ Once the process with forms is designed, define which process flow should run ba
     | Paragraph | Please press the SUBMIT button to acknowledge the order status|
 
     
-    <!-- border -->![Auto Approval](11.6.png)
+    ![Auto Approval](11.6.png)
 
 4. **Save** your work.
 
@@ -366,7 +366,7 @@ Once the process with forms is designed, define which process flow should run ba
 
     Under **Recipients** Enter your login credentials(emailID).
 
-    <!-- border -->![Auto Approval](11.7.png)
+    ![Auto Approval](11.7.png)
 
 7. Configure the **Inputs** section.
 
@@ -376,11 +376,11 @@ Once the process with forms is designed, define which process flow should run ba
     | Order Amount | Order Amount
     | Expected Delivery Date | Expected Delivery Date
 
-    <!-- border -->![Auto Approval](11.8.png)
+    ![Auto Approval](11.8.png)
 
 8. Connect the outgoing flow of the auto-approval form to the **End** activity.
 
-    <!-- border -->![Auto Approval](11.10.png)
+    ![Auto Approval](11.10.png)
 
 ### Save the project    
 
