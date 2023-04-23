@@ -1,4 +1,4 @@
-[Home - RAP610](../../../../#exercises)
+[Home ](../../README.md)  
 
 # Exercise 4: Developer extensibility
 

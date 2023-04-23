@@ -1,11 +1,11 @@
 [Home - RAP6XX: Extensibility](../README.md)  
-# RAP610: Use ABAP Cloud for SAP S/4HANA (Cloud) extensions
+# Use ABAP Cloud for SAP S/4HANA (Cloud) extensions
 
 <!-- 
 ## Description
 -->
 
-This repository contains the material for the hands-on session **RAP610: Use ABAP Cloud for SAP S/4HANA (Cloud) extensions**.
+This repository contains the material for the hands-on session **Use ABAP Cloud for SAP S/4HANA (Cloud) extensions**.
 
 - [Requirements for attending this workshop](#requirements-for-attending-this-workshop)
 - [Overview](#overview)

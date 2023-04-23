@@ -1,4 +1,4 @@
-[Home - RAP610](../../../../#exercises)
+[Home ](../../README.md)  
 
 # Exercise 2: Create the OnlineShop Application
 
