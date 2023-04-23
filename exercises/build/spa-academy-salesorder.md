@@ -26,7 +26,7 @@ There are many use cases where you can make a difference using SAP Build Process
 
     > The lobby is a central page for creating, accessing, and managing your projects in SAP Build. You can access business application processes, company configured templates, and other resources for your end-to-end business process.
 
-    <!-- border -->[Lobby](001.png)
+    [Lobby](001.png)
 
 2. Pick **Build an Automated Process**.
 
