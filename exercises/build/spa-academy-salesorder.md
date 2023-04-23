@@ -1,20 +1,9 @@
----
-parser: v2
-author_name: Chaitanya Priya Puvvada
-author_profile: https://github.com/chaitanya-priya-puvvada
-auto_validation: true
-time: 45
-tags: [ tutorial>beginner, software-product>sap-business-technology-platform, tutorial>free-tier ]
-primary_tag: software-product>sap-build-process-automation
----
-
 # Create Sales Order Business Process
 <!-- description --> Create a Business Project and Process to build and extend business processes
 
 ## Prerequisites
-  - [Trial account](https://blogs.sap.com/2022/09/09/sap-process-automation-now-available-in-your-trail-account/) with the SAP Build Process Automation enabled **OR**
-  - A regular account with [SAP BTP Free Tier](spa-subscribe-booster) service plan for SAP Build Process Automation
 
+TODO
 
 ## You will learn
   - How to create a SAP Build Process Automation project
@@ -37,7 +26,7 @@ There are many use cases where you can make a difference using SAP Build Process
 
     > The lobby is a central page for creating, accessing, and managing your projects in SAP Build. You can access business application processes, company configured templates, and other resources for your end-to-end business process.
 
-    <!-- border -->![Lobby](001.png)
+    <!-- border -->[Lobby](001.png)
 
 2. Pick **Build an Automated Process**.
 
