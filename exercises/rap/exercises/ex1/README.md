@@ -1,5 +1,5 @@
 [Home ](../../../../#exercises)
-[Home ](../README.md)  
+[Home ](../../README.md)  
 
 # Exercise 1: Find and examine a released RAP BO
 
