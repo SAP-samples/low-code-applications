@@ -12,4 +12,4 @@ Please make sure you have all the necessary prerequsistes listed below. If not, 
 1. **In almost every chapter of this tutorial there is a reference to a number XXX, so a 3 digit number. Make sure that this number was assigend to you by the moderators / speakers of this course and remember it well.** It is important as we will use these numbers, where every user has a different one, in order to create different names for applications and other artefact. As we will deploy all the the artefacts to the same Business Technology Platform account, it is important that they all differ in the names and identifiers, so there are no clashes 
 1. **If you don't have access to the lobby with your user and password or if you don't know your number, please let the speakers know.**
 
-Continue to - [Exercise 1](../ex1/README.md)
+Continue to - [Exercise 1](../rap/exercises/ex1/README.md)
