@@ -147,15 +147,15 @@ There are many use cases where you can make a difference using SAP Build Process
 
 4. Design the form by dragging and dropping the corresponding form elements as shown below.
 
-    |  **Form Fields**    s **Field Settings with Label** | **Configuration(Read Only)**
-    |  :------------- | :------------- | 
+    |  **Form Fields**    s **Field Settings with Label** | **Configuration(Read Only)** | 
+    |  :------------- | :-------------
     | Approve Sales Order   | HeadLine1 | |
-    | A new order has been received. Please review and confirm whether the requirements can be met or not.| Paragraph |
+    | A new order has been received. Please review and confirm whether the requirements can be met or not.|  Paragraph | | 
     | Material | Text | X |
-    | Order Amount | Number | X|
-    | Expected Delivery Date | Date | X|
-    | I acknowledge that we have received your order and will process it based on the availability | Checkbox |
-    | Message to Buyer | Text Area | X
+    | Order Amount | Number | X |
+    | Expected Delivery Date | Date | X |
+    | I acknowledge that we have received your order and will process it based on the availability | Checkbox | | 
+    | Message to Buyer | Text Area | X | 
 
     ![8.4](8.4.png)
 
