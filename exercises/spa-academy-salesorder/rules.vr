@@ -1,0 +1,28 @@
+
+[VALIDATE_1]
+###Rule
+multiple-choice
+
+###Question
+What actions can be performed in SAP Build Lobby?
+
+###Match
+[x] Create, manage, and deploy business processes and action projects
+[x] Access business application processes
+[ ] Select a start trigger
+
+[VALIDATE_1]
+
+[VALIDATE_2]
+###Rule
+single-choice
+
+###Question
+What is a business process?
+
+###Match
+[ ] An intelligent bot to automate repetitive manual processes
+[ ] A configurable template
+[x] A repetitive set of tasks or activities that are completed to achieve a goal or outcome for a business
+
+[VALIDATE_2]
