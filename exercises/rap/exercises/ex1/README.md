@@ -119,12 +119,12 @@ Then add a **blank** behind the filter statement and and press again **Ctrl + sp
 
   -->
    
-   2. In ADT, again the **Project Explorer** right-click on the package **`ZLOCAL`**, and select **New** > **ABAP Package** from the context menu. 
+   1. In ADT, again the **Project Explorer** right-click on the package **`ZLOCAL`**, and select **New** > **ABAP Package** from the context menu. 
 
    ![package](images/220_create_package.png)
 
    
-   1. Maintain the required information (`###` is your group ID):
+   2. Maintain the required information (`###` is your group ID):
        - Name: **`Z_ONLINESHOP_###`**
        - Description: _**`Online Shop ###`**_
        - Select the box **Add to favorites package**
@@ -133,19 +133,19 @@ Then add a **blank** behind the filter statement and and press again **Ctrl + sp
 
    ![package](images/230_create_package.png).
 
-   2. Do not enter an Application Component and press **Next**
+   3. Do not enter an Application Component and press **Next**
 
    ![package](images/240_create_package.png).
 
-   3. Create a new transport request, maintain a description (e.g. _**Online Shop Package ###**_), and click **Finish**.
+   4. Create a new transport request, maintain a description (e.g. _**Online Shop Package ###**_), and click **Finish**.
       
    ![package](images/250_create_package.png).
 
-   4. You should now see your new package in your *Project Explorer*
+   5. You should now see your new package in your *Project Explorer*
 
    ![package](images/270_create_package.png).
 
-   5. Check the language version of your package
+   6. Check the language version of your package
 
       As you can see your package has the superpackage `ZLOCAL`. This is a structure package that is part of the software component `ZLOCAL` which is configured for the use of **ABAP for Cloud Development** and the **Local Objects**. 
 
