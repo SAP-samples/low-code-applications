@@ -1,5 +1,4 @@
-[Home - RAP6XX: Extensibility](../README.md)  
-# Use ABAP Cloud for SAP S/4HANA (Cloud) extensions
+ # Use ABAP Cloud for SAP S/4HANA (Cloud) extensions
 
 <!-- 
 ## Description
@@ -14,6 +13,7 @@ This repository contains the material for the hands-on session **Use ABAP Cloud 
 - [Further Information](#further-information)
 
 
+<!-->
 ## Requirements for attending this workshop 
 [^Top of page](#)
 
@@ -27,6 +27,8 @@ You also need a user on an SAP S/4HANA Cloud ABAP Environment system or on a SAP
 > **Note for participants of SAP events:** You will recieve logon information from the SAP team during the event. 
 > 
 > | [How to log on to a SAP S/4HANA 2022 preconfigured appliance system](exercises/ex99/README.md) |  
+
+-->
 
 ## Overview
 [^Top of page](#)
