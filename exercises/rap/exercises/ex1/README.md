@@ -98,7 +98,7 @@ Then add a **blank** behind the filter statement and and press again **Ctrl + sp
 > Create your exercise package ![package](../../images/adt_package.png).   
 > This ABAP package will contain all the artefacts you will be creating in the different exercises of this hands-on session.
 
-<!-->
+<!--
 > **Note:**  
 > In SAP led hands-on workshops it might be that a package `Z_ONLINESHOP_###` has already been created for you.  
 > In this case you can continue with [Excercise 1.3](#exercise-13-create-a-class-to-test-abap-cloud-governance).  
