@@ -1,7 +1,6 @@
 # How to connect to a to an SAP S/4HANA on premise or private cloud system 
 
 This document describes how to create a **ABAP Project** to connect to an SAP S/4HANA on premise or private cloud system.  
-The screen shots taken use a preconfigured appliance system as it is used in various workshops of the SAP ABAP Platform PM team.  
 
 <details>
  <summary>Click to expand!</summary>
@@ -38,9 +37,7 @@ The screen shots taken use a preconfigured appliance system as it is used in var
 
    ![Logon to System](images/130_create_a_new_abap_project.png)
    
-5. In the *Project Name* screen you can choose an individual name for your project or leave the default value proposed by ADT.
-
-   TODO: Come up with a proper project name
+5. In the *Project Name* screen leave the default value proposed by ADT.
   
    ![Project Name](images/140_create_a_new_abap_project.png)
 
