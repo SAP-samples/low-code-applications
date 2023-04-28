@@ -54,6 +54,7 @@ The screen shots taken use a preconfigured appliance system as it is used in var
    
    ![add_to_favorites](images/99_110_add_zlocal_to_favorites.png) 
    
- 
+   Continue to - [Exercise 1: Find and examine a released RAP BO](exercises/ex1/README.md) | 
    
+
 </details>

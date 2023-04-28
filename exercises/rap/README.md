@@ -88,7 +88,7 @@ The figure below illustrates the high-level architecture components of the cloud
 | [Exercise 3: Adapt the data model](exercises/ex3/README.md) | 
 | [Exercise 4: Developer extensibility](exercises/ex4/README.md) | 
 
-Continue with [How to connect with ADT to your SAP S/4HANA system](exercises/ex99/README.md)
+Continue to - [How to connect with ADT to your SAP S/4HANA system](exercises/ex99/README.md)
 
 ## How to obtain support
 [^Top of page](#)
