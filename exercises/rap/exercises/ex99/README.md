@@ -16,7 +16,7 @@ The screen shots taken use a preconfigured appliance system as it is used in var
 
 3. In the *Connection Settings* dialogue choose the connection type **Custom Application Server**  
    
-   Then enter the following connection information
+   Then enter the following connection information (The number of the application server is provided by the instructors)
    - System ID: S4H
    - Application Server: xxx.xxx.xxx.xxx
    - Instance Number: 00
@@ -27,18 +27,20 @@ The screen shots taken use a preconfigured appliance system as it is used in var
 
    ![Connection Settings](images/120_create_a_new_abap_project.png)
 
-4. In the *Logon to System* dialogue enter the following data
+4. In the *Logon to System* dialogue enter the following data. The user for you and the password are provided to you by the instructors
     
-   - Client: xxx
-   - User: DEVELOPER###
+   - Client: 100
+   - User: Build###
    - Password: xxxxxxxx
-   - Language: xx
+   - Language: EN
 
    Press Next
 
    ![Logon to System](images/130_create_a_new_abap_project.png)
    
 5. In the *Project Name* screen you can choose an individual name for your project or leave the default value proposed by ADT.
+
+   TODO: Come up with a proper project name
   
    ![Project Name](images/140_create_a_new_abap_project.png)
 
