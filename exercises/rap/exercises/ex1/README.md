@@ -107,7 +107,7 @@ Then add a **blank** behind the filter statement and and press again **Ctrl + sp
  <details>
   <summary>Click to expand!</summary>
 
-  <!-->
+  <!--
 
    1. In ADT, go to the **Project Explorer**, right-click on the folder **`Favorite Packages`**, and select **Add Package** from the context menu. 
 
