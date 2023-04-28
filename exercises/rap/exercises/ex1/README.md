@@ -17,7 +17,7 @@ We will then use this class to build a test class to call the released API **I_P
 - [1.1 - How to find a released API using an ABAP repository tree](#exercise-11-how-to-find-a-released-api-using-an-abap-repository-tree)
 - [1.2 - Create a package with language version "ABAP for Cloud Development"](#exercise-12-create-package-with-language-version-abap-for-cloud-development)
 - [1.3 - Test ABAP Cloud restrictions](#exercise-13-create-a-class-to-test-abap-cloud-governance)
-- [1.4 - How to identify local API's for SAP S/4HANA Cloud via SAP Note 3088062 or Github ](#exercise-14-identifying-local-apis-for-s4hana-cloud-via-sap-note-3088062-or-github)
+- [1.4 - How to identify local APIs for SAP S/4HANA Cloud via SAP Note 3088062 or Github ](#exercise-14-identifying-local-apis-for-s4hana-cloud-via-sap-note-3088062-or-github)
 - [1.5 - Check the documentation of i_purchaserequisitiontp](#exercise-15-check-the-documentation-for-i_purchaserequisitiontp)
 - [1.6 - Implement a test class to call I_PurchaserequisitionTP ](#exercise-16-implement-a-test-class-to-call-i_purchaserequisitiontp)
 - [Summary](#summary)
@@ -69,11 +69,15 @@ Then add a **blank** behind the filter statement and and press again **Ctrl + sp
 
   ![package](images/470_abap_repository_tree.png) 
 
+  <!--
+
+  TODO: Check whether to bring some of this additional info up for the participants
+
   > When you create another ABAP repository tree based on the *Application Hierarchy* template and use the filter `TYPE:TRAN` to display classic dynpro transactions you will find 5 transactions in the application component **MM-PUR-REQ** such as **ME51N**, **ME52N** and **ME53N** which can be used to create, update and display purchase requisitions.   
 
   ![package](images/480_abap_repository_tree.png) 
 
-  4. Checking out released API's in SAP S/4HANA Cloud we see that the number of released API's is growing. The following screen shot shows the data from an SAP S/4HANA Cloud 2302 system.
+  4. Checking out released APIs in SAP S/4HANA Cloud we see that the number of released APIs is growing. The following screen shot shows the data from an SAP S/4HANA Cloud 2302 system.
 
   ![package](images/490_abap_repository_tree.png)   
 
@@ -83,7 +87,7 @@ Then add a **blank** behind the filter statement and and press again **Ctrl + sp
 
   > ![package](images/495_abap_repository_tree.png) 
     
-
+-->
 
  </details> 
 
@@ -244,7 +248,7 @@ An example would be the table `MARA` in the on premise release 2022.
   
   1. Check out SAP Note https://launchpad.support.sap.com/#/notes/3088062
   
-     The SAP Note mentioned above contains two Excel Sheets that contain information about successor API's that are either available in on premise systems (as of 2022) or in SAP S/4HANA Cloud systems. If your object is not contained in the Excel, please create a request in the SAP Customer Infuence campaign [SAP S/4HANA Cloud and SAP S/4HANA for Key-User and Developer Extensibility](https://influence.sap.com/sap/ino/#/campaign/2759). 
+     The SAP Note mentioned above contains two Excel Sheets that contain information about successor APIs that are either available in on premise systems (as of 2022) or in SAP S/4HANA Cloud systems. If your object is not contained in the Excel, please create a request in the SAP Customer Infuence campaign [SAP S/4HANA Cloud and SAP S/4HANA for Key-User and Developer Extensibility](https://influence.sap.com/sap/ino/#/campaign/2759). 
   
   2. Check out the GitHub repository. 
   
@@ -256,7 +260,7 @@ An example would be the table `MARA` in the on premise release 2022.
  
  ![MARA](images/810_use_sap_note_and_github.png)  
  
- And we can identify additional released API's from the purchase requisition area.   
+ And we can identify additional released APIs from the purchase requisition area.   
  
  ![I_PURCHASEREQUISITIONTP](images/810_use_sap_note_and_github.png)  
   
