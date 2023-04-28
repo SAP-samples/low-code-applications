@@ -116,12 +116,13 @@ Then add a **blank** behind the filter statement and and press again **Ctrl + sp
    2. In the search dialogue start to type **ZLOCAL** and select the entry **ZLOCAL** from the result list.
 
    ![package](images/210_create_package.png).
+
+  -->
    
    2. In ADT, again the **Project Explorer** right-click on the package **`ZLOCAL`**, and select **New** > **ABAP Package** from the context menu. 
 
    ![package](images/220_create_package.png)
 
-   -->
    
    1. Maintain the required information (`###` is your group ID):
        - Name: **`Z_ONLINESHOP_###`**
