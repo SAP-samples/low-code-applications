@@ -6,14 +6,14 @@
 
 This repository contains the material for the hands-on session **Use ABAP Cloud for SAP S/4HANA (Cloud) extensions**.
 
-- [Requirements for attending this workshop](#requirements-for-attending-this-workshop)
+<!-- - [Requirements for attending this workshop](#requirements-for-attending-this-workshop) -->
 - [Overview](#overview)
 - [Exercises](#exercises)
 - [How to obtain support](#how-to-obtain-support) 
 - [Further Information](#further-information)
 
 
-<!-->
+<!--
 ## Requirements for attending this workshop 
 [^Top of page](#)
 
@@ -88,7 +88,7 @@ The figure below illustrates the high-level architecture components of the cloud
 | [Exercise 3: Adapt the data model](exercises/ex3/README.md) | 
 | [Exercise 4: Developer extensibility](exercises/ex4/README.md) | 
 
-
+Continue with [How to connect with ADT to your SAP S/4HANA system](exercises/ex99/README.md)
 
 ## How to obtain support
 [^Top of page](#)
