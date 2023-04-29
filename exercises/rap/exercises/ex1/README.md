@@ -346,13 +346,13 @@ See also the Development guide for the ABAP RESTful Application Programming Mode
  <details>
   <summary>Click to expand!</summary>
 
-  1. Open the test class **zcl_test_i_purchase_req_###** that you have created before by pressing **Ctrl+Shift+A**.    
+  1. Open the test class **zcl_test_i_purchase_req_###** that you have created before by pressing **Ctrl+Shift+A**  (**Command+Shift+A** on Mac).    
 
      ![test class](images/600_develop_test_class.png)  
 
   2. Replace the code in the `if_oo_adt_classrun~main( )` method with the following code snippet.   
 
-     ![source code main method](sources/main_test_class.txt)  
+     [source code main method](sources/main_test_class.txt)  
 
   3. Run the test class by pressing **F9**.  
 
