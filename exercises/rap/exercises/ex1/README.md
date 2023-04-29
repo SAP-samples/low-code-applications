@@ -117,73 +117,6 @@ We will then use this class to build a test class to call the released API **I_P
 
 
 
-
-
-## Exercise 1.2: Create a class to test ABAP Cloud governance
-[^Top of page](#)
-
-   
-   5. Copy the code snippet provided below and add it in the implementation section of the methode `main`. 
- 
-      > **Hint**: Hover the code snippet and choose the _Copy raw contents_ icon ![copy_raw_content](../../images/copyrawcontents.png) appearing in the upper-right corner to copy it. 
-      
- <pre lang="ABAP">
-   METHOD if_oo_adt_classrun~main.
-  
-    CALL FUNCTION 'POPUP_TO_CONFIRM'.
-
-    select single * from MARA where matnr = '1234' into @data(material_info).
-
-    call function 'BAPI_PR_CREATE'
-*  EXPORTING
-*    prheader               = 
-*    prheaderx              = 
-*    testrun                = 
-*  IMPORTING
-*    number                 = 
-*    prheaderexp            = 
-*  TABLES
-*    return                 = 
-*    pritem                 = 
-*    pritemx                = 
-*    pritemexp              = 
-*    pritemsource           = 
-*    praccount              = 
-* ...
-
-  .
-
-    SELECT * FROM EBAN WHERE banfn = '0010001516' INTO TABLE @DATA(purchase_req_data_from_eban).
-
-    SELECT * FROM  I_PURCHASEREQUISITIONITEMAPI01 WHERE PurchaseRequisition = '0010001516' INTO TABLE @DATA(purchase_req_data).
-  ENDMETHOD.
-
-ENDCLASS.
- </pre>
-
-      The ABAP class `zcl_test_i_purchase_req_###` in the screenshot underneath uses the ABAP Cloud development model (ABAP language version “ABAP for Cloud development”). The class cannot be compiled because of two ABAP statements containing syntax-errors:
-
-      - Line 17: The SAP function module `POPUP_TO_CONFIRM` is used in the classic Dynpro/SAP GUI world and is no public SAP API in the ABAP Cloud development model.  
-  
-      - Line 19: Direct access to SAP table `MARA` is also not allowed. Here (in 2022) the devloper gets **no** hint which public API to use instead.
-  
-      - Line 21: The use of the SAP function module `BAPI_PR_CREATE` is also forbidden in the ABAP Cloud development model, but for this function module a successor is available, namely the Behavior Definition `I_PURCHASEREQUISITIONTP` which is mentioned in the error message.   
-  
-      - Line 41: Direct access to SAP table `EBAN` is also not allowed. Here (in 2022) the devloper already gets a hint to use the public CDS view `I_PURCHASEREQUISITIONITEMAPI01` instead.
-  
-      - Line 43: Valid access to CDS view `I_PURCHASEREQUISITIONITEMAPI01`. 
-             
-![package](images/330_new_class_a.png). 
-      
-   6. The effect of the release state **Not to Be Released** in combination with a successor is illustrated below for the table `EBAN`, which was replaced by the CDS view `I_PURCHASEREQUISITIONITEMAPI01`. When you open an object such as `EBAN` for which a success is maintained you see this information also in the **Properties** in ADT where you have the option to conveniently navigate to the successor object.   
-   
-   ![package](images/340_new_class_a.png). 
-  
-  7. What you can do if the use of an object is not permitted but now successor has been maintained in the current release is described in the following exercise. 
-
-</details>
-
-
 ## Exercise 1.3: Implement a test class to call I_PurchaseRequisitionTP
 [^Top of page](#)
 
@@ -323,6 +256,70 @@ Then add a **blank** behind the filter statement and and press again **Ctrl + sp
 
  
 
+
+## Exercise 1.2: Create a class to test ABAP Cloud governance
+[^Top of page](#)
+
+   
+   5. Copy the code snippet provided below and add it in the implementation section of the methode `main`. 
+ 
+      > **Hint**: Hover the code snippet and choose the _Copy raw contents_ icon ![copy_raw_content](../../images/copyrawcontents.png) appearing in the upper-right corner to copy it. 
+      
+ <pre lang="ABAP">
+   METHOD if_oo_adt_classrun~main.
+  
+    CALL FUNCTION 'POPUP_TO_CONFIRM'.
+
+    select single * from MARA where matnr = '1234' into @data(material_info).
+
+    call function 'BAPI_PR_CREATE'
+*  EXPORTING
+*    prheader               = 
+*    prheaderx              = 
+*    testrun                = 
+*  IMPORTING
+*    number                 = 
+*    prheaderexp            = 
+*  TABLES
+*    return                 = 
+*    pritem                 = 
+*    pritemx                = 
+*    pritemexp              = 
+*    pritemsource           = 
+*    praccount              = 
+* ...
+
+  .
+
+    SELECT * FROM EBAN WHERE banfn = '0010001516' INTO TABLE @DATA(purchase_req_data_from_eban).
+
+    SELECT * FROM  I_PURCHASEREQUISITIONITEMAPI01 WHERE PurchaseRequisition = '0010001516' INTO TABLE @DATA(purchase_req_data).
+  ENDMETHOD.
+
+ENDCLASS.
+ </pre>
+
+      The ABAP class `zcl_test_i_purchase_req_###` in the screenshot underneath uses the ABAP Cloud development model (ABAP language version “ABAP for Cloud development”). The class cannot be compiled because of two ABAP statements containing syntax-errors:
+
+      - Line 17: The SAP function module `POPUP_TO_CONFIRM` is used in the classic Dynpro/SAP GUI world and is no public SAP API in the ABAP Cloud development model.  
+  
+      - Line 19: Direct access to SAP table `MARA` is also not allowed. Here (in 2022) the devloper gets **no** hint which public API to use instead.
+  
+      - Line 21: The use of the SAP function module `BAPI_PR_CREATE` is also forbidden in the ABAP Cloud development model, but for this function module a successor is available, namely the Behavior Definition `I_PURCHASEREQUISITIONTP` which is mentioned in the error message.   
+  
+      - Line 41: Direct access to SAP table `EBAN` is also not allowed. Here (in 2022) the devloper already gets a hint to use the public CDS view `I_PURCHASEREQUISITIONITEMAPI01` instead.
+  
+      - Line 43: Valid access to CDS view `I_PURCHASEREQUISITIONITEMAPI01`. 
+             
+![package](images/330_new_class_a.png). 
+      
+   6. The effect of the release state **Not to Be Released** in combination with a successor is illustrated below for the table `EBAN`, which was replaced by the CDS view `I_PURCHASEREQUISITIONITEMAPI01`. When you open an object such as `EBAN` for which a success is maintained you see this information also in the **Properties** in ADT where you have the option to conveniently navigate to the successor object.   
+   
+   ![package](images/340_new_class_a.png). 
+  
+  7. What you can do if the use of an object is not permitted but now successor has been maintained in the current release is described in the following exercise. 
+
+</details>
 
  
 ## Exercise 1.4: Identifying local APIs for S/4HANA Cloud via SAP Note 3088062 or GitHub   
