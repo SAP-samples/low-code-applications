@@ -387,6 +387,6 @@ you can continue with the next exercise - **[Exercise 2: Implement the business 
 
 Find the source code for the repository objects in the [sources](sources) folder. Don't forget to replace all occurences of the placeholder `###` with your group ID.
 
-- ![document](images/doc.png) [main method](sources/main_test_class.txt)
-- ![document](images/doc.png) [Class zcl_test_i_purchase_req_###](sources/zcl_test_i_purchase_req_%23%23%23.txt)
+- [document](images/doc.png) [main method](sources/main_test_class.txt)
+- [document](images/doc.png) [Class zcl_test_i_purchase_req_###](sources/zcl_test_i_purchase_req_%23%23%23.txt)
 
