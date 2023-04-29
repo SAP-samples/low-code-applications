@@ -14,7 +14,12 @@ We will continue to create a simple class to investigate
 We will then use this class to build a test class to call the released API **I_PurchaseRequisitionTP** before starting to build our own RAP BO that shall serve as an UI for an OnlineShop Application.  
  
 
-- [1.1 - How to find a released API using an ABAP repository tree](#exercise-11-how-to-find-a-released-api-using-an-abap-repository-tree)
+- [1.1 - Exercise 1.1: Create Package with language version ABAP for Cloud Development](#exercise_11_create_package_with_language_version_abap_for_cloud_development)
+
+
+
+
+
 - [1.1 - Create a package with language version "ABAP for Cloud Development"](#exercise-12-create-package-with-language-version-abap-for-cloud-development)
 - [1.3 - Test ABAP Cloud restrictions](#exercise-13-create-a-class-to-test-abap-cloud-governance)
 - [1.4 - How to identify local APIs for SAP S/4HANA Cloud via SAP Note 3088062 or Github ](#exercise-14-identifying-local-apis-for-s4hana-cloud-via-sap-note-3088062-or-github)
@@ -91,10 +96,10 @@ We will then use this class to build a test class to call the released API **I_P
 </details>
 
 
-## Exercise 1.2: Create a class to test ABAP Cloud governance
+## Exercise 1.2: Create a new ABAP class
 [^Top of page](#)
 
-> Create a class![class](../../images/adt_class.png) to test the effects of using the language version *ABAP for Cloud Development*.   
+> Create a class![class](../../images/adt_class.png) which will contain the logic.   
 
  <details>
   <summary>Click to expand!</summary>
@@ -117,12 +122,10 @@ We will then use this class to build a test class to call the released API **I_P
 
 
 
-## Exercise 1.3: Implement a test class to call I_PurchaseRequisitionTP
+## Exercise 1.3: Implement Logic to call I_PurchaseRequisitionTP
 [^Top of page](#)
 
-In the preceeding exercise you have learned how to access the documentation of a released RAP business object.  
-
-We will use this code to implement a test class that calls the API **I_PurchaseRequisitionTP** and that implements the interface **if_oo_adt_classrun** so we can start with basic tests by simply starting the `if_oo_adt_classrun~main( )` method of our test class by pressing **F9**.
+We will implement a method that calls the API **I_PurchaseRequisitionTP** and that implements the interface **if_oo_adt_classrun** so we can start with basic tests by simply starting the `if_oo_adt_classrun~main( )` method of our test class by pressing **F9**.
 
 The coding leverages the `response` parameter of EML statements that is used to specify response parameters for ABAP EML statements to get information on the following: 
 
@@ -192,7 +195,7 @@ See also the Development guide for the ABAP RESTful Application Programming Mode
 
 
 
-## Exercise 1.1: How to find a released API using an ABAP repository tree  
+## Exercise 1.4: How to find a released API using an ABAP repository tree  
 [^Top of page](#)
 
 In this exercise we will learn how to find a released API in the application component hierarchy.  
@@ -255,13 +258,13 @@ Then add a **blank** behind the filter statement and and press again **Ctrl + sp
  </details> 
 
  
-
-
-## Exercise 1.2: Create a class to test ABAP Cloud governance
+## Exercise 1.5: Create a class to test ABAP Cloud governance
 [^Top of page](#)
 
+> Create a class![class](../../images/adt_class.png) to test the effects of using the language version *ABAP for Cloud Development*.   
+
    
-   5. Copy the code snippet provided below and add it in the implementation section of the methode `main`. 
+   1. Copy the code snippet provided below and add it in the implementation section of the methode `main`. 
  
       > **Hint**: Hover the code snippet and choose the _Copy raw contents_ icon ![copy_raw_content](../../images/copyrawcontents.png) appearing in the upper-right corner to copy it. 
       
@@ -313,16 +316,16 @@ ENDCLASS.
              
 ![package](images/330_new_class_a.png). 
       
-   6. The effect of the release state **Not to Be Released** in combination with a successor is illustrated below for the table `EBAN`, which was replaced by the CDS view `I_PURCHASEREQUISITIONITEMAPI01`. When you open an object such as `EBAN` for which a success is maintained you see this information also in the **Properties** in ADT where you have the option to conveniently navigate to the successor object.   
+   2. The effect of the release state **Not to Be Released** in combination with a successor is illustrated below for the table `EBAN`, which was replaced by the CDS view `I_PURCHASEREQUISITIONITEMAPI01`. When you open an object such as `EBAN` for which a success is maintained you see this information also in the **Properties** in ADT where you have the option to conveniently navigate to the successor object.   
    
    ![package](images/340_new_class_a.png). 
   
-  7. What you can do if the use of an object is not permitted but now successor has been maintained in the current release is described in the following exercise. 
+  3. What you can do if the use of an object is not permitted but now successor has been maintained in the current release is described in the following exercise. 
 
 </details>
 
  
-## Exercise 1.4: Identifying local APIs for S/4HANA Cloud via SAP Note 3088062 or GitHub   
+## Exercise 1.6: Identifying local APIs for S/4HANA Cloud via SAP Note 3088062 or GitHub   
 [^Top of page](#)
 
 While developing an ABAP Application for S/4HANA Cloud, you do get the following error message: "Use of <Object Type> <Object Name> is not permitted". But the error message does not provide a hint which API or object to use instead. The reason is that the successor information in on premise system does not contain the latest updates such as in SAP S/4HANA Cloud, ABAP Environment systems.   
@@ -354,7 +357,7 @@ An example would be the table `MARA` in the on premise release 2022.
   
  </details>  
 
-## Exercise 1.5: Check the documentation for I_PurchaseRequisitionTP
+## Exercise 1.7: Check the documentation for I_PurchaseRequisitionTP
 [^Top of page](#)
 
 The documentation for a released RAP business object can be found in so called **Knowledge Transfer Documents** which have the same name as the business object (released API) it describes.     
