@@ -41,7 +41,7 @@ A OnlineShop entity defines general data, such as the item name or or the number
    2. Search for **database table**, select it, and click **Next >**.
    
    3. Maintain the required information (`###` is your group ID) and click **Next >**.
-      - Name: **`zaonlineshop_###`**
+   <!--   - Name: **`zaonlineshop_###`**  -->
       - Description: _**`Persistence for online shop`**_                  
 
    4. Select a transport request, and click **Finish** to create the database table.
@@ -151,13 +151,16 @@ In this exercise you will publish the local service endpoint of your service bin
  <details>
   <summary>Click to expand!</summary>
 
+<!--
 > **On premise issue**   
 > If you are working on an on premise system and try to use the **Publish** or **Publish Locally** button you will see the following error message
 > ![on prem error](images/100_error_publish_service_binding.png)
-
+-->
 
 
    1. Open your service binding ![service binding](../../images/adt_srvb.png)**`ZUI_ONLINESHOP_O4_###`** and click **Publish**.
+
+   ![table](images/105_publish_service_binding.png)
    
    2. Double-click on the entity **`OnlineShop`** in the **Entity Set and Association** section to open the _Fiori elements App Preview_.   
    
