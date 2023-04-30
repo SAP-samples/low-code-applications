@@ -30,7 +30,7 @@ association [1..1] to ZI_PRODUCT_VH_REUSE as _Product on $projection.OrderItemID
 
 3. Add the fields `_Product.ProductGroup`, `_Product.ProductText`, `_Product.BaseUnit` and the association `_Product` to the field list.
 
-<pre>
+<pre lang="ABAP">
       ,
       _Product.ProductGroup,
       _Product.ProductText,
