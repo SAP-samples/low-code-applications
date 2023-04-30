@@ -93,7 +93,7 @@ with unmanaged save
 
   ![unmanaged save](images/500_unmanaged_save.png)  
      
-     This will add a local saver class `lsc_zr_onlineshop_###` to the local classes of your behavior implementation class. The method `save_modified` is added to the DEFINITION and the IMPLEMENTATION section of this local class (you don't need to copy the code, this is already generated):
+  This will add a local saver class `lsc_zr_onlineshop_###` to the local classes of your behavior implementation class. The method `save_modified` is added to the DEFINITION and the IMPLEMENTATION section of this local class (you don't need to copy the code, this is already generated):
 
      <pre lang="ABAP">
      CLASS lsc_zr_onlineshop_### DEFINITION INHERITING FROM cl_abap_behavior_saver.
