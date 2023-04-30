@@ -308,7 +308,7 @@ ENDCLASS.
   
   3. What you can do if the use of an object is not permitted but now successor has been maintained in the current release is described in the following exercise. 
 
-</details>
+
 
  
 ## Exercise 1.6: Identifying local APIs for S/4HANA Cloud via SAP Note 3088062 or GitHub   
