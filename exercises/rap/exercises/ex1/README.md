@@ -242,6 +242,8 @@ Then add a **blank** behind the filter statement and and press again **Ctrl + sp
  
 ## Exercise 1.5: Create a class to test ABAP Cloud governance
 
+TODO: Change to another class and let the users delete that class at the end again
+
 > Create a class![class](../../images/adt_class.png) to test the effects of using the language version *ABAP for Cloud Development*.   
 
    

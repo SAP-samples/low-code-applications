@@ -9,28 +9,20 @@ Here you will create a database table where you will define all important fields
 
 This RAP BO represents an online shop, where you can order laptops or other articles you need as an employee. After an article such as a laptop is ordered, a purchase requisition can be created by pressing a button in your application which will trigger an action in your RAP BO.  
 
-This could also simulate an additional approval step that can only be performed if the application is used by a manager.
+(TODO: Check this sentence with respect to the Build exercise:)
+This could also simulate an additional approval step that can only be performed if the application is used by a manager. 
 
 We will start our implementation by building a simple managed RAP business object and we will add the business logic to call the released RAP API in SAP S/4HANA in the second exercise of this workshop.
 
 You will use an ADT wizard to generate all the needed development RAP artefacts of your UI service. This includes the data model, projection view, service definition and service binding. Afterwards you will check your _OnlineShop_ application with the SAP Fiori elements preview. 
 
-- [1.1 - Create database table](#exercise-11-create-database-table)
-- [1.2 - Generate the transactional UI services](#exercise-12-generate-the-transactional-ui-services)
-- [1.3 - Preview the OnlineShop App in in SAP S/4HANA Cloud](#exercise-13-preview-the-online-shop-app-in-sap-s\/4hana-cloud)
-- [1.4 - Preview the Online Shop App in SAP S/4HANA on premise](#exercise-13-preview-the-online-shop-app-in-sap-s\/4hana-on-premise)
-- [Summary](#summary)
-- [Appendix](#appendix)
-
-
 > **Reminder:**   
 > Don't forget to replace all occurences of the placeholder **`###`** with your group ID in the exercise steps below.  
-> You can use the ADT function **Replace All** (**Ctrl+F**) for the purpose.   
-> If you don't have a group ID yet, then check the section [Getting Started - Group ID](../ex0/readme.md#group-id).    
+> You can use the ADT function **Replace All** (**Ctrl+F**) for the purpose.    
 
 
-## Exercise 1.1: Create database table
-[^Top of page](#)
+## Exercise 2.1: Create database table
+
 
 
 Create a database table![table](../../images/adt_tabl.png) to store the _OnlineShop_ data.   
@@ -94,8 +86,8 @@ define table zaonlineshop_### {
    
 </details>
 
-## Exercise 1.2: Generate the transactional UI services
-[^Top of page](#)
+## Exercise 2.2: Generate the transactional UI services
+
 
 
 
@@ -148,8 +140,8 @@ The generated business service will be transactional, draft-enabled, and enriche
  </details>
 
  
-## Exercise 1.3: Preview the OnlineShop App in in SAP S/4HANA Cloud
-[^Top of page](#)
+## Exercise 2.3: Preview the OnlineShop App in in SAP S/4HANA Cloud
+
 
 In this exercise you will publish the local service endpoint of your service binding ![service binding](../../images/adt_srvb.png) and start the _Fiori elements App Preview_.
 
@@ -177,8 +169,8 @@ In this exercise you will publish the local service endpoint of your service bin
 </details>
 
 
-## Exercise 1.4: Preview the Online Shop App in SAP S/4HANA on premise
-[^Top of page](#)
+## Exercise 2.4: Preview the Online Shop App in SAP S/4HANA on premise
+
 
 > Publishing the local service endpoint of your service binding **in on premise systems** does not work from within ADT. 
 > Therefore you have to publish the Service Binding locally using transaction **/IWFND/V4_ADMIN**.
@@ -233,7 +225,7 @@ In this exercise you will publish the local service endpoint of your service bin
 </details>
 
 ## Summary 
-[^Top of page](#)
+
 
 Now that you've... 
 - created an ABAP package,
@@ -247,7 +239,7 @@ you can continue with the next exercise - **[Exercise 3: Adapt the data model](.
 ---
 
 ## Appendix
-[^Top of page](#)
+
 
 Find the source code for the database table definition and the data generator class in the [sources](sources) folder. Don't forget to replace all occurences of the placeholder `###` with your group ID.
 
