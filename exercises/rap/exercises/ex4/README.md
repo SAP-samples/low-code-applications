@@ -512,8 +512,6 @@ We can use the app **Manage Purchase Requisition - Professional** to check the p
 
   3. In a preconfigured appliance system the app can be started using the local Fiori Launchpad.
  
-     https://xxx.xxx.xxx.xxx:44301/sap/bc/ui2/flp?sap-client=100&sap-language=EN#PurchaseRequisition-maintain
-
      https://34.233.103.22:44301/sap/bc/ui2/flp?sap-client=100&sap-language=EN#PurchaseRequisition-maintain 
 
      **Manage Purchase Requistion - SAP standard application**   
