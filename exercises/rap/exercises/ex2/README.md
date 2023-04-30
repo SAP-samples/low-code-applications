@@ -160,7 +160,7 @@ In this exercise you will publish the local service endpoint of your service bin
 
    1. Open your service binding ![service binding](../../images/adt_srvb.png)**`ZUI_ONLINESHOP_O4_###`** and click **Publish**.
 
-   ![table](images/105_publish_service_binding.png)
+   ![Publish](images/105_publish_service_binding_on_prem)
    
    2. Double-click on the entity **`OnlineShop`** in the **Entity Set and Association** section to open the _Fiori elements App Preview_.   
    
