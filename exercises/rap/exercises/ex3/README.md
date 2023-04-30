@@ -20,7 +20,10 @@ The source code of ZI_PRODUCT_VH_REUSE can be found here:
   <summary>Click to expand!</summary>
 
 1. Open the cds view **ZR_ONLINESHOP_###** 
-   - add an association to the released CDS view for product data to it.
+
+![enhance_data_model](images/090_adapt_data_model.png)  
+
+2. Add an association to the released CDS view for product data to it.
 <pre>
 association [1..1] to ZI_PRODUCT_VH_REUSE as _Product on $projection.OrderItemID = _Product.Product
 </pre>
