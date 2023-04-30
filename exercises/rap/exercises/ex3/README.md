@@ -288,7 +288,6 @@ For fields that are read-only and that are not read from the value help we have 
 
 ## Exercise 3.3: Define constants for lhc_onlineshop
 
-
 As a preparation for implementing determinations and validations we will add constants in the local handler class `lhc_onlineshop` of the the behavior implementation class `ZBP_R_ONLINESHOP_###` so that these variables can be used by all implementations.  
 
 ![adapt_bil](images/adapt_behavior_implementation_class.gif)   
@@ -349,11 +348,11 @@ CLASS lcl_OnlineShop DEFINITION INHERITING FROM cl_abap_behavior_handler.
   ![define_determinations](images/300_define_determinations.png)  
 
 
-  2. Use the quick fix **Ctrl+1** to generate the appropriate methods in the behavior definition class.
+  2. Use the quick fix **Ctrl+1** (**Command+1** on Mac)to generate the appropriate methods in the behavior definition class.
 
   ![define_determinations](images/310_define_determinations.png)  
 
-  - Add the following code snippet to implement the determination `calculateTotalPrice`. The code updates the field `TotalPrice` when the field `OrderItemID` and thus the `OrderItemPrice` has changed or if the field `OrderItemQuantity` has changed. 
+  3. Add the following code snippet to implement the determination `calculateTotalPrice`. The code updates the field `TotalPrice` when the field `OrderItemID` and thus the `OrderItemPrice` has changed or if the field `OrderItemQuantity` has changed. 
 
   
    <pre>
@@ -386,7 +385,7 @@ CLASS lcl_OnlineShop DEFINITION INHERITING FROM cl_abap_behavior_handler.
   </pre>
 
  
-  - Add the following code snippet to implement the determination `setInitialOrderValues`. The code selects the next weekday in two weeks as a delivery day, it sets the initial status and it calculates a semantic key for the field `OrderID`
+  4. Add the following code snippet to implement the determination `setInitialOrderValues`. The code selects the next weekday in two weeks as a delivery day, it sets the initial status and it calculates a semantic key for the field `OrderID`
 
  <pre>
      METHOD setInitialOrderValues.
@@ -444,7 +443,7 @@ MODIFY ENTITIES OF ZR_OnlineShop_### IN LOCAL MODE
     
 </pre>
 
-  - Add the following code snippet to implement the determination `updateProductDetails`. The code selects data from the value help `zi_product_vh_reuse`.
+ 5. Add the following code snippet to implement the determination `updateProductDetails`. The code selects data from the value help `zi_product_vh_reuse`.
 
  <pre>
  
@@ -478,7 +477,8 @@ MODIFY ENTITIES OF ZR_OnlineShop_### IN LOCAL MODE
     
 </pre>
 
-  - Open the service binding `ZUI_ONLINESHOP_O4_###` to test your implementation by using the ADT Fiori preview.
+ 6. Save and activate your changes.
+ 7. Open the service binding `ZUI_ONLINESHOP_O4_###` to test your implementation by using the ADT Fiori preview.
  </details> 
 
 ## Exercise 3.5: Define validations
