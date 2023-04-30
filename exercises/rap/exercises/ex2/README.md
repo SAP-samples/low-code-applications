@@ -140,7 +140,7 @@ The generated business service will be transactional, draft-enabled, and enriche
  </details>
 
  
-## Exercise 2.3: Preview the OnlineShop App in in SAP S/4HANA Cloud
+## Exercise 2.3: Preview the OnlineShop App in in SAP S/4HANA
 
 
 In this exercise you will publish the local service endpoint of your service binding ![service binding](../../images/adt_srvb.png) and start the _Fiori elements App Preview_.
@@ -166,16 +166,23 @@ In this exercise you will publish the local service endpoint of your service bin
    
    2. Double-click on the entity **`OnlineShop`** in the **Entity Set and Association** section to open the _Fiori elements App Preview_.   
 
-   ![Publish](images/107_publish_service_binding_on_prem.png)
+   ![Preview](images/107_publish_service_binding_on_prem.png)
    
+   3. You should see a Fiori elements application like this
+
+   ![Fiori elements app](images/109_publish_service_binding_on_prem.png)
+
+   <!--
    3. Click the button on the _OnlineShop_ app **Go** to load the data.
        
    4. Check your result.
+-->
+
       
 
 </details>
 
-
+<!--
 ## Exercise 2.4: Preview the Online Shop App in SAP S/4HANA on premise
 
 
@@ -230,6 +237,8 @@ In this exercise you will publish the local service endpoint of your service bin
    10. Check that your service bindings is now published and choose the entity **OnlineShop** and press the button **Preview**   
  
 </details>
+
+-->
 
 ## Summary 
 
