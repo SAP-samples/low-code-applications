@@ -6,21 +6,14 @@
 
 In this exercise, you will implement calls to the released API so that the users of the OnlineShop App can create purchase requisitions using your RAP business object `ZR_ONLINESHOP_###`
 
-- [4.1 - Add unmanaged save](#exercise-41-add-unmanaged-save)
-- [4.2 - Add and implement an action](#exercise-42-add-and-implement-an-action)
-- [4.3 - Check the results in the SAP standard Fiori App](#exercise-43-check-the-results-in-the-sap-standard-fiori-app)
-- [Summary](#summary)
-- [Appendix](#appendix)
-
-
 ## Exercise 4.1: Add variable to global BDEF class zbp_r_onlineshop_###
-[^Top of page](#)
+
 
  The called **API I_PurchaserequisitionTP** uses late numbering. When being called by our application it will only return a preliminary key **%pid**.
  
  In order to retrieve the final key in our application from this preliminary key we have to use the `CONVERT KEY` key word:     
  
- <pre>
+<pre lang="ABAP">
  CONVERT KEY OF i_purchaserequisitiontp FROM <fs_pr_mapped>-%pid TO DATA(ls_pr_key).
  </pre>
  
@@ -35,7 +28,7 @@ And in order to transfer the mapped premliminary key(s) from the interaction pha
   
   We define a variable that will hold the response of our (to be implemented) API call in the behavior implementation class `zbp_r_onlineshop_###`.  
 
-  <pre>
+<pre lang="ABAP">
 
   CLASS zbp_r_onlineshop_### DEFINITION
   PUBLIC
@@ -58,7 +51,7 @@ And in order to transfer the mapped premliminary key(s) from the interaction pha
  </details>
 
 ## Exercise 4.2: Add unmanaged save
-[^Top of page](#)
+
 
 As mentioned above we have to add the use of an unmanaged save to the behavior of our RAP business object since the API that we plan to call uses *late numbering*.
 
@@ -75,7 +68,7 @@ Navigate to the behavior definition `ZR_ONLINESHOP_###` either in the *Project E
      > For the **unmanaged save** a behavior implementation class has to be specified in the same line as the **managed** key word.
      > So you can replace the code as follows:    
 
-<pre>
+<pre lang="ABAP">
 managed implementation in class ZBP_R_ONLINESHOP_### unique;
 strict ( 2 );
 with draft;
@@ -96,7 +89,7 @@ with unmanaged save
      
      This will add a local saver class `lsc_zr_onlineshop_###` to the local classes of your behavior implementation class. The method `save_modified` is added to the DEFINITION and the IMPLEMENTATION section of this local class.   
 
-     <pre>
+     <pre lang="ABAP">
      CLASS lsc_zr_onlineshop_### DEFINITION INHERITING FROM cl_abap_behavior_saver.
        PROTECTED SECTION.
        METHODS save_modified REDEFINITION.
@@ -108,7 +101,7 @@ with unmanaged save
 
   4. Implement the `save_modified()` method as follows:
   
-<pre>
+<pre lang="ABAP">
       METHOD save_modified.
 
     DATA : lt_online_shop_as        TYPE STANDARD TABLE OF zaonlineshop_###,
@@ -156,7 +149,7 @@ with unmanaged save
 
      - Use the following code template
 
-<pre>
+<pre lang="ABAP">
   @EndUserText.label : 'Helper structure'
   @AbapCatalog.enhancement.category : #NOT_EXTENSIBLE
   define structure zaonlineshop_x_### {
@@ -186,7 +179,7 @@ with unmanaged save
 
      The statement `mapping for ZAONLINESHOP_###` must be changed to `mapping for ZAONLINESHOP_### control zaonlineshop_x_### corresponding`
 
-     <pre>     
+     <pre lang="ABAP"> 
      mapping for ZAONLINESHOP_### control zaonlineshop_x_### corresponding
      </pre>
 
@@ -197,7 +190,7 @@ with unmanaged save
  </details>
 
 ## Exercise 4.3: Add and implement an action
-[^Top of page](#)
+
 
 We have now prepared everything so that we can add an action to our RAP business object that will trigger the creation of a purchase requisition based on an order that has been placed in the OnlineShop.   
 
@@ -215,7 +208,7 @@ In the following you have to perform the following steps
 
 2. Add the following statement in your BDEF
 
-   <pre>
+   <pre lang="ABAP">
    action createPurchaseRequisition result [1] $self;
    </pre>
 
@@ -223,7 +216,7 @@ In the following you have to perform the following steps
 
    This will add the following method to the local handler class of your behavior definition which will be executed when the button of our action is pressed.  
    
-   <pre>
+   <pre lang="ABAP">
    METHODS createPurchaseRequisition FOR MODIFY
       IMPORTING keys FOR ACTION OnlineShop~createPurchaseRequisition RESULT result.
    </pre>
@@ -235,14 +228,14 @@ In the following you have to perform the following steps
    In the implementation we first fill some internal tables that serve as a payload for the EML call that will create one or more purchase requisitions.  
    The preliminary id %pid that is returned via the mapped table from the API that was called is stored in a variable in the global behavior implementation class.  
    
-   <pre>zbp_r_onlineshop_###=>mapped_purchase_requisition-purchaserequisition = mapped_create_pr-purchaserequisition.</pre>  
+   <pre lang="ABAP">zbp_r_onlineshop_###=>mapped_purchase_requisition-purchaserequisition = mapped_create_pr-purchaserequisition.</pre>  
    
    The code then updates the fields `OverallStatus`, `OverallStatusIndicator` and `PurchRqnCreationDate` of our RAP business object. This way it is also ensured that the save_sequence is triggered where the `CONVERT KEY` statement is used to retrieve the final key, the `PurchaseRequisitionID`.  
    
    The action finally returns via the return return parameter a table of UUID based keys of OnlineShop entities that have been processed.  
    
     
-  <pre>
+  <pre lang="ABAP">
   METHOD createPurchaseRequisition.
 
     DATA: purchase_requisitions      TYPE TABLE FOR CREATE I_PurchaserequisitionTP,
@@ -408,13 +401,13 @@ In the following you have to perform the following steps
 
    Add the following code in your projection BDEF. 
 
-   <pre>
+   <pre lang="ABAP">
    use action createPurchaseRequisition;
    </pre>
 
 6. Make the action visible by uncommenting the following lines in your meta data extension file
 
-<pre>
+<pre lang="ABAP">
   @UI.lineItem:       [{ position: 84, label: 'Purchase requisition nbr.', importance: #HIGH },
             { type: #FOR_ACTION, dataAction: 'createPurchaseRequisition', label: 'Create purchase requisition' } ] //Submit Order | Create purchase requisition|
   @UI.identification: [
@@ -441,7 +434,7 @@ We add this implementation after the implementation of the **create**, **update*
 
 2. Add the following coding to retrieve the semantic key from the called API.  
 
-  <pre>
+  <pre lang="ABAP">
     METHOD save_modified.
     DATA : lt_online_shop_as        TYPE STANDARD TABLE OF zaonlineshop_###,
            ls_online_shop_as        TYPE                   zaonlineshop_###,
@@ -490,7 +483,7 @@ We add this implementation after the implementation of the **create**, **update*
   </details>   
   
 ## Exercise 4.4: Check the results in the SAP standard Fiori App
-[^Top of page](#)
+
 
 We can use the app **Manage Purchase Requisition - Professional** to check the purchase requistions that you have created using your custom RAP business object.   
 
