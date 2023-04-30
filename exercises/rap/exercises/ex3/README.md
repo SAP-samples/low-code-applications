@@ -237,7 +237,7 @@ For fields that are read-only and that are not read from the value help we have 
 
   ![adapt_bdef](images/195_adapt_bdef.png)  
 
-  2. Select the draft table name and press **Ctrl + 1** to show the quick fix.
+  2. Select the draft table name and press **Ctrl + 1** (Mac **Command + 1**) to show the quick fix.
   3. Select the quick fix that offers you to regenerate the draft table 
 
      ![adapt_bdef](images/200_adapt_bdef.png)  
