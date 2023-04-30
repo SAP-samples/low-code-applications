@@ -40,7 +40,7 @@ association [1..1] to ZI_PRODUCT_VH_REUSE as _Product on $projection.OrderItemID
 
 ![enhance_data_model](images/100_adapt_data_model.png)  
 
-4. Save your changes
+4. Save and activate your changes
 
 5. Open the cds view `ZC_ONLINESHOP_###` 
    
@@ -48,7 +48,6 @@ association [1..1] to ZI_PRODUCT_VH_REUSE as _Product on $projection.OrderItemID
 <pre>
       @Consumption.valueHelpDefinition: [{ entity: { name: 'ZI_PRODUCT_VH_REUSE', element: 'Product' },
                                      useForValidation: true }  ]
-      OrderItemID,
 </pre>
 
 7. Add the fields `ProductGroup`, `ProductText`, `BaseUnit`, `CreatedAt` and the association `_Product` to the field list.
@@ -63,20 +62,24 @@ association [1..1] to ZI_PRODUCT_VH_REUSE as _Product on $projection.OrderItemID
 
 ![enhance_data_model](images/110_adapt_data_model.png) 
 
+8. Save and activate your changes
+
+
+<!--
 > **Note:**   
 > When a starter project has been generated the field `CreatedAt` has already been added to the projection view.  
 > You will thus get the following error message: *The name CreatedAt is not unique*   
 > In this case simply delete or comment out the duplicate `CreatedAt` entry.
 >    
 > ![enhance_data_model](images/105_adapt_data_model.png) 
-
+-->
  
  
-8. Replace the complete source code of the Metadata Extension File **ZC_ONLINESHOP_###**.   
+9. Replace the complete source code of the Metadata Extension File **ZC_ONLINESHOP_###**.   
 
    We have prepared a meta data extension file that nicely groups your fields.  
  
-9. Replace the placeholder `###` with your group number and save and activate your changes.    
+   Replace the placeholder `###` with your group number and save and activate your changes.    
  
 <pre>
 @Metadata.layer: #CUSTOMER
