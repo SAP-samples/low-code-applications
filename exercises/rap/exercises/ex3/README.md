@@ -77,6 +77,8 @@ association [1..1] to ZI_PRODUCT_VH_REUSE as _Product on $projection.OrderItemID
  
 9. Replace the complete source code of the Metadata Extension File **ZC_ONLINESHOP_###**.   
 
+  ![enhance_data_model](images/115_adapt_data_model.png) 
+
    We have prepared a meta data extension file that nicely groups your fields.  
  
    Replace the placeholder `###` with your group number and save and activate your changes.    
