@@ -425,7 +425,8 @@ In the following you have to perform the following steps
    use action createPurchaseRequisition;
    </pre>
 
-6. The action will become visible in the Fiori elements application by the following lines in your meta data extension file that we added already in exercise 3:
+6. Save and activate the change.
+7. The action will become visible in the Fiori elements application by the following lines in your meta data extension file that we added already in exercise 3:
 
 <pre lang="ABAP">
   @UI.lineItem:       [{ position: 84, label: 'Purchase requisition nbr.', importance: #HIGH },
