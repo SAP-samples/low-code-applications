@@ -514,6 +514,8 @@ We can use the app **Manage Purchase Requisition - Professional** to check the p
  
      https://xxx.xxx.xxx.xxx:44301/sap/bc/ui2/flp?sap-client=100&sap-language=EN#PurchaseRequisition-maintain
 
+     https://xxx.xxx.xxx.xxx:34.233.103.22:44301/sap/bc/ui2/flp?sap-client=100&sap-language=EN#PurchaseRequisition-maintain 
+
      **Manage Purchase Requistion - SAP standard application**   
      ![Manage Purchase Requistion - Professional](images/610_action.png)  
      
