@@ -6,19 +6,8 @@
 
 In this exercise, you will adapt the data model of the newly generated RAP business object `ZR_ONLINESHOP_###`
 
-
-- [3.1 - Enhance the data model](#exercise-31-enhance-the-data-model)
-- [3.2 - Adapt the behavior definition](#exercise-32-adapt-the-behavior-definition)
-- [3.3 - Define constants for lhc_onlineshop](#exercise-33-define-constants-for-lhc_onlineshop)
-- [3.4 - Define determinations](#exercise-34-define-determinations)
-- [3.5 - Define validations](#exercise-35-define-validations)
-- [Summary](#summary)
-- [Appendix](#appendix)
-
-
-
 ## Exercise 3.1: Enhance the data model
-[^Top of page](#)
+
 
 In this step we will use a value help `ZI_PRODUCT_VH_REUSE` that has been provided for your in this workshop in the demo system. In addition some fields that are accessible via this association (e.g. the product description) will be included in the data model.  
 
@@ -219,7 +208,7 @@ annotate view ZC_ONLINESHOP_### with
 </details>
 
 ## Exercise 3.2: Adapt the behavior definition
-[^Top of page](#)
+
 
 Since we have changed the field list of the projection view `ZC_ONLINESHOP_###` we have to regenerate the draft table.
 
@@ -279,7 +268,7 @@ For fields that are read-only and that are not read from the value help we have 
  </details>  
 
 ## Exercise 3.3: Define constants for lhc_onlineshop
-[^Top of page](#)
+
 
 As a preparation for implementing determinations and validations we will add constants in the local handler class `lhc_onlineshop` of the the behavior implementation class `ZBP_R_ONLINESHOP_###` so that these variables can be used by all implementations.  
 
@@ -316,7 +305,7 @@ CLASS lcl_OnlineShop DEFINITION INHERITING FROM cl_abap_behavior_handler.
 </details>
 
 ## Exercise 3.4: Define determinations
-[^Top of page](#)
+
 
   We now have to create several determinations that will do the following: 
   - Set initial values for certain fields (e.g. the delivery date)  
@@ -470,7 +459,7 @@ MODIFY ENTITIES OF ZR_OnlineShop_### IN LOCAL MODE
  </details> 
 
 ## Exercise 3.5: Define validations
-[^Top of page](#)
+
 
 Finally we have to implement validations to make sure that the data that is sent to the API is valid.  
 
