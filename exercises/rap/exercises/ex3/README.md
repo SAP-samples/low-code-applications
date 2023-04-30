@@ -40,16 +40,18 @@ association [1..1] to ZI_PRODUCT_VH_REUSE as _Product on $projection.OrderItemID
 
 ![enhance_data_model](images/100_adapt_data_model.png)  
 
-4. Open the cds view `ZC_ONLINESHOP_###` 
+4. Save your changes
+
+5. Open the cds view `ZC_ONLINESHOP_###` 
    
-5. Add a value help for the field `OrderItemID`.
+6. Add a value help for the field `OrderItemID`.
 <pre>
       @Consumption.valueHelpDefinition: [{ entity: { name: 'ZI_PRODUCT_VH_REUSE', element: 'Product' },
                                      useForValidation: true }  ]
       OrderItemID,
 </pre>
 
-6. Add the fields `ProductGroup`, `ProductText`, `BaseUnit`, `CreatedAt` and the association `_Product` to the field list.
+7. Add the fields `ProductGroup`, `ProductText`, `BaseUnit`, `CreatedAt` and the association `_Product` to the field list.
 <pre>
        ,
       CreatedAt,
@@ -70,11 +72,11 @@ association [1..1] to ZI_PRODUCT_VH_REUSE as _Product on $projection.OrderItemID
 
  
  
-7. Replace the complete source code of the Metadata Extension File **ZC_ONLINESHOP_###**.   
+8. Replace the complete source code of the Metadata Extension File **ZC_ONLINESHOP_###**.   
 
    We have prepared a meta data extension file that nicely groups your fields.  
  
-8. Replace the placeholder `###` with your group number and save and activate your changes.    
+9. Replace the placeholder `###` with your group number and save and activate your changes.    
  
 <pre>
 @Metadata.layer: #CUSTOMER
