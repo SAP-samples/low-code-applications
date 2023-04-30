@@ -228,6 +228,8 @@ In the following you have to perform the following steps
   action createPurchaseRequisition result [1] $self;
   </pre>
 
+  Save and activate the change.
+
 3. Click on the action name and press **Ctrl+1** (**Command+1** on Mac) to start the quick assist
 
    This will add the following method to the local handler class of your behavior definition which will be executed when the button of our action is pressed:  
@@ -446,7 +448,7 @@ The `save_modified`  method will be enhanced so that we check whether any prelim
  <details>
   <summary>Click to expand!</summary>
 
-1. Open the method `save_modified` in your local saver class. 
+1. Open the method `save_modified` in your local saver class `lsc_zr_onlineshop_###`. 
 
 ![local saver class](images/621_converted_key_saver_class.png)   
 
