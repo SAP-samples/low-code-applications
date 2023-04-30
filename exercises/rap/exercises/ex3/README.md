@@ -213,8 +213,12 @@ annotate view ZC_ONLINESHOP_### with
   @UI.hidden: true
   LocalLastChangedAt;
 }
+
 </pre>
- 
+
+10. Save and activate your changes
+
+
 </details>
 
 ## Exercise 3.2: Adapt the behavior definition
