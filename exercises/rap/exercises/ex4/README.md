@@ -102,8 +102,14 @@ with unmanaged save
      ENDCLASS.
      </pre>
 
-  4. Implement the `save_modified()` method as follows:
+  4. Behind the line
   
+  <pre lang="ABAP">
+  CLASS lsc_zr_onlineshop_### IMPLEMENTATION.
+  </pre>
+  
+  Implement the `save_modified()` method as follows 
+
 <pre lang="ABAP">
       METHOD save_modified.
 
