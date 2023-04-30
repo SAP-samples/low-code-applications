@@ -21,7 +21,6 @@ Execrises 1.1 - 1.3 are essential for the exercise, the following exercises 1.4 
 > If you don't have a group ID yet, then check the section [Getting Started - Group ID](../ex0/readme.md#group-id).    
 
 ## Exercise 1.1: Create Package with language version ABAP for Cloud Development
-[^Top of page](#)
 
 > Create your exercise package ![package](../../images/adt_package.png).   
 > This ABAP package will contain all the artefacts you will be creating in the different exercises of this hands-on session.
@@ -109,7 +108,6 @@ Execrises 1.1 - 1.3 are essential for the exercise, the following exercises 1.4 
 
 
 ## Exercise 1.3: Implement Logic to call I_PurchaseRequisitionTP
-[^Top of page](#)
 
 We will implement a method that calls the API **I_PurchaseRequisitionTP** and that implements the interface **if_oo_adt_classrun** so we can start with basic tests by simply starting the `if_oo_adt_classrun~main( )` method of our test class by pressing **F9**.
 
@@ -182,7 +180,6 @@ All of these are **optional** and you can therefore also skip them and continue 
   <summary>Click to expand execrise 1.4 - 1.7</summary>
 
 ## Exercise 1.4: How to find a released API using an ABAP repository tree  
-[^Top of page](#)
 
 In this exercise we will learn how to find a released API in the application component hierarchy.  
 For this we will use an ABAP Repository Tree which allows for displaying a filtered selection of development objects in the Project Explorer of the ABAP Development Tools (ADT).   
@@ -245,7 +242,6 @@ Then add a **blank** behind the filter statement and and press again **Ctrl + sp
 
  
 ## Exercise 1.5: Create a class to test ABAP Cloud governance
-[^Top of page](#)
 
 > Create a class![class](../../images/adt_class.png) to test the effects of using the language version *ABAP for Cloud Development*.   
 
@@ -312,7 +308,6 @@ ENDCLASS.
 
  
 ## Exercise 1.6: Identifying local APIs for S/4HANA Cloud via SAP Note 3088062 or GitHub   
-[^Top of page](#)
 
 While developing an ABAP Application for S/4HANA Cloud, you do get the following error message: "Use of <Object Type> <Object Name> is not permitted". But the error message does not provide a hint which API or object to use instead. The reason is that the successor information in on premise system does not contain the latest updates such as in SAP S/4HANA Cloud, ABAP Environment systems.   
 
@@ -344,7 +339,6 @@ An example would be the table `MARA` in the on premise release 2022.
  </details>  
 
 ## Exercise 1.7: Check the documentation for I_PurchaseRequisitionTP
-[^Top of page](#)
 
 The documentation for a released RAP business object can be found in so called **Knowledge Transfer Documents** which have the same name as the business object (released API) it describes.     
 
@@ -379,7 +373,6 @@ We will reuse this code in the implementation of the behavior definition class o
 
 
 ## Summary 
-[^Top of page](#)
 
 Now that you've... 
 - created an ABAP package that has ABAP language version *ABAP for Cloud Development*,
@@ -393,7 +386,6 @@ you can continue with the next exercise - **[Exercise 2: Implement the business 
 ---
 
 ## Appendix
-[^Top of page](#)
 
 Find the source code for the repository objects in the [sources](sources) folder. Don't forget to replace all occurences of the placeholder `###` with your group ID.
 
