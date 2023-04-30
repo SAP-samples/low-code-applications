@@ -296,9 +296,11 @@ As a preparation for implementing determinations and validations we will add con
 <details>
   <summary>Click to expand!</summary>
   
-  0. Navigate to the behavior implementation class `ZBP_R_ONLINESHOP_###` in the *Project Explorer* and then click on the tab *Local Types*.   
+  1. Navigate to the behavior implementation class `ZBP_R_ONLINESHOP_###` in the *Project Explorer* and then click on the tab *Local Types*.   
+
+  ![adapt_bdef](images/290_adapt_bdef.png)  
   
-  1. Start the implementation by adding the following constants in the private section of your local handler class `lhc_onlineshop`.   
+  2. Start the implementation by adding the following constants in the private section of your local handler class `lhc_onlineshop`.   
 
   <pre>
   
