@@ -56,4 +56,4 @@ This document describes how to create a **ABAP Project** to connect to an SAP S/
 
 </details>
 
-Continue to - [Exercise 1: Find and examine a released RAP BO](../ex1/README.md) 
+Continue to - [Exercise 1: Create an ABAP class with a released RAP Busindess Object](../ex1/README.md) 
