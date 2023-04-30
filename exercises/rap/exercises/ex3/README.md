@@ -276,7 +276,10 @@ For fields that are read-only and that are not read from the value help we have 
  
       
 
-   7. Check the UI using the Fiori Elements preview.   
+   7. Save and activate your changes
+   8. In the project explorer under `Business Services`->`Service Bindings`->`ZU_ONLINESHOP_O4_###` check the UI using the Fiori Elements preview. 
+
+      On the list, press **Create** and you should see a form like this:  
 
        ![adapt_bdef](images/230_adapt_bdef.png)  
 
