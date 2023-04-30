@@ -145,8 +145,10 @@ The generated business service will be transactional, draft-enabled, and enriche
 
 In this exercise you will publish the local service endpoint of your service binding ![service binding](../../images/adt_srvb.png) and start the _Fiori elements App Preview_.
 
+<!--
 > **Note:**
 > If you are using an on premise system please continue with the next exercise.
+-->
 
  <details>
   <summary>Click to expand!</summary>
@@ -163,6 +165,8 @@ In this exercise you will publish the local service endpoint of your service bin
    ![Publish](images/105_publish_service_binding_on_prem.png)
    
    2. Double-click on the entity **`OnlineShop`** in the **Entity Set and Association** section to open the _Fiori elements App Preview_.   
+
+   ![Publish](images/107_publish_service_binding_on_prem.png)
    
    3. Click the button on the _OnlineShop_ app **Go** to load the data.
        
