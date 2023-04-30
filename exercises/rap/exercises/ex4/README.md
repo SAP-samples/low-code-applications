@@ -230,7 +230,7 @@ In the following you have to perform the following steps
 
 3. Click on the action name and press **Ctrl+1** (**Command+1** on Mac) to start the quick assist
 
-   This will add the following method to the local handler class of your behavior definition which will be executed when the button of our action is pressed.  
+   This will add the following method to the local handler class of your behavior definition which will be executed when the button of our action is pressed:  
    
    <pre lang="ABAP">
    METHODS createPurchaseRequisition FOR MODIFY
@@ -415,7 +415,11 @@ In the following you have to perform the following steps
 
 5. Enable action in the projection view
 
-   Add the following code in your projection BDEF. 
+  In your projection behavior definition `ZC_ONLINESHOP_###`. 
+
+   ![local saver class](images/615_converted_key_saver_class.png)   
+
+  add the following code:
 
    <pre lang="ABAP">
    use action createPurchaseRequisition;
