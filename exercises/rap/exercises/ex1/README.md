@@ -1,6 +1,6 @@
 [Home ](../../README.md)  
 
-# Exercise 1: Find and examine a released RAP BO
+# Exercise 1: Create an ABAP class with a released RAP Busindess Object
 
 ## Introduction
 
@@ -13,21 +13,7 @@ We will continue to create a simple class to investigate
 
 We will then use this class to build a test class to call the released API **I_PurchaseRequisitionTP** before starting to build our own RAP BO that shall serve as an UI for an OnlineShop Application.  
  
-
-- [1.1 - Exercise 1.1: Create Package with language version ABAP for Cloud Development](#exercise_11_create_package_with_language_version_abap_for_cloud_development)
-
-
-
-
-
-- [1.1 - Create a package with language version "ABAP for Cloud Development"](#exercise-12-create-package-with-language-version-abap-for-cloud-development)
-- [1.3 - Test ABAP Cloud restrictions](#exercise-13-create-a-class-to-test-abap-cloud-governance)
-- [1.4 - How to identify local APIs for SAP S/4HANA Cloud via SAP Note 3088062 or Github ](#exercise-14-identifying-local-apis-for-s4hana-cloud-via-sap-note-3088062-or-github)
-- [1.5 - Check the documentation of i_purchaserequisitiontp](#exercise-15-check-the-documentation-for-i_purchaserequisitiontp)
-- [1.6 - Implement a test class to call I_PurchaserequisitionTP ](#exercise-16-implement-a-test-class-to-call-i_purchaserequisitiontp)
-- [Summary](#summary)
-- [Appendix](#appendix)
-
+Execrises 1.1 - 1.3 are essential for the exercise, the following exercises 1.4 - 1.7 are for your further information, you can skip them if you have limited time.
 
 > **Reminder:**   
 > Don't forget to replace all occurences of the placeholder **`###`** with your group ID in the exercise steps below.  
@@ -179,20 +165,17 @@ See also the Development guide for the ABAP RESTful Application Programming Mode
 
  </details> 
 
+You have now 
+- created an ABAP package that has ABAP language version *ABAP for Cloud Development*,
+- created a new ABAP class on  *ABAP Cloud*,
+- Implemented a simple test class for the released API **I_PurchaseRequisitionTP** ,
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+You can now go to the remaining parts of exercise 1, exercises 1.4 to 1.7. These will explain to you 
+- how you find released RAP Busindess Objects (1.4),
+- how in ABAP Cloud there are restrictions with respect to applying statements and functions call from classical ABAP (1.5)
+- how you can identify local APIs for S/4HANA Cloud via SAP Note 3088062 or GitHub (1.6)
+- how you can check the documentation for RAP BO I_PurchaseRequisitionTP, which is used in this tutorial (1.7)
+All of these are **optional** and you can therefore also skip them and continue with the next exercise - **[Exercise 2: Implement the business logic of your RAP BO](../ex2/#readme)**.
 
 
 ## Exercise 1.4: How to find a released API using an ABAP repository tree  
