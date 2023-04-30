@@ -441,29 +441,18 @@ In the following you have to perform the following steps
 
 ## Exercise 4.4: Add the convert key statement to your local saver class
 
-The `save_modified`  method will be enhanced such that we check whether any preliminary key
-`zbp_r_onlineshop_###=>mapped_purchase_requisition` has been saved in the helper variable in the global behavior implementation class by our action implementation.   
-
-We add this implementation after the implementation of the **create**, **update** and **delete** statements.  
+The `save_modified`  method will be enhanced so that we check whether any preliminary key `zbp_r_onlineshop_###=>mapped_purchase_requisition` has been saved in the helper variable in the global behavior implementation class by our action implementation.   
 
  <details>
   <summary>Click to expand!</summary>
 
 1. Open the method `save_modified` in your local saver class. 
 
-2. Add the following coding to retrieve the semantic key from the called API.  
+![local saver class](images/621_converted_key_saver_class.png)   
+
+2. After the implementation of the **create**, **update** and **delete** statements (see in the above picture):  
 
   <pre lang="ABAP">
-    METHOD save_modified.
-    DATA : lt_online_shop_as        TYPE STANDARD TABLE OF zaonlineshop_###,
-           ls_online_shop_as        TYPE                   zaonlineshop_###,
-           lt_online_shop_x_control TYPE STANDARD TABLE OF zaonlineshop_x_###.
-
-    IF create-onlineshop IS NOT INITIAL.
-      lt_online_shop_as = CORRESPONDING #( create-onlineshop MAPPING FROM ENTITY ).
-      INSERT zaonlineshop_### FROM TABLE @lt_online_shop_as.
-    ENDIF.
-
     IF update IS NOT INITIAL.
       CLEAR lt_online_shop_as.
       lt_online_shop_as = CORRESPONDING #( update-onlineshop MAPPING FROM ENTITY ).
@@ -476,7 +465,11 @@ We add this implementation after the implementation of the **create**, **update*
         DELETE FROM zdonlineshop_### WHERE orderuuid = @onlineshop_delete-OrderUUID.
       ENDLOOP.
     ENDIF.
+    </pre>
 
+   add the following coding to retrieve the semantic key from the called API:
+
+  <pre lang="ABAP">
   IF zbp_r_onlineshop_###=>mapped_purchase_requisition IS NOT INITIAL AND update IS NOT INITIAL.
     LOOP AT zbp_r_onlineshop_###=>mapped_purchase_requisition-purchaserequisition ASSIGNING FIELD-SYMBOL(&lt;fs_pr_mapped&gt;).
       CONVERT KEY OF i_purchaserequisitiontp FROM &lt;fs_pr_mapped&gt;-%pid TO DATA(ls_pr_key).
@@ -489,15 +482,10 @@ We add this implementation after the implementation of the **create**, **update*
                                   purch_rqn_creation_date = @creation_date WHERE order_uuid = @ls_online_shop-OrderUUID.
     ENDLOOP.
 
-  ENDIF.
-
-  ENDMETHOD.
-  
+  ENDIF.  
   </pre>
 
-  Your implementation should now look like follows:   
-
-  ![local saver class](images/620_converted_key_saver_class.png)   
+  Save and activate your changes. 
 
   </details>   
   
