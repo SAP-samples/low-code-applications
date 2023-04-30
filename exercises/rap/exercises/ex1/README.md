@@ -82,7 +82,6 @@ Execrises 1.1 - 1.3 are essential for the exercise, the following exercises 1.4 
 
 
 ## Exercise 1.2: Create a new ABAP class
-[^Top of page](#)
 
 > Create a class![class](../../images/adt_class.png) which will contain the logic.   
 
