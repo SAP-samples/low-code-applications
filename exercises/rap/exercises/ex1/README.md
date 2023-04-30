@@ -105,7 +105,7 @@ Execrises 1.1 - 1.3 are essential for the exercise, the following exercises 1.4 
       ![package](images/310_new_class.png). 
 
    4. Select a transport request, and click **Finish** to create the class.
-
+</details>
 
 
 ## Exercise 1.3: Implement Logic to call I_PurchaseRequisitionTP
