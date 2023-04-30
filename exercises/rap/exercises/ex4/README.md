@@ -413,13 +413,11 @@ In the following you have to perform the following steps
   ENDMETHOD.
   </pre> 
 
-5. Enable action in the projection view
-
-  In your projection behavior definition `ZC_ONLINESHOP_###`. 
+5. In your projection behavior definition `ZC_ONLINESHOP_###`. 
 
    ![local saver class](images/615_converted_key_saver_class.png)   
 
-  add the following code:
+  add the following code to enable the action:
 
    <pre lang="ABAP">
    use action createPurchaseRequisition;
