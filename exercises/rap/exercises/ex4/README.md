@@ -111,7 +111,7 @@ with unmanaged save
   Implement the `save_modified()` method as follows 
 
 <pre lang="ABAP">
-      METHOD save_modified.
+  METHOD save_modified.
 
     DATA : lt_online_shop_as        TYPE STANDARD TABLE OF zaonlineshop_###,
            ls_online_shop_as        TYPE                   zaonlineshop_###,
@@ -136,7 +136,6 @@ with unmanaged save
     ENDIF.
 
   ENDMETHOD.
-
 </pre>
 
   5. Create a structure `zaonlineshop_x_###`.
@@ -184,7 +183,7 @@ with unmanaged save
 
    - Activate the structure
 
-   - Change the coding in your BDEF
+   - Change the coding in your Behavior definition
 
      The statement `mapping for ZAONLINESHOP_###` must be changed to `mapping for ZAONLINESHOP_### control zaonlineshop_x_### corresponding`
 
@@ -215,13 +214,21 @@ In the following you have to perform the following steps
 
 1. Open the behavior definition
 
-2. Add the following statement in your BDEF
+2. In your behavior definition after these lines;
 
-   <pre lang="ABAP">
-   action createPurchaseRequisition result [1] $self;
-   </pre>
+  <pre lang="ABAP">
+  validation checkOrderedItem     on save { create; field OrderItemID; }
+  validation checkOrderedQuantity on save { create; field OrderItemQuantity; }
+  validation checkDeliveryDate    on save { create; field DeliveryDate; }
+  </pre>
 
-3. Click on the action name and press **Ctrl+1** to start the quick assist
+  add the following statement:
+
+  <pre lang="ABAP">
+  action createPurchaseRequisition result [1] $self;
+  </pre>
+
+3. Click on the action name and press **Ctrl+1** (**Command+1** on Mac) to start the quick assist
 
    This will add the following method to the local handler class of your behavior definition which will be executed when the button of our action is pressed.  
    
