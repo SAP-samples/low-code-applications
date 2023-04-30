@@ -235,17 +235,19 @@ For fields that are read-only and that are not read from the value help we have 
   
   1. Open the behavior definition `ZR_ONLINESHOP_###`.  
 
-     - Select the draft table name and press **Ctrl + 1** to show the quick fix.
-     - Select the quick fix that offers you to regenerate the draft table 
+  ![adapt_bdef](images/195_adapt_bdef.png)  
+
+  2. Select the draft table name and press **Ctrl + 1** to show the quick fix.
+  3. Select the quick fix that offers you to regenerate the draft table 
 
      ![adapt_bdef](images/200_adapt_bdef.png)  
 
-     - Change the data elements of the fields `productgroup` and `producttext` to build in types `abap.char(9)` and `abap.char(40)`.   
+  4. Change the data elements of the fields `productgroup` and `producttext` to build in types `abap.char(9)` and `abap.char(40)`.   
        <pre>
          productgroup         : abap.char(9);
          producttext          : abap.char(40);
        </pre>
-     - Activate the regenerated draft table.
+  5. Activate the regenerated draft table.
 
      ![adapt_bdef](images/210_adapt_bdef.png)  
 
