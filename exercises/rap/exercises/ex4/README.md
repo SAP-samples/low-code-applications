@@ -65,7 +65,7 @@ Navigate to the behavior definition `ZR_ONLINESHOP_###` either in the *Project E
   <summary>Click to expand!</summary>
 
   1. Open the behavior definition and add the statement `with unmanaged save` right after the `authorization master ( global )` statement.   
-     In addition uncomment the statement that specifies the persistent table of our RAP BO `//persistent table zaonlineshop_###` since it is not possible to use both statements in the same behavior definition.    
+     In addition comment the statement that specifies the persistent table of our RAP BO `//persistent table zaonlineshop_###` since it is not possible to use both statements in the same behavior definition.    
      
      > **Note:** 
      > When the code for your project has been pre-generated the behavior definition used an behavior implementation class on node level.  
