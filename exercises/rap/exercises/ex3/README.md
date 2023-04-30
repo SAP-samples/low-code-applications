@@ -322,6 +322,8 @@ CLASS lcl_OnlineShop DEFINITION INHERITING FROM cl_abap_behavior_handler.
       
    </pre>
 
+   3. Save and activate your changes.
+
  
 </details>
 
