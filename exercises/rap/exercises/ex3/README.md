@@ -256,7 +256,7 @@ For fields that are read-only and that are not read from the value help we have 
      > *The use of Data Element PRODUCTDESCRIPTION is not permitted.*  
      > *The use of Data Element PRODUCTGROUP is not permitted.*
 
-     - Add the following list of fields to mark them as read-only.  
+   6. Back at behavior definition `ZR_ONLINESHOP_###`, add the following list of fields to mark them as read-only.  
        <pre>
        field ( readonly )
        OrderID,
@@ -276,7 +276,7 @@ For fields that are read-only and that are not read from the value help we have 
  
       
 
-     - Check the UI using the Fiori Elements preview.   
+   7. Check the UI using the Fiori Elements preview.   
 
        ![adapt_bdef](images/230_adapt_bdef.png)  
 
