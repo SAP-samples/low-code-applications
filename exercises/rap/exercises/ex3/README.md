@@ -337,7 +337,7 @@ CLASS lcl_OnlineShop DEFINITION INHERITING FROM cl_abap_behavior_handler.
  <details>
   <summary>Click to expand!</summary>
  
-  1. Add the following determinations to your behavior definition.
+  1. Add the following determinations to your behavior definition **ZR_ONLINESHOP_###** (in the project explorer under **Core Data Services**** ->**Behavior Definitions**)
 
   <pre>
   determination setInitialOrderValues on modify { create; }
