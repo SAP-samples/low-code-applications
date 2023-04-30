@@ -89,9 +89,11 @@ with unmanaged save
 
   2. Activate your changes.   
 
-  3. After having activated your changes select the key word `unmanaged` and select **Ctrl + 1** to start the code assistant.   
+  3. After having activated your changes select the key word `unmanaged` and select **Ctrl + 1** (**Command + 1** on Mac)to start the code assistant.   
+
+  ![unmanaged save](images/500_unmanaged_save.png)  
      
-     This will add a local saver class `lsc_zr_onlineshop_###` to the local classes of your behavior implementation class. The method `save_modified` is added to the DEFINITION and the IMPLEMENTATION section of this local class.   
+     This will add a local saver class `lsc_zr_onlineshop_###` to the local classes of your behavior implementation class. The method `save_modified` is added to the DEFINITION and the IMPLEMENTATION section of this local class (you don't need to copy the code, this is already generated):
 
      <pre lang="ABAP">
      CLASS lsc_zr_onlineshop_### DEFINITION INHERITING FROM cl_abap_behavior_saver.
@@ -99,9 +101,6 @@ with unmanaged save
        METHODS save_modified REDEFINITION.
      ENDCLASS.
      </pre>
-     
-
-  ![unmanaged save](images/500_unmanaged_save.png)  
 
   4. Implement the `save_modified()` method as follows:
   
