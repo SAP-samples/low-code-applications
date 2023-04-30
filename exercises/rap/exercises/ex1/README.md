@@ -178,6 +178,9 @@ You can now go to the remaining parts of exercise 1, exercises 1.4 to 1.7. These
 All of these are **optional** and you can therefore also skip them and continue with the next exercise - **[Exercise 2: Implement the business logic of your RAP BO](../ex2/#readme)**.
 
 
+ <details>
+  <summary>Click to expand execrise 1.4 - 1.7</summary>
+
 ## Exercise 1.4: How to find a released API using an ABAP repository tree  
 [^Top of page](#)
 
@@ -372,7 +375,7 @@ We will reuse this code in the implementation of the behavior definition class o
 
  </details> 
 
-
+ </details> 
 
 
 ## Summary 
