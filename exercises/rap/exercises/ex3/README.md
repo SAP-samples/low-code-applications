@@ -19,7 +19,7 @@ The source code of ZI_PRODUCT_VH_REUSE can be found here:
  <details>
   <summary>Click to expand!</summary>
 
-1. Open the cds view **ZR_ONLINESHOP_###** 
+1. Open the cds view `ZR_ONLINESHOP_###` 
 
 ![enhance_data_model](images/090_adapt_data_model.png)  
 
@@ -28,7 +28,7 @@ The source code of ZI_PRODUCT_VH_REUSE can be found here:
 association [1..1] to ZI_PRODUCT_VH_REUSE as _Product on $projection.OrderItemID = _Product.Product
 </pre>
 
-- add the fields `_Product.ProductGroup`, `_Product.ProductText`, `_Product.BaseUnit` and the association `_Product` to the field list.
+3. Add the fields `_Product.ProductGroup`, `_Product.ProductText`, `_Product.BaseUnit` and the association `_Product` to the field list.
 
 <pre>
       ,
@@ -40,16 +40,16 @@ association [1..1] to ZI_PRODUCT_VH_REUSE as _Product on $projection.OrderItemID
 
 ![enhance_data_model](images/100_adapt_data_model.png)  
 
-2. Open the cds view `ZC_ONLINESHOP_###` 
+4. Open the cds view `ZC_ONLINESHOP_###` 
    
-   - add a value help for the field `OrderItemID`.
+5. Add a value help for the field `OrderItemID`.
 <pre>
       @Consumption.valueHelpDefinition: [{ entity: { name: 'ZI_PRODUCT_VH_REUSE', element: 'Product' },
                                      useForValidation: true }  ]
       OrderItemID,
 </pre>
 
-  - add the fields `ProductGroup`, `ProductText`, `BaseUnit`, `CreatedAt` and the association `_Product` to the field list.
+6. Add the fields `ProductGroup`, `ProductText`, `BaseUnit`, `CreatedAt` and the association `_Product` to the field list.
 <pre>
        ,
       CreatedAt,
@@ -70,11 +70,11 @@ association [1..1] to ZI_PRODUCT_VH_REUSE as _Product on $projection.OrderItemID
 
  
  
-3. Replace the complete source code of the Metadata Extension File **ZC_ONLINESHOP_###**.   
+7. Replace the complete source code of the Metadata Extension File **ZC_ONLINESHOP_###**.   
 
    We have prepared a meta data extension file that nicely groups your fields.  
  
-4. Replace the placeholder `###` with your group number and save and activate your changes.    
+8. Replace the placeholder `###` with your group number and save and activate your changes.    
  
 <pre>
 @Metadata.layer: #CUSTOMER
