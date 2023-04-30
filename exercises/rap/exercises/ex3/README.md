@@ -45,13 +45,13 @@ association [1..1] to ZI_PRODUCT_VH_REUSE as _Product on $projection.OrderItemID
 5. Open the cds view `ZC_ONLINESHOP_###` 
    
 6. Add a value help for the field `OrderItemID`.
-<pre>
+<pre lang="ABAP">
       @Consumption.valueHelpDefinition: [{ entity: { name: 'ZI_PRODUCT_VH_REUSE', element: 'Product' },
                                      useForValidation: true }  ]
 </pre>
 
 7. Add the fields `ProductGroup`, `ProductText`, `BaseUnit`, `CreatedAt` and the association `_Product` to the field list.
-<pre>
+<pre lang="ABAP">
        ,
       CreatedAt,
       ProductGroup,
@@ -83,7 +83,7 @@ association [1..1] to ZI_PRODUCT_VH_REUSE as _Product on $projection.OrderItemID
  
    Replace the placeholder `###` with your group number and save and activate your changes.    
  
-<pre>
+<pre lang="ABAP">
 @Metadata.layer: #CUSTOMER
 @UI: {
     headerInfo: { typeName: 'Order',
@@ -243,7 +243,7 @@ For fields that are read-only and that are not read from the value help we have 
      ![adapt_bdef](images/200_adapt_bdef.png)  
 
   4. Change the data elements of the fields `productgroup` and `producttext` to build in types `abap.char(9)` and `abap.char(40)`.   
-       <pre>
+       <pre lang="ABAP">
          productgroup         : abap.char(9);
          producttext          : abap.char(40);
        </pre>
@@ -257,7 +257,7 @@ For fields that are read-only and that are not read from the value help we have 
      > *The use of Data Element PRODUCTGROUP is not permitted.*
 
    6. Back at behavior definition `ZR_ONLINESHOP_###`, add the following list of fields to mark them as read-only.  
-       <pre>
+       <pre lang="ABAP">
        field ( readonly )
        OrderID,
        OverallStatus, TotalPrice, Currency, //order
@@ -301,7 +301,7 @@ As a preparation for implementing determinations and validations we will add con
   
   2. Start the implementation by adding the following constants in the private section of your local handler class `lhc_onlineshop`.   
 
-  <pre>
+  <pre lang="ABAP">
   
 CLASS lcl_OnlineShop DEFINITION INHERITING FROM cl_abap_behavior_handler.
   PRIVATE SECTION.
@@ -338,7 +338,7 @@ CLASS lcl_OnlineShop DEFINITION INHERITING FROM cl_abap_behavior_handler.
  
   1. Add the following determinations to your behavior definition **ZR_ONLINESHOP_###** (in the project explorer under **Core Data Services**** ->**Behavior Definitions**)
 
-  <pre>
+  <pre lang="ABAP">
   determination setInitialOrderValues on modify { create; }
   determination updateProductDetails on modify { field OrderItemID; }
   determination calculateTotalPrice on modify { create; field OrderItemID; field OrderItemQuantity; }
@@ -355,7 +355,7 @@ CLASS lcl_OnlineShop DEFINITION INHERITING FROM cl_abap_behavior_handler.
   3. Add the following code snippet to implement the determination `calculateTotalPrice`. The code updates the field `TotalPrice` when the field `OrderItemID` and thus the `OrderItemPrice` has changed or if the field `OrderItemQuantity` has changed. 
 
   
-   <pre>
+   <pre lang="ABAP">
    
     METHOD calculateTotalPrice.
     DATA total_price TYPE ZR_OnlineShop_###-TotalPrice.
@@ -387,7 +387,7 @@ CLASS lcl_OnlineShop DEFINITION INHERITING FROM cl_abap_behavior_handler.
  
   4. Add the following code snippet to implement the determination `setInitialOrderValues`. The code selects the next weekday in two weeks as a delivery day, it sets the initial status and it calculates a semantic key for the field `OrderID`
 
- <pre>
+ <pre lang="ABAP">
      METHOD setInitialOrderValues.
       DATA delivery_date TYPE I_PurchaseReqnItemTP-DeliveryDate.
 
@@ -445,7 +445,7 @@ MODIFY ENTITIES OF ZR_OnlineShop_### IN LOCAL MODE
 
  5. Add the following code snippet to implement the determination `updateProductDetails`. The code selects data from the value help `zi_product_vh_reuse`.
 
- <pre>
+ <pre lang="ABAP">
  
   METHOD updateProductDetails.
     "read transfered instances
@@ -493,7 +493,7 @@ In addition there will be a check that make sure that not too many items can be 
 
   1. Add the following code snippet into your behavior definition, so that the following three validations will be added:  
 
-  <pre>
+  <pre lang="ABAP">
     validation checkOrderedItem     on save { create; field OrderItemID; }
     validation checkOrderedQuantity on save { create; field OrderItemQuantity; }
     validation checkDeliveryDate    on save { create; field DeliveryDate; }
@@ -506,7 +506,7 @@ In addition there will be a check that make sure that not too many items can be 
 
   2. Validation checkOrderedItem
 
-  <pre>
+  <pre lang="ABAP">
   
     METHOD checkOrderedItem.
     "read relevant order instance data
@@ -564,7 +564,7 @@ In addition there will be a check that make sure that not too many items can be 
 
 3. validation checkDeliveryDate     
 
-  <pre>
+  <pre lang="ABAP">
    METHOD checkdeliverydate.
 
     READ ENTITIES OF zr_onlineshop_### IN LOCAL MODE
@@ -625,7 +625,7 @@ In addition there will be a check that make sure that not too many items can be 
 
 4. validation checkOrderedQuantity
   
-  <pre>
+  <pre lang="ABAP">
     METHOD checkOrderedQuantity.
     "read relevant order instance data
     READ ENTITIES OF ZR_OnlineShop_### IN LOCAL MODE
