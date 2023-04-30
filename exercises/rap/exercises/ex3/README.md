@@ -665,6 +665,9 @@ In addition there will be a check that make sure that not too many items can be 
   ENDMETHOD.
   </pre>
 
+ 4. Save and activate your changes.
+ 5. Open the service binding `ZUI_ONLINESHOP_O4_###` to test your implementation by using the ADT Fiori preview.
+
  </details> 
 
  ## Summary  

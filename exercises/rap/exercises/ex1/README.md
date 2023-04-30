@@ -1,6 +1,6 @@
 [Home ](../../README.md)  
 
-# Exercise 1: Create an ABAP class with a released RAP Busindess Object
+# Exercise 1: Create an ABAP class with a released RAP Business Object
 
 ## Introduction
 
