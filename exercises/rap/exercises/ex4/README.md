@@ -25,8 +25,12 @@ And in order to transfer the mapped premliminary key(s) from the interaction pha
 
  <details>
   <summary>Click to expand!</summary>
+
+  Open the behavior implementation class `zbp_r_onlineshop_###` and switch to tab `Global class`
+
+  ![unmanaged save](images/480_unmanaged_save.png)  
   
-  We define a variable that will hold the response of our (to be implemented) API call in the behavior implementation class `zbp_r_onlineshop_###`.  
+  We will define a variable that will hold the response of our (to be implemented) API call:  
 
 <pre lang="ABAP">
 
