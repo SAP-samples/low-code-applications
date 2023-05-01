@@ -83,13 +83,19 @@ There are many use cases where you can make a difference using SAP Build Process
 
 3. Click on **New Field** to add new fields to the datatype **Sales Order**.
 
-    ![6.2](6.2.png)
+    ![6.2](images/6.2.png)
 
 
 4.  Repeat the  process to add all the fields of the type as shown below.
 
     |  Field Name   | Type
     |  :------------- | :-------------
+    |  Product   | String  |
+    |  `Quantity`     | Number |
+    |  `Deliverydate`    | Date|
+    |  `Notes`    | String|
+
+<!--
     |  material   | String  |
     |  `orderAmount`     | Number |
     |  `shipToParty`    | String|
@@ -99,27 +105,27 @@ There are many use cases where you can make a difference using SAP Build Process
     |  `shippingCountry`    | String|
     |  `expectedDeliveryDate`  | Date|
     |  division  | String |
-
+-->
 
     Your final data type looks as below.
 
-    ![DataType](6.3.png)
+    ![DataType](images/6.3.png)
 
 ### Create and configure API trigger
 
 1.  Click on **+** > **API** > **New API Trigger**.
 
-    ![New API Trigger](7.png)
+    ![New API Trigger](images/7.png)
 
 
 2.  Enter the name as **Sales Order Trigger**.
 
-    ![7.1](7.1.png)
+    ![7.1](images/7.1.png)
 
 
 3.  Click on the process canvas and in the **Process Details** choose **Inputs**. Then choose **Configure** to configure inputs.
 
-    ![Inputs](7.2.png)
+    ![Inputs](images/7.2.png)
 
 4.  In the **Configure Process Inputs** window, choose **Add Input** to add parameters.
 
@@ -127,11 +133,14 @@ There are many use cases where you can make a difference using SAP Build Process
 
     |  **Name**    | **Type**
     |  :------------- | :-------------
+    |  `onlineshopdetails`       | `Onlineshop`
+    <!--
     |  `salesorderdetails`       | `Sales Order`
+    -->
 
     **Apply** changes.
 
-    ![Add Inputs](7.3.png)
+    ![Add Inputs](images/7.3.png)
 
 5. **Save**  the project.
 
@@ -142,7 +151,7 @@ Navigate back to the Process builder Canvas to  create an Approval Form.
 
 1. Click on **+** > **Approval** > **New Approval Form**.
 
-    ![New Approval Form](8.png)
+    ![New Approval Form](images/8.png)
 
 2. Enter the name as **Approval Form**.
 
@@ -155,16 +164,15 @@ Navigate back to the Process builder Canvas to  create an Approval Form.
 4. Design the form by dragging and dropping the corresponding form elements as shown below.
 
 
-    |  **Form Fields**    | **Field Settings with Label** | **Configuration(Read Only)**
+    |  **Form Fields**    s **Field Settings with Label** | **Configuration(Read Only)** | 
     |  :------------- | :-------------
     | Approve Sales Order   | HeadLine1 | |
-    | A new order has been received. Please review and confirm whether the requirements can be met or not.| Paragraph | |
+    | A new order has been received. Please review and confirm whether the requirements can be met or not.|  Paragraph | | 
     | Material | Text | X |
-    | Order Amount | Number | X|
-    | Customer Name | Text | X
-    | Expected Delivery Date | Date | X|
-    | I acknowledge that we have received your order and will process it based on the availability | Checkbox | |
-    | Message to Buyer | Text Area | |
+    | Order Amount | Number | X |
+    | Expected Delivery Date | Date | X |
+    | I acknowledge that we have received your order and will process it based on the availability | Checkbox | | 
+    | Message to Buyer | Text Area | X | 
 
     ![8.4](8.4.png)
 
