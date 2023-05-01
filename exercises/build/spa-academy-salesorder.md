@@ -170,11 +170,11 @@ Navigate back to the Process builder Canvas to  create an Approval Form.
     |  :------------- | :-------------
     | Approve Onlineshop Request  | HeadLine1 | |
     | An onlineshop request has been received. Please review and confirm whether the item can be purchased.|  Paragraph | | 
-    | Material | Text | X |
-    | Order Amount | Number | X |
-    | Expected Delivery Date | Date | X |
+    | Proudct | Text | X |
+    | Quantity | Number | X |
+    | Delivery Date | Date | X |
+    | Notes | Text Area | X | 
     | I acknowledge that we have received your order and will process it based on the availability | Checkbox | | 
-    | Message to Buyer | Text Area | X | 
 
     ![8.4](images/8.4.png)
 
@@ -214,17 +214,16 @@ Navigate back to the Process builder Canvas to  create an Approval Form.
 4.  Design the form by dragging and dropping the corresponding Form elements as shown below.
 
     |  **Form Fields**    | **Field Settings with Label** | **Configuration(Read Only)** |
-    |  :------------- | :------------- | :------------- |
-    | Headline 1 | Order Confirmation | |
-    | Paragraph  |Your order has been received and accepted for delivery. We will send you the details as soon as the order is shipped. You can find the details of your order below, please review and verify your request: | |
-    | Text Area  | Message from the supplier: | X |
-    | Text | Material | X |
-    | Text | Customer Name | X |
-    | Number | Order Amount | X |
-    | Date | Expected Delivery Date | X |
+    |  :------------- | :------------- | :------------- | 
+    | Headline 1 | Purchase Request Confirmation | |
+    | Paragraph  | Your request has been received and accepted for delivery. We will send you the details as soon as the request is shipped. You can find the details of your request below, please review and verify: | |
+    | Text | Product | X |
+    | Number | Quantity | X |
+    | Date | Delivery Date | X |
+    | Text Area | Notes | X |
     | Paragraph | Please press the SUBMIT button to acknowledge the order status.| |
 
-    ![9.3](9.3.png)
+    ![9.3](images/9.3.png)
 
 5. **Save** the form.
 
@@ -239,11 +238,11 @@ Navigate back to the Process builder Canvas to  create an Approval Form.
     Enter your login ID(email) in the **Recipients** section.
 
 
-    ![9.4](9.4.png)
+    ![9.4](images/9.4.png)
 
 7. Configure the inputs of **Order Approval Form**.Navigate to Inputs and map the fields accordingly.
 
-    ![9.5](9.5.png)
+    ![9.5](images/9.5.png)
 
 
 ### Create and configure Order Rejection Notification through an Email
