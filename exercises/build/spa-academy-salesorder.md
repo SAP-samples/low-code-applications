@@ -251,24 +251,24 @@ In this step,you will send out an email notification if the order is rejected.
 
 1. Select the **Approval Form** and add **Mail** to the Rejection node.
 
-    ![Mail_1](Mail_1.png)
+    ![Mail_1](images/Mail_1.png)
 
 2.  Once you have successfully added Mail ,let's configure **Mail Header** and **Mail Body**. Enter the your email address in the **To** section.
     
-    ![Mail_2](mail_2.png)   
+    ![Mail_2](images/mail_2.png)   
 
 3. Click on **Open Mail Body Editor**.
 
-    - Enter **Your order**
-    - Select **material** from the `salesorderDetails`. 
+    - Enter **Your request for**
+    - Select **Product** from the `onlineshopetails`. 
     - Enter **has been rejected**.
     - Click on **Apply**.
 
-    ![Mail_3](mail_3.png)  
+    ![Mail_3](images/mail_3.png)  
 
 4. Link your **Send Mail** to **End**.
 
-    ![Mail_4](mail_4.png)  
+    ![Mail_4](images/mail_4.png)  
 
 
 ## Exercise 1.8: Create and configure Process Condition
@@ -277,24 +277,24 @@ Once the process with forms is designed, define which process flow should run ba
 
 1. To add a condition to a process open the **Process Builder**. Choose **+** next to the Trigger. Select **Controls** then **Condition**.
 
-    ![Process Condition](11.png)
+    ![Process Condition](images/11.png)
 
 2. To configure the condition, choose **Open Condition Editor**.
 
-    ![Process Condition](11.1.png)
+    ![Process Condition](images/11.1.png)
 
     > Process content will contain a list of attributes that have been defined in previous skills. For example: in the screenshot, you can see attributes from the API trigger. You will use this process content to configure different skills during business process modelling.
 
 3. Edit your branch condition:
 
-    - Set `orderAmount` from the process content.
+    - Set `Quantity` from the process content.
     - Select **is greater than**.
-    - Enter **100000** as the value.
+    - Enter **1** as the value.
     - Choose **Apply**.
 
     ![Process Condition](11.2.png)
 
-    You have configured your **if** branch to: **if Order Amount is greater than 100000**.
+    You have configured your **if** branch to: **if Quantity is greater than 1**.
 
 
 ## Exercise 1.9: Create and configure Auto Approval Notification Form
@@ -302,10 +302,10 @@ Once the process with forms is designed, define which process flow should run ba
 In this step,you will create a notification form which would be received by supplier if the order is approved automatically with out any approvals.
 
 1. To add the new form, you will use the **Duplicate** feature. Select the **Overview**.
-    - Find **Order Confirmation Form** under the Artifacts section and select three dots **(...)**.
+    - Find **Purchase Confirmation Form** under the Artifacts section and select three dots **(...)**.
     - Choose **Duplicate**.
 
-    ![Duplicate](10.png)
+    ![Duplicate](images/10.png)
 
 2. In the duplicate artifact pop-up window change the name to **Auto Approval Notification** and select **Duplicate**.
 
@@ -317,7 +317,7 @@ In this step,you will create a notification form which would be received by supp
     Modify the  **Layout fields**:
 
     | **Form Fields** | **Field Settings with Label** | **Configuration(Read Only)**
-    |  :------------- | :-------------
+    |  :------------- | :------------- :------------- |
     | Headline 1 | Automatic Order Confirmation | |
     | Paragraph  | Your order has been received and we will send you the details as soon as the order is shipped. You can find the details of your order below, please review and verify your request:| |
     | Paragraph  | Your Sale's Order Details: | |
