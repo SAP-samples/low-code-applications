@@ -2,10 +2,8 @@
 <!-- description --> Create a Business Project and Process to build and extend business processes
 
 ## Prerequisites
-  - [Trial account](https://blogs.sap.com/2022/09/09/sap-process-automation-now-available-in-your-trail-account/) with the SAP Build Process Automation enabled **OR**
-  - A regular account with [SAP BTP Free Tier](spa-subscribe-booster) service plan for SAP Build Process Automation
+  TODO
   - [Configure SMTP Destination](https://help.sap.com/docs/build-process-automation/sap-build-process-automation/configuring-smtp-mail-destination) to send mail notifications.
-
 
 ## You will learn
   - How to create a SAP Build Process Automation project
@@ -52,7 +50,7 @@ There are many use cases where you can make a difference using SAP Build Process
     - Enter a **Short Description**: Sales Orders Management Project.
     - Choose **Create**.
 
-    ![Project information](004.png)
+    ![Project information](images/004.png)
 
 
 ### Create a business process
@@ -69,7 +67,7 @@ There are many use cases where you can make a difference using SAP Build Process
 
     > Inside a project, you can create a process. This process is equivalent to a workflow in any business scenario. You can create this process from different skills such as forms, decisions, automations.
 
-    ![Create Process](005.png)
+    ![Create Process](images/005.png)
 
     > The form **Identifier** field is auto-filled.
 
