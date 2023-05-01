@@ -318,50 +318,50 @@ In this step,you will create a notification form which would be received by supp
 
     | **Form Fields** | **Field Settings with Label** | **Configuration(Read Only)**
     |  :------------- | :------------- | :------------- |
-    | Headline 1 | Automatic Order Confirmation | |
-    | Paragraph  | Your order has been received and we will send you the details as soon as the order is shipped. You can find the details of your order below, please review and verify your request:| |
-    | Paragraph  | Your Sale's Order Details: | |
-    | Text |  Material Name  | X
-    | Text |  Customer | X
-    | Number | Order Amount | X
-    | Date | Expected Delivery Date | X
+    | Headline 1 | Automatic Purchase Request Confirmation | |
+    | Paragraph  | Your purchase request has been received and we will send you the details as soon as the request is shipped. You can find the details of your reques below, please review and verify:| |
+    | Paragraph  | Your Purchase Rquest Details: | |
+    | Text | Product | X |
+    | Number | Quantity | X |
+    | Date | Delivery Date | X |
+    | Text Area | Notes | X |
     | Paragraph | Please press the SUBMIT button to acknowledge the order status| |
 
     
-    ![Auto Approval](autoapproval_2.png)
+    ![Auto Approval](images/autoapproval_2.png)
 
 4. **Save** your work.
 
 5. Go back to the process builder and add the auto approval form to the **Default** node.
 
-    ![Auto Approval](autoapproval_3.png)
+    ![Auto Approval](images/autoapproval_3.png)
 
 6. Configure the **General** section.
    
     Under Subject:
 
-    - Enter: **Your order**.
-    - Choose: **material** from `salesorderdetails`.
+    - Enter: **Your Purchase Request for**.
+    - Choose: **Product** from `onlineshopdetails`.
     - Enter: **has been approved automatically**.
 
     Under **Recipients** Enter your login ID(email).
 
-    ![Auto Approval](11.7.png)
+    ![Auto Approval](images/11.7.png)
 
 7. Configure the **Inputs** section.
 
     | Form Input Fields| Process Content Entry
     |  :------------- | :-------------
-    | Customer Name | `shipToParty`    
-    | Material Name| material
-    | Order Amount | `orderAmount`
-    | Expected Delivery Date | `expectedDeliveryDate`
+    | Notes | `Notes`    
+    | Product| Product
+    | Quantity | `Quantity`
+    | Delivery Date | `Deliverydate`
 
-    ![Auto Approval](11.8.png)
+    ![Auto Approval](images/11.8.png)
 
 8. Connect the outgoing flow of the **Auto-approval Notification form** to the **End** activity.
 
-    ![Auto Approval](11.10.png)
+    ![Auto Approval](images/11.10.png)
 
 ### Save the project    
 
@@ -369,7 +369,7 @@ In this step,you will create a notification form which would be received by supp
 
 Once you have successfully completed project ,your final process looks as below.
 
-![Final Process](FinalProcess.png)
+![Final Process](images/FinalProcess.png)
 
  This completes the process design with condition criteria that will decide what process flow is executed and whether there will be an auto-approval or a one-step approval route.
  Now the business process is ready to integrate with SAP Build Apps.
