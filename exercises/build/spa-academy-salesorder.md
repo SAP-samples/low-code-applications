@@ -79,7 +79,7 @@ There are many use cases where you can make a difference using SAP Build Process
 
 2.  Create a datatype **Sales Order**.
 
-    ![6.1](image/6.1.png)
+    ![6.1](images/6.1.png)
 
 3. Click on **New Field** to add new fields to the datatype **Sales Order**.
 
