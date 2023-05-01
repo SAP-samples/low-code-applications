@@ -6,16 +6,16 @@
 
 This repository contains the material for the hands-on session **Use ABAP Cloud for SAP S/4HANA (Cloud) extensions**.
 
-<!-- - [Requirements for attending this workshop](#requirements-for-attending-this-workshop) -->
+<!-- - [Requirements for attending this workshop](#requirements-for-attending-this-workshop) 
 - [Overview](#overview)
 - [Exercises](#exercises)
 - [How to obtain support](#how-to-obtain-support) 
 - [Further Information](#further-information)
-
+-->
 
 <!--
 ## Requirements for attending this workshop 
-[^Top of page](#)
+
 
 In order to participate in this hands-on session, you MUST have installed the latest version of Eclipse and the latest version of the ABAP Development Tools (ADT) in Eclipse.
 Please check the following two short documents how to do this if you have not already done it:  
@@ -31,7 +31,7 @@ You also need a user on an SAP S/4HANA Cloud ABAP Environment system or on a SAP
 -->
 
 ## Overview
-[^Top of page](#)
+
 
 **ABAP Cloud**  
 … is the ABAP development model to build cloud-ready business apps, services and extensions  
@@ -45,9 +45,6 @@ A RAP facade is a *released* business object interface built with the ABAP RESTf
 You will create your own transactional Fiori elements app with the ABAP RESTful Application Programming Model (RAP) and use released RAP facades to enhance the existing functionality. 
 
 ### Business Scenario 
-
-<details>
- <summary>Click to expand!</summary>
 
  The scenario we will implement will be an online shop for employees which will allow for the creation of *Purchase Requisitions* by using a released RAP facade from Procurements.   
  
@@ -63,21 +60,17 @@ Your application will finally look like this:
  
  ![Object Page](images/Online_Shop_OBject_Page.png)
  
-</details>
 
 ### Architecture Overview
-<details>
- <summary>Click to expand!</summary>
+
 
 The figure below illustrates the high-level architecture components of the cloud extensibility model used in SAP S/4HANA public Cloud, SAP S/4HANA private cloud and SAP S/4HANA on premise systems.
  
  ![architecture](images/100_SAP_S4_HANA_Extensibility_Patterns.png)
  
- </details>
- 
 
 ## Exercises
-[^Top of page](#)
+
 
 
 | Exercises |  
@@ -91,13 +84,12 @@ The figure below illustrates the high-level architecture components of the cloud
 Continue to - [How to connect with ADT to your SAP S/4HANA system](exercises/ex99/README.md)
 
 ## How to obtain support
-[^Top of page](#)
 
 Support for the content in this repository is available during the actual time of the on-site workshop or online session for which this content has been designed. Otherwise, you may request support via the [Issues](../../../../issues) tab.
 
 
 ## Further Information
-[^Top of page](#)
+
 
 You can find further information on the different topics here: 
 - [SAP S/4HANA Cloud ABAP Environment](https://www.sap.com/about/events/teched-news-guide/composable-enterprise-solutions.html)
