@@ -21,7 +21,7 @@ There are many use cases where you can make a difference using SAP Build Process
 
 ---
 
-## Create a business process project
+## Exercise 1.1 Create a business process project
 
 TODO: Describe how to get a user for the lobby
 
@@ -55,7 +55,7 @@ TODO: Describe how to get a user for the lobby
     ![Project information](images/004.png)
 
 
-## Create a business process
+## Exercise 1.2: Create a business process
 
 
 1. A new tabs opens with the newly created project.
@@ -73,7 +73,7 @@ TODO: Describe how to get a user for the lobby
 
     > The form **Identifier** field is auto-filled.
 
-## Create a Data Type
+## Exercise 1.3: Create a Data Type
 
 1.  Click on **+** > **Create** > **Data Type**.
 
@@ -113,7 +113,7 @@ Your final data type looks as below.
 
 ![DataType](images/6.3.png)
 
-## Create and configure API trigger
+## Exercise 1.4: Create and configure API trigger
 
 1.  Click on **+** > **API** > **New API Trigger**.
 
@@ -147,7 +147,7 @@ Your final data type looks as below.
 5. **Save**  the project.
 
 
-## Create and configure Approval form
+## Exercise 1.5: Create and configure Approval form
 
 Navigate back to the Process builder Canvas to  create an Approval Form.
 
@@ -197,7 +197,7 @@ Navigate back to the Process builder Canvas to  create an Approval Form.
     ![8.6](images/8.6.png)
 
 
-## Create and configure Order Approval Notification form
+## Exercise 1.6: Create and configure Order Approval Notification form
 
 1.  Click on **+** > **Forms** > **New Form**.
 
@@ -245,7 +245,7 @@ Navigate back to the Process builder Canvas to  create an Approval Form.
     ![9.5](images/9.5.png)
 
 
-## Create and configure Order Rejection Notification through an Email
+## Exercise 1.7: Create and configure Order Rejection Notification through an Email
 
 In this step,you will send out an email notification if the order is rejected.
 
@@ -271,7 +271,7 @@ In this step,you will send out an email notification if the order is rejected.
     ![Mail_4](mail_4.png)  
 
 
-### Create and configure Process Condition
+## Exercise 1.8: Create and configure Process Condition
 
 Once the process with forms is designed, define which process flow should run based on if/else condition criteria.  
 
@@ -297,7 +297,7 @@ Once the process with forms is designed, define which process flow should run ba
     You have configured your **if** branch to: **if Order Amount is greater than 100000**.
 
 
-### Create and configure Auto Approval Notification Form
+## Exercise 1.9: Create and configure Auto Approval Notification Form
 
 In this step,you will create a notification form which would be received by supplier if the order is approved automatically with out any approvals.
 
