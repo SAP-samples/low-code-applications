@@ -21,7 +21,7 @@ There are many use cases where you can make a difference using SAP Build Process
 
 ---
 
-### Create a business process project
+## Create a business process project
 
 TODO: Describe how to get a user for the lobby
 
@@ -55,7 +55,7 @@ TODO: Describe how to get a user for the lobby
     ![Project information](images/004.png)
 
 
-### Create a business process
+## Create a business process
 
 
 1. A new tabs opens with the newly created project.
@@ -73,7 +73,7 @@ TODO: Describe how to get a user for the lobby
 
     > The form **Identifier** field is auto-filled.
 
-### Create a Data Type
+## Create a Data Type
 
 1.  Click on **+** > **Create** > **Data Type**.
 
@@ -113,7 +113,7 @@ Your final data type looks as below.
 
 ![DataType](images/6.3.png)
 
-### Create and configure API trigger
+## Create and configure API trigger
 
 1.  Click on **+** > **API** > **New API Trigger**.
 
@@ -147,7 +147,7 @@ Your final data type looks as below.
 5. **Save**  the project.
 
 
-### Create and configure Approval form
+## Create and configure Approval form
 
 Navigate back to the Process builder Canvas to  create an Approval Form.
 
@@ -197,7 +197,7 @@ Navigate back to the Process builder Canvas to  create an Approval Form.
     ![8.6](images/8.6.png)
 
 
-### Create and configure Order Approval Notification form
+## Create and configure Order Approval Notification form
 
 1.  Click on **+** > **Forms** > **New Form**.
 
@@ -245,7 +245,7 @@ Navigate back to the Process builder Canvas to  create an Approval Form.
     ![9.5](images/9.5.png)
 
 
-### Create and configure Order Rejection Notification through an Email
+## Create and configure Order Rejection Notification through an Email
 
 In this step,you will send out an email notification if the order is rejected.
 
