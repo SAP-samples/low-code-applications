@@ -107,9 +107,9 @@ There are many use cases where you can make a difference using SAP Build Process
     |  division  | String |
 -->
 
-    Your final data type looks as below.
+Your final data type looks as below.
 
-    ![DataType](images/6.3.png)
+![DataType](images/6.3.png)
 
 ### Create and configure API trigger
 
