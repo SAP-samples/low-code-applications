@@ -317,7 +317,7 @@ In this step,you will create a notification form which would be received by supp
     Modify the  **Layout fields**:
 
     | **Form Fields** | **Field Settings with Label** | **Configuration(Read Only)**
-    |  :------------- | :------------- :------------- |
+    |  :------------- | :------------- | :------------- |
     | Headline 1 | Automatic Order Confirmation | |
     | Paragraph  | Your order has been received and we will send you the details as soon as the order is shipped. You can find the details of your order below, please review and verify your request:| |
     | Paragraph  | Your Sale's Order Details: | |
