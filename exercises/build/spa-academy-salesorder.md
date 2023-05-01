@@ -23,6 +23,8 @@ There are many use cases where you can make a difference using SAP Build Process
 
 ### Create a business process project
 
+TODO: Describe how to get a user for the lobby
+
 
 1. In the **Lobby**, choose **Create**.
 
@@ -166,15 +168,15 @@ Navigate back to the Process builder Canvas to  create an Approval Form.
 
     |  **Form Fields**    s **Field Settings with Label** | **Configuration(Read Only)** | 
     |  :------------- | :-------------
-    | Approve Sales Order   | HeadLine1 | |
-    | A new order has been received. Please review and confirm whether the requirements can be met or not.|  Paragraph | | 
+    | Approve Onlineshop Request  | HeadLine1 | |
+    | An onlineshop request has been received. Please review and confirm whether the item can be purchased.|  Paragraph | | 
     | Material | Text | X |
     | Order Amount | Number | X |
     | Expected Delivery Date | Date | X |
     | I acknowledge that we have received your order and will process it based on the availability | Checkbox | | 
     | Message to Buyer | Text Area | X | 
 
-    ![8.4](8.4.png)
+    ![8.4](images/8.4.png)
 
 
 5. **Save** the form.
@@ -188,38 +190,38 @@ Navigate back to the Process builder Canvas to  create an Approval Form.
 
     Enter your login ID(email) in the **Recipients** section.
 
-    ![8.5](8.5.png)
+    ![8.5](images/8.5.png)
 
 7. Configure the inputs of **Approval Form**. Navigate to Inputs and map the fields accordingly.
 
-    ![8.6](8.6.png)
+    ![8.6](images/8.6.png)
 
 
 ### Create and configure Order Approval Notification form
 
 1.  Click on **+** > **Forms** > **New Form**.
 
-    ![New form](9.png)
+    ![New form](images/9.png)
 
 2.  Enter the name as **Order Confirmation Form**.
 
-    ![Order confirmation form](9.1.png)
+    ![Order confirmation form](images/9.1.png)
 
 3.  Click on **Edit form**.
 
-    ![9.2](9.2.png)
+    ![9.2](images/9.2.png)
 
 4.  Design the form by dragging and dropping the corresponding Form elements as shown below.
 
-    |  **Form Fields**    | **Field Settings with Label** | **Configuration(Read Only)**
-    |  :------------- | :-------------
+    |  **Form Fields**    | **Field Settings with Label** | **Configuration(Read Only)** |
+    |  :------------- | :------------- | :------------- |
     | Headline 1 | Order Confirmation | |
     | Paragraph  |Your order has been received and accepted for delivery. We will send you the details as soon as the order is shipped. You can find the details of your order below, please review and verify your request: | |
-    | Text Area  | Message from the supplier: | X
-    | Text | Material | X
-    | Text | Customer Name | X
-    | Number | Order Amount | X
-    | Date | Expected Delivery Date | X
+    | Text Area  | Message from the supplier: | X |
+    | Text | Material | X |
+    | Text | Customer Name | X |
+    | Number | Order Amount | X |
+    | Date | Expected Delivery Date | X |
     | Paragraph | Please press the SUBMIT button to acknowledge the order status.| |
 
     ![9.3](9.3.png)
