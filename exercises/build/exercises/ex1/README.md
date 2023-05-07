@@ -10,6 +10,8 @@ To create such Actions we need to prepare 2 things first:
 
 ## Exercise 1.1: Create a Destination in a BTP subaccount to access the Onlineshop API
 
+We will now create the destination in a BTP subaccount to our Onlineshop API in the S/4 HANA system from the previous chapter. The destination will ensure secure connectivity.
+
 1. In your ABAP Development Tools under **Business Services** -> **Service Bindings** -> **ZUI_ONLINESHOP_O4_XXX** copy the **Service URL**, it should be `/sap/opu/odata4/sap/zui_onlineshop_o4_XXX/srvd/sap/zui_onlineshop_XXX/0001/`
 
 ![serviceurl](images/105.png)
@@ -44,9 +46,21 @@ To create such Actions we need to prepare 2 things first:
 
 8. Press `Check Connection`: You should get a pop up that says `Connection to "Onlineshop_XXX" successful`
 
-
-
 ## Exercise 1.2: Download the OData metadata document of the Onlineshop API
+
+In this exercise we will download the OData metadata document to a file to later use it for a definiton of an Action for SAP Build.
+
+1. In your ABAP Development Tools you should still have the service bidning ( under **Business Services** -> **Service Bindings** -> **ZUI_ONLINESHOP_O4_XXX** ) open , this time, click on **Service URL**:
+
+![serviceurl](images/110.png)
+
+2. A browser window opens. The URL will look like this: 
+        https://YY.YYY.YYY.YY:44301/sap/opu/odata4/sap/zui_onlineshop_o4_300/srvd/sap/zui_onlineshop_300/0001/?sap-client=100 
+    Delete the `?sap-client=100` at the end and instead add `$metadata`, so the URL looks like this:
+        https://YY.YYY.YYY.YY:44301/sap/opu/odata4/sap/zui_onlineshop_o4_300/srvd/sap/zui_onlineshop_300/0001/$metadata
+    Press `return` to load the metadata document
+
+4. Right Mouse Click on the browser window and select `Save as`, save the file as `Onlineshop_XXX_metadata.xml` to a location of your liking on your computer
 
 ## Exercise 1.3: Create Actions from the Onlineshop API
 
