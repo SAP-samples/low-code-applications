@@ -98,24 +98,25 @@ In this exercise we will download the OData metadata document to a file to later
 
 ![lobby](images/170.png)
 
-7. The 2 actions are now visible, select the `POST` one. In the right upper corner press the `Settings` button that looks like a gear wheel.
-
 ![lobby](images/175.png)
 
-8. Sewitch `Enable CSRF` to `yes` and press `Save`
+7. The 2 actions are now visible, select the `POST` one. In the right upper corner press the `Settings` button that looks like a gear wheel.
 
 ![lobby](images/180.png)
 
-9. To test the action, select the destination that you have created before `Onlineshop_###`. In the input fields below, write `AS02` for the `product` and a number into the `quantity` field. Press `Test`.
+## Exercise 1.4: Test Actions from the Onlineshop API
+
+1. Sewitch `Enable CSRF` to `yes` and press `Save`
 
 ![lobby](images/185.png)
 
+2. To test the action, select the destination that you have created before `Onlineshop_###`. In the input fields below, write `AS02` for the `product` and a number into the `quantity` field. Press `Test`.
+
 ![lobby](images/190.png)
 
-10. The result should look like this:
+3. The result should look like this:
 
 ![lobby](images/195.png)
 
-3. 
 
-## Exercise 1.4: Test Actions from the Onlineshop API
+
