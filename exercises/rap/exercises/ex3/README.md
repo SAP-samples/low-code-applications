@@ -161,18 +161,18 @@ For fields that are read-only and that are not read from the value help we have 
 
   ![adapt_bdef](images/195_adapt_bdef.png)  
 
-  1. add the following list of fields to mark them as read-only.  
-       <pre lang="ABAP">
+  2. add the following list of fields to mark them as read-only.  
+  <pre lang="ABAP">
     OrderID,
-       </pre>
+  </pre>
 
-       behind
+    behind
 
-       <pre lang="ABAP">
+  <pre lang="ABAP">
 {
   field ( readonly )
    OrderUUID,
-       </pre>
+  </pre>
 
        in order to make the Order ID a readonly field.
 
