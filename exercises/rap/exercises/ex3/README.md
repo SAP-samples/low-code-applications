@@ -290,7 +290,7 @@ CLASS lcl_OnlineShop DEFINITION INHERITING FROM cl_abap_behavior_handler.
  5. Save and activate your changes.
  6. Open the service binding `ZUI_ONLINESHOP_O4_###` to test your implementation by using the ADT Fiori preview. Alternatively, if you keep the browser window open with the Fiori preview, you can just refresh the browser and it will automatically reflect the new code.
 
- On the list, press `Create` and then on the object page enter a new onlineshop entry using for example a product `AS01` and a quantity `1` and then press the `Create` button in lower right corner
+ 7. On the list, press `Create` and then on the object page enter a new onlineshop entry using for example a product `AS01` and a quantity `1` and then press the `Create` button in lower right corner
   
  ![define_determinations](images/313_define_determinations.png) 
   
