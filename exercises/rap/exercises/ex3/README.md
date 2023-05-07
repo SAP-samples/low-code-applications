@@ -183,7 +183,7 @@ For fields that are read-only and that are not read from the value help we have 
 
   ![adapt_bdef](images/230_adapt_bdef.png)  
  
-
+<!--
 ## Exercise 3.4: Define constants for lhc_onlineshop
 
 As a preparation for implementing determinations and validations we will add constants in the local handler class `lhc_onlineshop` of the the behavior implementation class `ZBP_R_ONLINESHOP_###` so that these variables can be used by all implementations.  
@@ -224,7 +224,9 @@ CLASS lcl_OnlineShop DEFINITION INHERITING FROM cl_abap_behavior_handler.
  
 </details>
 
-## Exercise 3.5: Define determinations
+-->
+
+## Exercise 3.4: Define determinations
 
 
   We now have to create several determinations that will do the following: 
