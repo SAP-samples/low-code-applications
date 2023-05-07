@@ -183,4 +183,4 @@ All of these are **optional** and you can therefore also skip them and continue 
 
 You have now created an ABAP package that has ABAP language version *ABAP for Cloud Development*.
 
-Continue with the next exercise - **[Exercise 2: Implement the business logic of your RAP BO](../ex2/#readme)**
+Continue with the next exercise - **[Exercise 2: Create the OnlineShop Application](../ex2/#readme)**
