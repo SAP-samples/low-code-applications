@@ -74,8 +74,9 @@ association [1..1] to ZI_PRODUCT_VH_REUSE as _Product on $projection.OrderItemID
 > ![enhance_data_model](images/105_adapt_data_model.png) 
 -->
  
+## Exercise 3.2: Provide Metadata for Fiori elements UI
  
-9. Replace the complete source code of the Metadata Extension File **ZC_ONLINESHOP_###**.   
+1. Replace the complete source code of the Metadata Extension File **ZC_ONLINESHOP_###**.   
 
   ![enhance_data_model](images/115_adapt_data_model.png) 
 
@@ -221,7 +222,7 @@ annotate view ZC_ONLINESHOP_### with
 
 </details>
 
-## Exercise 3.2: Adapt the behavior definition
+## Exercise 3.3: Adapt the behavior definition
 
 
 Since we have changed the field list of the projection view `ZC_ONLINESHOP_###` we have to regenerate the draft table.
@@ -286,7 +287,7 @@ For fields that are read-only and that are not read from the value help we have 
 
  </details>  
 
-## Exercise 3.3: Define constants for lhc_onlineshop
+## Exercise 3.4: Define constants for lhc_onlineshop
 
 As a preparation for implementing determinations and validations we will add constants in the local handler class `lhc_onlineshop` of the the behavior implementation class `ZBP_R_ONLINESHOP_###` so that these variables can be used by all implementations.  
 
@@ -326,7 +327,7 @@ CLASS lcl_OnlineShop DEFINITION INHERITING FROM cl_abap_behavior_handler.
  
 </details>
 
-## Exercise 3.4: Define determinations
+## Exercise 3.5: Define determinations
 
 
   We now have to create several determinations that will do the following: 
@@ -481,7 +482,7 @@ MODIFY ENTITIES OF ZR_OnlineShop_### IN LOCAL MODE
  7. Open the service binding `ZUI_ONLINESHOP_O4_###` to test your implementation by using the ADT Fiori preview.
  </details> 
 
-## Exercise 3.5: Define validations
+## Exercise 3.6: Define validations
 
 
 Finally we have to implement validations to make sure that the data that is sent to the API is valid.  
