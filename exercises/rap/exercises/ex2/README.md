@@ -239,5 +239,5 @@ you can continue with the next exercise - **[Exercise 3: Adapt the data model](.
 
 Find the source code for the database table definition and the data generator class in the [sources](sources) folder. Don't forget to replace all occurences of the placeholder `###` with your group ID.
 
-- ![document](../../images/doc.png) [Table zaonlineshop_###](sources/zaonlineshop_%23%23%23.txt)
+- ![document](../../images/doc.png) [Table ZONLINESHOP_###](sources/ZONLINESHOP_%23%23%23.txt)
 
