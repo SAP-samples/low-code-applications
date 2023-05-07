@@ -29,7 +29,7 @@ This document describes how to create a **ABAP Project** to connect to an SAP S/
 4. In the *Logon to System* dialogue enter the following data. The user for you and the password are provided to you by the instructors
     
    - Client: 100
-   - User: Build###
+   - User: lowcode###
    - Password: xxxxxxxx
    - Language: EN
 
