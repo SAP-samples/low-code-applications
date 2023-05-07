@@ -92,9 +92,9 @@ In this exercise we will download the OData metadata document to a file to later
 
 5. As Project Name choose `Onlineshop###Action`. Use the `Browse` button to locate the metadata file that you have saved in the previous step on your computer. Press `Create` 
 
-6. Expand the entry `onlineshop` and select both, the `POST /onlineshop Add new entry to onlineshop` and the `Get /onlineshop Get entities from onlineshop`. Press `Add`
-
 ![lobby](images/165.png)
+
+6. Expand the entry `onlineshop` and select both, the `POST /onlineshop Add new entry to onlineshop` and the `Get /onlineshop Get entities from onlineshop`. Press `Add`
 
 ![lobby](images/170.png)
 
