@@ -79,7 +79,7 @@ The figure below illustrates the high-level architecture components of the cloud
 | Exercises |  
 | ------------- | 
 | [How to connect with ADT to your SAP S/4HANA system](exercises/ex99/README.md) |  
-| [Exercise 1: Create an ABAP class with a released RAP Busindess Object](exercises/ex1/README.md) | 
+| [Exercise 1: Create an ABAP Package](exercises/ex1/README.md) | 
 | [Exercise 2: Create the OnlineShop Application](exercises/ex2/README.md) | 
 | [Exercise 3: Adapt the data model](exercises/ex3/README.md) | 
 | [Exercise 4: Developer extensibility](exercises/ex4/README.md) | 
