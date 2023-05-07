@@ -78,146 +78,71 @@ association [1..1] to ZI_PRODUCT_VH_REUSE as _Product on $projection.OrderItemID
  
 1. Replace the complete source code of the Metadata Extension File **ZC_ONLINESHOP_###**.   
 
-  ![enhance_data_model](images/115_adapt_data_model.png) 
+![enhance_data_model](images/115_adapt_data_model.png) 
 
-   We have prepared a meta data extension file that nicely groups your fields.  
+  Replace the placeholder `###` with your group number and save and activate your changes.    
+
+  This meta data extension file includes the annotations that tell the Fiori elements UI which columns should go into the result list and which fields group a form on the object page. While most of the code was already generated automatically, we now add a couple of labels to the column headers and for the form.
  
-   Replace the placeholder `###` with your group number and save and activate your changes.    
  
 <pre lang="ABAP">
-@Metadata.layer: #CUSTOMER
+@Metadata.layer: #CORE
 @UI: {
-    headerInfo: { typeName: 'Order',
-                  typeNamePlural: 'Orders',
-                  title: { value: 'OrderID', type: #STANDARD }
-//                  ,
-//                  imageUrl: 'Attachment'
-                 ,description: { value: 'ProductText', label: 'Order', type: #STANDARD  }
-                },
-    presentationVariant: [ { sortOrder: [{ by: 'OrderID', direction: #DESC }], visualizations: [{type: #AS_LINEITEM}] } ] }
-annotate view ZC_ONLINESHOP_### with
-{
-  @UI.facet: [
-     //Facet for Order general information
-     { label    : 'General Information',
-       id       : 'GeneralInfoFacet',
-       purpose  : #STANDARD,
-       type     : #COLLECTION,
-       position : 10  }
-   //Facet for Product information
-   ,{ label   : 'Product',
-       id       : 'ProductFacet',
-       purpose  : #STANDARD,
-       type     : #COLLECTION,
-       position : 20  }
-   //Facet for Product Quantity and Delivery Date
-   ,{ label   : 'Quantity and Delivery Date',
-       id       : 'QuantityDateFacet',
-       purpose  : #STANDARD,
-       type     : #COLLECTION,
-       position : 30   }
-   //Facet for PR information
-   ,{ label   : 'Purchase Requisition',
-      id       : 'PurchReqFacet',
-      purpose  : #STANDARD,
-      type     : #COLLECTION,
-      position : 40   }
-
-     // #FIELDGROUP_REFERENCE - define the fieldgroups
-     ,{  //label    : 'Order Info',
-         id       : 'OrderInfo',
-         purpose  : #STANDARD,
-         parentId : 'GeneralInfoFacet',
-         type     : #FIELDGROUP_REFERENCE,
-         targetQualifier: 'OrderInfo',
-         position : 10   }
-     ,{ //label   : 'Product',
-         id       : 'Product',
-         purpose  : #STANDARD,
-         parentId : 'ProductFacet',
-         type     : #FIELDGROUP_REFERENCE,
-         targetQualifier: 'Product',
-         position : 20   }
-     ,{ // label   : 'Quantity and Date',
-         id       : 'QuantityDate',
-         purpose  : #STANDARD,
-         parentId : 'QuantityDateFacet',
-         type     : #FIELDGROUP_REFERENCE,
-         targetQualifier:  'QuantityDate',
-         position : 30  }
-     ,{ //label    : 'Purchase Requisition',
-        id       : 'PurchReq',
-        purpose  : #STANDARD,
-        parentId : 'PurchReqFacet',
-        type     : #FIELDGROUP_REFERENCE,
-        targetQualifier : 'PurchReq',
-        position : 40   }
-   ]
-
-  @UI.hidden: true
-  OrderUUID;
-
-  @UI.lineItem:   [{ position: 10, label: 'Order ID', importance: #HIGH }]
-  @UI.selectionField: [{ position: 10 }]
-  @UI.fieldGroup: [{ qualifier: 'OrderInfo', position: 10, label: 'Order ID' }]  //OrderInfo
-  OrderID;
-
-  @EndUserText.label: 'Product'
-  @UI.lineItem:   [{ position: 20, label: 'Product', importance: #HIGH }]
-  @UI.selectionField: [{ position: 20 }]
-  @UI.fieldGroup: [{ qualifier: 'Product', position: 40, label: 'Product' }]  //Product
-  OrderItemID;
-
-  @UI.lineItem:   [{ position: 21, label: 'Product description', importance: #HIGH }]
-  @UI.fieldGroup: [{ qualifier: 'Product', position: 55, label: 'Product description' }]  //Product
-  ProductText;
-
-  @UI.identification: [{ position: 50, label: 'Quantity' } ]
-  @UI.fieldGroup: [{ qualifier: 'QuantityDate', position: 50, label: 'Quantity' }]  //QuantityDate
-  OrderItemQuantity;
-
-  @UI.fieldGroup: [{ qualifier: 'Product', position: 70, label: 'Valuation price per unit' }] //Product
-  OrderItemPrice;
-
-  @UI.fieldGroup: [{ qualifier: 'OrderInfo', position: 20, label: 'Total value' }] //OrderInfo
-  TotalPrice;
-
-  @UI.fieldGroup: [{ qualifier: 'QuantityDate', position: 52, label: 'Delivery date' }] //QuantityDate
-  DeliveryDate;
-
-  @UI.lineItem: [{ position: 85, label: 'Order status', criticality: 'OverallStatusIndicator', importance: #HIGH }]
-  @UI.fieldGroup: [{ qualifier: 'OrderInfo', position: 30, criticality: 'OverallStatusIndicator', label: 'Order status' }]  //OrderInfo
-  OverallStatus;
-  
-  @UI.hidden: true
-  OverallStatusIndicator;
-
-  @UI.lineItem:       [{ position: 84, label: 'Purchase requisition nbr.', importance: #HIGH },
-                       { type: #FOR_ACTION, dataAction: 'createPurchaseRequisition', label: 'Create purchase requisition' } ] //Submit Order | Create purchase requisition|
-
-  @UI.identification: [
-                       { type: #FOR_ACTION, dataAction: 'createPurchaseRequisition',
-                         label: 'Create purchase requisition' }]  //Submit Order | Create purchase requisition|
-  @UI.fieldGroup: [{ qualifier: 'PurchReq', position: 22, criticality: 'OverallStatusIndicator', label: 'Purchase requisition number' }]  //PurchReq
-  PurchaseRequisition;
-
-  @UI.fieldGroup: [{ qualifier: 'PurchReq',position: 31, label: 'Purchase reqn creation date' }] //PurchReq
-  PurchRqnCreationDate;
-
-  @UI.multiLineText: true
-  @UI.fieldGroup: [{ qualifier: 'OrderInfo', position: 60, label: 'Notes' }]  //OrderInfo
-  Notes;
-
-  @UI.fieldGroup: [{ qualifier: 'OrderInfo', position: 70, label: 'Order creation date' }] //OrderInfo
-  CreatedAt;
-
-  @UI.hidden: true
-  LocalLastChangedAt;
+  headerInfo: {
+    typeName: 'onlineshop',
+    typeNamePlural: 'onlineshops'
+  }
 }
+annotate view ZC_ONLINESHOP_XXX with
+{
+  @UI.facet: [ {
+    id: 'idIdentification',
+    type: #IDENTIFICATION_REFERENCE,
+    label: 'onlineshop',
+    position: 10
+  } ]
+  @UI.hidden: true
+  orderuuid;
 
+  @UI.lineItem: [ {
+    position: 10 ,
+    label: 'Order ID' ,
+    importance: #MEDIUM
+  } ]
+  @UI.identification: [ {
+    label: 'Order ID',
+    position: 10
+  } ]
+  orderid;
+
+  @UI.lineItem: [ {
+    position: 20 ,
+    label: 'Product' ,
+    importance: #MEDIUM
+  } ]
+  @UI.identification: [ {
+    position: 20,
+    label: 'Product'
+  } ]
+  product;
+
+  @UI.lineItem: [ {
+    position: 30 ,
+    label: 'Quantity' ,
+    importance: #MEDIUM
+  } ]
+  @UI.identification: [ {
+    position: 30 ,
+    label: 'Quantity'
+  } ]
+  quantity;
+
+  @UI.hidden: true
+  locallastchangedat;
+}
 </pre>
 
-10. Save and activate your changes
+2. Save and activate your changes
 
 
 </details>
