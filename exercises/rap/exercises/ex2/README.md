@@ -120,7 +120,7 @@ The generated business service will be transactional, draft-enabled, and enriche
  </details>
 
  
-## Exercise 2.3: Preview the OnlineShop App in in SAP S/4HANA
+## Exercise 2.3: Preview the OnlineShop App using Fiori elements
 
 
 In this exercise you will publish the local service endpoint of your service binding ![service binding](../../images/adt_srvb.png) and start the _Fiori elements App Preview_.
