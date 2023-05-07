@@ -497,6 +497,6 @@ In addition there will be a check that make sure that not too many items can be 
  
  You have implemented an adjustment to the Fiori elements UI and a  determination to calculate a new order ID.   
  
- you can continue with the next exercise - **[Build Exercise 1: Create Actions in SAP Build to access the Onlineshop API](../../build/exercises/ex1)**
+ you can continue with the next exercise - **[Build Exercise 1: Create Actions in SAP Build to access the Onlineshop API](../../../build/exercises/ex1)**
 
 
