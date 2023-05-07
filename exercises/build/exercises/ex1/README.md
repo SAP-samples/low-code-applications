@@ -82,19 +82,37 @@ In this exercise we will download the OData metadata document to a file to later
 
 ![lobby](images/150.png)
 
+3. Select `Build an Automated Process`
+
+![lobby](images/155.png)
+
+4. Select `Actions`
+
 ![lobby](images/160.png)
+
+5. As Project Name choose `Onlineshop###Action`. Use the `Browse` button to locate the metadata file that you have saved in the previous step on your computer. Press `Create` 
+
+6. Expand the entry `onlineshop` and select both, the `POST /onlineshop Add new entry to onlineshop` and the `Get /onlineshop Get entities from onlineshop`. Press `Add`
 
 ![lobby](images/165.png)
 
 ![lobby](images/170.png)
 
+7. The 2 actions are now visible, select the `POST` one. In the right upper corner press the `Settings` button that looks like a gear wheel.
+
 ![lobby](images/175.png)
 
+8. Sewitch `Enable CSRF` to `yes` and press `Save`
+
 ![lobby](images/180.png)
+
+9. To test the action, select the destination that you have created before `Onlineshop_###`. In the input fields below, write `AS02` for the `product` and a number into the `quantity` field. Press `Test`.
 
 ![lobby](images/185.png)
 
 ![lobby](images/190.png)
+
+10. The result should look like this:
 
 ![lobby](images/195.png)
 
