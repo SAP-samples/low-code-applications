@@ -257,7 +257,7 @@ CLASS lcl_OnlineShop DEFINITION INHERITING FROM cl_abap_behavior_handler.
   METHOD createOrderID.
 
 * read all the entities of the onlineshop
-    READ ENTITIES OF zr_onlineshop_tb IN LOCAL MODE
+    READ ENTITIES OF zr_onlineshop_XXX IN LOCAL MODE
       ENTITY onlineshop
              ALL FIELDS
             WITH CORRESPONDING #( keys )
@@ -269,10 +269,10 @@ CLASS lcl_OnlineShop DEFINITION INHERITING FROM cl_abap_behavior_handler.
     CHECK onlineshops IS NOT INITIAL.
 
 * determine the currently highest order id
-    SELECT MAX( order_id ) FROM zonlineshop_tb INTO @DATA(max_order_id). "active table
+    SELECT MAX( order_id ) FROM zonlineshop_XXX INTO @DATA(max_order_id). "active table
 
 * and for the one without an order id add one higher
-    MODIFY ENTITIES OF zr_onlineshop_tb IN LOCAL MODE
+    MODIFY ENTITIES OF zr_onlineshop_XXX IN LOCAL MODE
      ENTITY OnlineShop
      UPDATE FIELDS ( OrderID      )
      WITH VALUE #( FOR order IN onlineshops INDEX INTO i (
@@ -288,9 +288,20 @@ CLASS lcl_OnlineShop DEFINITION INHERITING FROM cl_abap_behavior_handler.
   The code checks for all onlineshop entries that are on the data base, including the one that was just created before our new `createOrderID` method is called. It looks at all the orders whether they already have an `OrderID`, it finds the newest one. Then it looks at the currently biggest order number that was so far assigned. It adds 1 and assigns this new number to our new onlineshop record and modifies the data base using EML (Entity Manipulation Language)
  
  5. Save and activate your changes.
- 6. Open the service binding `ZUI_ONLINESHOP_O4_###` to test your implementation by using the ADT Fiori preview.
+ 6. Open the service binding `ZUI_ONLINESHOP_O4_###` to test your implementation by using the ADT Fiori preview. Alternatively, if you keep the browser window open with the Fiori preview, you can just refresh the browser and it will automatically reflect the new code.
 
+  On the list, press `Create` and then on the object page enter a new onlineshop entry using for example a product `AS01` and a quantity `1` and then press the `Create` button in lower right corner
+  
+  ![define_determinations](images/313_define_determinations.png) 
+  
+  
+  the order id gets calculated and you should see it in the result:
 
+  ![define_determinations](images/314_define_determinations.png) 
+
+ 
+
+<!--
 ## Exercise 3.6: Define validations
 
 
@@ -480,9 +491,11 @@ In addition there will be a check that make sure that not too many items can be 
 
  </details> 
 
+->
+
  ## Summary  
  
- You have implemented checks (validations) and determinations to prepare the data that is sent via EML to the released API.   
+ You have implemented an adjustment to the Fiori elements UI and a  determination to calculate a new order ID.   
  
  you can continue with the next exercise - **[Exercise 4: Developer extensibility](../ex4/README.md)**.
 
