@@ -229,157 +229,67 @@ CLASS lcl_OnlineShop DEFINITION INHERITING FROM cl_abap_behavior_handler.
 ## Exercise 3.4: Define determinations
 
 
-  We now have to create several determinations that will do the following: 
-  - Set initial values for certain fields (e.g. the delivery date)  
-  - Calculate the total price when the OrderItemID or the OrderItemQuantity is changed by the user  
-
- <details>
-  <summary>Click to expand!</summary>
+  We now will create a determinations which is called when a new online store entry is created. The determination will calcualte a new Order ID. While the OrderUUID is generated automatically by the system upon save, the Order ID we have to generate ourselves. The corresponding code looks up the currently highest number for orders and then adds 1 for a new ID.
  
   1. Add the following determinations to your behavior definition **ZR_ONLINESHOP_###** (in the project explorer under **Core Data Services**** ->**Behavior Definitions**)
 
   <pre lang="ABAP">
-  determination setInitialOrderValues on modify { create; }
-  determination updateProductDetails on modify { field OrderItemID; }
-  determination calculateTotalPrice on modify { create; field OrderItemID; field OrderItemQuantity; }
+  determination createOrderID on save { create; }
   </pre>
 
-  
+
   ![define_determinations](images/300_define_determinations.png)  
 
 
   2. Use the quick fix **Ctrl+1** (**Command+1** on Mac)to generate the appropriate methods in the behavior definition class.
 
-  ![define_determinations](images/310_define_determinations.png)  
+  ![define_determinations](images/310_define_determinations.png) 
 
-  3. Add the following code snippet to implement the determination `calculateTotalPrice`. The code updates the field `TotalPrice` when the field `OrderItemID` and thus the `OrderItemPrice` has changed or if the field `OrderItemQuantity` has changed. 
+  3. Then a new tab is openend with the generated handler taht looks like this:
+
+   ![define_determinations](images/312_define_determinations.png) 
+
+  4. Add the following code snippet to implement the determination `createOrderID`. 
 
   
    <pre lang="ABAP">
-   
-    METHOD calculateTotalPrice.
-    DATA total_price TYPE ZR_OnlineShop_###-TotalPrice.
+  
+  METHOD createOrderID.
 
-    " read transfered instances
-    READ ENTITIES OF ZR_OnlineShop_### IN LOCAL MODE
-      ENTITY OnlineShop
-        FIELDS ( OrderID TotalPrice )
-        WITH CORRESPONDING #( keys )
-      RESULT DATA(OnlineShops).
+* read all the entities of the onlineshop
+    READ ENTITIES OF zr_onlineshop_tb IN LOCAL MODE
+      ENTITY onlineshop
+             ALL FIELDS
+            WITH CORRESPONDING #( keys )
+      RESULT DATA(onlineshops)
+      FAILED DATA(read_failed).
 
-    LOOP AT OnlineShops ASSIGNING FIELD-SYMBOL(&lt;OnlineShop&gt;).
-      " calculate total value
-      &lt;OnlineShop&gt;-TotalPrice = &lt;OnlineShop&gt;-OrderItemPrice * &lt;OnlineShop&gt;-OrderItemQuantity.
-    ENDLOOP.
+* get rid of all the entities that already have an order id
+    DELETE onlineshops WHERE OrderID IS NOT INITIAL.
+    CHECK onlineshops IS NOT INITIAL.
 
-    "update instances
-    MODIFY ENTITIES OF ZR_OnlineShop_### IN LOCAL MODE
-      ENTITY OnlineShop
-        UPDATE FIELDS ( TotalPrice )
-        WITH VALUE #( FOR OnlineShop IN OnlineShops (
-                           %tky       = OnlineShop-%tky
-                           TotalPrice = OnlineShop-TotalPrice
-                        ) ).
-    ENDMETHOD.
+* determine the currently highest order id
+    SELECT MAX( order_id ) FROM zonlineshop_tb INTO @DATA(max_order_id). "active table
+
+* and for the one without an order id add one higher
+    MODIFY ENTITIES OF zr_onlineshop_tb IN LOCAL MODE
+     ENTITY OnlineShop
+     UPDATE FIELDS ( OrderID      )
+     WITH VALUE #( FOR order IN onlineshops INDEX INTO i (
+                        %tky          = order-%tky
+                        OrderID       = max_order_id + i
+                     ) )
+                     FAILED DATA(failed).
+
+  ENDMETHOD.
  
   </pre>
 
+  The code checks for all onlineshop entries that are on the data base, including the one that was just created before our new `createOrderID` method is called. It looks at all the orders whether they already have an `OrderID`, it finds the newest one. Then it looks at the currently biggest order number that was so far assigned. It adds 1 and assigns this new number to our new onlineshop record and modifies the data base using EML (Entity Manipulation Language)
  
-  4. Add the following code snippet to implement the determination `setInitialOrderValues`. The code selects the next weekday in two weeks as a delivery day, it sets the initial status and it calculates a semantic key for the field `OrderID`
+ 5. Save and activate your changes.
+ 6. Open the service binding `ZUI_ONLINESHOP_O4_###` to test your implementation by using the ADT Fiori preview.
 
- <pre lang="ABAP">
-     METHOD setInitialOrderValues.
-      DATA delivery_date TYPE I_PurchaseReqnItemTP-DeliveryDate.
-
-"read transfered instances via EML
-READ ENTITIES OF ZR_OnlineShop_### IN LOCAL MODE
-  ENTITY OnlineShop
-    FIELDS ( OrderID OverallStatus DeliveryDate )
-    WITH CORRESPONDING #( keys )
-  RESULT DATA(OnlineShops).
-
-"delete entries with assigned order ID
-DELETE OnlineShops WHERE OrderID IS NOT INITIAL.
-CHECK OnlineShops IS NOT INITIAL.
-
-" ** ABAP logic to determine order IDs and delivery date**
-
-" get max order ID from the relevant active and draft table entries
-SELECT MAX( order_id ) FROM zaonlineshop_### INTO @DATA(max_order_id). "active table
-SELECT SINGLE FROM zdonlineshop_### FIELDS MAX( orderid ) INTO @DATA(max_orderid_draft). "draft table
-IF max_orderid_draft > max_order_id.
-  max_order_id = max_orderid_draft.
-ENDIF.
-
-"set delivery date proposal
-cl_scal_api=>date_compute_day(
-    EXPORTING
-      iv_date           = cl_abap_context_info=>get_system_date(  )
-    IMPORTING
-      ev_weekday_number = DATA(weekday_number)
-      ev_weekday_name = DATA(weekday_name)
-     ).
-CASE weekday_number.
-  WHEN 6.
-    delivery_date = cl_abap_context_info=>get_system_date(  ) + 16.
-  WHEN 7.
-    delivery_date = cl_abap_context_info=>get_system_date(  ) + 15.
-  WHEN OTHERS.
-    delivery_date = cl_abap_context_info=>get_system_date(  ) + 14.
-ENDCASE.
-
-
-"set initial values of new instances via EML
-MODIFY ENTITIES OF ZR_OnlineShop_### IN LOCAL MODE
-  ENTITY OnlineShop
-    UPDATE FIELDS ( OrderID OverallStatus DeliveryDate OrderItemPrice )
-    WITH VALUE #( FOR OnlineShop IN OnlineShops INDEX INTO i (
-                       %tky           = OnlineShop-%tky
-                       OrderID        = max_order_id + i
-                       OverallStatus  = c_overall_status-new  "'New / Composing'
-                       DeliveryDate   = delivery_date
-                    ) ).
-    ENDMETHOD.
-    
-</pre>
-
- 5. Add the following code snippet to implement the determination `updateProductDetails`. The code selects data from the value help `zi_product_vh_reuse`.
-
- <pre lang="ABAP">
- 
-  METHOD updateProductDetails.
-    "read transfered instances
-    READ ENTITIES OF ZR_OnlineShop_### IN LOCAL MODE
-      ENTITY OnlineShop
-        FIELDS ( OrderItemID )
-        WITH CORRESPONDING #( keys )
-      RESULT DATA(OnlineShops).
-
-    "read and set product details
-    LOOP AT OnlineShops ASSIGNING FIELD-SYMBOL(&lt;OnlineShop&gt;).
-      "read and set relevant product information
-      SELECT SINGLE * FROM zi_product_vh_reuse WHERE product = @&lt;OnlineShop&gt;-OrderItemID INTO @DATA(product).
-      &lt;OnlineShop&gt;-OrderItemPrice = product-price.
-      &lt;OnlineShop&gt;-Currency       = product-Currency.
-    ENDLOOP.
-
-    "update instances
-    MODIFY ENTITIES OF ZR_OnlineShop_### IN LOCAL MODE
-      ENTITY OnlineShop
-        UPDATE FIELDS ( OrderItemPrice Currency )
-        WITH VALUE #( FOR OnlineShop IN OnlineShops INDEX INTO i (
-                           %tky           = OnlineShop-%tky
-                           OrderItemPrice = OnlineShop-OrderItemPrice
-                           Currency       = OnlineShop-Currency
-                        ) ).
-  ENDMETHOD.
-    
-    
-</pre>
-
- 6. Save and activate your changes.
- 7. Open the service binding `ZUI_ONLINESHOP_O4_###` to test your implementation by using the ADT Fiori preview.
- </details> 
 
 ## Exercise 3.6: Define validations
 
