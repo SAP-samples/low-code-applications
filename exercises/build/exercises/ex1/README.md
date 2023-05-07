@@ -55,9 +55,13 @@ In this exercise we will download the OData metadata document to a file to later
 ![serviceurl](images/110.png)
 
 2. A browser window opens. The URL will look like this: 
+
         https://YY.YYY.YYY.YY:44301/sap/opu/odata4/sap/zui_onlineshop_o4_300/srvd/sap/zui_onlineshop_300/0001/?sap-client=100 
+
     Delete the `?sap-client=100` at the end and instead add `$metadata`, so the URL looks like this:
+
         https://YY.YYY.YYY.YY:44301/sap/opu/odata4/sap/zui_onlineshop_o4_300/srvd/sap/zui_onlineshop_300/0001/$metadata
+        
     Press `return` to load the metadata document
 
 4. Right Mouse Click on the browser window and select `Save as`, save the file as `Onlineshop_XXX_metadata.xml` to a location of your liking on your computer
