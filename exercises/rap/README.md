@@ -52,11 +52,11 @@ You will create your own transactional Fiori elements app with the ABAP RESTful 
  
  - You’ll build the application starting from a database table using an ADT wizard that generates a starter project wich contains all the needed development RAP artefacts that have to be implemented. The generated business service will be transactional, draft-enabled, and enriched with UI semantics for the generation of the Fiori elements app.
 
-<!-->
+<!--
  - Now, the customer/partner wishes to enhance the existing online shop application. After an order is placed, it should be possible to initiate a purchase requisition for this order in the SAP S/4HANA system. Using the developer extensibility custom code can be added to the existing business logic of the online shop BO to fulfill this requirementand by calling the released RAP facade **I_PurchaseRequisitionTP** locally.
  -->
  
- <!-->
+ <!--
 Your application will finally look like this:
 
  ![List Report Page](images/Online_Shop_List_Report_Page.png)
