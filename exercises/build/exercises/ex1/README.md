@@ -10,6 +10,14 @@ To create such Actions we need to prepare 2 things first:
 
 ## Exercise 1.1: Create a Destination in a BTP subaccount to access the Onlineshop API
 
+Open the [destinations view in the BTP Cockpit](https://emea.cockpit.btp.cloud.sap/cockpit/#/globalaccount/47ae62c5-c35b-48a4-99b1-eee46b5b62bf/subaccount/f65e327c-d9e9-44cd-8d7b-e4e7ea8db474/destinations)
+
+Press the `New Destination` button.
+
+Name: Onlineshop_XXX
+
+![destination](images/100.png)
+
 ## Exercise 1.2: Download the OData metadata document of the Onlineshop API
 
 ## Exercise 1.3: Create Actions from the Onlineshop API
