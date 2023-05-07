@@ -72,9 +72,6 @@ define table zonlineshop_XXX {
 
 ## Exercise 2.2: Generate the transactional UI services
 
-
-
-
 Create your OData v4 based UI services with the built-in ADT generator.   
 The generated business service will be transactional, draft-enabled, and enriched with UI semantics for the generation of the Fiori elements app.
 
@@ -86,10 +83,9 @@ The generated business service will be transactional, draft-enabled, and enriche
   <details>
   <summary>Click to expand!</summary>
 
-   1. Right-click your database table ![table](../../images/adt_tabl.png)**`zaonlineshop_###`**  and select **Generate ABAP Repository Objects** from the context menu.        
+   1. Right-click your database table ![table](../../images/adt_tabl.png)**`ZONLINESHOP_###`**  and select **Generate ABAP Repository Objects** from the context menu.        
    
    2. Maintain the required information  (`###` is your group ID) and click **Next >**:
-        - Description: **`Onlineshop App ###`**
         - Generator: **`ABAP RESTful Application Programming Model: UI Service`**
         
    3. Maintain the required information on the **Configure Generator** dialog to provide the name of your data model and generate them.         
