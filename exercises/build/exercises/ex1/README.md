@@ -21,6 +21,7 @@ To create such Actions we need to prepare 2 things first:
 4. Fill in the following:
 
     |  Name   | Onlineshop_XXX |
+    |  :------------- | :------------- |
     |  Type   | HTTP |
     |  Description   | Onlineshop_XXX on S4H |
     |  URL   | http://s4h:443 + the copied Onlineshop URL (e.g. /sap/opu/odata4/sap/zui_onlineshop_o4_XXX/srvd/sap/zui_onlineshop_XXX/0001/) |
