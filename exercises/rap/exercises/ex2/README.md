@@ -105,7 +105,7 @@ The generated business service will be transactional, draft-enabled, and enriche
       |:---------------------- |:------------------------ |:-------------------------------------------------------- |
       | **Business Object**    |                          |                                                          |                        
       |                        |  **Data Model**          |  Data Definition Name:   **`ZR_ONLINESHOP_###`**    |
-      |                        |                          |  Alias Name:             **`OnlineShop`**                    |   
+      |                        |                          |  Alias Name:             **`onlineshop`**                    |   
       |                        |  **Behavior**            |  Implementation Class:   **`ZBP_R_ONLINESHOP_###`**   |
       |                        |                          |  Draft Table Name:       **`ZDONLINESHOP_###`**          |
       | **Service Projection** (BO Projection)  |         |  Name:                   **`ZC_ONLINESHOP_###`**    |   
@@ -115,7 +115,7 @@ The generated business service will be transactional, draft-enabled, and enriche
       |                        |                          |  Binding Type: **`OData V4 - UI`**                       |
                        
       
-   4. Go to the **Project Explorer**, select your package ![package](../../images/adt_package.png)**`Z_ONLINESHOP__###`**, refresh it by pressing **F5**, and check all generated ABAP repository objects 
+   4. Go to the **Project Explorer**, select your package ![package](../../images/adt_package.png)**`Z_ONLINESHOP_###`**, refresh it by pressing **F5**, and check all generated ABAP repository objects 
 
  </details>
 
