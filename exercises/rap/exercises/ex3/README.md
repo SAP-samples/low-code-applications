@@ -6,7 +6,9 @@
 
 In this exercise, you will adapt the data model of the newly generated RAP business object `ZR_ONLINESHOP_###`
 
-## Exercise 3.1: Enhance the data model
+
+<!--
+## Exercise 3.0: Enhance the data model
 
 
 In this step we will use a value help `ZI_PRODUCT_VH_REUSE` that has been provided for your in this workshop in the demo system. In addition some fields that are accessible via this association (e.g. the product description) will be included in the data model.  
@@ -15,9 +17,6 @@ When working with a system provided as part of a SAP workshop this view will be 
 
 The source code of ZI_PRODUCT_VH_REUSE can be found here:   
 ![document](../../images/doc.png) [ZI_PRODUCT_VH_REUSE](sources/ZI_PRODUCT_VH_REUSE.txt) 
-
- <details>
-  <summary>Click to expand!</summary>
 
 1. Open the cds view `ZR_ONLINESHOP_###` 
 
@@ -64,7 +63,7 @@ association [1..1] to ZI_PRODUCT_VH_REUSE as _Product on $projection.OrderItemID
 
 8. Save and activate your changes
 
-
+-->
 <!--
 > **Note:**   
 > When a starter project has been generated the field `CreatedAt` has already been added to the projection view.  
@@ -74,7 +73,7 @@ association [1..1] to ZI_PRODUCT_VH_REUSE as _Product on $projection.OrderItemID
 > ![enhance_data_model](images/105_adapt_data_model.png) 
 -->
  
-## Exercise 3.2: Provide Metadata for Fiori elements UI
+## Exercise 3.1: Provide Metadata for Fiori elements UI
  
 1. Replace the complete source code of the Metadata Extension File **ZC_ONLINESHOP_###**.   
 
@@ -82,8 +81,6 @@ association [1..1] to ZI_PRODUCT_VH_REUSE as _Product on $projection.OrderItemID
 
   Replace the placeholder `###` with your group number and save and activate your changes.    
 
-  This meta data extension file includes the annotations that tell the Fiori elements UI which columns should go into the result list and which fields group a form on the object page. While most of the code was already generated automatically, we now add a couple of labels to the column headers and for the form.
- 
  
 <pre lang="ABAP">
 @Metadata.layer: #CORE
@@ -142,10 +139,11 @@ annotate view ZC_ONLINESHOP_XXX with
 }
 </pre>
 
+  This meta data extension file includes the annotations that tell the Fiori elements UI which columns should go into the result list and which fields group a form on the object page. While most of the code was already generated automatically, we now add a couple of labels to the column headers and for the form.
+
 2. Save and activate your changes
 
 
-</details>
 
 ## Exercise 3.3: Adapt the behavior definition
 
