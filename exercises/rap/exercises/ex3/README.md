@@ -161,51 +161,34 @@ For fields that are read-only and that are not read from the value help we have 
 
   ![adapt_bdef](images/195_adapt_bdef.png)  
 
-  2. Select the draft table name and press **Ctrl + 1** (Mac **Command + 1**) to show the quick fix.
-  3. Select the quick fix that offers you to regenerate the draft table 
-
-     ![adapt_bdef](images/200_adapt_bdef.png)  
-
-  4. Change the data elements of the fields `productgroup` and `producttext` to build in types `abap.char(9)` and `abap.char(40)`.   
+  1. add the following list of fields to mark them as read-only.  
        <pre lang="ABAP">
-         productgroup         : abap.char(9);
-         producttext          : abap.char(40);
+    OrderID,
        </pre>
-  5. Activate the regenerated draft table.
 
-     ![adapt_bdef](images/210_adapt_bdef.png)  
+       behind
 
-     > Hint:
-     > If you try to activate the draft table without changing the data element definition you will get the following error messages:
-     > *The use of Data Element PRODUCTDESCRIPTION is not permitted.*  
-     > *The use of Data Element PRODUCTGROUP is not permitted.*
-
-   6. Back at behavior definition `ZR_ONLINESHOP_###`, add the following list of fields to mark them as read-only.  
        <pre lang="ABAP">
-       field ( readonly )
-       OrderID,
-       OverallStatus, TotalPrice, Currency, //order
-       OrderItemPrice, ProductGroup, ProductText, BaseUnit, //product;
-       PurchaseRequisition, PurchRqnCreationDate; //purchase rqn
+{
+  field ( readonly )
+   OrderUUID,
        </pre>
-       
+
+       in order to make the Order ID a readonly field.
+
        ![adapt_bdef](images/220_adapt_bdef.png)  
 
-       > **Note:**   
-       > When a starter project has already been generated you might get the error message:  
-       > *"readonly" is specified more than once for "OrderID".*  
-       > In this case simply comment out the duplicate entry `OrderID,`   
-       >     
-       > ![adapt_bdef](images/225_adapt_bdef.png)
  
-      
+   1. Save and activate your changes   
 
-   7. Save and activate your changes
-   8. In the project explorer under `Business Services`->`Service Bindings`->`ZU_ONLINESHOP_O4_###` check the UI using the Fiori Elements preview. 
 
-      On the list, press **Create** and you should see a form like this:  
+
+   1. In the project explorer under `Business Services`->`Service Bindings`->`ZUI_ONLINESHOP_O4_###` check the UI using the Fiori Elements preview. 
+
+      On the list, press **Create** and you should see a form like this, where **Order ID** is a text not an input field:
 
        ![adapt_bdef](images/230_adapt_bdef.png)  
+
 
 
  </details>  
