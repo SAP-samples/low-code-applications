@@ -64,7 +64,9 @@ In this exercise we will download the OData metadata document to a file to later
 
     Press `return` to load the metadata document
 
-4. Right Mouse Click on the browser window and select `Save as`, save the file as `Onlineshop_###_metadata.xml` to a location of your liking on your computer
+4. Right Mouse Click on the browser window and select `View Page Source` and press `Ctrl + A` + `Ctrl + C` (`Command + A` + `Command + C` on Mac) 
+
+5. Open a text editor on your computer, paste the copied content using `Ctrl + V` (`Command + V` on Mac) and save the file as `Onlineshop_###_metadata.xml` to a location of your liking on your computer
 
 ## Exercise 1.3: Create Actions from the Onlineshop API
 
@@ -76,5 +78,12 @@ In this exercise we will download the OData metadata document to a file to later
 
     that is provided by the instructors by the workshop (note this is not the same user as for the ABAP development tools, it is a BTP user)
 
+2. Press `Create`
+
+![lobby](images/150.png)
+
+![lobby](images/160.png)
+
+3. 
 
 ## Exercise 1.4: Test Actions from the Onlineshop API
