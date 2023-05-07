@@ -106,7 +106,7 @@ In this exercise we will download the OData metadata document to a file to later
 
 ## Exercise 1.4: Test Actions from the Onlineshop API
 
-1. Sewitch `Enable CSRF` to `yes` and press `Save`
+1. Switch `Enable CSRF` to `yes` and press `Save`
 
 ![lobby](images/185.png)
 
