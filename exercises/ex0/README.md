@@ -6,7 +6,6 @@ Please make sure you have all the necessary prerequsistes listed below. If not, 
 ## Prerequisites
 
 1. Installation of the ABAP Development Tools (ADT): Go to [this tutorial](https://developers.sap.com/tutorials/abap-install-adt.html) and carry out the steps of "Install ABAP Development Tools (ADT)", you don't need to do the "Install abapGit plugin" part.
-1. [Adapt the Web Browser settings in your ADT installation](https://github.com/SAP-samples/abap-platform-rap-workshops/blob/main/requirements_rap_workshops.md#4-adapt-the-web-browser-settings-in-your-adt-installation) 
 1. Logon to the SAP Build Lobby https://lcapteched.eu10.build.cloud.sap/lobby using a browser, preferably Google Chrome
 1. Your user is provided to you by the hosts of this session
 1. Your password is also provided by the host of this session
