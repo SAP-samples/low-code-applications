@@ -295,7 +295,7 @@ CLASS lcl_OnlineShop DEFINITION INHERITING FROM cl_abap_behavior_handler.
  ![define_determinations](images/313_define_determinations.png) 
   
   
-  The order id gets calculated and you should see it in the result:
+    The order id gets calculated and you should see it in the result:
 
  ![define_determinations](images/314_define_determinations.png) 
 
