@@ -153,9 +153,6 @@ Since we have changed the field list of the projection view `ZC_ONLINESHOP_###` 
 In the behavior definition we will also set several fields as readonly.
 
 For fields that are read-only and that are not read from the value help we have to create determinations. 
-
- <details>
-  <summary>Click to expand!</summary>
   
   1. Open the behavior definition `ZR_ONLINESHOP_###`.  
 
@@ -166,7 +163,7 @@ For fields that are read-only and that are not read from the value help we have 
     OrderID,
   </pre>
 
-    behind
+  behind
 
   <pre lang="ABAP">
 {
@@ -174,24 +171,18 @@ For fields that are read-only and that are not read from the value help we have 
    OrderUUID,
   </pre>
 
-       in order to make the Order ID a readonly field.
+  in order to make the Order ID a readonly field.
 
-       ![adapt_bdef](images/220_adapt_bdef.png)  
-
+  ![adapt_bdef](images/220_adapt_bdef.png)  
  
-   1. Save and activate your changes   
+  3. Save and activate your changes   
 
+  4. In the project explorer under `Business Services`->`Service Bindings`->`ZUI_ONLINESHOP_O4_###` check the UI using the Fiori Elements preview. 
 
+  On the list, press **Create** and you should see a form like this, where **Order ID** is a text not an input field:
 
-   1. In the project explorer under `Business Services`->`Service Bindings`->`ZUI_ONLINESHOP_O4_###` check the UI using the Fiori Elements preview. 
-
-      On the list, press **Create** and you should see a form like this, where **Order ID** is a text not an input field:
-
-       ![adapt_bdef](images/230_adapt_bdef.png)  
-
-
-
- </details>  
+  ![adapt_bdef](images/230_adapt_bdef.png)  
+ 
 
 ## Exercise 3.4: Define constants for lhc_onlineshop
 
