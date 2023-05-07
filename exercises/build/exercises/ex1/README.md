@@ -12,7 +12,7 @@ To create such Actions we need to prepare 2 things first:
 
 We will now create the destination in a BTP subaccount to our Onlineshop API in the S/4 HANA system from the previous chapter. The destination will ensure secure connectivity.
 
-1. In your ABAP Development Tools under **Business Services** -> **Service Bindings** -> **ZUI_ONLINESHOP_O4_XXX** copy the **Service URL**, it should be `/sap/opu/odata4/sap/zui_onlineshop_o4_XXX/srvd/sap/zui_onlineshop_XXX/0001/`
+1. In your ABAP Development Tools under **Business Services** -> **Service Bindings** -> **ZUI_ONLINESHOP_O4_###** copy the **Service URL**, it should be `/sap/opu/odata4/sap/zui_onlineshop_o4_###/srvd/sap/zui_onlineshop_###/0001/`
 
 ![serviceurl](images/105.png)
 
@@ -24,15 +24,15 @@ We will now create the destination in a BTP subaccount to our Onlineshop API in 
 
     |  Porperty   | Value |
     |  :------------- | :------------- |
-    |  Name   | Onlineshop_XXX |
+    |  Name   | Onlineshop_### |
     |  Type   | HTTP |
-    |  Description   | Onlineshop_XXX on S4H |
-    |  URL   | http://s4h:443 + the copied Onlineshop URL (e.g. /sap/opu/odata4/sap/zui_onlineshop_o4_XXX/srvd/sap/zui_onlineshop_XXX/0001/) |
+    |  Description   | Onlineshop_### on S4H |
+    |  URL   | http://s4h:443 + the copied Onlineshop URL (e.g. /sap/opu/odata4/sap/zui_onlineshop_o4_###/srvd/sap/zui_onlineshop_###/0001/) |
     |  Proxy Type   | OnPremise |
     |  Authentication   | BasicAuthentication |
     |  Location ID   | CALCC |
     |  User   | lowcode### |
-    |  Password   | xxxxxxxx |
+    |  Password   | ######xx |
 
 5. Then press the `New Property` button and add 
 `sap.applicationdevelopment.actions.enabled` with value `true`
@@ -44,13 +44,13 @@ We will now create the destination in a BTP subaccount to our Onlineshop API in 
 
 7. Press `Save`
 
-8. Press `Check Connection`: You should get a pop up that says `Connection to "Onlineshop_XXX" successful`
+8. Press `Check Connection`: You should get a pop up that says `Connection to "Onlineshop_###" successful`
 
 ## Exercise 1.2: Download the OData metadata document of the Onlineshop API
 
 In this exercise we will download the OData metadata document to a file to later use it for a definiton of an Action for SAP Build.
 
-1. In your ABAP Development Tools you should still have the service bidning ( under **Business Services** -> **Service Bindings** -> **ZUI_ONLINESHOP_O4_XXX** ) open , this time, click on **Service URL**:
+1. In your ABAP Development Tools you should still have the service bidning ( under **Business Services** -> **Service Bindings** -> **ZUI_ONLINESHOP_O4_###** ) open , this time, click on **Service URL**:
 
 ![serviceurl](images/110.png)
 
@@ -61,11 +61,20 @@ In this exercise we will download the OData metadata document to a file to later
     Delete the `?sap-client=100` at the end and instead add `$metadata`, so the URL looks like this:
 
         https://YY.YYY.YYY.YY:44301/sap/opu/odata4/sap/zui_onlineshop_o4_300/srvd/sap/zui_onlineshop_300/0001/$metadata
-        
+
     Press `return` to load the metadata document
 
-4. Right Mouse Click on the browser window and select `Save as`, save the file as `Onlineshop_XXX_metadata.xml` to a location of your liking on your computer
+4. Right Mouse Click on the browser window and select `Save as`, save the file as `Onlineshop_###_metadata.xml` to a location of your liking on your computer
 
 ## Exercise 1.3: Create Actions from the Onlineshop API
+
+1. Open the [lobby](https://lcapteched.eu10.build.cloud.sap/lobby) in the browser with
+
+    User: lowcodeuser+0###@gmail.com
+    
+    PW: XXXXXXX
+
+    that is provided by the instructors by the workshop (note this is not the same user as for the ABAP development tools, it is a BTP user)
+
 
 ## Exercise 1.4: Test Actions from the Onlineshop API
