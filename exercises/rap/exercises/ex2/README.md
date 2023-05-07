@@ -7,12 +7,9 @@
 In this exercise, you will use the package `Z_ONLINESHOP_###`that you have created earlier. 
 Here you will create a database table where you will define all important fields for the OnlineShop application.  
 
-This RAP BO represents an online shop, where you can order laptops or other articles you need as an employee. After an article such as a laptop is ordered, a purchase requisition can be created by pressing a button in your application which will trigger an action in your RAP BO.  
+This RAP BO represents an online shop, where you can order laptops or other articles you need as an employee. <!--After an article such as a laptop is ordered, a purchase requisition can be created by pressing a button in your application which will trigger an action in your RAP BO.-->  
 
-(TODO: Check this sentence with respect to the Build exercise:)
-This could also simulate an additional approval step that can only be performed if the application is used by a manager. 
-
-We will start our implementation by building a simple managed RAP business object and we will add the business logic to call the released RAP API in SAP S/4HANA in the second exercise of this workshop.
+We will start our implementation by building a simple managed RAP business object and we will add the business logic to call the released RAP API in SAP S/4HANA afterwards.
 
 You will use an ADT wizard to generate all the needed development RAP artefacts of your UI service. This includes the data model, projection view, service definition and service binding. Afterwards you will check your _OnlineShop_ application with the SAP Fiori elements preview. 
 
@@ -23,10 +20,8 @@ You will use an ADT wizard to generate all the needed development RAP artefacts 
 
 ## Exercise 2.1: Create database table
 
-
-
 Create a database table![table](../../images/adt_tabl.png) to store the _OnlineShop_ data.   
-A OnlineShop entity defines general data, such as the item name or or the number of items, overall status of the order, and the total price of the order. Once the order is checked out the number of the purchase requisition that will be created by using our released API will be stored as well.   
+A OnlineShop entity defines general data, such as the product name or or the quantity that is ordered. Once the order is checked out the number of the purchase requisition that will be created by using our released API will be stored as well.   
 
 > Hint: 
 > The tasks are also desribed in the following tutorial (step 2). Just replace the names with those that are mentioned in this how to guide.  
@@ -36,12 +31,12 @@ A OnlineShop entity defines general data, such as the item name or or the number
  <details>
   <summary>Click to expand!</summary>
 
-   1. Right-click on your ABAP package **`z_online_shop_###`** and select **New** > **Other ABAP Repository Object** from the context menu.
+   1. Right-click on your ABAP package **`Z_ONLINESHOP_###`** and select **New** > **Other ABAP Repository Object** from the context menu.
          
    2. Search for **database table**, select it, and click **Next >**.
    
    3. Maintain the required information (`###` is your group ID) and click **Next >**.
-   <!--   - Name: **`zaonlineshop_###`**  -->
+      - Name: **`ZONLINESHOP_###`**  
       - Description: _**`Persistence for online shop`**_                  
 
    4. Select a transport request, and click **Finish** to create the database table.
