@@ -84,6 +84,20 @@ In this exercise we will download the OData metadata document to a file to later
 
 ![lobby](images/160.png)
 
+![lobby](images/165.png)
+
+![lobby](images/170.png)
+
+![lobby](images/175.png)
+
+![lobby](images/180.png)
+
+![lobby](images/185.png)
+
+![lobby](images/190.png)
+
+![lobby](images/195.png)
+
 3. 
 
 ## Exercise 1.4: Test Actions from the Onlineshop API
