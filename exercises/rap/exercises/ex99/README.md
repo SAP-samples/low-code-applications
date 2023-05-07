@@ -2,8 +2,6 @@
 
 This document describes how to create a **ABAP Project** to connect to an SAP S/4HANA on premise or private cloud system.  
 
-<details>
- <summary>Click to expand!</summary>
 
 1. Click on  **File > New > New ABAP Project**
 
@@ -53,7 +51,5 @@ This document describes how to create a **ABAP Project** to connect to an SAP S/
    
    ![add_to_favorites](images/99_110_add_zlocal_to_favorites.png) 
    
-
-</details>
 
 Continue to - [Exercise 1: Create an ABAP class with a released RAP Busindess Object](../ex1/README.md) 
