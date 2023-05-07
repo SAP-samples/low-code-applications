@@ -70,9 +70,9 @@ In this exercise we will download the OData metadata document to a file to later
 
 1. Open the [lobby](https://lcapteched.eu10.build.cloud.sap/lobby) in the browser with
 
-    User: lowcodeuser+0###@gmail.com
+        User: lowcodeuser+0###@gmail.com
     
-    PW: XXXXXXX
+        PW: XXXXXXX
 
     that is provided by the instructors by the workshop (note this is not the same user as for the ABAP development tools, it is a BTP user)
 
