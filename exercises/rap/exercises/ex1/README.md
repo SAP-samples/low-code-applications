@@ -31,8 +31,7 @@ Execrises 1.1 - 1.3 are essential for the exercise, the following exercises 1.4 
 > In this case you can continue with [Excercise 1.3](#exercise-13-create-a-class-to-test-abap-cloud-governance).  
 -->    
  
- <details>
-  <summary>Click to expand!</summary>
+
 
   <!--
 
@@ -78,7 +77,7 @@ Execrises 1.1 - 1.3 are essential for the exercise, the following exercises 1.4 
 
       ![package](images/280_create_package.png).
 
-</details>
+
 
 <!--
 ## Exercise 1.2: Create a new ABAP class
