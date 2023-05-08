@@ -2,15 +2,15 @@
 
 From this exercise on, we will switch to SAP's Business Technology Platform (BTP) on which SAP's solution for citizen developers, SAP Build run.
 
-In this exercise we will create Actions in SAP Build that accesses the Onlineshop API on S/4 HANA from the previous chpater. There will be 2 actions, one to read all the onlineshop entries and another one that creates a new onlineshop entry. 
+In this exercise we will create Actions in SAP Build that accesses the Onlineshop API on S/4HANA from the previous chpater. There will be 2 actions, one to read all the onlineshop entries and another one that creates a new onlineshop entry. 
 
 To create such Actions we need to prepare 2 things first:
-- create a destination in BTP to create the secure connectivity from a BTP subaccount to the Onlineshop API on S/4 HANA from the previous chapters
+- create a destination in BTP to create the secure connectivity from a BTP subaccount to the Onlineshop API on S/4HANA from the previous chapters
 - download the OData metadata document of the Onlineshop API from the previous chapter
 
 ## Exercise 1.1: Create a Destination in a BTP subaccount to access the Onlineshop API
 
-We will now create the destination in a BTP subaccount to our Onlineshop API in the S/4 HANA system from the previous chapter. The destination will ensure secure connectivity.
+We will now create the destination in a BTP subaccount to our Onlineshop API in the S/4HANA system from the previous chapter. The destination will ensure secure connectivity.
 
 1. In your ABAP Development Tools under **Business Services** -> **Service Bindings** -> **ZUI_ONLINESHOP_O4_###** copy the **Service URL**, it should be `/sap/opu/odata4/sap/zui_onlineshop_o4_###/srvd/sap/zui_onlineshop_###/0001/`
 
