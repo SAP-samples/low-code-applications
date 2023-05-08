@@ -27,7 +27,7 @@ Go to [Getting Started - Preparation](exercises/ex0/README.md) to find out the i
 
 - [Getting Started - Preparation](exercises/ex0/README.md)
 - [Part 1 - ABAP ](exercises/rap/README.md)
-- [Part 2 - SAP Build ](exercises/build/spa-academy-salesorder.md)
+- [Part 2 - SAP Build ](exercises/build/exercises/ex1/README.md)
 
 Start the exercises [here](exercises/rap/exercises/ex1/README.md).
  
