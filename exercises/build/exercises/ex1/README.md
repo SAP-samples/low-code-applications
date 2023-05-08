@@ -118,5 +118,22 @@ In this exercise we will download the OData metadata document to a file to later
 
 ![lobby](images/195.png)
 
+## Exercise 1.5: Release the Action and Publish to Library
 
+In order to use the action inside SAP Build products like Process Automation, it has to be released first. Releasing means that the current state of the action is stored in an imutable way. Once the project is released, it can be published to library, which means that it is available insde SAP Build products like Process Automation, it can be discovered and used there.
 
+1. In the upper right corner of your action press `Release`
+
+![lobby](images/200.png)
+
+2. 
+
+![lobby](images/205.png)
+
+3. After you have released, in the same upper right corner the button has changed to `release to library`, press it 
+
+![lobby](images/210.png)
+
+4. 
+
+![lobby](images/215.png)
