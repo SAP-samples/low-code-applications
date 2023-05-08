@@ -126,14 +126,20 @@ In order to use the action inside SAP Build products like Process Automation, it
 
 ![lobby](images/200.png)
 
-2. 
+2. Optionally add some release notes and press `Release` on the dialog
 
 ![lobby](images/205.png)
 
-3. After you have released, in the same upper right corner the button has changed to `release to library`, press it 
+3. After you released the action, in the same upper right corner the button has changed to `release to library`, press it 
 
 ![lobby](images/210.png)
 
-4. 
+4. Confirm that you want to publish, pressing the button
 
 ![lobby](images/215.png)
+
+## Summary  
+ 
+You have created 2 actions based on the Onlineshop Service, you built on ABAP Cloud in the previous exercises. You have created a BTP destination to connect to the Online Service and you have tested the actions. You have released the action and published it to a library, so you can use it in the following chapter in a new SAP Build Process Automation
+ 
+You can continue with the next exercise - **[# Exercise 2: Create a Process in SAP Build Process Automation based on the Onlineshop Service](../ex2/README.md)**
