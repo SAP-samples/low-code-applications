@@ -256,30 +256,31 @@ CLASS lcl_OnlineShop DEFINITION INHERITING FROM cl_abap_behavior_handler.
   
   METHOD createOrderID.
 
-* read all the entities of the onlineshop
-    READ ENTITIES OF zr_onlineshop_XXX IN LOCAL MODE
+    "read all the changed entities
+    READ ENTITIES OF zr_onlineshop_300 IN LOCAL MODE
       ENTITY onlineshop
              ALL FIELDS
-            WITH CORRESPONDING #( keys )
+             WITH CORRESPONDING #( keys )
       RESULT DATA(onlineshops)
       FAILED DATA(read_failed).
 
-* get rid of all the entities that already have an order id
+    "get rid of all the entities that already have an order id
     DELETE onlineshops WHERE OrderID IS NOT INITIAL.
-    CHECK onlineshops IS NOT INITIAL.
 
-* determine the currently highest order id
-    SELECT MAX( order_id ) FROM zonlineshop_XXX INTO @DATA(max_order_id). "active table
+    IF onlineshops IS NOT INITIAL.
+      "determine the currently highest order id
+      SELECT MAX( order_id ) FROM zonlineshop_300 INTO @DATA(max_order_id). "active table
 
-* and for the one without an order id add one higher
-    MODIFY ENTITIES OF zr_onlineshop_XXX IN LOCAL MODE
-     ENTITY OnlineShop
-     UPDATE FIELDS ( OrderID      )
-     WITH VALUE #( FOR order IN onlineshops INDEX INTO i (
-                        %tky          = order-%tky
-                        OrderID       = max_order_id + i
-                     ) )
-                     FAILED DATA(failed).
+      "and for the one without an order id add one higher
+      MODIFY ENTITIES OF zr_onlineshop_300 IN LOCAL MODE
+        ENTITY OnlineShop
+        UPDATE FIELDS ( OrderID )
+        WITH VALUE #( FOR order IN onlineshops INDEX INTO i (
+                          %tky    = order-%tky
+                          OrderID = max_order_id + i
+                    ) )
+        FAILED DATA(failed).
+    ENDIF.
 
   ENDMETHOD.
  
