@@ -523,6 +523,57 @@ Add it below the `public section.` line, so it looks like this:
   ENDMETHOD.
 </pre>
 
+## Exercise 3.5: Add unmanaged save
+
+We have to add the use of an unmanaged save to the behavior of our RAP business object since the Purchase Requisition API that we plan to call uses late numbering.
+
+1. Navigate to the behavior definition ZR_ONLINESHOP_### either in the Project Explorer or by opening it as a development object using the short cut Ctrl+Shift+A.
+
+2. Open the behavior definition and add the statement 
+
+<pre lang="ABAP">
+with unmanaged save 
+</pre>
+
+right after the 
+
+<pre lang="ABAP">
+authorization master ( global ) 
+<pre>
+
+statement.
+
+In addition uncomment the statement that specifies the persistent table of our RAP BO //persistent table zaonlineshop_### since it is not possible to use both statements in the same behavior definition. 
+
+It should then look like this:
+
+<pre lang="ABAP">
+managed implementation in class ZBP_R_ONLINESHOP_### unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZR_ONLINESHOP_### alias onlineshop
+//persistent table zonlineshop_###
+draft table ZDONLINESHOP_###
+etag master LocalLastChangedAt
+lock master total etag LastChangedAt
+authorization master( global )
+with unmanaged save
+<pre>
+
+3. Activate your changes.
+
+4. After having activated your changes select the key word unmanaged and select Ctrl + 1 (Command +1 on Mac) to start the code assistant.
+
+This will add a local saver class lsc_zr_onlineshop_### to the local classes of your behavior implementation class. The method save_modified is added to the DEFINITION and the IMPLEMENTATION section of this local class.
+
+<pre lang="ABAP">
+CLASS lsc_zr_onlineshop_### DEFINITION INHERITING FROM cl_abap_behavior_saver.
+  PROTECTED SECTION.
+  METHODS save_modified REDEFINITION.
+ENDCLASS.
+<pre>
+
 ## Exercise 3.X: Check your preview application
 
  1. Open the service binding `ZUI_ONLINESHOP_O4_###` to test your implementation by using the ADT Fiori preview. Alternatively, if you keep the browser window open with the Fiori preview, you can just refresh the browser and it will automatically reflect the new code.
