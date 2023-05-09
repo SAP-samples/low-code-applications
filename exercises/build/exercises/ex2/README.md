@@ -213,4 +213,4 @@ You should see your new entry!
 
 This concludes the workshop!
 
-You have successfully built a new Onlineshop API on an S/4HANA system using ABAP Cloud capabilities. You have then create a new process using SAP Build Process Automation that makes use of this new API. The process contains the entry of an onlineshop request, an approval step as well as calling the API to create a new Onlineshop entry
+You have successfully built a new Onlineshop API on an S/4HANA system using ABAP Cloud capabilities. You have then create a new process using SAP Build Process Automation that makes use of this new API. The process contains the entry of an onlineshop request, an approval step as well as calling the API to create a new Onlineshop entry.
