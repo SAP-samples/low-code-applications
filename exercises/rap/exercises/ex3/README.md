@@ -258,7 +258,7 @@ CLASS lcl_OnlineShop DEFINITION INHERITING FROM cl_abap_behavior_handler.
   1. Add the following determinations to your behavior definition **ZR_ONLINESHOP_###** (in the project explorer under **Core Data Services**** ->**Behavior Definitions**)
 
   <pre lang="ABAP">
-  determination createOrderID on save { create; }
+  determination CalculateOrderID on modify { create; }
   </pre>
 
 
@@ -269,7 +269,7 @@ CLASS lcl_OnlineShop DEFINITION INHERITING FROM cl_abap_behavior_handler.
 
   ![define_determinations](images/310_define_determinations.png) 
 
-  3. Then a new tab is openend with the generated handler taht looks like this:
+  3. Then a new tab is openend with the generated handler that looks like this:
 
    ![define_determinations](images/312_define_determinations.png) 
 
@@ -278,39 +278,52 @@ CLASS lcl_OnlineShop DEFINITION INHERITING FROM cl_abap_behavior_handler.
   
    <pre lang="ABAP">
   
-  METHOD createOrderID.
+  METHOD CalculateOrderID.
 
-    "read all the changed entities
-    READ ENTITIES OF zr_onlineshop_300 IN LOCAL MODE
-      ENTITY onlineshop
-             ALL FIELDS
-             WITH CORRESPONDING #( keys )
-      RESULT DATA(onlineshops)
-      FAILED DATA(read_failed).
+    "read transfered instances
+    READ ENTITIES OF ZR_OnlineShop_### IN LOCAL MODE
+      ENTITY OnlineShop
+      ALL FIELDS
+      WITH CORRESPONDING #( keys )
+      RESULT DATA(OnlineOrders).
 
-    "get rid of all the entities that already have an order id
-    DELETE onlineshops WHERE OrderID IS NOT INITIAL.
+    IF onlineorders[ 1 ]-OrderID IS INITIAL.
 
-    IF onlineshops IS NOT INITIAL.
-      "determine the currently highest order id
-      SELECT MAX( order_id ) FROM zonlineshop_300 INTO @DATA(max_order_id). "active table
+      "delete entries with assigned order ID
+      DELETE OnlineOrders WHERE OrderID IS NOT INITIAL.
+      IF OnlineOrders IS NOT INITIAL.
+        "get max order ID from the relevant active and draft table entries
+        SELECT FROM ZOnlineShop_### FIELDS MAX( order_id ) INTO @DATA(max_order_id). "active table
+        SELECT FROM ZdOnlineShop_### FIELDS MAX( orderid ) INTO @DATA(max_order_id_draft). "draft table
 
-      "and for the one without an order id add one higher
-      MODIFY ENTITIES OF zr_onlineshop_300 IN LOCAL MODE
-        ENTITY OnlineShop
-        UPDATE FIELDS ( OrderID )
-        WITH VALUE #( FOR order IN onlineshops INDEX INTO i (
-                          %tky    = order-%tky
-                          OrderID = max_order_id + i
-                    ) )
-        FAILED DATA(failed).
+        IF max_order_id_draft > max_order_id.
+          max_order_id = max_order_id_draft.
+        ENDIF.
+
+        DATA(OverallStatus) = |{ sy-uname } - is placing order request|.
+        MODIFY ENTITIES OF ZR_OnlineShop_### IN LOCAL MODE
+          ENTITY OnlineShop
+          UPDATE FIELDS ( OrderID  OverallStatus )
+          WITH VALUE #( FOR order IN OnlineOrders INDEX INTO i (
+                             %tky          = order-%tky
+                             OrderID       = max_order_id + i
+                             OverallStatus = overallstatus
+                      ) )
+                      FAILED DATA(failed).
+      ENDIF.
+
+    ELSEIF onlineorders[ 1 ]-product  IS NOT INITIAL.
+
+      MODIFY ENTITIES OF zr_onlineshop_### IN LOCAL MODE
+      ENTITY Onlineshop EXECUTE createPurchaseRequisition FROM CORRESPONDING #( keys ).
+
     ENDIF.
 
   ENDMETHOD.
  
   </pre>
 
-  The code checks for all onlineshop entries that are on the data base, including the one that was just created before our new `createOrderID` method is called. It looks at all the orders whether they already have an `OrderID`, it finds the newest one. Then it looks at the currently biggest order number that was so far assigned. It adds 1 and assigns this new number to our new onlineshop record and modifies the data base using EML (Entity Manipulation Language)
+  The code checks for all onlineshop entries that are on the data base, including the one that was just created before our new `CalculateOrderID` method is called. It looks at all the orders whether they already have an `OrderID`, it finds the newest one. Then it looks at the currently biggest order number that was so far assigned. It adds 1 and assigns this new number to our new onlineshop record and modifies the data base using EML (Entity Manipulation Language)
  
  5. Save and activate your changes.
  6. Open the service binding `ZUI_ONLINESHOP_O4_###` to test your implementation by using the ADT Fiori preview. Alternatively, if you keep the browser window open with the Fiori preview, you can just refresh the browser and it will automatically reflect the new code.
