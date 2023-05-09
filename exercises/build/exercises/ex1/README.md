@@ -138,8 +138,18 @@ In order to use the action inside SAP Build products like Process Automation, it
 
 ![lobby](images/215.png)
 
+## Excercise 1.6: Add the Destination to the SAP Build Settings
+
+You have set up a destination in the BTP Cockpit to test our new actions and in the last step made the actions available for usage in SAP Build Process Automation. You now also need to register the destination with SAP Build to be used in a real environment of a process, not just for tests of actions.
+
+1. In the SAP Build choose `Settings` and then `Destinations` in the left pane.
+
+2. Press `New Destination` and search for your destination `Onlineshop_###` where of course `###` is your group number. Select the destination and press `Add`.
+
+![lobby](images/90.png)
+
 ## Summary  
  
-You have created 2 actions based on the Onlineshop Service, you built on ABAP Cloud in the previous exercises. You have created a BTP destination to connect to the Online Service and you have tested the actions. You have released the action and published it to a library, so you can use it in the following chapter in a new SAP Build Process Automation
+You have created 2 actions based on the Onlineshop Service, you built on ABAP Cloud in the previous exercises. You have created a BTP destination to connect to the Online Service and you have tested the actions. You have released the action and published it to a library, so you can use it in the following chapter in a new SAP Build Process Automation. You have also registered the destination for usage in SAP Build. 
  
 You can continue with the next exercise - **[Exercise 2: Create a Process in SAP Build Process Automation based on the Onlineshop Service](../ex2/README.md)**
