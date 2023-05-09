@@ -102,34 +102,34 @@ annotate view ZC_ONLINESHOP_XXX with
   orderuuid;
 
   @UI.lineItem: [ {
-    position: 10 ,
+    position: 30 ,
     label: 'Order ID' ,
     importance: #MEDIUM
   } ]
   @UI.identification: [ {
     label: 'Order ID',
-    position: 10
+    position: 30
   } ]
   orderid;
 
   @UI.lineItem: [ {
-    position: 20 ,
+    position: 10 ,
     label: 'Product' ,
     importance: #MEDIUM
   } ]
   @UI.identification: [ {
-    position: 20,
+    position: 10,
     label: 'Product'
   } ]
   product;
 
   @UI.lineItem: [ {
-    position: 30 ,
+    position: 20 ,
     label: 'Quantity' ,
     importance: #MEDIUM
   } ]
   @UI.identification: [ {
-    position: 30 ,
+    position: 20 ,
     label: 'Quantity'
   } ]
   quantity;
