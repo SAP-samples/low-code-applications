@@ -12,7 +12,7 @@ To create such Actions we need to prepare 2 things first:
 
 We will now create the destination in a BTP subaccount to our Onlineshop API in the S/4HANA system from the previous chapter. The destination will ensure secure connectivity.
 
-1. In your ABAP Development Tools under **Business Services** -> **Service Bindings** -> **ZUI_ONLINESHOP_O4_###** copy the **Service URL**, it should be `/sap/opu/odata4/sap/zui_onlineshop_o4_###/srvd/sap/zui_onlineshop_###/0001/`
+1. In your ABAP Development Tools under **Business Services** -> **Service Bindings** -> **Z_ONLINESHOP_###** copy the **Service URL**, it should be `/sap/opu/odata4/sap/z_onlineshop_###/srvd_a2x/sap/z_onlineshop_###/0001/` (Make sure you don't use the service binding for the UI but the Web API!)
 
 ![serviceurl](images/105.png)
 
@@ -27,7 +27,7 @@ We will now create the destination in a BTP subaccount to our Onlineshop API in 
     |  Name   | Onlineshop_### |
     |  Type   | HTTP |
     |  Description   | Onlineshop_### on S4H |
-    |  URL   | http://s4h:443 + the copied Onlineshop URL (e.g. /sap/opu/odata4/sap/zui_onlineshop_o4_###/srvd/sap/zui_onlineshop_###/0001/) |
+    |  URL   | http://s4h:443 + the copied Onlineshop URL (e.g. /sap/opu/odata4/sap/z_onlineshop_###/srvd_a2x/sap/z_onlineshop_###/0001/) |
     |  Proxy Type   | OnPremise |
     |  Authentication   | BasicAuthentication |
     |  Location ID   | CALCC |
@@ -50,17 +50,17 @@ We will now create the destination in a BTP subaccount to our Onlineshop API in 
 
 In this exercise we will download the OData metadata document to a file to later use it for a definiton of an Action for SAP Build.
 
-1. In your ABAP Development Tools you should still have the service bidning ( under **Business Services** -> **Service Bindings** -> **ZUI_ONLINESHOP_O4_###** ) open , this time, click on **Service URL**:
+1. In your ABAP Development Tools you should still have the service bidning ( under **Business Services** -> **Service Bindings** -> **Z_ONLINESHOP_###** ) open , this time, click on **Service URL**:
 
 ![serviceurl](images/110.png)
 
 2. A browser window opens. The URL will look like this: 
 
-        https://YY.YYY.YYY.YY:44301/sap/opu/odata4/sap/zui_onlineshop_o4_300/srvd/sap/zui_onlineshop_300/0001/?sap-client=100 
+        https://YY.YYY.YYY.YY:44301/sap/opu/odata4/sap/z_onlineshop_###/srvd_a2x/sap/z_onlineshop_###/0001/?sap-client=100
 
     Delete the `?sap-client=100` at the end and instead add `$metadata`, so the URL looks like this:
 
-        https://YY.YYY.YYY.YY:44301/sap/opu/odata4/sap/zui_onlineshop_o4_300/srvd/sap/zui_onlineshop_300/0001/$metadata
+        https://YY.YYY.YYY.YY:44301/sap/opu/odata4/sap/z_onlineshop_###/srvd_a2x/sap/z_onlineshop_###/0001/$metadata
 
     Press `return` to load the metadata document
 
@@ -97,8 +97,6 @@ In this exercise we will download the OData metadata document to a file to later
 6. Expand the entry `onlineshop` and select both, the `POST /onlineshop Add new entry to onlineshop` and the `Get /onlineshop Get entities from onlineshop`. Press `Add`
 
 ![lobby](images/170.png)
-
-![lobby](images/175.png)
 
 7. The 2 actions are now visible, select the `POST` one. In the right upper corner press the `Settings` button that looks like a gear wheel.
 

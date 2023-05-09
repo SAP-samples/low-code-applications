@@ -77,7 +77,7 @@ Publish
 
 In Browser:
 
-https://34.233.103.22:44301/sap/opu/odata4/sap/z_onlineshop_300/srvd_a2x/sap/zui_onlineshop_300/0001/onlineshop
+https://34.233.103.22:44301/sap/opu/odata4/sap/z_onlineshop_300/srvd_a2x/sap/z_onlineshop_300/0001/onlineshop
 
 ![new_dd](images/200.png)  
 
