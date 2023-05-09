@@ -28,6 +28,28 @@ define root view entity ZAPI_ONLINESHOP_###
 }
 </pre>
 
+3. Save and Activate your change
+
+4.
+
+![new_dd](images/120.png) 
+
+![new_dd](images/130.png) 
+
+![new_dd](images/140.png) 
+
+<pre lang="ABAP">
+projection;
+strict ( 2 );
+
+define behavior for ZAPI_ONLINESHOP_### alias onlineshop
+{
+  use create;
+  use update;
+  use delete;
+}
+</pre>
+
 
 ## Summary   
 You can continue with the next exercise - **[Build Exercise 1: Create Actions in SAP Build to access the Onlineshop API](../../../build/exercises/ex1/README.md)**
