@@ -50,6 +50,18 @@ define behavior for ZAPI_ONLINESHOP_### alias onlineshop
 }
 </pre>
 
+![new_dd](images/150.png) 
+
+![new_dd](images/160.png) 
+
+Add alias `as onlineshop`
+
+<pre lang="ABAP">
+@EndUserText.label: 'Service Defition Z_ONLINESHOP_300'
+define service Z_ONLINESHOP_300 {
+  expose ZAPI_ONLINESHOP_300 as onlineshop;
+}
+</pre>
 
 ## Summary   
 You can continue with the next exercise - **[Build Exercise 1: Create Actions in SAP Build to access the Onlineshop API](../../../build/exercises/ex1/README.md)**
