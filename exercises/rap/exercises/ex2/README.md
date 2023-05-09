@@ -27,10 +27,6 @@ A OnlineShop entity defines general data, such as the product name or or the qua
 > The tasks are also desribed in the following tutorial (step 2). Just replace the names with those that are mentioned in this how to guide.  
 > https://developers.sap.com/tutorials/abap-environment-rap100-generate-ui-service.html
 
-
- <details>
-  <summary>Click to expand!</summary>
-
    1. Right-click on your ABAP package **`Z_ONLINESHOP_###`** and select **New** > **Other ABAP Repository Object** from the context menu.
          
    2. Search for **database table**, select it, and click **Next >**.
@@ -68,8 +64,6 @@ define table zonlineshop_XXX {
        
    6. Save ![save icon](../../images/adt_save.png) and activate ![activate icon](../../images/adt_activate.png) the changes.
    
-</details>
-
 ## Exercise 2.2: Generate the transactional UI services
 
 Create your OData v4 based UI services with the built-in ADT generator.   
@@ -79,9 +73,6 @@ The generated business service will be transactional, draft-enabled, and enriche
 > The tasks are also desribed in the following tutorial (step 2). Just replace the names with those that are mentioned in this how to guide.  
 > https://developers.sap.com/tutorials/abap-environment-rap100-generate-ui-service.html
 
-
-  <details>
-  <summary>Click to expand!</summary>
 
    1. Right-click your database table ![table](../../images/adt_tabl.png)**`ZONLINESHOP_###`**  and select **Generate ABAP Repository Objects** from the context menu.        
    
@@ -117,28 +108,12 @@ The generated business service will be transactional, draft-enabled, and enriche
       
    4. Go to the **Project Explorer**, select your package ![package](../../images/adt_package.png)**`Z_ONLINESHOP_###`**, refresh it by pressing **F5**, and check all generated ABAP repository objects 
 
- </details>
 
  
 ## Exercise 2.3: Preview the OnlineShop App using Fiori elements
 
 
 In this exercise you will publish the local service endpoint of your service binding ![service binding](../../images/adt_srvb.png) and start the _Fiori elements App Preview_.
-
-<!--
-> **Note:**
-> If you are using an on premise system please continue with the next exercise.
--->
-
- <details>
-  <summary>Click to expand!</summary>
-
-<!--
-> **On premise issue**   
-> If you are working on an on premise system and try to use the **Publish** or **Publish Locally** button you will see the following error message
-> ![on prem error](images/100_error_publish_service_binding.png)
--->
-
 
    1. Open your service binding ![service binding](../../images/adt_srvb.png)**`ZUI_ONLINESHOP_O4_###`** and click **Publish**.
 
@@ -152,16 +127,8 @@ In this exercise you will publish the local service endpoint of your service bin
 
    ![Fiori elements app](images/109_publish_service_binding_on_prem.png)
 
-   <!--
-   3. Click the button on the _OnlineShop_ app **Go** to load the data.
-       
-   4. Check your result.
--->
 
       
-
-</details>
-
 <!--
 ## Exercise 2.4: Preview the Online Shop App in SAP S/4HANA on premise
 
