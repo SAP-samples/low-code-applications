@@ -576,9 +576,40 @@ CLASS lsc_zr_onlineshop_### DEFINITION INHERITING FROM cl_abap_behavior_saver.
 ENDCLASS.
 </pre>
 
+5. Implement the `save_modified()` method as follows:
 
 
-## Exercise 3.X: Check your preview application
+<pre lang="ABAP">
+  METHOD save_modified.
+
+    DATA onlineshop_db TYPE STANDARD TABLE OF zonlineshop_###.
+    DATA order_uuid    TYPE zonlineshop_###-order_uuid.
+
+    IF create-onlineshop IS NOT INITIAL.
+      onlineshop_db = CORRESPONDING #( create-onlineshop MAPPING FROM ENTITY ).
+      INSERT zonlineshop_### FROM TABLE @onlineshop_db.
+      order_uuid = onlineshop_db[ 1 ]-order_uuid.
+
+      IF zbp_r_onlineshop_###=>mapped_purchase_requisition IS NOT INITIAL AND create-onlineshop[ 1 ]-%control-product IS NOT INITIAL.
+        LOOP AT zbp_r_onlineshop_###=>mapped_purchase_requisition-purchaserequisition ASSIGNING FIELD-SYMBOL(<pr_mapped>).
+          CONVERT KEY OF i_purchaserequisitiontp FROM <pr_mapped>-%pid TO DATA(pr_key).
+          <pr_mapped>-purchaserequisition = pr_key-purchaserequisition.
+          UPDATE zonlineshop_### SET purchase_requisition = @pr_key-purchaserequisition WHERE order_uuid = @order_uuid.
+        ENDLOOP.
+      ENDIF.
+    ENDIF.
+
+    LOOP AT delete-onlineshop INTO DATA(onlineshop_delete) WHERE OrderUUID IS NOT INITIAL.
+      DELETE FROM zonlineshop_### WHERE order_uuid = @onlineshop_delete-OrderUUID.
+      DELETE FROM zdonlineshop_### WHERE orderuuid = @onlineshop_delete-OrderUUID.
+    ENDLOOP.
+
+  ENDMETHOD.
+</pre>
+
+6. Activate your changes in the Behavior Definition `ZBP_R_ONLINESHOP_300` and in its Behavior Implementation `ZBP_R_ONLINESHOP_300`
+
+## Exercise 3.6: Check your preview application
 
  1. Open the service binding `ZUI_ONLINESHOP_O4_###` to test your implementation by using the ADT Fiori preview. Alternatively, if you keep the browser window open with the Fiori preview, you can just refresh the browser and it will automatically reflect the new code.
 
@@ -587,14 +618,14 @@ ENDCLASS.
  ![define_determinations](images/313_define_determinations.png) 
   
   
-  The order id gets calculated and you should see it in the result:
+  The order id gets calculated and a new purchase requisition gets created in S/4HANA and you should see it in the result:
 
  ![define_determinations](images/314_define_determinations.png) 
 
 
  ## Summary  
  
- You have implemented an adjustment to the Fiori elements UI and a  determination to calculate a new order ID.   
+ You have implemented an adjustment to the Fiori elements UI and a determination to calculate a new order ID and to create a purchase requisiton in S/4HANA.   
  
  you can continue with the next exercise - **[Build Exercise 1: Create Actions in SAP Build to access the Onlineshop API](../../../build/exercises/ex1/README.md)**
 
