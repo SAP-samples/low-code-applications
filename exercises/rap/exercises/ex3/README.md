@@ -133,7 +133,29 @@ annotate view ZC_ONLINESHOP_XXX with
     label: 'Quantity'
   } ]
   quantity;
-
+  
+  @UI.lineItem: [ {
+    position: 40 , 
+    label: 'PurchaseRequisition',
+    importance: #MEDIUM
+  } ]
+  @UI.identification: [ {
+    label: 'PurchaseRequisition',
+    position: 40 
+  } ]
+  purchaserequisition;
+  
+  @UI.lineItem: [ {
+    position: 50 , 
+    label: 'Overall Status',
+    importance: #MEDIUM
+  } ]
+  @UI.identification: [ {
+    label: 'Overall Status',
+    position: 50 
+  } ]
+  overallstatus;
+  
   @UI.hidden: true
   locallastchangedat;
 }
