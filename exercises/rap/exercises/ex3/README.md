@@ -326,9 +326,23 @@ CLASS lcl_OnlineShop DEFINITION INHERITING FROM cl_abap_behavior_handler.
   The code checks for all onlineshop entries that are on the data base, including the one that was just created before our new `CalculateOrderID` method is called. It looks at all the orders whether they already have an `OrderID`, it finds the newest one. Then it looks at the currently biggest order number that was so far assigned. It adds 1 and assigns this new number to our new onlineshop record and modifies the data base using EML (Entity Manipulation Language)
  
  5. Save and activate your changes.
- 6. Open the service binding `ZUI_ONLINESHOP_O4_###` to test your implementation by using the ADT Fiori preview. Alternatively, if you keep the browser window open with the Fiori preview, you can just refresh the browser and it will automatically reflect the new code.
 
- 7. On the list, press `Create` and then on the object page enter a new onlineshop entry using for example a product `AS01` and a quantity `1` and then press the `Create` button in lower right corner
+
+## Exercise 3.4: Add an additonal determination to create a Purchase Requisiton
+
+1. Add the following determinations to your behavior definition **ZR_ONLINESHOP_###** (in the project explorer under **Core Data Services**** ->**Behavior Definitions**) just behind the line for the calculation of the new order id, that you inserted before.
+
+   <pre lang="ABAP">
+  internal action CreatePurchaseRequisition result [1] $self;
+   </pre>
+
+   ![define_determinations](images/400_define_determinations.png) 
+
+
+
+ 100. Open the service binding `ZUI_ONLINESHOP_O4_###` to test your implementation by using the ADT Fiori preview. Alternatively, if you keep the browser window open with the Fiori preview, you can just refresh the browser and it will automatically reflect the new code.
+
+ 101. On the list, press `Create` and then on the object page enter a new onlineshop entry using for example a product `AS01` and a quantity `1` and then press the `Create` button in lower right corner
   
  ![define_determinations](images/313_define_determinations.png) 
   
@@ -337,199 +351,6 @@ CLASS lcl_OnlineShop DEFINITION INHERITING FROM cl_abap_behavior_handler.
 
  ![define_determinations](images/314_define_determinations.png) 
 
- 
-
-<!--
-## Exercise 3.6: Define validations
-
-
-Finally we have to implement validations to make sure that the data that is sent to the API is valid.  
-
-In addition there will be a check that make sure that not too many items can be ordered
-
- <details>
-  <summary>Click to expand!</summary>
-
-  1. Add the following code snippet into your behavior definition, so that the following three validations will be added:  
-
-  <pre lang="ABAP">
-    validation checkOrderedItem     on save { create; field OrderItemID; }
-    validation checkOrderedQuantity on save { create; field OrderItemQuantity; }
-    validation checkDeliveryDate    on save { create; field DeliveryDate; }
-  </pre>
-
-  2. Use the quick fix **Ctrl+1** to generate the appropriate methods in the behavior definition class.
-
-  ![define_validations](images/400_define_validations.png)  
-
-
-  2. Validation checkOrderedItem
-
-  <pre lang="ABAP">
-  
-    METHOD checkOrderedItem.
-    "read relevant order instance data
-    READ ENTITIES OF ZR_OnlineShop_### IN LOCAL MODE
-    ENTITY OnlineShop
-     FIELDS ( OrderID OrderItemID )
-     WITH CORRESPONDING #( keys )
-    RESULT DATA(OnlineShops).
-
-    DATA products TYPE SORTED TABLE OF zi_product_vh_reuse WITH UNIQUE KEY Product.
-
-    "optimization of DB select: extract distinct non-initial product IDs
-    products = CORRESPONDING #( OnlineShops DISCARDING DUPLICATES MAPPING Product = OrderItemID EXCEPT * ).
-    DELETE products WHERE Product IS INITIAL.
-
-    IF products IS NOT INITIAL.
-      "check if product ID exists
-      SELECT FROM zi_product_vh_reuse FIELDS product
-                                FOR ALL ENTRIES IN @OnlineShops
-                                WHERE product = @OnlineShops-OrderItemID
-        INTO TABLE @DATA(valid_ordereditem).
-    ENDIF.
-
-    "raise msg for non existing and initial order id
-    LOOP AT OnlineShops INTO DATA(OnlineShop).
-      APPEND VALUE #(  %tky                 = OnlineShop-%tky
-                       %state_area          = 'VALIDATE_PRODUCTID'
-                     ) TO reported-onlineshop.
-
-      IF OnlineShop-OrderItemID IS  INITIAL.
-        APPEND VALUE #( %tky         = OnlineShop-%tky ) TO failed-onlineshop.
-        APPEND VALUE #( %tky         = OnlineShop-%tky
-                        %state_area  = 'VALIDATE_PRODUCTID'
-                         %msg         = new_message_with_text(
-                                             severity     = if_abap_behv_message=>severity-error
-                                             text         = |Select the product to be ordered|  )
-                        %element-orderitemid = if_abap_behv=>mk-on
-                      ) TO reported-onlineshop.
-
-      ELSEIF OnlineShop-OrderItemID IS NOT INITIAL AND NOT line_exists( valid_ordereditem[ product = OnlineShop-OrderItemID ] ).
-        APPEND VALUE #(  %tky = OnlineShop-%tky ) TO failed-onlineshop.
-
-        APPEND VALUE #(  %tky                 = OnlineShop-%tky
-                         %state_area          = 'VALIDATE_PRODUCTID'
-                         %msg         = new_message_with_text(
-                                             severity     = if_abap_behv_message=>severity-error
-                                             text         = |Product unknown|  )
-                         %element-orderitemid = if_abap_behv=>mk-on
-                      ) TO reported-onlineshop.
-      ENDIF.
-    ENDLOOP.
-    ENDMETHOD.
-   
-</pre>
-
-3. validation checkDeliveryDate     
-
-  <pre lang="ABAP">
-   METHOD checkdeliverydate.
-
-    READ ENTITIES OF zr_onlineshop_### IN LOCAL MODE
-      ENTITY OnlineShop
-        FIELDS ( DeliveryDate )
-        WITH CORRESPONDING #( keys )
-      RESULT DATA(OnlineOrders).
-
-    DATA(today_date) = cl_abap_context_info=>get_system_date(  ).
-
-    LOOP AT OnlineOrders INTO DATA(online_order).
-
-      cl_scal_api=>date_compute_day(
-           EXPORTING
-             iv_date           = online_order-DeliveryDate
-           IMPORTING
-             ev_weekday_number = DATA(weekday_number)
-             ev_weekday_name = DATA(weekday_name)
-             ).
-
-      "raise msg if no delivery date is selected
-      IF online_order-DeliveryDate IS INITIAL OR online_order-DeliveryDate = ' '.
-        APPEND VALUE #( %tky = online_order-%tky ) TO failed-onlineshop.
-        APPEND VALUE #( %tky         = online_order-%tky
-                        %state_area  = 'VALIDATE_DELIVERYDATE'
-                        %msg         = new_message_with_text(
-                                            severity = if_abap_behv_message=>severity-error
-                                            text     = 'Select a delivery date' )
-                        %element-deliverydate  = if_abap_behv=>mk-on
-                      ) TO reported-onlineshop.
-
-        "raise msg if selected delivery date is less than 14 days from today
-      ELSEIF  ( ( online_order-DeliveryDate ) - today_date ) < 14.
-        APPEND VALUE #(  %tky = online_order-%tky ) TO failed-onlineshop.
-        APPEND VALUE #(  %tky         = online_order-%tky
-                         %state_area  = 'VALIDATE_DELIVERYDATE'
-                         %msg         = new_message_with_text(
-                                             severity     = if_abap_behv_message=>severity-error
-                                             text         = |Delivery date must be at least 14 days from today.|  )
-                         %element-deliverydate  = if_abap_behv=>mk-on
-                      ) TO reported-onlineshop.
-      ELSEIF weekday_number = 5 OR weekday_number = 6.
-        APPEND VALUE #(  %tky = online_order-%tky ) TO failed-onlineshop.
-        APPEND VALUE #(  %tky          = online_order-%tky
-                         %state_area  = 'VALIDATE_DELIVERYDATE'
-                         %msg          = new_message_with_text(
-                         severity = if_abap_behv_message=>severity-error
-                         text     = | No delivery on a weekend ({ weekday_name })|  )
-                         %element-deliverydate  = if_abap_behv=>mk-on
-                      ) TO reported-onlineshop.
-
-      ENDIF.
-
-    ENDLOOP.
-  ENDMETHOD.
-
-  </pre>
-
-4. validation checkOrderedQuantity
-  
-  <pre lang="ABAP">
-    METHOD checkOrderedQuantity.
-    "read relevant order instance data
-    READ ENTITIES OF ZR_OnlineShop_### IN LOCAL MODE
-    ENTITY OnlineShop
-     FIELDS ( OrderID OrderItemID OrderItemQuantity )
-     WITH CORRESPONDING #( keys )
-    RESULT DATA(OnlineShops).
-
-    "raise msg if 0 > qty <= 10
-    LOOP AT OnlineShops INTO DATA(OnlineShop).
-      APPEND VALUE #(  %tky           = OnlineShop-%tky
-                       %state_area    = 'VALIDATE_QUANTITY'
-                     ) TO reported-onlineshop.
-
-      IF OnlineShop-OrderItemQuantity IS INITIAL OR OnlineShop-OrderItemQuantity = ' '
-         OR OnlineShop-OrderItemQuantity <= 0.
-        APPEND VALUE #( %tky = OnlineShop-%tky ) TO failed-onlineshop.
-        APPEND VALUE #( %tky          = OnlineShop-%tky
-                        %state_area   = 'VALIDATE_QUANTITY'
-                         %msg         = new_message_with_text(
-                                             severity     = if_abap_behv_message=>severity-error
-                                             text         = |Enter a valid quantity (up to 10)|  )
-                        %element-orderitemquantity = if_abap_behv=>mk-on
-                      ) TO reported-onlineshop.
-
-      ELSEIF OnlineShop-OrderItemQuantity > 10.
-        APPEND VALUE #(  %tky = OnlineShop-%tky ) TO failed-onlineshop.
-        APPEND VALUE #(  %tky          = OnlineShop-%tky
-                         %state_area   = 'VALIDATE_QUANTITY'
-                         %msg         = new_message_with_text(
-                                             severity     = if_abap_behv_message=>severity-error
-                                             text         = |More than 10 items cannot be ordered|  )
-                         %element-orderitemquantity  = if_abap_behv=>mk-on
-                      ) TO reported-onlineshop.
-      ENDIF.
-    ENDLOOP.
-  ENDMETHOD.
-  </pre>
-
- 4. Save and activate your changes.
- 5. Open the service binding `ZUI_ONLINESHOP_O4_###` to test your implementation by using the ADT Fiori preview.
-
- </details> 
-
--->
 
  ## Summary  
  
