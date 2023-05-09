@@ -96,21 +96,37 @@ You will now add an action step that uses the action to add a new entry to the o
 
 ![lobby](images/225.png)
 
+![lobby](images/230.png)
+
 This variable will later contain the name of the destination that you have created in an earler exercise.
 
-3.
-
-![lobby](images/230.png)
+4. On the right hand pane choose the `Inputs` tab. Map the `product` field to the `Product` of the form and do the same for the `quantity` field from the `Quantity` in the form. `Save` your work.
 
 ![lobby](images/235.png)
 
+## Exercise 2.5: Add an Condition step to the Process
+
+In this exercise you will add a condition step to the process. It will check whether the ordered quantity from the form is equal or less to 1 and if so, bypass the approval step.
+
+1. On the process canvas, press the `+` on the right of your process trigger and choose `Controls` and `Condition`.
+
 ![lobby](images/240.png)
+
+2. On the right side pane for the condition, press on the `Open Condition Editor`
 
 ![lobby](images/245.png)
 
+3. On the dialog, choose the `Quantity` field from you form in the field on the very left. As a condition in the middler, choose `is greate than` from the list. As a value in the field on the very right, choose `1`. Press `Apply`.
+
 ![lobby](images/250.png)
 
+4. On the canvas, choose the `+` on the `Default` branch of the condition and drag and drop it to your action step.
+
 ![lobby](images/255.png)
+
+With this the approval step is bypassed when the condition is not met, i.e. when the quantity is 1.
+
+5. 
 
 ![lobby](images/260.png)
 
