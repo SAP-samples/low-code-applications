@@ -104,6 +104,12 @@ This variable will later contain the name of the destination that you have creat
 
 ![lobby](images/235.png)
 
+5. On the canvas, press the `+` on the `Reject` end of the approval and drag and drop it to the `End` step of your process.
+
+![lobby](images/260.png)
+
+This makes sure that if the request is rejected by an approver, the action is not invoked and therefore no new onlineshop entry is created in the S/4HANA backend
+
 ## Exercise 2.5: Add an Condition step to the Process
 
 In this exercise you will add a condition step to the process. It will check whether the ordered quantity from the form is equal or less to 1 and if so, bypass the approval step.
@@ -126,9 +132,6 @@ In this exercise you will add a condition step to the process. It will check whe
 
 With this the approval step is bypassed when the condition is not met, i.e. when the quantity is 1.
 
-5. 
-
-![lobby](images/260.png)
 
 ![lobby](images/270.png)
 
