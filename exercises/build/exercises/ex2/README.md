@@ -36,7 +36,7 @@ You will create a UI form for the process, where users can request the order of 
 
 The new form is now embedded into the trigger of the process.
 
-3. On the form choose `Open Ediotr`.
+3. On the form choose `Open Editor`.
 
 ![lobby](images/150.png)
 
@@ -48,15 +48,37 @@ You can now see a new canvas on which you can place a number of UI elements that
 
 ## Exercise 2.3: Add an Approval step to the Process
 
+You will create a an approval step for the onlineshop request. This is a UI that will pop up in an approver's (e.g. manager) `My Inbox` application, where the approver will see the product and the quantity that was ordered and can approve or reject the request.
+
+1. On the process canvas, press on the `+` after the process trigger, then choose `Approvals` and `New Approval Form`.
+
 ![lobby](images/160.png)
+
+2. Choose `Onlineshop###Approval` as a name. Mark the `Based on a Form` checkbox and select the form that you have created in the previous step. Press `Create`
 
 ![lobby](images/165.png)
 
+If you hadn't chosen to base the approval on the form, you would get an empty canvas and you could design the approval UI from scratch. However, since approvals usually contain a lot of information that was entered in the original form, it is a good idea to copy the forms UI elements over into the approval and then adjust where needed.
+
+3. Click on the new approval step on the canvas. On the right side pane choose the `General` tab. Place the cursor into the the `Subject` field and write `Approve order of`, then select the `Product` field that is suggested to you from your form. Under `Users` enter the email address of the user that was given to you by the instructor. 
+
 ![lobby](images/170.png)
+
+This step determines who gets the approval request in their `My Inbox` application. In a real scenario the reveiver might be determined dynamically and of course the requestor would not be the approver. For yor tests however, you want to see the approval in your inbox, make sure you use the right email address. 
+
+4. Switch to the `Inputs` tab. Assign the `Product` and `Quantity` fields from your form to the corresponding fields of the approval. Press `Save`
 
 ![lobby](images/175.png)
 
+This is a general pattern in Process Automation: There are outputs from a previous step, in this case the form that triggers the process and there are inputs for the follow up step like our approvals. Inputs and outputs need to be mapped.
+
+5. On the approval on the canvas press `Open Editor`
+
 ![lobby](images/180.png)
+
+6. On the approval UI that now pops up and that contains the fields from your form, change the headline to be `Approval for order`, leave the rest of the fields as they are. `Save` your work
+
+## Exercise 2.4: Add an Action step to the Process
 
 ![lobby](images/185.png)
 
