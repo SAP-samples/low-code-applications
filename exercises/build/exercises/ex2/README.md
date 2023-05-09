@@ -84,7 +84,7 @@ This is a general pattern in Process Automation: There are outputs from a previo
 
 You will now add an action step that uses the action to add a new entry to the onlineshop that you have created in the exercise before. This action is invoked when the request from the form has been successfully approved.
 
-1. Press the `+` to the right of the approval step and choose `Actions` and `Browser Library`.
+1. Press the `+` of `Approve` to the right of the approval step and choose `Actions` and `Browser Library`.
 
 ![lobby](images/190.png)
 
@@ -132,18 +132,45 @@ In this exercise you will add a condition step to the process. It will check whe
 
 With this the approval step is bypassed when the condition is not met, i.e. when the quantity is 1.
 
+With this, you have finished building the process. 
 
 ![lobby](images/270.png)
 
+## Exercise 2.6: Release and Deploy your process
+
+In this part, you will release the project and deploy it to the BTP, so it can be tested and used for onlineshop requests.
+
+1. On your process canvas, first make sure that you `Save` all your work. Once the `Save` button is inactive, press on the `Release` button above
+
 ![lobby](images/275.png)
+
+2. Optionally add some comment for the released version. Press `Release`.
 
 ![lobby](images/280.png)
 
+Like for the actions before, this freezes the current state of your process. You can of course change the process afterwards, but you can always go back to this frozen, released state.
+
+3. Where the `Release` button was, there is now a `Deploy` button. Press it.
+
 ![lobby](images/285.png)
+
+4. On the dialog that now appears, press `Next` for the first step.
 
 ![lobby](images/290.png)
 
+This step shows all the artefacts that are part of the deployed process
+
+5. On the `Runtime Variables` step, choose your destination 'Onlineshop_###' with the `Set new value` radiobutton selected. Press `Next`
+
 ![lobby](images/295.png)
+
+This makes sure that your process action is bound to the destination when it is carried out. The destination is available here because you have registerd it under `Settings` in an earlier step.
+
+6. Press `Deploy` on the `Triggers` step.
+
+## Exercise 2.7: Test your Process
+
+With the process now deployed, you can finally test the whole scenario!
 
 ![lobby](images/300.png)
 
