@@ -79,7 +79,7 @@ In Browser:
 
 https://34.233.103.22:44301/sap/opu/odata4/sap/z_onlineshop_300/srvd_a2x/sap/zui_onlineshop_300/0001/onlineshop
 
-![new_dd](images/200.png) 
+![new_dd](images/200.png)  
 
 ## Summary   
 You can continue with the next exercise - **[Build Exercise 1: Create Actions in SAP Build to access the Onlineshop API](../../../build/exercises/ex1/README.md)**
