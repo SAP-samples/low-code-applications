@@ -71,7 +71,7 @@ define behavior for ZAPI_ONLINESHOP_### alias onlineshop
 
 ![new_dd](images/150.png) 
 
-2. Choose Source Type `Definition` and Referenced Object `ZAPI_ONLINESHOP_300`
+2. Choose Source Type `Definition` and Referenced Object `ZAPI_ONLINESHOP_###`
 
 ![new_dd](images/160.png) 
 
@@ -92,19 +92,21 @@ define service Z_ONLINESHOP_### {
 
 ![new_dd](images/170.png) 
 
-2. 
+2. Choose the name `Z_ONLINESHOP_###`, the Binding Type `ODATA V4 - Web API` and the Serivce Definition `Z_ONLINESHOP_###`. Press `Next` and `Finish`
 
 ![new_dd](images/180.png) 
 
-Activate
+3. Save and Activate your changes
 
-Publish
+4. On the resulting UI press the `Publish`button, the result looks like this:
 
 ![new_dd](images/190.png) 
 
+## Exercise 4.5: Test the API in the browser
+
 In Browser:
 
-https://34.233.103.22:44301/sap/opu/odata4/sap/z_onlineshop_300/srvd_a2x/sap/z_onlineshop_300/0001/onlineshop
+https://YY.YYYY.YYY.YY:44301/sap/opu/odata4/sap/z_onlineshop_###/srvd_a2x/sap/z_onlineshop_###/0001/onlineshop
 
 ![new_dd](images/200.png)  
 
