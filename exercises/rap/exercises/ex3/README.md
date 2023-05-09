@@ -330,7 +330,32 @@ CLASS lcl_OnlineShop DEFINITION INHERITING FROM cl_abap_behavior_handler.
 
 ## Exercise 3.4: Add an additonal determination to create a Purchase Requisiton
 
-1. Add the following determinations to your behavior definition **ZR_ONLINESHOP_###** (in the project explorer under **Core Data Services**** ->**Behavior Definitions**) just behind the line for the calculation of the new order id, that you inserted before.
+
+1. Add the following line to your behavior implmentation `ZBP_R_ONLINESHOP_###` (in the project explorer under **Core Data Services**** ->**Behavior Definitions** -> **Behavior Implementations**)
+
+<pre lang="ABAP">
+CLASS-DATA mapped_purchase_requisition TYPE RESPONSE FOR MAPPED i_purchaserequisitiontp.
+</pre>
+
+Add it below the `public section.` line, so it looks like this:
+
+<pre lang="ABAP">
+  class ZBP_R_ONLINESHOP_### definition
+    public
+    abstract
+    final
+    for behavior of ZR_ONLINESHOP_###.
+
+  public section.
+      CLASS-DATA mapped_purchase_requisition TYPE RESPONSE FOR MAPPED i_purchaserequisitiontp.
+  protected section.
+  private section.
+  ENDCLASS.
+</pre>
+
+2. Save your change
+
+3. Add the following determination to your behavior definition **ZR_ONLINESHOP_###** (in the project explorer under **Core Data Services**** ->**Behavior Definitions**) just behind the line for the calculation of the new order id, that you inserted before.
 
    <pre lang="ABAP">
   internal action CreatePurchaseRequisition result [1] $self;
@@ -338,11 +363,171 @@ CLASS lcl_OnlineShop DEFINITION INHERITING FROM cl_abap_behavior_handler.
 
    ![define_determinations](images/400_define_determinations.png) 
 
+4. Click on the icon on the left hand side of the new line and invoke the generation of the new method
 
+  ![define_determinations](images/410_define_determinations.png) 
 
- 100. Open the service binding `ZUI_ONLINESHOP_O4_###` to test your implementation by using the ADT Fiori preview. Alternatively, if you keep the browser window open with the Fiori preview, you can just refresh the browser and it will automatically reflect the new code.
+5. Replace the empty `METHOD CreatePurchaseRequisition.` with the following code:
 
- 101. On the list, press `Create` and then on the object page enter a new onlineshop entry using for example a product `AS01` and a quantity `1` and then press the `Create` button in lower right corner
+<pre lang="ABAP">
+
+  METHOD CreatePurchaseRequisition.
+
+    DATA purchase_requisitions      TYPE TABLE FOR CREATE I_PurchaserequisitionTP.
+    DATA purchase_requisition       TYPE STRUCTURE FOR CREATE I_PurchaserequisitionTP.
+    DATA purchase_requisition_items TYPE TABLE FOR CREATE i_purchaserequisitionTP\_PurchaseRequisitionItem.
+    DATA purchase_requisition_item  TYPE STRUCTURE FOR CREATE i_purchaserequisitiontp\\purchaserequisition\_purchaserequisitionitem.
+    DATA purchase_reqn_acct_assgmts TYPE TABLE FOR CREATE I_PurchaseReqnItemTP\_PurchaseReqnAcctAssgmt.
+    DATA purchase_reqn_acct_assgmt  TYPE STRUCTURE FOR CREATE I_PurchaseReqnItemTP\_PurchaseReqnAcctAssgmt.
+    DATA purchase_reqn_item_texts   TYPE TABLE FOR CREATE I_PurchaseReqnItemTP\_PurchaseReqnItemText.
+    DATA purchase_reqn_item_text    TYPE STRUCTURE FOR CREATE I_PurchaseReqnItemTP\_PurchaseReqnItemText.
+    DATA update_lines               TYPE TABLE FOR UPDATE zr_onlineshop_###\\OnlineShop.
+    DATA update_line                TYPE STRUCTURE FOR UPDATE zr_onlineshop_###\\OnlineShop.
+    DATA delivery_date              TYPE I_PurchaseReqnItemTP-DeliveryDate.
+
+    delivery_date = cl_abap_context_info=>get_system_date(  ) + 14.
+
+    "read transfered order instances
+    READ ENTITIES OF zr_onlineshop_### IN LOCAL MODE
+      ENTITY OnlineShop
+      ALL FIELDS WITH
+      CORRESPONDING #( keys )
+      RESULT DATA(OnlineOrders).
+
+    DATA n TYPE i.
+
+    LOOP AT OnlineOrders INTO DATA(OnlineOrder).
+
+      n += 1.
+      "purchase requisition
+      purchase_requisition = VALUE #( %cid                     = |My%CID_{ n }|
+                                      purchaserequisitiontype  = 'NB' ).
+      APPEND purchase_requisition TO purchase_requisitions.
+
+      "purchase requisition item
+      purchase_requisition_item = VALUE #( %cid_ref = |My%CID_{ n }|
+                                           %target  = VALUE #(  (
+                                                       %cid                         = |My%ItemCID_{ n }|
+                                                       plant                        = '1010'  "Plant 01 (DE)
+                                                       accountassignmentcategory    = 'U'  "unknown
+*                                                      PurchaseRequisitionItemText  =      "retrieved automatically from maintained MaterialInfo
+                                                       requestedquantity            = '1'
+                                                       purchaserequisitionprice     = '100'
+                                                       purreqnitemcurrency          = 'EUR'
+                                                       Material                     = 'D001'
+                                                       materialgroup                = 'A001'
+                                                       purchasinggroup              = '001'
+                                                       purchasingorganization       = '1010'
+                                                       DeliveryDate                 = delivery_date   "delivery_date  "yyyy-mm-dd (at least 10 days)
+                                                       CreatedByUser                = OnlineOrder-CreatedBy
+*                                                       PerformancePeriodEndDate    = delivery_date + 20
+*                                                      PerformancePeriodStartDate   = delivery_date
+                                                       ) ) ).
+      APPEND purchase_requisition_item TO purchase_requisition_items.
+
+      "purchase requisition account assignment
+      purchase_reqn_acct_assgmt = VALUE #( %cid_ref = |My%ItemCID_{ n }|
+                                           %target  = VALUE #( (
+                                                        %cid       = |My%AccntCID_{ n }|
+                                                        CostCenter = 'JMW-COST'
+                                                        GLAccount  = '0000400000' ) ) ).
+      APPEND purchase_reqn_acct_assgmt TO purchase_reqn_acct_assgmts .
+
+      "purchase requisition item text
+      purchase_reqn_item_text    =  VALUE #( %cid_ref = |My%ItemCID_{ n }|
+                                             %target  = VALUE #( (
+                                                        %cid           = |My%TextCID_{ n }|
+                                                        textobjecttype = 'B01'
+                                                        language       = 'E'
+                                                        plainlongtext  = OnlineOrder-Product ) ) ).
+      APPEND purchase_reqn_item_text TO purchase_reqn_item_texts.
+
+    ENDLOOP.
+
+    "EML deep create statement
+    IF keys IS NOT INITIAL.
+      "purchase requisition
+      MODIFY ENTITIES OF i_purchaserequisitiontp
+        ENTITY purchaserequisition
+          CREATE FIELDS ( purchaserequisitiontype )
+            WITH purchase_requisitions
+          CREATE BY \_purchaserequisitionitem
+            FIELDS ( plant
+*                    purchaserequisitionitemtext
+                     accountassignmentcategory
+                     requestedquantity
+                     baseunit
+                     purchaserequisitionprice
+                     purreqnitemcurrency
+                     Material
+                     materialgroup
+                     purchasinggroup
+                     purchasingorganization
+                     DeliveryDate
+*                    PerformancePeriodEndDate
+*                    PerformancePeriodStartDate
+                   )
+            WITH purchase_requisition_items
+        ENTITY purchaserequisitionitem
+          CREATE BY \_purchasereqnacctassgmt
+            FIELDS ( CostCenter
+                     GLAccount
+                     Quantity
+                     BaseUnit )
+            WITH purchase_reqn_acct_assgmts
+          CREATE BY \_purchasereqnitemtext
+            FIELDS ( plainlongtext )
+            WITH purchase_reqn_item_texts
+        REPORTED DATA(reported_create_pr)
+        MAPPED DATA(mapped_create_pr)
+        FAILED DATA(failed_create_pr).
+    ENDIF.
+
+    "retrieve the generated
+    zbp_r_onlineshop_###=>mapped_purchase_requisition-purchaserequisition = mapped_create_pr-purchaserequisition.
+
+    "set a flag to check in the save sequence that purchase requisition has been created
+    "the correct value for PurchaseRequisition has to be calculated in the save sequence using convert key
+    "set a flag to check in the save sequence that purchase requisition has been created
+    "the correct value for PurchaseRequisition has to be calculated in the save sequence using convert key
+    LOOP AT keys INTO DATA(key_1).
+
+      update_line-%tky          = key_1-%tky.
+      update_line-OverallStatus = 'submitted'. "'Submitted / Approved'.
+      APPEND update_line TO update_lines.
+
+      MODIFY ENTITIES OF zr_onlineshop_### IN LOCAL MODE
+           ENTITY OnlineShop
+             UPDATE
+             FIELDS (  OverallStatus  )
+             WITH update_lines
+           REPORTED reported
+           FAILED failed
+           MAPPED mapped.
+
+      IF failed IS INITIAL.
+        "Read the changed data for action result
+        READ ENTITIES OF zr_onlineshop_### IN LOCAL MODE
+          ENTITY OnlineShop
+            ALL FIELDS WITH
+            CORRESPONDING #( keys )
+          RESULT DATA(result_read).
+
+        "return result entities
+        result = VALUE #( FOR order_2 IN result_read ( %tky   = order_2-%tky
+                                                       %param = order_2 ) ).
+      ENDIF.
+
+    ENDLOOP.
+
+  ENDMETHOD.
+</pre>
+
+## Exercise 3.X: Check your preview application
+
+ 1. Open the service binding `ZUI_ONLINESHOP_O4_###` to test your implementation by using the ADT Fiori preview. Alternatively, if you keep the browser window open with the Fiori preview, you can just refresh the browser and it will automatically reflect the new code.
+
+ 2. On the list, press `Create` and then on the object page enter a new onlineshop entry using for example a product `AS01` and a quantity `1` and then press the `Create` button in lower right corner
   
  ![define_determinations](images/313_define_determinations.png) 
   
