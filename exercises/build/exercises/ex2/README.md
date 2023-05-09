@@ -197,6 +197,20 @@ Next up, let's check whether there is an approval step for this now.
 
 ![lobby](images/325.png)
 
+6. Now try bring up a new form of the process. This time however, enter a `quantity` of only `1` in your from and submit it.
+
 ![lobby](images/330.png)
 
+As the quantity is only 1 and you had added a condition in the process to bypass the approval step and directly carry out the action in your process if this condition is met, you should now see a new entry for the onlineshop in the Fiori elements preview.
+
+7. Check whether there is a new entry in the Onlineshop Preview app, press `Go`.
+
 ![lobby](images/335.png)
+
+You should see your new entry!
+
+## Summary
+
+This concludes the workshop!
+
+You have successfully built a new Onlineshop API on an S/4HANA system using ABAP Cloud capabilities. You have then create a new process using SAP Build Process Automation that makes use of this new API. The process contains the entry of an onlineshop request, an approval step as well as calling the API to create a new Onlineshop entry
