@@ -4,7 +4,7 @@
 
 ## Introduction
 
-In this exercise, you will search for a released RAP business object to create a purchase requisistion. For this we will add an appropriate *ABAP repository tree* to the *Project Explorer* in your ADT.
+In this exercise, you will search for a released RAP business object to create a purchase requisition. For this we will add an appropriate *ABAP repository tree* to the *Project Explorer* in your ADT.
 
 We will continue to create a simple class to investigate 
 
