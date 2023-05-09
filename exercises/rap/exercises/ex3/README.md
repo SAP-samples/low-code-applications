@@ -539,7 +539,7 @@ right after the
 
 <pre lang="ABAP">
 authorization master ( global ) 
-<pre>
+</pre>
 
 statement.
 
@@ -559,11 +559,13 @@ etag master LocalLastChangedAt
 lock master total etag LastChangedAt
 authorization master( global )
 with unmanaged save
-<pre>
+</pre>
 
 3. Activate your changes.
 
 4. After having activated your changes select the key word unmanaged and select Ctrl + 1 (Command +1 on Mac) to start the code assistant.
+
+![define_determinations](images/420_define_determinations.png) 
 
 This will add a local saver class lsc_zr_onlineshop_### to the local classes of your behavior implementation class. The method save_modified is added to the DEFINITION and the IMPLEMENTATION section of this local class.
 
@@ -572,7 +574,9 @@ CLASS lsc_zr_onlineshop_### DEFINITION INHERITING FROM cl_abap_behavior_saver.
   PROTECTED SECTION.
   METHODS save_modified REDEFINITION.
 ENDCLASS.
-<pre>
+</pre>
+
+
 
 ## Exercise 3.X: Check your preview application
 
