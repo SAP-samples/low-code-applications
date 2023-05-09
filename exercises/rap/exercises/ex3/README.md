@@ -203,7 +203,7 @@ For fields that are read-only and that are not read from the value help we have 
 
   4. In the project explorer under `Business Services`->`Service Bindings`->`ZUI_ONLINESHOP_O4_###` check the UI using the Fiori Elements preview. 
 
-  On the list, press **Create** and you should see a form like this, where **Order ID** is a text not an input field:
+  On the list, press **Create** and you should see a form like this, where **Order ID**, **Purchase Requisition** and **Overall Status** are text not input fields:
 
   ![adapt_bdef](images/230_adapt_bdef.png)  
  
