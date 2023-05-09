@@ -104,11 +104,18 @@ define service Z_ONLINESHOP_### {
 
 ## Exercise 4.5: Test the API in the browser
 
-In Browser:
+1. Press on the link `Service URL` in the picture above.
+
+2. Add `onlineshop` at the end of the URL in the browser, so it looks like this
 
 https://YY.YYYY.YYY.YY:44301/sap/opu/odata4/sap/z_onlineshop_###/srvd_a2x/sap/z_onlineshop_###/0001/onlineshop
+
+3. The result should look like this:
 
 ![new_dd](images/200.png)  
 
 ## Summary   
+
+You have created a Web API next to the one that is suitable for a UI and you can now use this API in a SAP Build Process.
+
 You can continue with the next exercise - **[Build Exercise 1: Create Actions in SAP Build to access the Onlineshop API](../../../build/exercises/ex1/README.md)**
