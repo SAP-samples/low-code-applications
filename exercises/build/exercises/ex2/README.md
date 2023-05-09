@@ -78,11 +78,28 @@ This is a general pattern in Process Automation: There are outputs from a previo
 
 6. On the approval UI that now pops up and that contains the fields from your form, change the headline to be `Approval for order`, leave the rest of the fields as they are. `Save` your work
 
-## Exercise 2.4: Add an Action step to the Process
-
 ![lobby](images/185.png)
 
+## Exercise 2.4: Add an Action step to the Process
+
+
 ![lobby](images/190.png)
+
+![lobby](images/220.png)
+
+![lobby](images/225.png)
+
+![lobby](images/230.png)
+
+![lobby](images/235.png)
+
+![lobby](images/240.png)
+
+![lobby](images/245.png)
+
+![lobby](images/250.png)
+
+![lobby](images/255.png)
 
 ![lobby](images/260.png)
 
