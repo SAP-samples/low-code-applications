@@ -82,12 +82,23 @@ This is a general pattern in Process Automation: There are outputs from a previo
 
 ## Exercise 2.4: Add an Action step to the Process
 
+You will now add an action step that uses the action to add a new entry to the onlineshop that you have created in the exercise before. This action is invoked when the request from the form has been successfully approved.
+
+1. Press the `+` to the right of the approval step and choose `Actions` and `Browser Library`.
 
 ![lobby](images/190.png)
 
+2. On the dialog search for the action `Onlineshop###Action`that you created before. Choose the `Add new entity to onlineshop` one and close the dialog.
+
 ![lobby](images/220.png)
 
+3. On the right hand pane, choose to `Create Destination Variable`. On the following dialog, choose `MyDestination` as an identifier. Press `Create`
+
 ![lobby](images/225.png)
+
+This variable will later contain the name of the destination that you have created in an earler exercise.
+
+3.
 
 ![lobby](images/230.png)
 
