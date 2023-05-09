@@ -626,7 +626,7 @@ ENDCLASS.
  ## Summary  
  
  You have implemented an adjustment to the Fiori elements UI and a determination to calculate a new order ID and to create a purchase requisiton in S/4HANA.   
- 
- you can continue with the next exercise - **[Build Exercise 1: Create Actions in SAP Build to access the Onlineshop API](../../../build/exercises/ex1/README.md)**
 
+ You can continue with the next exercise - **[Exercise 4: Create a Web API for the Onlineshop](../ex4/README.md)**.
+ 
 

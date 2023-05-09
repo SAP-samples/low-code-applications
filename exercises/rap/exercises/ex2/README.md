@@ -198,7 +198,7 @@ Now that you've...
 - created a transactional UI service,
 - published a local service point, and started the _Fiori elements App Preview_ in ADT,
 
-you can continue with the next exercise - **[Exercise 3: Adapt the data model](../ex3/README.md)**.
+You can continue with the next exercise - **[Exercise 3: Adapt the data model](../ex3/README.md)**.
 
 
 ---
