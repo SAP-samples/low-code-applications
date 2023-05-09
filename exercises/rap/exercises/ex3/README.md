@@ -278,7 +278,7 @@ CLASS lcl_OnlineShop DEFINITION INHERITING FROM cl_abap_behavior_handler.
   
    <pre lang="ABAP">
   
-  METHOD CalculateOrderID.
+    METHOD CalculateOrderID.
 
     "read transfered instances
     READ ENTITIES OF ZR_OnlineShop_### IN LOCAL MODE
