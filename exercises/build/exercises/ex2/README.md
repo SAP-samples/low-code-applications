@@ -173,13 +173,27 @@ This makes sure that your process action is bound to the destination when it is 
 
 With the process now deployed, you can finally test the whole scenario!
 
+1. On the canvas, click on your form in the trigger step. On the right hand pane, under tab `General` copy the link in the field `From link`
+
 ![lobby](images/300.png)
+
+2. Open a new browser window and past the link into it. You should see a form like below. Enter a product name of your liking and a quantiy that is greater than 1, e.g. 2. Press `Submit`
 
 ![lobby](images/310.png)
 
+This is how a user will request a product, starting the process.
+
+Next up, let's check whether there is an approval step for this now.
+
+3. On the SAP Build window that contains the Lobby, click on the button on the right for `MyInbox`
+
 ![lobby](images/315.png)
 
+4. The `MyInbox` application comes up and it should show an entry that corresponds with the request from the form that you just submitted. Select the entry and look at the approval text, it should contain the ordered product and quantity, that you just submitted. Press `Approve`.
+
 ![lobby](images/320.png)
+
+5. Check whether there is a new entry in your Onlineshop Preview Fiori elements app, you might still have the corresponding browser window open. If you need to open it again, go back to your ABAP Development tools and open it again (See [here](../../..//rap/exercises/ex2#exercise-23-preview-the-onlineshop-app-using-fiori-elements) again, how to do that).
 
 ![lobby](images/325.png)
 
