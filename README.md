@@ -17,7 +17,7 @@ This session covers the basic app development steps using the ABAP Development T
 
 To carry out the exercises of this repository, you need to
 - install the ABAP Development Tools (ADT) for the ABAP development parts
-- have a browser ready, referably Google Chrome, to access the SAP Build
+- have a browser ready, preferably Google Chrome, to access the SAP Build
 
 The users for the development environment during the course are email addresses which are provided to you by the hosts.
 
