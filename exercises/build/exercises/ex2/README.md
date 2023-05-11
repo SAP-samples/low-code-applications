@@ -2,7 +2,7 @@
 
 In this chapter you will build a whole process in SAP Build Process Automation. It will contain a UI with a form with which users can create requests for products in our onlineshop. Depending on the quantity there will then be an approval step where a manager will have to approve or reject the onlineshop request. If the quantity is low, the request will automatically be approved. In case of an approval an action to create a new onlineshop entry based on the onlineshop service you have built in the S/4HANA system using ABAP Cloud. The result can then be seen in the Fiori elements preview application based on the onlineshop service.
 
-Remember that whereever in this exercise you see `###` to replace it with your **group number** that was given to you by the instructors.
+Remember that whereever in this exercise you see `###` to replace it with your **group ID** that was given to you by the instructors.
 
 ## Exercise 2.1: Create a new Process in SAP BUild Process Automation
 

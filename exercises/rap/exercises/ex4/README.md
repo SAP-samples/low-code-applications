@@ -5,19 +5,21 @@ In this exercise we create an additional service. In the exercise before we crea
 
 For this we need to add a couple of artefacts on top of the already existing ones.
 
-## Exercise 4.1: Create a new data defintion
+## Exercise 4.1: Create a new Data Defintion
 
-1. In your project open the context menu on **Core Data Services** -> **Data Definitions** and selected **New Data Definition**
+1. In your project open the context menu on **Core Data Services** -> **Data Definitions** and select **New Data Definition**.
 
 ![new_dd](images/100.png) 
 
-2.  Click **Next >** and select your transport request. Click **Finish**.
-
-2. Use the name `ZAPI_ONLINESHOP_###` and replace the placeholder `###` with your group number. Add `Onlineshop API` for the description.
+2. Maintain the required information (`###` is your group ID) and click **Next >**.
+      - Name: **`ZAPI_ONLINESHOP_###`**  
+      - Description: _**`Onlineshop API`**_  
 
 ![new_dd](images/110.png) 
 
-3. Overwrite the contents of the generated data definition like this
+3.  Select your transport request and click **Finish** to create the data definition.
+
+4. Overwrite the contents of the generated data definition like this
 
 <pre lang="ABAP">
 @AccessControl.authorizationCheck: #CHECK
@@ -37,25 +39,32 @@ define root view entity ZAPI_ONLINESHOP_###
 
 
 
-4. Replace the placeholder `###` with your group number. 
+4. Replace the placeholder `###` with your group ID. 
 
 5. Save ![save icon](../../images/adt_save.png) and activate ![activate icon](../../images/adt_activate.png) the changes.
 
-## Exercise 4.2: Create a new behavior definition
+## Exercise 4.2: Create a new Behavior Definition
 
-1. In your project open the context menu on **Core Data Services** -> **Behavior Definition** and selected **New Behavior Definition**
+1. In your project open the context menu on **Core Data Services** -> **Behavior Definition** and select **New Behavior Definition**.
 
 ![new_dd](images/120.png) 
 
-2. Choose the Implementation Type `Projection` and Root Entity `ZAPI_ONLINESHOP_###`. Press `Next` and then `Finish`
+2. Maintain the required information (`###` is your group ID):
+       - Description: _**`Behavior for ZAPI_ONLINESHOP_###`**_
+       - Root Entity: _**`ZAPI_ONLINESHOP_###`**_
+       - Implementation Type: _**`Projection`**_
+       
+      Click **Next >**.
 
 ![new_dd](images/130.png) 
 
-3. In the generated code get rid of the `use draft` line and all the lines that start with `use action`
+3. Select your transport request and click **Finish**.
+
+4. In the generated code get rid of the `use draft` line and all the lines that start with `use action`
 
 ![new_dd](images/140.png) 
 
-4. add `alias onlineshop` as an alias, the code should look like this:
+5. Add `alias onlineshop` as an alias, the code should look like this:
 
 <pre lang="ABAP">
 projection;
@@ -67,21 +76,29 @@ define behavior for ZAPI_ONLINESHOP_### alias onlineshop
   use update;
   use delete;
 }
-</pre>
+</pre> 
 
-5. Save and Activate your change
+7. Save ![save icon](../../images/adt_save.png) and activate ![activate icon](../../images/adt_activate.png) the changes.
 
-## Exercise 4.3: Create a new Service definition
+## Exercise 4.3: Create a new Service Definition
 
-1. In your project open the context menu on **Core Data Services** -> **Service Definition** and selected **New Service Definition**
+1. In your project open the context menu on **Business Services** -> **Service Definition** and select **New Service Definition**.
 
 ![new_dd](images/150.png) 
 
-2. Choose Source Type `Definition` and Referenced Object `ZAPI_ONLINESHOP_###`
+2. Maintain the required information (`###` is your group ID):
+       - Description: _**`Z_ONLINESHOP_###`**_
+       - Description: _**`Service Definition Z_ONLINESHOP_###`**_
+       - Source Type: _**`Definition`**_
+       - Referenced Object: _**`ZAPI_ONLINESHOP_###`**_
+       
+      Click **Next >**.
 
 ![new_dd](images/160.png) 
 
-3. Add alias `as onlineshop`
+3. Select your transport request and click **Finish**.
+
+5. Add the alias `as onlineshop`. The code should look like this:
 
 <pre lang="ABAP">
 @EndUserText.label: 'Service Defition Z_ONLINESHOP_###'
@@ -90,33 +107,41 @@ define service Z_ONLINESHOP_### {
 }
 </pre>
 
-4. Save and Activate your change
+6. Save ![save icon](../../images/adt_save.png) and activate ![activate icon](../../images/adt_activate.png) the changes.
 
 ## Exercise 4.4: Create a new Service Binding
 
-1. In your project open the context menu on **Business Services** -> **Service Bindings** and selected **New Service Bindings**
+1. In your project open the context menu on **Business Services** -> **Service Bindings** and select **New Service Bindings**.
 
 ![new_dd](images/170.png) 
 
-2. Choose the name `Z_ONLINESHOP_###`, the Binding Type `ODATA V4 - Web API` and the Serivce Definition `Z_ONLINESHOP_###`. Press `Next` and `Finish`
+2. Maintain the required information (`###` is your group ID):
+       - Name: _**`Z_ONLINESHOP_###`**_
+       - Description: _**`Web API for Onlineshop`**_
+       - Binding Type: _**`OData V4 - Web API`**_
+       - Service Definition: _**`Z_ONLINESHOP_###`**_
+       
+      Click **Next >**.
 
 ![new_dd](images/180.png) 
 
-3. Save and Activate your changes
+3. Select your transport request and click **Finish**.
 
-4. On the resulting UI press the `Publish`button, the result looks like this:
+4. Save ![save icon](../../images/adt_save.png) and activate ![activate icon](../../images/adt_activate.png) the changes.
+
+5. On the resulting UI press the `Publish` button, the result looks like this:
 
 ![new_dd](images/190.png) 
 
 ## Exercise 4.5: Test the API in the browser
 
-1. Press on the link `Service URL` in the picture above.
+1. Press on the link `Service URL` in the picture above. This will open the service in the browser.
 
-2. Add `onlineshop` at the end of the URL in the browser, so it looks like this
+2. In the browser, remove `?sap-client=100` from the URL and add `onlineshop` at the end of the URL, so it looks like this
 
 https://YY.YYYY.YYY.YY:44301/sap/opu/odata4/sap/z_onlineshop_###/srvd_a2x/sap/z_onlineshop_###/0001/onlineshop
 
-3. The result should look like this:
+3. Press enter to load the page. The result should display the order you created in the previous exercise:
 
 ![new_dd](images/200.png)  
 

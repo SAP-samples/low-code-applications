@@ -7,7 +7,7 @@
 In this exercise, you will use the package `Z_ONLINESHOP_###`that you have created earlier. 
 Here you will create a database table where you will define all important fields for the OnlineShop application.  
 
-This RAP BO represents an online shop, where you can order laptops or other articles you need as an employee. <!--After an article such as a laptop is ordered, a purchase requisition can be created by pressing a button in your application which will trigger an action in your RAP BO.-->  
+This RAP business object (BO) represents an online shop, where you can order laptops or other articles you need as an employee. <!--After an article such as a laptop is ordered, a purchase requisition can be created by pressing a button in your application which will trigger an action in your RAP BO.-->  
 
 We will start our implementation by building a simple managed RAP business object and we will add the business logic to call the released RAP API in SAP S/4HANA afterwards.
 
@@ -35,7 +35,7 @@ A OnlineShop entity defines general data, such as the product name or or the qua
       - Name: **`ZONLINESHOP_###`**  
       - Description: _**`Persistence for online shop`**_                  
 
-   4. Select a transport request, and click **Finish** to create the database table.
+   4. Select your transport request, and click **Finish** to create the database table.
    
    5. Replace the default code with the code snippet provided below and replace all occurences of the placeholder **`###`** with your group ID using the **Replace All** function (**Ctrl+F**).    
  
@@ -76,7 +76,7 @@ The generated business service will be transactional, draft-enabled, and enriche
 > https://developers.sap.com/tutorials/abap-environment-rap100-generate-ui-service.html
 
 
-   1. In the **Project Explorer** right-click your database table ![table](../../images/adt_tabl.png)**`ZONLINESHOP_###`**  and select **Generate ABAP Repository Objects** from the context menu.        
+   1. In the **Project Explorer** (**Dictionary** -> **Source Code Library**) right-click your database table ![table](../../images/adt_tabl.png)**`ZONLINESHOP_###`** and select **Generate ABAP Repository Objects** from the context menu.        
    
    2. Maintain the required information  (`###` is your group ID) and click **Next >**:
         - Generator: **`ABAP RESTful Application Programming Model: UI Service`**

@@ -79,7 +79,7 @@ association [1..1] to ZI_PRODUCT_VH_REUSE as _Product on $projection.OrderItemID
 
 ![enhance_data_model](images/115_adapt_data_model.png) 
 
-  Replace the placeholder `###` with your group number and save and activate your changes.    
+  Replace the placeholder `###` with your group ID and save and activate your changes.    
 
  
 <pre lang="ABAP">
@@ -202,7 +202,7 @@ For fields that are read-only and that are not read from the value help we have 
  
   3. Save ![save icon](../../images/adt_save.png) and activate ![activate icon](../../images/adt_activate.png) the changes.
 
-  4. In the project explorer under `Business Services`->`Service Bindings`->`ZUI_ONLINESHOP_O4_###` check the UI using the Fiori Elements preview. 
+  4. In the **Project Explorer** under `Business Services`->`Service Bindings`->`ZUI_ONLINESHOP_O4_###` check the UI using the Fiori Elements preview. 
 
   On the list, press **Create** and you should see a form like this, where **Order ID**, **Purchase Requisition** and **Overall Status** are text not input fields:
 
@@ -256,7 +256,7 @@ CLASS lcl_OnlineShop DEFINITION INHERITING FROM cl_abap_behavior_handler.
 
   We now will create a determination which is called when a new online store entry is created. The determination will calculate a new Order ID. While the OrderUUID is generated automatically by the system upon save, the Order ID we have to generate ourselves. The corresponding code looks up the currently highest number for orders and then adds 1 for a new ID.
  
-  1. Add the following determination to your behavior definition **ZR_ONLINESHOP_###** (in the project explorer under **Core Data Services** -> **Behavior Definitions**)
+  1. Add the following determination to your behavior definition **ZR_ONLINESHOP_###** (in the **Project Explorer** under **Core Data Services** -> **Behavior Definitions**)
 
   <pre lang="ABAP">
   determination CalculateOrderID on modify { create; }
@@ -324,7 +324,7 @@ CLASS lcl_OnlineShop DEFINITION INHERITING FROM cl_abap_behavior_handler.
  
   </pre>
 
-  6. Replace the placeholder `###` with your group number.
+  6. Replace the placeholder `###` with your group ID.
 
   The code checks for all onlineshop entries that are on the data base, including the one that was just created before our new `CalculateOrderID` method is called. It looks at all the orders whether they already have an `OrderID`, it finds the newest one. Then it looks at the currently biggest order number that was so far assigned. It adds 1 and assigns this new number to our new onlineshop record and modifies the data base using EML (Entity Manipulation Language)
  
@@ -358,7 +358,7 @@ Add it below the `public section.` line, so it looks like this:
 
 2. Save ![save icon](../../images/adt_save.png) the changes.
 
-3. Add the following determination to your behavior definition **ZR_ONLINESHOP_###** (in the project explorer under **Core Data Services** -> **Behavior Definitions**) just behind the line for the calculation of the new order id, that you inserted before.
+3. Add the following determination to your behavior definition **ZR_ONLINESHOP_###** (in the **Project Explorer** under **Core Data Services** -> **Behavior Definitions**) just behind the line for the calculation of the new order id, that you inserted before.
 
 <pre lang="ABAP">
   internal action CreatePurchaseRequisition result [1] $self;
@@ -502,7 +502,7 @@ with the following code:
   ENDMETHOD.
 </pre>
 
-7. Replace the placeholder `###` with your group number.
+7. Replace the placeholder `###` with your group ID.
 
 8. Save ![save icon](../../images/adt_save.png) the changes. The implementation of the action `onlineshop~CreatePurchaseRequisition`will be added in the next exercise.
 
@@ -550,7 +550,7 @@ with unmanaged save
 
 ![define_determinations](images/420_define_determinations.png) 
 
-This will add a local saver class `lsc_zr_onlineshop_###` to the local classes of your behavior implementation class (in the Project Explorer under **Source Code Library** -> **Classes**, in the `Local Types` tab in the ADT Editor). The method `save_modified` is added to the `DEFINITION` and the `IMPLEMENTATION` section of this local class.
+This will add a local saver class `lsc_zr_onlineshop_###` to the local classes of your behavior implementation class (in the **Project Explorer** under **Source Code Library** -> **Classes**, in the `Local Types` tab in the ADT Editor). The method `save_modified` is added to the `DEFINITION` and the `IMPLEMENTATION` section of this local class.
 
 <pre lang="ABAP">
 CLASS lsc_zr_onlineshop_### DEFINITION INHERITING FROM cl_abap_behavior_saver.
@@ -602,7 +602,7 @@ with:
   ENDMETHOD.
 </pre>
 
-7. Replace the placeholder `###` with your group number.
+7. Replace the placeholder `###` with your group ID.
 
 8. Save ![save icon](../../images/adt_save.png) and activate ![activate icon](../../images/adt_activate.png) the changes.
 

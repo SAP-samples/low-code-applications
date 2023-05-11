@@ -4,8 +4,9 @@
 
 ## Introduction
 
-In this exercise, you will search for a released RAP business object to create a purchase requisition. For this we will add an appropriate *ABAP repository tree* to the *Project Explorer* in your ADT.
+In this exercise, you will create your exercise package and add an appropriate *ABAP repository tree* to the *Project Explorer* in your ADT.
 
+<!--
 We will continue to create a simple class to investigate 
 
 - How ABAP cloud restricts the use of not released APIs
@@ -14,7 +15,7 @@ We will continue to create a simple class to investigate
 We will then use this class to build a test class to call the released API **I_PurchaseRequisitionTP** before starting to build our own RAP BO that shall serve as an UI for an OnlineShop Application.  
  
 Execrises 1.1 - 1.3 are essential for the exercise, the following exercises 1.4 - 1.7 are for your further information, you can skip them if you have limited time.
-
+-->
 > **Reminder:**   
 > Don't forget to replace all occurences of the placeholder **`###`** with your group ID in the exercise steps below.  
 > You can use the ADT function **Replace All** (**Ctrl+F**) for the purpose.   
@@ -67,9 +68,9 @@ Execrises 1.1 - 1.3 are essential for the exercise, the following exercises 1.4 
       
    ![package](images/250_create_package.png).
 
-   5. You should now see your new package in your *Project Explorer*
+   5. You should now see your new package in your **Project Explorer**.
 
-   ![package](images/270_create_package.png).
+   ![package](images/270_create_package.png)
 
    6. Check the language version of your package
 

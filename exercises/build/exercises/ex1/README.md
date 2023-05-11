@@ -2,7 +2,7 @@
 
 From this exercise on, we will switch to SAP's Business Technology Platform (BTP) on which SAP's solution for citizen developers, SAP Build run.
 
-In this exercise we will create Actions in SAP Build that accesses the Onlineshop API on S/4HANA from the previous chpater. There will be 2 actions, one to read all the onlineshop entries and another one that creates a new onlineshop entry. 
+In this exercise we will create Actions in SAP Build that access the Onlineshop API on S/4HANA from the previous chapter. There will be 2 actions, one to read all the onlineshop entries and another one that creates a new onlineshop entry. 
 
 To create such Actions we need to prepare 2 things first:
 - create a destination in BTP to create the secure connectivity from a BTP subaccount to the Onlineshop API on S/4HANA from the previous chapters
@@ -142,7 +142,7 @@ You have set up a destination in the BTP Cockpit to test our new actions and in 
 
 1. In the SAP Build choose `Settings` and then `Destinations` in the left pane.
 
-2. Press `New Destination` and search for your destination `Onlineshop_###` where of course `###` is your group number. Select the destination and press `Add`.
+2. Press `New Destination` and search for your destination `Onlineshop_###` where of course `###` is your group ID. Select the destination and press `Add`.
 
 ![lobby](images/90.png)
 
