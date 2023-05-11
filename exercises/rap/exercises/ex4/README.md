@@ -43,7 +43,7 @@ define root view entity ZAPI_ONLINESHOP_###
 
 ## Exercise 4.2: Create a new Behavior Definition
 
-1. In your project open the context menu on **Core Data Services** -> **Behavior Definition** and select **New Behavior Definition**.
+1. In your project open the context menu on **Core Data Services** -> **Behavior Definitions** and select **New Behavior Definition**.
 
 ![new_dd](images/120.png) 
 
