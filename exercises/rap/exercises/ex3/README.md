@@ -161,18 +161,19 @@ annotate view ZC_ONLINESHOP_XXX with
 }
 </pre>
 
-  This meta data extension file includes the annotations that tell the Fiori elements UI which columns should go into the result list and which fields group a form on the object page. While most of the code was already generated automatically, we now add a couple of labels to the column headers and for the form and change the order of fields a bit to make the form nicer (order is changed via the 'importance' annotation)
+  This meta data extension file includes the annotations that tell the Fiori elements UI which columns should go into the result list and which fields group a form on the object page. While most of the code was already generated automatically, we now add a couple of labels to the column headers and for the form and change the order of fields a bit to make the form nicer (order is changed via the 'importance' annotation).
 
-2. Save and activate your changes
-
-
-
-## Exercise 3.3: Adapt the behavior definition
+2. Save ![save icon](../../images/adt_save.png) and activate ![activate icon](../../images/adt_activate.png) the changes.
 
 
+
+## Exercise 3.2: Adapt the behavior definition
+
+<!--
 Since we have changed the field list of the projection view `ZC_ONLINESHOP_###` we have to regenerate the draft table.
+-->
 
-In the behavior definition we will also set several fields as readonly.
+In the behavior definition we will also set several fields as read-only.
 
 For fields that are read-only and that are not read from the value help we have to create determinations. 
   
@@ -180,7 +181,7 @@ For fields that are read-only and that are not read from the value help we have 
 
   ![adapt_bdef](images/195_adapt_bdef.png)  
 
-  2. add the following list of fields to mark them as read-only.  
+  2. Add the following list of fields to mark them as read-only  
   <pre lang="ABAP">
    OrderID,
    PurchaseRequisition,
@@ -195,11 +196,11 @@ For fields that are read-only and that are not read from the value help we have 
    OrderUUID,
   </pre>
 
-  in order to make the Order ID a readonly field.
+  in order to make the Order ID a read-only field.
 
   ![adapt_bdef](images/220_adapt_bdef.png)  
  
-  3. Save and activate your changes   
+  3. Save ![save icon](../../images/adt_save.png) and activate ![activate icon](../../images/adt_activate.png) the changes.
 
   4. In the project explorer under `Business Services`->`Service Bindings`->`ZUI_ONLINESHOP_O4_###` check the UI using the Fiori Elements preview. 
 
@@ -250,10 +251,10 @@ CLASS lcl_OnlineShop DEFINITION INHERITING FROM cl_abap_behavior_handler.
 
 -->
 
-## Exercise 3.4: Define determinations
+## Exercise 3.3: Define determinations
 
 
-  We now will create a determinations which is called when a new online store entry is created. The determination will calcualte a new Order ID. While the OrderUUID is generated automatically by the system upon save, the Order ID we have to generate ourselves. The corresponding code looks up the currently highest number for orders and then adds 1 for a new ID.
+  We now will create a determination which is called when a new online store entry is created. The determination will calculate a new Order ID. While the OrderUUID is generated automatically by the system upon save, the Order ID we have to generate ourselves. The corresponding code looks up the currently highest number for orders and then adds 1 for a new ID.
  
   1. Add the following determinations to your behavior definition **ZR_ONLINESHOP_###** (in the project explorer under **Core Data Services**** ->**Behavior Definitions**)
 
@@ -264,59 +265,61 @@ CLASS lcl_OnlineShop DEFINITION INHERITING FROM cl_abap_behavior_handler.
 
   ![define_determinations](images/300_define_determinations.png)  
 
+  2. Save ![save icon](../../images/adt_save.png) and activate ![activate icon](../../images/adt_activate.png) the changes.
 
-  2. Use the quick fix **Ctrl+1** (**Command+1** on Mac)to generate the appropriate methods in the behavior definition class.
+  3. Use the quick fix **Ctrl+1** (**Command+1** on Mac)to generate the appropriate methods in the behavior definition class.
 
   ![define_determinations](images/310_define_determinations.png) 
 
-  3. Then a new tab is openend with the generated handler that looks like this:
+  4. Then a new tab is openend with the generated handler that looks like this:
 
    ![define_determinations](images/312_define_determinations.png) 
 
-  4. Add the following code snippet to implement the determination `createOrderID`. 
+  5. Add the following code snippet to implement the method CalculateOrderID for the determination `createOrderID`. Replace 
+  <pre lang="ABAP">
 
+      METHOD CalculateOrderID.
+      ENDMETHOD.
+    
+  </pre>
   
+  with:
+
    <pre lang="ABAP">
   
-    METHOD CalculateOrderID.
+ METHOD CalculateOrderID.
 
     "read transfered instances
     READ ENTITIES OF ZR_OnlineShop_### IN LOCAL MODE
       ENTITY OnlineShop
-      ALL FIELDS
-      WITH CORRESPONDING #( keys )
+        ALL FIELDS
+        WITH CORRESPONDING #( keys )
       RESULT DATA(OnlineOrders).
 
-    IF onlineorders[ 1 ]-OrderID IS INITIAL.
+    "ignore  entries with assigned order ID
+    DELETE OnlineOrders WHERE OrderID IS NOT INITIAL.
+    IF OnlineOrders IS NOT INITIAL.
+      "get max order ID from the relevant active and draft table entries
+      SELECT FROM ZOnlineShop_### FIELDS MAX( order_id ) INTO @DATA(max_order_id). "active table
+      SELECT FROM ZdOnlineShop_### FIELDS MAX( orderid ) INTO @DATA(max_order_id_draft). "draft table
 
-      "delete entries with assigned order ID
-      DELETE OnlineOrders WHERE OrderID IS NOT INITIAL.
-      IF OnlineOrders IS NOT INITIAL.
-        "get max order ID from the relevant active and draft table entries
-        SELECT FROM ZOnlineShop_### FIELDS MAX( order_id ) INTO @DATA(max_order_id). "active table
-        SELECT FROM ZdOnlineShop_### FIELDS MAX( orderid ) INTO @DATA(max_order_id_draft). "draft table
-
-        IF max_order_id_draft > max_order_id.
-          max_order_id = max_order_id_draft.
-        ENDIF.
-
-        DATA(OverallStatus) = |{ sy-uname } - is placing order request|.
-        MODIFY ENTITIES OF ZR_OnlineShop_### IN LOCAL MODE
-          ENTITY OnlineShop
-          UPDATE FIELDS ( OrderID  OverallStatus )
-          WITH VALUE #( FOR order IN OnlineOrders INDEX INTO i (
-                             %tky          = order-%tky
-                             OrderID       = max_order_id + i
-                             OverallStatus = overallstatus
-                      ) )
-                      FAILED DATA(failed).
+      IF max_order_id_draft > max_order_id.
+        max_order_id = max_order_id_draft.
       ENDIF.
 
-    ELSEIF onlineorders[ 1 ]-product  IS NOT INITIAL.
+      DATA(OverallStatus) = |{ sy-uname } - is placing order request|.
+      MODIFY ENTITIES OF ZR_OnlineShop_### IN LOCAL MODE
+        ENTITY OnlineShop
+          UPDATE FIELDS ( OrderID OverallStatus )
+          WITH VALUE #( FOR order IN OnlineOrders INDEX INTO i (
+                           %tky          = order-%tky
+                           OrderID       = max_order_id + i
+                           OverallStatus = overallstatus
+                      ) )
+        FAILED DATA(failed).
 
       MODIFY ENTITIES OF zr_onlineshop_### IN LOCAL MODE
-      ENTITY Onlineshop EXECUTE createPurchaseRequisition FROM CORRESPONDING #( keys ).
-
+        ENTITY OnlineShop EXECUTE CreatePurchaseRequisition FROM CORRESPONDING #( keys ).
     ENDIF.
 
   ENDMETHOD.
@@ -325,10 +328,10 @@ CLASS lcl_OnlineShop DEFINITION INHERITING FROM cl_abap_behavior_handler.
 
   The code checks for all onlineshop entries that are on the data base, including the one that was just created before our new `CalculateOrderID` method is called. It looks at all the orders whether they already have an `OrderID`, it finds the newest one. Then it looks at the currently biggest order number that was so far assigned. It adds 1 and assigns this new number to our new onlineshop record and modifies the data base using EML (Entity Manipulation Language)
  
- 5. Save and activate your changes.
+ 5. Save ![save icon](../../images/adt_save.png) and activate ![activate icon](../../images/adt_activate.png) the changes.
 
 
-## Exercise 3.4: Add an additonal determination to create a Purchase Requisiton
+## Exercise 3.4: Add an additonal internal action to create a Purchase Requisiton
 
 
 1. Add the following line to your behavior implmentation `ZBP_R_ONLINESHOP_###` (in the project explorer under **Core Data Services**** ->**Behavior Definitions** -> **Behavior Implementations**)
@@ -370,93 +373,71 @@ Add it below the `public section.` line, so it looks like this:
 5. Replace the empty `METHOD CreatePurchaseRequisition.` with the following code:
 
 <pre lang="ABAP">
-
   METHOD CreatePurchaseRequisition.
 
     DATA purchase_requisitions      TYPE TABLE FOR CREATE I_PurchaserequisitionTP.
-    DATA purchase_requisition       TYPE STRUCTURE FOR CREATE I_PurchaserequisitionTP.
     DATA purchase_requisition_items TYPE TABLE FOR CREATE i_purchaserequisitionTP\_PurchaseRequisitionItem.
-    DATA purchase_requisition_item  TYPE STRUCTURE FOR CREATE i_purchaserequisitiontp\\purchaserequisition\_purchaserequisitionitem.
     DATA purchase_reqn_acct_assgmts TYPE TABLE FOR CREATE I_PurchaseReqnItemTP\_PurchaseReqnAcctAssgmt.
-    DATA purchase_reqn_acct_assgmt  TYPE STRUCTURE FOR CREATE I_PurchaseReqnItemTP\_PurchaseReqnAcctAssgmt.
     DATA purchase_reqn_item_texts   TYPE TABLE FOR CREATE I_PurchaseReqnItemTP\_PurchaseReqnItemText.
-    DATA purchase_reqn_item_text    TYPE STRUCTURE FOR CREATE I_PurchaseReqnItemTP\_PurchaseReqnItemText.
     DATA update_lines               TYPE TABLE FOR UPDATE zr_onlineshop_###\\OnlineShop.
-    DATA update_line                TYPE STRUCTURE FOR UPDATE zr_onlineshop_###\\OnlineShop.
-    DATA delivery_date              TYPE I_PurchaseReqnItemTP-DeliveryDate.
-
-    delivery_date = cl_abap_context_info=>get_system_date(  ) + 14.
 
     "read transfered order instances
     READ ENTITIES OF zr_onlineshop_### IN LOCAL MODE
-      ENTITY OnlineShop
-      ALL FIELDS WITH
-      CORRESPONDING #( keys )
+      ENTITY OnlineShop ALL FIELDS WITH CORRESPONDING #( keys )
       RESULT DATA(OnlineOrders).
 
-    DATA n TYPE i.
-
     LOOP AT OnlineOrders INTO DATA(OnlineOrder).
+      DATA(n) = sy-tabix.
 
-      n += 1.
       "purchase requisition
-      purchase_requisition = VALUE #( %cid                     = |My%CID_{ n }|
-                                      purchaserequisitiontype  = 'NB' ).
-      APPEND purchase_requisition TO purchase_requisitions.
+      APPEND VALUE #( %cid                    = OnlineOrder-OrderUUID
+                      purchaserequisitiontype = 'NB' ) TO purchase_requisitions.
 
       "purchase requisition item
-      purchase_requisition_item = VALUE #( %cid_ref = |My%CID_{ n }|
-                                           %target  = VALUE #(  (
-                                                       %cid                         = |My%ItemCID_{ n }|
-                                                       plant                        = '1010'  "Plant 01 (DE)
-                                                       accountassignmentcategory    = 'U'  "unknown
-*                                                      PurchaseRequisitionItemText  =      "retrieved automatically from maintained MaterialInfo
-                                                       requestedquantity            = '1'
-                                                       purchaserequisitionprice     = '100'
-                                                       purreqnitemcurrency          = 'EUR'
-                                                       Material                     = 'D001'
-                                                       materialgroup                = 'A001'
-                                                       purchasinggroup              = '001'
-                                                       purchasingorganization       = '1010'
-                                                       DeliveryDate                 = delivery_date   "delivery_date  "yyyy-mm-dd (at least 10 days)
-                                                       CreatedByUser                = OnlineOrder-CreatedBy
-*                                                       PerformancePeriodEndDate    = delivery_date + 20
-*                                                      PerformancePeriodStartDate   = delivery_date
-                                                       ) ) ).
-      APPEND purchase_requisition_item TO purchase_requisition_items.
+      APPEND VALUE #( %cid_ref = OnlineOrder-OrderUUID
+                      %target  = VALUE #( (
+                                   %cid                        = |My%ItemCID_{ n }|
+                                   plant                       = '1010'  "Plant 01 (DE)
+                                   accountassignmentcategory   = 'U'  "unknown
+*                                  PurchaseRequisitionItemText =      "retrieved automatically from maintained MaterialInfo
+                                   requestedquantity           = '1'
+                                   purchaserequisitionprice    = '100'
+                                   purreqnitemcurrency         = 'EUR'
+                                   Material                    = 'D001'
+                                   materialgroup               = 'A001'
+                                   purchasinggroup             = '001'
+                                   purchasingorganization      = '1010'
+                                   DeliveryDate                = CONV #( cl_abap_context_info=>get_system_date(  ) + 14 )
+                                 ) ) ) TO purchase_requisition_items.
 
       "purchase requisition account assignment
-      purchase_reqn_acct_assgmt = VALUE #( %cid_ref = |My%ItemCID_{ n }|
-                                           %target  = VALUE #( (
-                                                        %cid       = |My%AccntCID_{ n }|
-                                                        CostCenter = 'JMW-COST'
-                                                        GLAccount  = '0000400000' ) ) ).
-      APPEND purchase_reqn_acct_assgmt TO purchase_reqn_acct_assgmts .
+      APPEND VALUE #( %cid_ref = |My%ItemCID_{ n }|
+                      %target  = VALUE #( (
+                                   %cid       = |My%AccntCID_{ n }|
+                                   CostCenter = 'JMW-COST'
+                                   GLAccount  = '0000400000'
+                                 ) ) ) TO purchase_reqn_acct_assgmts.
 
       "purchase requisition item text
-      purchase_reqn_item_text    =  VALUE #( %cid_ref = |My%ItemCID_{ n }|
-                                             %target  = VALUE #( (
-                                                        %cid           = |My%TextCID_{ n }|
-                                                        textobjecttype = 'B01'
-                                                        language       = 'E'
-                                                        plainlongtext  = OnlineOrder-Product ) ) ).
-      APPEND purchase_reqn_item_text TO purchase_reqn_item_texts.
-
+      APPEND VALUE #( %cid_ref = |My%ItemCID_{ n }|
+                      %target  = VALUE #( (
+                                   %cid           = |My%TextCID_{ n }|
+                                   textobjecttype = 'B01'
+                                   language       = 'E'
+                                   plainlongtext  = OnlineOrder-Product
+                                 ) ) ) TO purchase_reqn_item_texts.
     ENDLOOP.
 
     "EML deep create statement
     IF keys IS NOT INITIAL.
-      "purchase requisition
       MODIFY ENTITIES OF i_purchaserequisitiontp
         ENTITY purchaserequisition
           CREATE FIELDS ( purchaserequisitiontype )
             WITH purchase_requisitions
           CREATE BY \_purchaserequisitionitem
             FIELDS ( plant
-*                    purchaserequisitionitemtext
                      accountassignmentcategory
                      requestedquantity
-                     baseunit
                      purchaserequisitionprice
                      purreqnitemcurrency
                      Material
@@ -464,16 +445,12 @@ Add it below the `public section.` line, so it looks like this:
                      purchasinggroup
                      purchasingorganization
                      DeliveryDate
-*                    PerformancePeriodEndDate
-*                    PerformancePeriodStartDate
                    )
             WITH purchase_requisition_items
         ENTITY purchaserequisitionitem
           CREATE BY \_purchasereqnacctassgmt
             FIELDS ( CostCenter
-                     GLAccount
-                     Quantity
-                     BaseUnit )
+                     GLAccount )
             WITH purchase_reqn_acct_assgmts
           CREATE BY \_purchasereqnitemtext
             FIELDS ( plainlongtext )
@@ -483,42 +460,35 @@ Add it below the `public section.` line, so it looks like this:
         FAILED DATA(failed_create_pr).
     ENDIF.
 
-    "retrieve the generated
+    "buffer the generated key information
+    "the correct value for PurchaseRequisition has to be calculated in the save sequence using convert key
     zbp_r_onlineshop_###=>mapped_purchase_requisition-purchaserequisition = mapped_create_pr-purchaserequisition.
 
-    "set a flag to check in the save sequence that purchase requisition has been created
-    "the correct value for PurchaseRequisition has to be calculated in the save sequence using convert key
-    "set a flag to check in the save sequence that purchase requisition has been created
-    "the correct value for PurchaseRequisition has to be calculated in the save sequence using convert key
-    LOOP AT keys INTO DATA(key_1).
-
-      update_line-%tky          = key_1-%tky.
-      update_line-OverallStatus = 'submitted'. "'Submitted / Approved'.
-      APPEND update_line TO update_lines.
-
-      MODIFY ENTITIES OF zr_onlineshop_### IN LOCAL MODE
-           ENTITY OnlineShop
-             UPDATE
-             FIELDS (  OverallStatus  )
-             WITH update_lines
-           REPORTED reported
-           FAILED failed
-           MAPPED mapped.
-
-      IF failed IS INITIAL.
-        "Read the changed data for action result
-        READ ENTITIES OF zr_onlineshop_### IN LOCAL MODE
-          ENTITY OnlineShop
-            ALL FIELDS WITH
-            CORRESPONDING #( keys )
-          RESULT DATA(result_read).
-
-        "return result entities
-        result = VALUE #( FOR order_2 IN result_read ( %tky   = order_2-%tky
-                                                       %param = order_2 ) ).
-      ENDIF.
-
+    LOOP AT keys INTO DATA(key_update).
+      APPEND VALUE #( %tky          = key_update-%tky
+                      OverallStatus = 'submitted' ) TO update_lines.
     ENDLOOP.
+
+    MODIFY ENTITIES OF zr_onlineshop_### IN LOCAL MODE
+         ENTITY OnlineShop
+           UPDATE
+           FIELDS ( OverallStatus )
+           WITH update_lines
+         REPORTED reported
+         FAILED failed
+         MAPPED mapped.
+    IF failed IS INITIAL.
+      "Read the changed data for action result
+      READ ENTITIES OF zr_onlineshop_### IN LOCAL MODE
+        ENTITY OnlineShop
+          ALL FIELDS
+          WITH CORRESPONDING #( keys )
+        RESULT DATA(result_read).
+
+      "return result entities
+      result = VALUE #( FOR order_changed IN result_read ( %tky   = order_changed-%tky
+                                                           %param = order_changed ) ).
+    ENDIF.
 
   ENDMETHOD.
 </pre>
@@ -580,23 +550,24 @@ ENDCLASS.
 
 
 <pre lang="ABAP">
-  METHOD save_modified.
+   METHOD save_modified.
 
     DATA onlineshop_db TYPE STANDARD TABLE OF zonlineshop_###.
-    DATA order_uuid    TYPE zonlineshop_###-order_uuid.
 
     IF create-onlineshop IS NOT INITIAL.
       onlineshop_db = CORRESPONDING #( create-onlineshop MAPPING FROM ENTITY ).
-      INSERT zonlineshop_### FROM TABLE @onlineshop_db.
-      order_uuid = onlineshop_db[ 1 ]-order_uuid.
 
-      IF zbp_r_onlineshop_###=>mapped_purchase_requisition IS NOT INITIAL AND create-onlineshop[ 1 ]-%control-product IS NOT INITIAL.
-        LOOP AT zbp_r_onlineshop_###=>mapped_purchase_requisition-purchaserequisition ASSIGNING FIELD-SYMBOL(<pr_mapped>).
+      "determine the ID of the created purchase requisition and store it as a reference in the created order
+      LOOP AT onlineshop_db ASSIGNING FIELD-SYMBOL(<order>).
+        READ TABLE zbp_r_onlineshop_###=>mapped_purchase_requisition-purchaserequisition ASSIGNING FIELD-SYMBOL(<pr_mapped>)
+                   WITH KEY cid COMPONENTS %cid = <order>-order_uuid.
+        IF sy-subrc = 0.
           CONVERT KEY OF i_purchaserequisitiontp FROM <pr_mapped>-%pid TO DATA(pr_key).
-          <pr_mapped>-purchaserequisition = pr_key-purchaserequisition.
-          UPDATE zonlineshop_### SET purchase_requisition = @pr_key-purchaserequisition WHERE order_uuid = @order_uuid.
-        ENDLOOP.
-      ENDIF.
+          <order>-purchase_requisition = pr_key-purchaserequisition.
+        ENDIF.
+      ENDLOOP.
+
+      INSERT zonlineshop_### FROM TABLE @onlineshop_db.
     ENDIF.
 
     LOOP AT delete-onlineshop INTO DATA(onlineshop_delete) WHERE OrderUUID IS NOT INITIAL.

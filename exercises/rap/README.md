@@ -2,9 +2,9 @@
 
 <!-- 
 ## Description
--->
 
 This repository contains the material for the hands-on session **Use ABAP Cloud for SAP S/4HANA (Cloud) extensions**.
+-->
 
 <!-- - [Requirements for attending this workshop](#requirements-for-attending-this-workshop) 
 - [Overview](#overview)
@@ -48,7 +48,7 @@ You will create your own transactional Fiori elements app with the ABAP RESTful 
 
  The scenario we will implement will be an online shop for employees which will allow for the creation of *Purchase Requisitions* by using a released RAP facade from Procurements.   
  
- - An existing customer/partner wants to create a new business application that will allow employees of a company to order certain articles such as laptops for quick delivery using this shopping app. This can be realized with the ABAP RESTful Application Programming Model(RAP). 
+ - An existing customer/partner wants to create a new business application that will allow employees of a company to order certain articles such as laptops for quick delivery using this shopping app. This can be realized with the ABAP RESTful Application Programming Model (RAP). 
  
  - You’ll build the application starting from a database table using an ADT wizard that generates a starter project wich contains all the needed development RAP artefacts that have to be implemented. The generated business service will be transactional, draft-enabled, and enriched with UI semantics for the generation of the Fiori elements app.
 

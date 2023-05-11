@@ -3,11 +3,11 @@
 ## Description
 
 This repository contains the material for the workshop "Create SAP S/4HANA Extensions Using ABAP Cloud and SAP Build".  
-We will create an new service using the ABAP RESTful Application Programming Model (RAP) in an on Premise SAP S/4HANA system and then create a process using SAP Build on the SAP Business Technology Platform (BTP). 
+We will create an new service using the ABAP RESTful Application Programming Model (RAP) in an on premise SAP S/4HANA system and then create a process using SAP Build on the SAP Business Technology Platform (BTP). 
 
 ## Overview
 
-This session covers the basic app development steps using the ABAP Development Tools (ADT) to create a new OData service based on he ABAP RESTful Application Programming Model (RAP) in an on Premise SAP S/4HANA system. This service will then be used in a new process that will be created using SAP Build that runs on the SAP Business Technology Platfrom (BTP). You will see how professional developers code this service in ABAP and then a citizen developer can create the process in a visual way without any coding skills in SAP Build.  
+This session covers the basic app development steps using the ABAP Development Tools (ADT) to create a new OData service based on he ABAP RESTful Application Programming Model (RAP) in an on premise SAP S/4HANA system. This service will then be used in a new process that will be created using SAP Build that runs on the SAP Business Technology Platfrom (BTP). You will see how professional developers code this service in ABAP and then a citizen developer can create the process in a visual way without any coding skills in SAP Build.  
 
 ## The use case
 
