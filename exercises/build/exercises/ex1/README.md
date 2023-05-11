@@ -50,7 +50,7 @@ We will now create the destination in a BTP subaccount to our Onlineshop API in 
 
 In this exercise we will download the OData metadata document to a file to later use it for a definiton of an Action for SAP Build.
 
-1. In your ABAP Development Tools you should still have the service bidning ( under **Business Services** -> **Service Bindings** -> **Z_ONLINESHOP_###** ) open , this time, click on **Service URL**:
+1. In your ABAP Development Tools you should still have the service binding ( under **Business Services** -> **Service Bindings** -> **Z_ONLINESHOP_###** ) open , this time, click on **Service URL**:
 
 ![serviceurl](images/110.png)
 
