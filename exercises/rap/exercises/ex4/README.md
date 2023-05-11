@@ -5,14 +5,14 @@ In this exercise we create an additional service. In the exercise before we crea
 
 For this we need to add a couple of artefacts on top of the already existing ones.
 
-## Exercise 4.1: Create a new Data Defintion
+## Exercise 4.1: Create a new Data Definition
 
 1. In your project open the context menu on **Core Data Services** -> **Data Definitions** and select **New Data Definition**.
 
 ![new_dd](images/100.png) 
 
 2. Maintain the required information (`###` is your group ID) and click **Next >**.
-      - Name: **`ZAPI_ONLINESHOP_###`**  
+      - Name: _**`ZAPI_ONLINESHOP_###`**_  
       - Description: _**`Onlineshop API`**_  
 
 ![new_dd](images/110.png) 
@@ -37,11 +37,9 @@ define root view entity ZAPI_ONLINESHOP_###
 }
 </pre>
 
+5. Replace the placeholder `###` with your group ID. 
 
-
-4. Replace the placeholder `###` with your group ID. 
-
-5. Save ![save icon](../../images/adt_save.png) and activate ![activate icon](../../images/adt_activate.png) the changes.
+6. Save ![save icon](../../images/adt_save.png) and activate ![activate icon](../../images/adt_activate.png) the changes.
 
 ## Exercise 4.2: Create a new Behavior Definition
 
@@ -50,9 +48,9 @@ define root view entity ZAPI_ONLINESHOP_###
 ![new_dd](images/120.png) 
 
 2. Maintain the required information (`###` is your group ID):
-       - Description: _**`Behavior for ZAPI_ONLINESHOP_###`**_
-       - Root Entity: _**`ZAPI_ONLINESHOP_###`**_
-       - Implementation Type: _**`Projection`**_
+      - Description: _**`Behavior for ZAPI_ONLINESHOP_###`**_
+      - Root Entity: _**`ZAPI_ONLINESHOP_###`**_
+      - Implementation Type: _**`Projection`**_
        
       Click **Next >**.
 
@@ -87,10 +85,10 @@ define behavior for ZAPI_ONLINESHOP_### alias onlineshop
 ![new_dd](images/150.png) 
 
 2. Maintain the required information (`###` is your group ID):
-       - Description: _**`Z_ONLINESHOP_###`**_
-       - Description: _**`Service Definition Z_ONLINESHOP_###`**_
-       - Source Type: _**`Definition`**_
-       - Referenced Object: _**`ZAPI_ONLINESHOP_###`**_
+      - Description: _**`Z_ONLINESHOP_###`**_
+      - Description: _**`Service Definition Z_ONLINESHOP_###`**_
+      - Source Type: _**`Definition`**_
+      - Referenced Object: _**`ZAPI_ONLINESHOP_###`**_
        
       Click **Next >**.
 
@@ -116,10 +114,10 @@ define service Z_ONLINESHOP_### {
 ![new_dd](images/170.png) 
 
 2. Maintain the required information (`###` is your group ID):
-       - Name: _**`Z_ONLINESHOP_###`**_
-       - Description: _**`Web API for Onlineshop`**_
-       - Binding Type: _**`OData V4 - Web API`**_
-       - Service Definition: _**`Z_ONLINESHOP_###`**_
+      - Name: _**`Z_ONLINESHOP_###`**_
+      - Description: _**`Web API for Onlineshop`**_
+      - Binding Type: _**`OData V4 - Web API`**_
+      - Service Definition: _**`Z_ONLINESHOP_###`**_
        
       Click **Next >**.
 
