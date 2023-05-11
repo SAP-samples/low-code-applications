@@ -256,7 +256,7 @@ CLASS lcl_OnlineShop DEFINITION INHERITING FROM cl_abap_behavior_handler.
 
   We now will create a determination which is called when a new online store entry is created. The determination will calculate a new Order ID. While the OrderUUID is generated automatically by the system upon save, the Order ID we have to generate ourselves. The corresponding code looks up the currently highest number for orders and then adds 1 for a new ID.
  
-  1. Add the following determinations to your behavior definition **ZR_ONLINESHOP_###** (in the project explorer under **Core Data Services**** ->**Behavior Definitions**)
+  1. Add the following determination to your behavior definition **ZR_ONLINESHOP_###** (in the project explorer under **Core Data Services** -> **Behavior Definitions**)
 
   <pre lang="ABAP">
   determination CalculateOrderID on modify { create; }
@@ -267,7 +267,7 @@ CLASS lcl_OnlineShop DEFINITION INHERITING FROM cl_abap_behavior_handler.
 
   2. Save ![save icon](../../images/adt_save.png) and activate ![activate icon](../../images/adt_activate.png) the changes.
 
-  3. Use the quick fix **Ctrl+1** (**Command+1** on Mac)to generate the appropriate methods in the behavior definition class.
+  3. Use the quick fix **Ctrl+1** (**Command+1** on Mac) to generate the appropriate methods in the behavior definition class.
 
   ![define_determinations](images/310_define_determinations.png) 
 
@@ -275,12 +275,10 @@ CLASS lcl_OnlineShop DEFINITION INHERITING FROM cl_abap_behavior_handler.
 
    ![define_determinations](images/312_define_determinations.png) 
 
-  5. Add the following code snippet to implement the method CalculateOrderID for the determination `createOrderID`. Replace 
+  5. Add the code snippet to implement the method `CalculateOrderID` for the determination `createOrderID`. Replace 
   <pre lang="ABAP">
-
       METHOD CalculateOrderID.
       ENDMETHOD.
-    
   </pre>
   
   with:
@@ -326,15 +324,17 @@ CLASS lcl_OnlineShop DEFINITION INHERITING FROM cl_abap_behavior_handler.
  
   </pre>
 
+  6. Replace the placeholder `###` with your group number.
+
   The code checks for all onlineshop entries that are on the data base, including the one that was just created before our new `CalculateOrderID` method is called. It looks at all the orders whether they already have an `OrderID`, it finds the newest one. Then it looks at the currently biggest order number that was so far assigned. It adds 1 and assigns this new number to our new onlineshop record and modifies the data base using EML (Entity Manipulation Language)
  
- 5. Save ![save icon](../../images/adt_save.png) and activate ![activate icon](../../images/adt_activate.png) the changes.
+ 7. Save ![save icon](../../images/adt_save.png) the changes. The implementation of the internal action `CreatePurchaseRequisition` will be added in the next section.
 
 
-## Exercise 3.4: Add an additonal internal action to create a Purchase Requisiton
+## Exercise 3.4: Add an additonal internal action to create a Purchase Requisition
 
 
-1. Add the following line to your behavior implmentation `ZBP_R_ONLINESHOP_###` (in the project explorer under **Core Data Services**** ->**Behavior Definitions** -> **Behavior Implementations**)
+1. Add the following line to your behavior implementation `ZBP_R_ONLINESHOP_###` (in the project explorer under **Source Code Library** -> **Classes**, make sure to switch to the `Global Class` tab in the ADT editor)
 
 <pre lang="ABAP">
 CLASS-DATA mapped_purchase_requisition TYPE RESPONSE FOR MAPPED i_purchaserequisitiontp.
@@ -356,21 +356,30 @@ Add it below the `public section.` line, so it looks like this:
   ENDCLASS.
 </pre>
 
-2. Save your change
+2. Save ![save icon](../../images/adt_save.png) the changes.
 
-3. Add the following determination to your behavior definition **ZR_ONLINESHOP_###** (in the project explorer under **Core Data Services**** ->**Behavior Definitions**) just behind the line for the calculation of the new order id, that you inserted before.
+3. Add the following determination to your behavior definition **ZR_ONLINESHOP_###** (in the project explorer under **Core Data Services** -> **Behavior Definitions**) just behind the line for the calculation of the new order id, that you inserted before.
 
-   <pre lang="ABAP">
+<pre lang="ABAP">
   internal action CreatePurchaseRequisition result [1] $self;
-   </pre>
+</pre>
 
    ![define_determinations](images/400_define_determinations.png) 
 
-4. Click on the icon on the left hand side of the new line and invoke the generation of the new method
+4. Save ![save icon](../../images/adt_save.png) the changes.
+
+5. Click on the icon on the left hand side of the new line and invoke the generation of the new method
 
   ![define_determinations](images/410_define_determinations.png) 
 
-5. Replace the empty `METHOD CreatePurchaseRequisition.` with the following code:
+6. Replace 
+
+<pre lang="ABAP">
+  METHOD CreatePurchaseRequisition.
+  ENDMETHOD.
+</pre>
+
+with the following code:
 
 <pre lang="ABAP">
   METHOD CreatePurchaseRequisition.
@@ -493,11 +502,15 @@ Add it below the `public section.` line, so it looks like this:
   ENDMETHOD.
 </pre>
 
+7. Replace the placeholder `###` with your group number.
+
+8. Save ![save icon](../../images/adt_save.png) the changes. The implementation of the action `onlineshop~CreatePurchaseRequisition`will be added in the next exercise.
+
 ## Exercise 3.5: Add unmanaged save
 
 We have to add the use of an unmanaged save to the behavior of our RAP business object since the Purchase Requisition API that we plan to call uses late numbering.
 
-1. Navigate to the behavior definition ZR_ONLINESHOP_### either in the Project Explorer or by opening it as a development object using the short cut Ctrl+Shift+A.
+1. Navigate to the behavior definition ZR_ONLINESHOP_### either in the Project Explorer (**Core Data Services** -> **Behavior Definitions**) or by opening it as a development object using the short cut Ctrl+Shift+A.
 
 2. Open the behavior definition and add the statement 
 
@@ -513,7 +526,7 @@ authorization master ( global )
 
 statement.
 
-In addition uncomment the statement that specifies the persistent table of our RAP BO //persistent table zaonlineshop_### since it is not possible to use both statements in the same behavior definition. 
+In addition comment out the statement that specifies the persistent table of our RAP BO `//persistent table zaonlineshop_###` since it is not possible to use both statements in the same behavior definition. 
 
 It should then look like this:
 
@@ -531,23 +544,34 @@ authorization master( global )
 with unmanaged save
 </pre>
 
-3. Activate your changes.
+3. Save ![save icon](../../images/adt_save.png) and activate all ![activate icon](../../images/adt_activateAll.png) the changes.
 
-4. After having activated your changes select the key word unmanaged and select Ctrl + 1 (Command +1 on Mac) to start the code assistant.
+4. After having activated your changes select the key word `unmanaged` and select Ctrl + 1 (Command +1 on Mac) to start the code assistant.
 
 ![define_determinations](images/420_define_determinations.png) 
 
-This will add a local saver class lsc_zr_onlineshop_### to the local classes of your behavior implementation class. The method save_modified is added to the DEFINITION and the IMPLEMENTATION section of this local class.
+This will add a local saver class `lsc_zr_onlineshop_###` to the local classes of your behavior implementation class (in the Project Explorer under **Source Code Library** -> **Classes**, in the `Local Types` tab in the ADT Editor). The method `save_modified` is added to the `DEFINITION` and the `IMPLEMENTATION` section of this local class.
 
 <pre lang="ABAP">
 CLASS lsc_zr_onlineshop_### DEFINITION INHERITING FROM cl_abap_behavior_saver.
+
   PROTECTED SECTION.
+
   METHODS save_modified REDEFINITION.
+  
 ENDCLASS.
 </pre>
 
-5. Implement the `save_modified()` method as follows:
+5. Save ![save icon](../../images/adt_save.png) the changes.
 
+6. To implement the `save_modified()` method, replace:
+
+<pre lang="ABAP">
+  METHOD save_modified.
+  ENDMETHOD.
+</pre>
+
+with:
 
 <pre lang="ABAP">
    METHOD save_modified.
@@ -558,12 +582,12 @@ ENDCLASS.
       onlineshop_db = CORRESPONDING #( create-onlineshop MAPPING FROM ENTITY ).
 
       "determine the ID of the created purchase requisition and store it as a reference in the created order
-      LOOP AT onlineshop_db ASSIGNING FIELD-SYMBOL(<order>).
-        READ TABLE zbp_r_onlineshop_###=>mapped_purchase_requisition-purchaserequisition ASSIGNING FIELD-SYMBOL(<pr_mapped>)
-                   WITH KEY cid COMPONENTS %cid = <order>-order_uuid.
+      LOOP AT onlineshop_db ASSIGNING FIELD-SYMBOL(&#60;order&#62;).
+        READ TABLE zbp_r_onlineshop_###=>mapped_purchase_requisition-purchaserequisition ASSIGNING FIELD-SYMBOL(&#60;pr_mapped&#62;)
+                   WITH KEY cid COMPONENTS %cid = &#60;order&#62;-order_uuid.
         IF sy-subrc = 0.
-          CONVERT KEY OF i_purchaserequisitiontp FROM <pr_mapped>-%pid TO DATA(pr_key).
-          <order>-purchase_requisition = pr_key-purchaserequisition.
+          CONVERT KEY OF i_purchaserequisitiontp FROM &#60;pr_mapped&#62;-%pid TO DATA(pr_key).
+          &#60;order&#62;-purchase_requisition = pr_key-purchaserequisition.
         ENDIF.
       ENDLOOP.
 
@@ -578,7 +602,9 @@ ENDCLASS.
   ENDMETHOD.
 </pre>
 
-6. Activate your changes in the Behavior Definition `ZBP_R_ONLINESHOP_300` and in its Behavior Implementation `ZBP_R_ONLINESHOP_300`
+7. Replace the placeholder `###` with your group number.
+
+7. Activate your changes in the Behavior Definition `ZBP_R_ONLINESHOP_300` and in its Behavior Implementation `ZBP_R_ONLINESHOP_300`
 
 ## Exercise 3.6: Check your preview application
 
