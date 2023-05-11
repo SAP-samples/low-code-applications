@@ -1,9 +1,9 @@
 
 # Exercise 4: Create a Web API for the Onlineshop
 
-In this exercise we create an additional service. In the exercise before we created an Onlineshop service that we can use for a Fiori elements application which supports drafts (the ability to save UI entries in an unfinished or wrong state for the current user, in order to allow the user to correct the entry later. The entry will only become visible when the entry was finally corrected and saved). These kind of services are not suitable to be called from other places than UIs, for example processes. As we later on want to create a process we will now add a second service for web API usage. 
+In this exercise we create an additional service. In the exercise before we created an Onlineshop service that we can use for a Fiori elements application which supports drafts (the ability to save UI entries in an unfinished or wrong state for the current user, in order to allow the user to correct the entry later. The entry will only become visible when the entry was finally corrected and saved.). These kind of services are not suitable to be called from other places than UIs, for example processes. As we later on want to create a process, we will now add a second service for web API usage. 
 
-For this we need to add acouple of artefacts on top of the already existing ones.
+For this we need to add a couple of artefacts on top of the already existing ones.
 
 ## Exercise 4.1: Create a new data defintion
 
@@ -11,7 +11,9 @@ For this we need to add acouple of artefacts on top of the already existing ones
 
 ![new_dd](images/100.png) 
 
-2. Use the name `TAPI_ONLINESHOP_###` 
+2.  Click **Next >** and select your transport request. Click **Finish**.
+
+2. Use the name `ZAPI_ONLINESHOP_###` and replace the placeholder `###` with your group number. Add `Onlineshop API` for the description.
 
 ![new_dd](images/110.png) 
 
@@ -33,7 +35,11 @@ define root view entity ZAPI_ONLINESHOP_###
 }
 </pre>
 
-3. Save and Activate your change
+
+
+4. Replace the placeholder `###` with your group number. 
+
+5. Save ![save icon](../../images/adt_save.png) and activate ![activate icon](../../images/adt_activate.png) the changes.
 
 ## Exercise 4.2: Create a new behavior definition
 
