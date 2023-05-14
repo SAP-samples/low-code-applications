@@ -85,7 +85,7 @@ define behavior for ZAPI_ONLINESHOP_### alias onlineshop
 ![new_dd](images/150.png) 
 
 2. Maintain the required information (`###` is your group ID):
-      - Description: _**`Z_ONLINESHOP_###`**_
+      - Name: _**`Z_ONLINESHOP_###`**_
       - Description: _**`Service Definition Z_ONLINESHOP_###`**_
       - Source Type: _**`Definition`**_
       - Referenced Object: _**`ZAPI_ONLINESHOP_###`**_

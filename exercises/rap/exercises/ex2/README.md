@@ -21,7 +21,7 @@ You will use an ADT wizard to generate all the needed development RAP artefacts 
 ## Exercise 2.1: Create database table
 
 Create a database table![table](../../images/adt_tabl.png) to store the _OnlineShop_ data.   
-A OnlineShop entity defines general data, such as the product name or or the quantity that is ordered. Once the order is checked out the number of the purchase requisition that will be created by using our released API will be stored as well.   
+A OnlineShop entity defines general data, such as the product name or the quantity that is ordered. Once the order is checked out the number of the purchase requisition that will be created by using our released API will be stored as well.   
 
 > Hint: 
 > The tasks are also desribed in the following tutorial (step 2). Just replace the names with those that are mentioned in this how to guide.  
@@ -66,9 +66,9 @@ define table zonlineshop_XXX {
        
    6. Save ![save icon](../../images/adt_save.png) and activate ![activate icon](../../images/adt_activate.png) the changes.
    
-## Exercise 2.2: Generate the transactional UI services
+## Exercise 2.2: Generate the transactional UI service
 
-Create your OData v4 based UI services with the built-in ADT generator.   
+Create your OData V4 based UI service with the built-in RAP generator.   
 The generated business service will be transactional, draft-enabled, and enriched with UI semantics for the generation of the Fiori elements app.
 
 > Hint: 
@@ -76,7 +76,7 @@ The generated business service will be transactional, draft-enabled, and enriche
 > https://developers.sap.com/tutorials/abap-environment-rap100-generate-ui-service.html
 
 
-   1. In the **Project Explorer** (**Dictionary** -> **Source Code Library**) right-click your database table ![table](../../images/adt_tabl.png)**`ZONLINESHOP_###`** and select **Generate ABAP Repository Objects** from the context menu.        
+   1. In the **Project Explorer** (**Dictionary**) right-click your database table ![table](../../images/adt_tabl.png)**`ZONLINESHOP_###`** and select **Generate ABAP Repository Objects** from the context menu.        
    
    2. Maintain the required information  (`###` is your group ID) and click **Next >**:
         - Generator: **`ABAP RESTful Application Programming Model: UI Service`**
@@ -123,7 +123,7 @@ In this exercise you will publish the local service endpoint of your service bin
 
    ![Publish](images/105_publish_service_binding_on_prem.png)
    
-   2. Double-click on the entity **`OnlineShop`** in the **Entity Set and Association** section to open the _Fiori elements App Preview_.   
+   2. Double-click on the entity **`onlineshop`** in the **Entity Set and Association** section to open the _Fiori elements App Preview_.   
 
    ![Preview](images/107_publish_service_binding_on_prem.png)
    
@@ -196,7 +196,7 @@ In this exercise you will publish the local service endpoint of your service bin
 
 Now that you've... 
 - created an ABAP package,
-- created a database table and filled it with demo data,
+- created a database table,
 - created a transactional UI service,
 - published a local service point, and started the _Fiori elements App Preview_ in ADT.
 
@@ -204,11 +204,11 @@ You can continue with the next exercise - **[Exercise 3: Adapt the data model](.
 
 
 ---
-
+<!--
 ## Appendix
 
 
 Find the source code for the database table definition and the data generator class in the [sources](sources) folder. Don't forget to replace all occurences of the placeholder `###` with your group ID.
 
 - ![document](../../images/doc.png) [Table ZONLINESHOP_###](sources/ZONLINESHOP_%23%23%23.txt)
-
+-->

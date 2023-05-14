@@ -93,12 +93,8 @@ Support for the content in this repository is available during the actual time o
 
 ## Further Information
 
-
-You can find further information on the different topics here: 
-- [SAP S/4HANA Cloud ABAP Environment](https://www.sap.com/about/events/teched-news-guide/composable-enterprise-solutions.html)
-- [New ABAP Platform Extensibility Options for SAP S/4HANA](https://blogs.sap.com/2021/11/19/new-abap-platform-extensibility-options-in-2021/)
 - [Getting Started with the ABAP RESTful Application Programming Model (RAP)](https://blogs.sap.com/2019/10/25/getting-started-with-the-abap-restful-programming-model/)
-- [ABAP Extensibility Topic Page @SAP Community](https://community.sap.com/topics/abap-extensibility)
+- [ABAP @SAP Community](https://community.sap.com/topics/abap)
 
 ## License
 Copyright (c) 2022 SAP SE or an SAP affiliate company. All rights reserved. This file is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](LICENSES/Apache-2.0.txt) file.

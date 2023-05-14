@@ -73,7 +73,7 @@ association [1..1] to ZI_PRODUCT_VH_REUSE as _Product on $projection.OrderItemID
 > ![enhance_data_model](images/105_adapt_data_model.png) 
 -->
  
-## Exercise 3.1: Provide Metadata for Fiori elements UI
+## Exercise 3.1: Provide Metadata Extension for Fiori elements UI
  
 1. Replace the complete source code of the Metadata Extension File **ZC_ONLINESHOP_###**.   
 
@@ -161,7 +161,7 @@ annotate view ZC_ONLINESHOP_XXX with
 }
 </pre>
 
-  This meta data extension file includes the annotations that tell the Fiori elements UI which columns should go into the result list and which fields group a form on the object page. While most of the code was already generated automatically, we now add a couple of labels to the column headers and for the form and change the order of fields a bit to make the form nicer (order is changed via the 'importance' annotation).
+  This metadata extension file includes the annotations that tell the Fiori elements UI which columns should go into the result list and which fields group a form on the object page. While most of the code was already generated automatically, we now add a couple of labels to the column headers and for the form and change the order of fields a bit to make the form nicer (order is changed via the 'importance' annotation).
 
 2. Save ![save icon](../../images/adt_save.png) and activate ![activate icon](../../images/adt_activate.png) the changes.
 
@@ -326,7 +326,7 @@ CLASS lcl_OnlineShop DEFINITION INHERITING FROM cl_abap_behavior_handler.
 
   6. Replace the placeholder `###` with your group ID.
 
-  The code checks for all onlineshop entries that are on the data base, including the one that was just created before our new `CalculateOrderID` method is called. It looks at all the orders whether they already have an `OrderID`, it finds the newest one. Then it looks at the currently biggest order number that was so far assigned. It adds 1 and assigns this new number to our new onlineshop record and modifies the data base using EML (Entity Manipulation Language)
+  The code reads all entries including the one that was just created. It looks at all the orders whether they already have an `OrderID`, it finds the order with the highest `OrderID`, assuming this is the newest. It adds 1 to the highest `OrderID` and assigns this new number to our new onlineshop record and modifies the database using EML ([Entity Manipulation Language](https://help.sap.com/docs/btp/sap-abap-restful-application-programming-model/entity-manipulation-language-eml))
  
  7. Save ![save icon](../../images/adt_save.png) the changes. The implementation of the internal action `CreatePurchaseRequisition` will be added in the next section.
 
@@ -504,7 +504,7 @@ with the following code:
 
 7. Replace the placeholder `###` with your group ID.
 
-8. Save ![save icon](../../images/adt_save.png) the changes. The implementation of the action `onlineshop~CreatePurchaseRequisition`will be added in the next exercise.
+8. Save ![save icon](../../images/adt_save.png) and activate ![activate icon](../../images/adt_activate.png) the changes.
 
 ## Exercise 3.5: Add unmanaged save
 

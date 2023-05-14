@@ -1,6 +1,6 @@
-# How to connect to a to an SAP S/4HANA on premise or private cloud system 
+# How to connect to an SAP S/4HANA on premise or private cloud system 
 
-This document describes how to create a **ABAP Project** to connect to an SAP S/4HANA on premise or private cloud system.  
+This document describes how to create an **ABAP Project** to connect to an SAP S/4HANA on premise or private cloud system.  
 
 
 1. Click on  **File > New > New ABAP Project**
@@ -13,7 +13,7 @@ This document describes how to create a **ABAP Project** to connect to an SAP S/
 
 3. In the *Connection Settings* dialogue choose the connection type **Custom Application Server**  
    
-   Then enter the following connection information (The number of the application server is provided by the instructors)
+   Then enter the following connection information (The IP address of the application server is provided by the instructors)
    - System ID: S4H
    - Application Server: xxx.xxx.xxx.xxx
    - Instance Number: 00

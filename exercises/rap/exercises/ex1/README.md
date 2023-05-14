@@ -19,7 +19,7 @@ Execrises 1.1 - 1.3 are essential for the exercise, the following exercises 1.4 
 > **Reminder:**   
 > Don't forget to replace all occurences of the placeholder **`###`** with your group ID in the exercise steps below.  
 > You can use the ADT function **Replace All** (**Ctrl+F**) for the purpose.   
-> If you don't have a group ID yet, then check the section [Getting Started - Group ID](../ex0/readme.md#group-id).    
+> If you don't have a group ID yet, please check with your instructor.    
 
 ## Exercise 1.1: Create Package with language version ABAP for Cloud Development
 
