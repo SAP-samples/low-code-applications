@@ -32,7 +32,7 @@ We will now create the destination in a BTP subaccount to our Onlineshop API in 
     |  Authentication   | BasicAuthentication |
     |  Location ID   | CALCC |
     |  User   | lowcode### |
-    |  Password   | ######xx |
+    |  Password   | ABAP credentials as provided by your instructor |
 
 5. Then press the `New Property` button and add 
 `sap.applicationdevelopment.actions.enabled` with value `true`
