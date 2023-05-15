@@ -141,7 +141,22 @@ https://YY.YYYY.YYY.YY:44301/sap/opu/odata4/sap/z_onlineshop_###/srvd_a2x/sap/z_
 
 3. Press enter to load the page. The result should display the order you created in the previous exercise:
 
-![new_dd](images/200.png)  
+<pre lang="JSON">
+{
+    "@odata.context": "$metadata#onlineshop",
+    "@odata.metadataEtag": "W/\"20230512011226\"",
+    "value": [
+        {
+            "OrderUUID": "41d67ed4-f6d7-1edd-bc8c-0d6a2c2a133f",
+            "OrderID": "        1",
+            "Product": "AS01",
+            "Quantity": 1,
+            "LocalLastChangedAt": "2023-05-12T01:00:52.710668Z",
+            "SAP__Messages": []
+        }
+    ]
+}
+</pre>
 
 ## Summary   
 
