@@ -259,7 +259,7 @@ CLASS lcl_OnlineShop DEFINITION INHERITING FROM cl_abap_behavior_handler.
   1. Add the following determination to your behavior definition **ZR_ONLINESHOP_###** (in the **Project Explorer** under **Core Data Services** -> **Behavior Definitions**)
 
   <pre lang="ABAP">
-  determination CalculateOrderID on modify { create; }
+  determination CalculateOrderID on save { create; }
   </pre>
 
 
