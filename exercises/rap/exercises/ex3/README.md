@@ -370,7 +370,7 @@ Add it below the `public section.` line, so it looks like this:
 
 5. Click on the icon on the left hand side of the new line and invoke the generation of the new method
 
-  ![define_determinations](images/410_define_determinations.png) 
+  ![define_determinations](images/410_define_determinations_1.png) 
 
 6. Replace 
 
