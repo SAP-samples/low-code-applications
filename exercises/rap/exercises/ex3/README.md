@@ -263,17 +263,17 @@ CLASS lcl_OnlineShop DEFINITION INHERITING FROM cl_abap_behavior_handler.
   </pre>
 
 
-  ![define_determinations](images/300_define_determinations.png)  
+  ![define_determinations](images/300_define_determinations_1.png)  
 
   2. Save ![save icon](../../images/adt_save.png) and activate ![activate icon](../../images/adt_activate.png) the changes.
 
   3. Use the quick fix **Ctrl+1** (**Command+1** on Mac) to generate the appropriate methods in the behavior definition class.
 
-  ![define_determinations](images/310_define_determinations.png) 
+  ![define_determinations](images/310_define_determinations_1.png) 
 
   4. Then a new tab is openend with the generated handler that looks like this:
 
-   ![define_determinations](images/312_define_determinations.png) 
+   ![define_determinations](images/312_define_determinations_1.png) 
 
   5. Add the code snippet to implement the method `CalculateOrderID` for the determination `createOrderID`. Replace 
   <pre lang="ABAP">
@@ -364,7 +364,7 @@ Add it below the `public section.` line, so it looks like this:
   internal action CreatePurchaseRequisition result [1] $self;
 </pre>
 
-   ![define_determinations](images/400_define_determinations.png) 
+   ![define_determinations](images/400_define_determinations_1.png) 
 
 4. Save ![save icon](../../images/adt_save.png) the changes.
 
