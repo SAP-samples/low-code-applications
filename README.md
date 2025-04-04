@@ -31,12 +31,15 @@ In a browser, preferably Google Chrome open the SAP Build Lobby https://lcaptech
 6. Enter a project name, for example *maintenanceNotificationXXX*, where XXX is the number of your previously assigned user. (The number is added to the project name to make sure your project is different from the ones of other users of this tutorial in case you want to deploy the application to the SAP Business Technology Platform (BTP)).
 7. Under ''Development Stack'', select *Node.js* 
 8. Click *create* to finalize the setup and start working on your application
-A new projocet will be created. This will take a few minutes. When the process is complete, your new application will appear in the SAP Build Lobby under *My projects*
+
+A new project will be created. This will take a few minutes. When the process is complete, your new application will appear in the SAP Build Lobby under *My projects*
 
 ![Name](images/name.png) 
 
 9. Once your application is created, click on its name to open it. This will launch the business application studio.
-Create and explore a CAP Model
+
+    
+### Create and explore a CAP Model
 
 At first, the project will be empty. Next step is to create a CAP (Cloud Application Programming) data model and a service for the notification. This can either be done manually or with the help of Joule, the digital assistant. 
 
@@ -46,7 +49,7 @@ Ask Joule to create a new CAP application:
 
 2.	To create a maintenance application with 2 properties, copy and paste the following prompt in the input field: 
 
-/*cap-gen-app Create a maintenance notification app which contains a problem description and a number of the record , both should be strings.*
+/*cap-gen-app Create a maintenance notification app which contains a problem description and a number of the record, both should be strings.*
 
 ![Joule](images/joule.png)
 
@@ -71,7 +74,7 @@ You can now see the AI generated entity and all the properties in it. If you cli
 
 ![Details](images/details.png)
 
-6.	Click on the Show Details entry. This will open a side pane on the right. You could change the properties of the entity, delete some of them, or create new ones.
+6.	Click on the *Show Details* entry. This will open a side pane on the right. You could change the properties of the entity, delete some of them, or create new ones.
 
 ![Properties](images/properties.png)
 
@@ -92,7 +95,7 @@ Apart from creating assets using Joule and AI or the Graphical Modeler, it is al
 
 With the single prompt we have already created a complete CAP service. It is exposed as a CRUD enabled OData service which means it supports create, read, update and delete operations.
 ### Import an SAP S/4HANA API: Add a new External Resource
-1.	In the Add new external resource section, click the + button
+1.	In the *Add new external resource section*, click the + button
 
 ![Externalresource](images/externalresource.png)
 
@@ -102,7 +105,7 @@ Another option is SAP Business Accelerator Hub, which shows all the publicly ava
 A third option is the *Developer Hub*, see [here](https://help.sap.com/docs/integration-suite/sap-integration-suite/developer-hub), where administrators can carefully curate and govern which APIs are published to developers and to manage these APIs by securing, applying transformation or traffic management options.
 The last option is the *Unfied Customer Landscape*, which shows all the APIs that are part of a customer’s SAP and Third Party landscape.
 3.	Take some time to explore these other options separately.
-4.	Turn to the preselected SAP System choice.
+4.	Turn to the preselected *SAP System* choice.
 5.	Under Services, select API_MAINTNOTIFICATION_CC7. This is one of the public SAP S/4HANA APIs, that can be found on the SAP Business Accelerator Hub, as well.
    
 ![Api](images/api.png)
@@ -155,7 +158,7 @@ In the above version, the following things are happening:
 
 •	In line 15, there is a check whether the user has provided a problem description
 
-•	If so, CAP invokes a *write call* for the SAP S/4HANA API to create a new maintenance notification instance in the SAP S/HANA system. For this, it uses the problem description text and the fixed type *M1* – exactly how Joule has been asked to do so. This also shows a nice feature in CAP: The way to invoke a create request for an OData API like the API_MAINTENANCENOTIFICATION looks very much like an SQL statement to a data base table. This is by intention. CAP offers this unified way of accessing APIs and database artefacts via the so called *CDS Query Language* (CQL)
+•	If so, CAP invokes a *write call* for the SAP S/4HANA API to create a new maintenance notification instance in the SAP S/HANA system. For this, it uses the problem description text and the fixed type *M1* – exactly how Joule has been asked to do so. This also shows a nice feature in CAP: The way to invoke a *create request* for an OData API like the API_MAINTENANCENOTIFICATION looks very much like an SQL statement to a data base table. This is by intention. CAP offers this unified way of accessing APIs and database artefacts via the so called *CDS Query Language* (CQL)
 
 •	In line 24, it then checks whether a new maintenance notification was indeed created in SAP S/4HANA and if so:
 
@@ -191,25 +194,26 @@ Next step is to add a UI application to create and edit BTP notifications as wel
 
 1.	On the Storyboard go to the *UI Applications* section
 2.	Click the + button to create a new UI application
-3.	Enter Notifications as the Display name
+3.	Enter *Notifications* as the Display name
 4.	Under Data Source:
 
 a.	Open the dropdown menu
 
 b.	Select your service maintenanceNotificationsXXXSrv  
 
-c.	Click *next* to go to the UI Application Type 
+c.	Click *next* to go to the UI Application Template
 
-d.	Choose the *Template-Based, Responsive Application* tile on the left for a SAP Fiori Element Application. 
+d.  Select Template-based, Reponsive Application
 
 This generates an SAP Fiori application which is intended for desktop use mainly. It, however, works on tablets on mobile phones, as well. 
 
 If the main use case would be on the mobile phone, Mobile-Centric, Freestyle Application should be chosen which would create a new Mobile Development Kit (MDK) app. This works on mobile or tablet the best, it also works on a desktop, but it is not as optimized for it as the SAP Fiori elements app is. 
 
-5.	Click *next* to go to the UI Application Template
-6.	Select the *List Report Page* template and press Next. This chooses the right floorplan for our application
-7.	In the last step, ensure that the new application is based on the *Main entity* which is your CAP service. As you project consists of only one service and one service entity this is already preselected in the right way.
-8.	Click *Finish*
+
+
+5.	Select the *List Report Page* template and press *Next*. This chooses the right floorplan for our application
+6.	In the last step, ensure that the new application is based on the *Main entity* which is your CAP service. As you project consists of only one service and one service entity this is already preselected in the right way.
+7.	Click *Finish*
 
 You will be taken back to the Storyboard. The generation of the UI takes a couple of seconds, and the UI application will be added to the storyboard.
 
@@ -294,3 +298,60 @@ SAP Build Code via CAP and SAP Fiori elements make it easy to add this functiona
 1.	Open a new terminal by pressing the hamburger icon on the left side pane
 2.	Select *Terminal*
 3.	Select *New terminal*
+
+![Terminal](images/terminal.png)
+
+4.	In the terminal, add the statement
+
+`npm add @cap-js/attachments`
+
+5.	Press *return*.
+
+![Npm](images/npm.png)
+
+This will add a so-called *CAP plugin*, in this case one for attachment-handling. Behind the scenes, a dependency to this plugin will be added into the *package.json* file of the application and the plugin will be loaded.
+
+6.	Open the file explorer by pressing on the corresponding icon in the left side pane.
+7.	Open the *db* folder
+
+   a. Click on the *schema.cds* file
+   
+   b. In this file, add the following line as the 2nd line: 
+
+   `using { Attachments } from '@cap-js/attachments';`
+
+   c. For the attachments, add 
+
+   `attachments: Composition of many Attachments;` 
+
+   as the last line in the entity like this: 
+
+   `entity MaintenanceNotifications : cuid {`
+  
+  `problemDescription: String(500);`
+  
+  `recordNumber: String(50);`
+
+  `attachments: Composition of many Attachments;` 
+
+`}`
+
+The result should look like this: 
+
+![Result](images/result.png) 
+
+What happened here? The Attachments plugin has been added to the file. As a last step, a new property needs to be created, called *attachments* here, which is a *Composition of Attachments.*
+
+Let’s have a look at the result:
+
+8. If you have stopped the preview, press the green arrow on the upper right of the Storyboard again. If the preview is still running, the application should have refreshed itself.
+
+9.	On the *Application Development Project Preview* page, press the tile *Notifications* again.
+
+10. Create a new notification in your app by clicking *create* which you can find at the top right. You should now see a new attachment section in the application.
+
+![Description](images/description.png) 
+
+New attachments can now be uploaded that will then appear in the list. You can also view them from that list. Each time creating a new notification with a description, the attachments will be stored alongside the notification.
+
+This concludes the creation of a maintenance notification application with GenAI in SAP Build Code. 
