@@ -1,70 +1,27 @@
  # Use ABAP Cloud for SAP S/4HANA (Cloud) extensions
 
-<!-- 
-## Description
-
-This repository contains the material for the hands-on session **Use ABAP Cloud for SAP S/4HANA (Cloud) extensions**.
--->
-
-<!-- - [Requirements for attending this workshop](#requirements-for-attending-this-workshop) 
-- [Overview](#overview)
-- [Exercises](#exercises)
-- [How to obtain support](#how-to-obtain-support) 
-- [Further Information](#further-information)
--->
-
-<!--
-## Requirements for attending this workshop 
-
-
-In order to participate in this hands-on session, you MUST have installed the latest version of Eclipse and the latest version of the ABAP Development Tools (ADT) in Eclipse.
-Please check the following two short documents how to do this if you have not already done it:  
-- [Install the ABAP Development Tools (ADT)](https://developers.sap.com/tutorials/abap-install-adt.html)  
-- [Adapt the Web Browser settings in your ADT installation](https://github.com/SAP-samples/abap-platform-rap-workshops/blob/main/requirements_rap_workshops.md#4-adapt-the-web-browser-settings-in-your-adt-installation)  
- 
-You also need a user on an SAP S/4HANA Cloud ABAP Environment system or on a SAP S/4HANA on prem or private cloud system. The on premise system must have a relase equal or higher SAP S/4HANA 2022.  
-
-> **Note for participants of SAP events:** You will recieve logon information from the SAP team during the event. 
-> 
-> | [How to log on to a SAP S/4HANA 2022 preconfigured appliance system](exercises/ex99/README.md) |  
-
--->
 
 ## Overview
-
 
 **ABAP Cloud**  
 … is the ABAP development model to build cloud-ready business apps, services and extensions  
 … comes with SAP BTP and SAP S/4HANA  
 … works with public or private cloud, and even on-premise  
 
-This hands-on workshop will guide you to build developer extensions using *ABAP Cloud* in an SAP S/4HANA system using RAP facades. 
+This hands-on workshop will guide you to build developer extensions using *ABAP Cloud* on a BTP ABAP Environment using RAP facades. 
 
 A RAP facade is a *released* business object interface built with the ABAP RESTful Application Programming Model (RAP).
 
-You will create your own transactional Fiori elements app with the ABAP RESTful Application Programming Model (RAP) and use released RAP facades to enhance the existing functionality. 
+You will create your own app with the ABAP RESTful Application Programming Model (RAP) and preview it via a Fiori elements app. 
 
 ### Business Scenario 
 
- The scenario we will implement will be an online shop for employees which will allow for the creation of *Purchase Requisitions* by using a released RAP facade from Procurements.   
+ The scenario we will implement will be a shopping cart
  
- - An existing customer/partner wants to create a new business application that will allow employees of a company to order certain articles such as laptops for quick delivery using this shopping app. This can be realized with the ABAP RESTful Application Programming Model (RAP). 
+ - A customer/partner wants to create a new business application that will allow employees of a company to order certain articles such as laptops for quick delivery using this shopping app. This can be realized with the ABAP RESTful Application Programming Model (RAP). 
  
- - You’ll build the application starting from a database table using an ADT wizard that generates a starter project wich contains all the needed development RAP artefacts that have to be implemented. The generated business service will be transactional, draft-enabled, and enriched with UI semantics for the generation of the Fiori elements app.
+ - You’ll build the application starting from a database table using an ADT wizard that generates a starter project wich contains all the needed development RAP artefacts that have to be implemented. 
 
-<!--
- - Now, the customer/partner wishes to enhance the existing online shop application. After an order is placed, it should be possible to initiate a purchase requisition for this order in the SAP S/4HANA system. Using the developer extensibility custom code can be added to the existing business logic of the online shop BO to fulfill this requirementand by calling the released RAP facade **I_PurchaseRequisitionTP** locally.
- -->
- 
- <!--
-Your application will finally look like this:
-
- ![List Report Page](images/Online_Shop_List_Report_Page.png)
- 
- ![Object Page](images/Online_Shop_OBject_Page.png)
- -->
-
-### Architecture Overview
 
 
 The figure below illustrates the high-level architecture components of the cloud extensibility model used in SAP S/4HANA public Cloud, SAP S/4HANA private cloud and SAP S/4HANA on premise systems.
@@ -80,9 +37,7 @@ The figure below illustrates the high-level architecture components of the cloud
 | ------------- | 
 | [How to connect with ADT to your SAP S/4HANA system](exercises/ex99/README.md) |  
 | [Exercise 1: Create an ABAP Package](exercises/ex1/README.md) | 
-| [Exercise 2: Create the OnlineShop Application](exercises/ex2/README.md) | 
-| [Exercise 3: Adapt the data model](exercises/ex3/README.md) |
-| [Exercise 4: Create a Web API for the Onlineshop](exercises/ex4/README.md) | 
+
 
 Continue to - [How to connect with ADT to your SAP S/4HANA system](exercises/ex99/README.md)
 
@@ -97,4 +52,4 @@ Support for the content in this repository is available during the actual time o
 - [ABAP @SAP Community](https://community.sap.com/topics/abap)
 
 ## License
-Copyright (c) 2022 SAP SE or an SAP affiliate company. All rights reserved. This file is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](LICENSES/Apache-2.0.txt) file.
+Copyright (c) 2025 SAP SE or an SAP affiliate company. All rights reserved. This file is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](LICENSES/Apache-2.0.txt) file.
