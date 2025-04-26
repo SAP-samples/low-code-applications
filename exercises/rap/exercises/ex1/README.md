@@ -103,6 +103,8 @@ The following points 9. - 11. might or might not pop up after you pressed create
 
    ![SelectPackage](images/SelectPackage.png)
 
+### Create a new database table
+
 18. Select this package in the tree in the project explorer. Once again invoke the right mouse button and choose *New->Other ABAP Repository Objec*
 
    ![InitiateDBTable](images/InitiateDBTable.png)
@@ -157,32 +159,92 @@ define table zdbshopcartXXX {
 23. Save and activate your chenages, press the according button.
 
    ![DBActivate](images/DBActivate.png)
-   
+
+### Create a new RAP service
+
+   In this part of the exercise you will create a new ABAP RESTful programming Model (RAP) based OData service that can be used for consumption in a Fiori UI. The service will be based on the database table that you created in the last part.
+
+   24. In the project explorer select your new database table and press the right mouse button. In the menu select *Generate ABAP Repository Objects...*
+
+   ![InitiateGenerateRAP](images/InitiateGenerateRAP.png)
+
+   25. Select *OData UI Service* and press *Next*
+
+   ![GenerateUIService](images/GenerateUIService.png)
+
+   26. Select the package you have created earlier called *ZSHOPPINGCARTXXX* where *XXX* is your group number. Press *Next*
+
+   ![UIServiceName](images/UIServiceName.png)
+
+   27. Now you can review all the assets that the generator is going to create by clicking on the different entities in the hierarchy on the left. If needed you can adjust the suggested names, here you can just take them over as they are suggested. Press *Next*
+
+   ![UIServiceAssets](images/UIServiceAssets.png)
+
+   28. In this step you can also review the content of the different objects to be generated, for example the CDS. Press *Next*
+
+   ![UIServiceGenerationPreview](images/UIServiceGenerationPreview.png)
 
 
-![InitiateGenerateRAP](images/InitiateGenerateRAP.png)
-![GenerateUIService](images/GenerateUIService.png)
-![UIServiceName](images/UIServiceName.png)
-![UIServiceAssets](images/UIServiceAssets.png)
-![UIServiceGenerationPreview](images/UIServiceGenerationPreview.png)
-![UIServiceTransport](images/UIServiceTransport.png)
+   29. Choose the transport request again that you have created eariler. Press *Finish*. The generation process starts and takes a couple of seconds.
 
+   ![UIServiceTransport](images/UIServiceTransport.png)
 
+   30. At the end of the generation process a number of new objects appear in the hierarchy of your package in the project explorer. Select the object in the *Service Binding* folder to bring up its details in an editor on the right. In this editor press *Publish*, this will expose the service.
 
-![PublishRAPService](images/PublishRAPService.png)
-![Preview](images/Preview.png)
-![FEPreview](images/FEPreview.png)
-![PreviewCreate](images/PreviewCreate.png)
-![PreviewCreated](images/PreviewCreated.png)
+   ![PublishRAPService](images/PublishRAPService.png)
 
+   31. Once the service is published, the service's entity appears on the right. Press *Preview* to test the service in a Fiori elements UI.
 
+   ![Preview](images/Preview.png)
 
+   32. A browser window opens and shows the list report of your application. As there are no entries in the database yet, the list is empty. Press *Create* to create a new entry.
 
-![aaa](images/aaa.png)
-![aaa](images/aaa.png)
-![aaa](images/aaa.png)
-![aaa](images/aaa.png)
-![aaa](images/aaa.png)
+   ![FEPreview](images/FEPreview.png)
+
+   33. Enter some values in the form that comes up, e.g. an *OrderQuantity* and some *Notes*. At the end press *Create* at the bottom
+   ![PreviewCreate](images/PreviewCreate.png)
+
+   34. Your screen will now look along the lines of the below screenshot
+
+   ![PreviewCreated](images/PreviewCreated.png)
+
+This concludes the creation of the UI service and a test using a Fiori elements UI application.
+
+### Create a Web API
+
+Now we need to create a version of a service that is not going to be consumed in a UI but later in a Build Process. For this the service does need other qualities than a UI one, for example, the service should not have draft qualtities that save data from the UI for the current user only, even if the user has not yet pressed the save button.
+
+   35. In order to create a new API, you need to create a new service binding. Select the *Service Bindings* folder under *Business Services* in you project in the project explorer. Invoke the right mouse button and select *New Service Binding* in the menu.
+
+   ![NewServiceBinding](images/NewServiceBinding.png)
+
+   36. Give the new service binding a name *Z_SHOPPINGCART_XXX_O2_API* where *XXX* is your group name. As description you can put *Service Binding for Shopping Card API XXX*. Select the Binding Type *OData V2 - Web API* and choose the Service Definition that was generated for you before: *ZUI_DBSHOPCART_XXX_O4* (again *XXX* is always your group number). Press *Next*
+
+   ![NewServiceBindingName](images/NewServiceBindingName.png)
+
+   37. In the next step - as before - choose your transport request and press *Finish*
+
+   ![ServiceBindingTransport](images/ServiceBindingTransport.png)
+
+   Your new service binding will appear in the project explorer
+
+   ![ServiceBindingCreated](images/ServiceBindingCreated.png)
+ 
+### Expose the new API via a Communication System
+
+While the new API is now already activated, it cannot be consumed from outside the BTP ABAP Environment. Our goal however is, that this API can be called from a Build Process which runs on the BTP but not in the ABAP enviroment. Thus, we need to make the API consumable from outside. This can be achieved via so-called Communication Systems consisting of Communication Scenarios and Arrangements. To achieve this, we need to add our service to a Communication Scenario.
+
+   38. In order to add your service to the communication scenario in question, we first need to add a package, that contains the communication scenario, to the favorite packages folder. Select the *Favorite Packages* folder in the project explorer and invoke the right mouse button. Select *Add Package...*
+
+   ![AdditionalFavoritePackage](images/AdditionalFavoritePackage.png)
+
+   39. 
+
+   ![aaa](images/aaa.png)
+   ![aaa](images/aaa.png)
+   ![aaa](images/aaa.png)
+   ![aaa](images/aaa.png)
+   ![aaa](images/aaa.png)
 
 
 
