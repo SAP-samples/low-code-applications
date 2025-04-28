@@ -234,12 +234,37 @@ Now we need to create a version of a service that is not going to be consumed in
 
 While the new API is now already activated, it cannot be consumed from outside the BTP ABAP Environment. Our goal however is, that this API can be called from a Build Process which runs on the BTP but not in the ABAP enviroment. Thus, we need to make the API consumable from outside. This can be achieved via so-called Communication Systems consisting of Communication Scenarios and Arrangements. To achieve this, we need to add our service to a Communication Scenario.
 
-   38. In order to add your service to the communication scenario in question, we first need to add a package, that contains the communication scenario, to the favorite packages folder. Select the *Favorite Packages* folder in the project explorer and invoke the right mouse button. Select *Add Package...*
 
-   ![AdditionalFavoritePackage](images/AdditionalFavoritePackage.png)
+   38. In order to add your service to the communication scenario, we need to select the communication scenario. For this press *Command/CTRL+Shift+A*. A pop up is openend. Now type in *Z_SHOPPINGCART_SCEN* and select the entry in the list. Press *Ok*
 
-   39. 
+   ![ScenarioSelection](images/ScenarioSelection.png)
 
+   39. Pick the *ZSHOPPINGCART* package. Expand *Cloud Communication Management->Communication Scenario* and click on *Z_SHOPPINGCART_SCEN* to show the details in the editor on the right. Switch to the *Inbound* tab and press *Add* there.
+
+   > **Issue**   
+> As a number of people might access this scenario at the same time and want to add their service to it, it might be temporarily blocked by another user at the time you want to change it. In this case you have to wait for the user to be finished with this step for your turn.
+
+   ![ShoppingCartScenario](images/ShoppingCartScenario.png)
+
+   40. On the pop up that comes up, press *Browse*
+
+   ![BrowseServiceForScenario](images/BrowseServiceForScenario.png)
+
+   41. Type in *Z_SHOPPINGCART_XXX_O2_API_IWSG* and select this entry in the list. As usual XXX is your group number. Press *Finish*. 
+
+   ![ServiceSelectionForScenario](images/ServiceSelectionForScenario.png)
+
+
+   42. Back on the pop up from before, also press *Finish*. Your service should now appear in the list
+
+   ![AddedServiceToScenario](images/AddedServiceToScenario.png)
+
+
+
+
+
+   ![aaa](images/aaa.png)
+   ![aaa](images/aaa.png)
    ![aaa](images/aaa.png)
    ![aaa](images/aaa.png)
    ![aaa](images/aaa.png)
