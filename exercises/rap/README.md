@@ -31,15 +31,3 @@ The figure below illustrates the high-level architecture components of the cloud
 
 Continue to - [Create an ABAP Cloud based RAP OData Service](exercises/ex1/README.md)
 
-## How to obtain support
-
-Support for the content in this repository is available during the actual time of the on-site workshop or online session for which this content has been designed. Otherwise, you may request support via the [Issues](../../../../issues) tab.
-
-
-## Further Information
-
-- [Getting Started with the ABAP RESTful Application Programming Model (RAP)](https://blogs.sap.com/2019/10/25/getting-started-with-the-abap-restful-programming-model/)
-- [ABAP @SAP Community](https://community.sap.com/topics/abap)
-
-## License
-Copyright (c) 2025 SAP SE or an SAP affiliate company. All rights reserved. This file is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](LICENSES/Apache-2.0.txt) file.

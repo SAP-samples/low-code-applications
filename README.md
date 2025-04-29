@@ -33,7 +33,10 @@ Go to [Getting Started - Preparation](exercises/ex0/README.md) to find out the i
 - [Part 1 - ABAP Cloud based RAP OData Service BTP ABAP Environment ](exercises/rap/README.md)
 - [Part 2 - SAP Build Process Automantion](exercises/build/exercises/ex2/README.md)
 
-Start the exercises [here](exercises/rap/exercises/ex1/README.md).
+## Further Information
+
+- [Getting Started with the ABAP RESTful Application Programming Model (RAP)](https://blogs.sap.com/2019/10/25/getting-started-with-the-abap-restful-programming-model/)
+- [ABAP @SAP Community](https://community.sap.com/topics/abap)
  
 ## How to obtain support!
 
@@ -48,3 +51,4 @@ SAP adopts the Contributor's Covenant 2.0 across our open source projects to ens
 
 ## License
 Copyright (c) 2025 SAP SE or an SAP affiliate company. All rights reserved. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](LICENSES/Apache-2.0.txt) file.
+

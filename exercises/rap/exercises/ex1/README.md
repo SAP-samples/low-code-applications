@@ -8,9 +8,7 @@ In this exercise, you will create an ABAP project from the Build Lobby
 > Don't forget to replace all occurences of the placeholder **`###`** with your group ID in the exercise steps below.    
 > If you don't have a group ID yet, please check with your instructor.    
 
-## Exercise 1.1: CCreate an ABAP Package form the SAP Build Lobby
-
-
+## Exercise 1.1: Create an ABAP Package form the SAP Build Lobby
 
 1. Open the lobby https://lcapteched.eu10.build.cloud.sap/lobby 
    
@@ -86,25 +84,25 @@ The following points 9. - 11. might or might not pop up after you pressed create
 
    ![SelectPackage](images/SelectPackage.png)
 
-### Create a new database table
+## Exercise 1.2 Create a new database table
 
-18. Select this package in the tree in the project explorer. Once again invoke the right mouse button and choose *New->Other ABAP Repository Objec*
+1. Select this package in the tree in the project explorer. Once again invoke the right mouse button and choose *New->Other ABAP Repository Objec*
 
    ![InitiateDBTable](images/InitiateDBTable.png)
 
-19. Type *database" to filter and then select *Database Table* and press *Next*
+2. Type *database" to filter and then select *Database Table* and press *Next*
 
    ![FIlterDatabase](images/FIlterDatabase.png)
 
-20. Provide the name *ZDBSHOPCART###* with ### being your group number for the database table. Choose a description for your table. Then press *Next*    
+3. Provide the name *ZDBSHOPCART###* with ### being your group number for the database table. Choose a description for your table. Then press *Next*    
 
    ![SpecifyDBTable](images/SpecifyDBTable.png)
 
-21. Choose the tranport that you have already created and select it. Press *Finish*
+4. Choose the tranport that you have already created and select it. Press *Finish*
 
    ![DBTransport](images/DBTransport.png)
 
-22. As a result a new editor is opened, it already contains a stub for your new database table which represents shopping cart data. Now let's add some properties to your table. Copy the below properties. Make sure that you replace the ### with your group number
+5. As a result a new editor is opened, it already contains a stub for your new database table which represents shopping cart data. Now let's add some properties to your table. Copy the below properties. Make sure that you replace the ### with your group number
 
 ```CDS
 @EndUserText.label : 'Shopping Cart Table'
@@ -139,73 +137,73 @@ define table zdbshopcart### {
 }
 ```
 
-23. Save and activate your chenages, press the according button.
+6. Save and activate your chenages, press the according button.
 
    ![DBActivate](images/DBActivate.png)
 
-### Create a new RAP service
+## Exercise 2.3: Create a new RAP service
 
    In this part of the exercise you will create a new ABAP RESTful programming Model (RAP) based OData service that can be used for consumption in a Fiori UI. The service will be based on the database table that you created in the last part.
 
-   24. In the project explorer select your new database table and press the right mouse button. In the menu select *Generate ABAP Repository Objects...*
+   1. In the project explorer select your new database table and press the right mouse button. In the menu select *Generate ABAP Repository Objects...*
 
    ![InitiateGenerateRAP](images/InitiateGenerateRAP.png)
 
-   25. Select *OData UI Service* and press *Next*
+   2. Select *OData UI Service* and press *Next*
 
    ![GenerateUIService](images/GenerateUIService.png)
 
-   26. Select the package you have created earlier called *ZSHOPPINGCART###* where *###* is your group number. Press *Next*
+   3. Select the package you have created earlier called *ZSHOPPINGCART###* where *###* is your group number. Press *Next*
 
    ![UIServiceName](images/UIServiceName.png)
 
-   27. Now you can review all the assets that the generator is going to create by clicking on the different entities in the hierarchy on the left. If needed you can adjust the suggested names, here you can just take them over as they are suggested. Press *Next*
+   4. Now you can review all the assets that the generator is going to create by clicking on the different entities in the hierarchy on the left. If needed you can adjust the suggested names, here you can just take them over as they are suggested. Press *Next*
 
    ![UIServiceAssets](images/UIServiceAssets.png)
 
-   28. In this step you can also review the content of the different objects to be generated, for example the CDS. Press *Next*
+   5. In this step you can also review the content of the different objects to be generated, for example the CDS. Press *Next*
 
    ![UIServiceGenerationPreview](images/UIServiceGenerationPreview.png)
 
 
-   29. Choose the transport request again that you have created eariler. Press *Finish*. The generation process starts and takes a couple of seconds.
+   6. Choose the transport request again that you have created eariler. Press *Finish*. The generation process starts and takes a couple of seconds.
 
    ![UIServiceTransport](images/UIServiceTransport.png)
 
-   30. At the end of the generation process a number of new objects appear in the hierarchy of your package in the project explorer. Select the object in the *Service Binding* folder to bring up its details in an editor on the right. In this editor press *Publish*, this will expose the service.
+   7. At the end of the generation process a number of new objects appear in the hierarchy of your package in the project explorer. Select the object in the *Service Binding* folder to bring up its details in an editor on the right. In this editor press *Publish*, this will expose the service.
 
    ![PublishRAPService](images/PublishRAPService.png)
 
-   31. Once the service is published, the service's entity appears on the right. Press *Preview* to test the service in a Fiori elements UI.
+   8. Once the service is published, the service's entity appears on the right. Press *Preview* to test the service in a Fiori elements UI.
 
    ![Preview](images/Preview.png)
 
-   32. A browser window opens and shows the list report of your application. As there are no entries in the database yet, the list is empty. Press *Create* to create a new entry.
+   9. A browser window opens and shows the list report of your application. As there are no entries in the database yet, the list is empty. Press *Create* to create a new entry.
 
    ![FEPreview](images/FEPreview.png)
 
-   33. Enter some values in the form that comes up, e.g. an *OrderQuantity* and some *Notes*. At the end press *Create* at the bottom
+   10. Enter some values in the form that comes up, e.g. an *OrderQuantity* and some *Notes*. At the end press *Create* at the bottom
    ![PreviewCreate](images/PreviewCreate.png)
 
-   34. Your screen will now look along the lines of the below screenshot
+   11. Your screen will now look along the lines of the below screenshot
 
    ![PreviewCreated](images/PreviewCreated.png)
 
 This concludes the creation of the UI service and a test using a Fiori elements UI application.
 
-### Create a Web API
+## Exercise 2.4: Create a Web API
 
 Now we need to create a version of a service that is not going to be consumed in a UI but later in a Build Process. For this the service does need other qualities than a UI one, for example, the service should not have draft qualtities that save data from the UI for the current user only, even if the user has not yet pressed the save button.
 
-   35. In order to create a new API, you need to create a new service binding. Select the *Service Bindings* folder under *Business Services* in you project in the project explorer. Invoke the right mouse button and select *New Service Binding* in the menu.
+   1. In order to create a new API, you need to create a new service binding. Select the *Service Bindings* folder under *Business Services* in you project in the project explorer. Invoke the right mouse button and select *New Service Binding* in the menu.
 
    ![NewServiceBinding](images/NewServiceBinding.png)
 
-   36. Give the new service binding a name *Z_SHOPPINGCART_###_O2_API* where *###* is your group name. As description you can put *Service Binding for Shopping Card API ###*. Select the Binding Type *OData V2 - Web API* and choose the Service Definition that was generated for you before: *ZUI_DBSHOPCART_###_O4* (again *###* is always your group number). Press *Next*
+   2. Give the new service binding a name *Z_SHOPPINGCART_###_O2_API* where *###* is your group name. As description you can put *Service Binding for Shopping Card API ###*. Select the Binding Type *OData V2 - Web API* and choose the Service Definition that was generated for you before: *ZUI_DBSHOPCART_###_O4* (again *###* is always your group number). Press *Next*
 
    ![NewServiceBindingName](images/NewServiceBindingName.png)
 
-   37. In the next step - as before - choose your transport request and press *Finish*
+   3. In the next step - as before - choose your transport request and press *Finish*
 
    ![ServiceBindingTransport](images/ServiceBindingTransport.png)
 
@@ -213,32 +211,32 @@ Now we need to create a version of a service that is not going to be consumed in
 
    ![ServiceBindingCreated](images/ServiceBindingCreated.png)
  
-### Expose the new API via a Communication System
+## Exercise 2.5: Expose the new API via a Communication System
 
 While the new API is now already activated, it cannot be consumed from outside the BTP ABAP Environment. Our goal however is, that this API can be called from a Build Process which runs on the BTP but not in the ABAP enviroment. Thus, we need to make the API consumable from outside. This can be achieved via so-called Communication Systems consisting of Communication Scenarios and Arrangements. To achieve this, we need to add our service to a Communication Scenario.
 
 
-   38. In order to add your service to the communication scenario, we need to select the communication scenario. For this press *Command/CTRL+Shift+A*. A pop up is openend. Now type in *Z_SHOPPINGCART_SCEN* and select the entry in the list. Press *Ok*
+   1. In order to add your service to the communication scenario, we need to select the communication scenario. For this press *Command/CTRL+Shift+A*. A pop up is openend. Now type in *Z_SHOPPINGCART_SCEN* and select the entry in the list. Press *Ok*
 
    ![ScenarioSelection](images/ScenarioSelection.png)
 
-   39. Pick the *ZSHOPPINGCART* package. Expand *Cloud Communication Management->Communication Scenario* and click on *Z_SHOPPINGCART_SCEN* to show the details in the editor on the right. Switch to the *Inbound* tab and press *Add* there.
+   2. Pick the *ZSHOPPINGCART* package. Expand *Cloud Communication Management->Communication Scenario* and click on *Z_SHOPPINGCART_SCEN* to show the details in the editor on the right. Switch to the *Inbound* tab and press *Add* there.
 
    > *Potential blocking issue**   
    > As a number of people might access this scenario at the same time and want to add their service to it, it might be temporarily blocked by another user at the time you want to change it. In this case you have to wait for the user to be finished with this step for your turn.
 
    ![ShoppingCartScenario](images/ShoppingCartScenario.png)
 
-   40. On the pop up that comes up, press *Browse*
+   3. On the pop up that comes up, press *Browse*
 
    ![BrowseServiceForScenario](images/BrowseServiceForScenario.png)
 
-   41. Type in *Z_SHOPPINGCART_###_O2_API_IWSG* and select this entry in the list. As usual ### is your group number. Press *Finish*. 
+   4. Type in *Z_SHOPPINGCART_###_O2_API_IWSG* and select this entry in the list. As usual ### is your group number. Press *Finish*. 
 
    ![ServiceSelectionForScenario](images/ServiceSelectionForScenario.png)
 
 
-   42. Back on the pop up from before, also press *Finish*. Your service should now appear in the list
+   5. Back on the pop up from before, also press *Finish*. Your service should now appear in the list
 
    ![AddedServiceToScenario](images/AddedServiceToScenario.png)
 
