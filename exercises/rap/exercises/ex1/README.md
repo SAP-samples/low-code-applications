@@ -49,15 +49,15 @@ In this exercise, you will create an ABAP project from the Build Lobby
 
    ![Wizard-ABAP](images/Wizard-ABAP.png)
 
-5. Now select the system *H1* and under *Package* select *New* to create a new package. Type *ZLCOAL* as a superpackage and *ZSHOPPINGCARTXXX* as the name for your package. *XXX* needs to be replaced by your group number. Type in a description for you package, e.g. *Shopping Cart for User XXX*. Press *Next*.
+5. Now select the system *H1* and under *Package* select *New* to create a new package. Type *ZLCOAL* as a superpackage and *ZSHOPPINGCART###* as the name for your package. *###* needs to be replaced by your group number. Type in a description for you package, e.g. *Shopping Cart for User ###*. Press *Next*.
 
    ![Wizard-Package](images/Wizard-Package.png)
 
-6. Select *Create new transport request* and provide a description like *ShoppingCartXXX*, where *XXX* again is you shopping cart number. Press *Next*
+6. Select *Create new transport request* and provide a description like *ShoppingCart###*, where *###* again is you shopping cart number. Press *Next*
 
    ![Wizard-Transport](images/Wizard-Transport.png)
 
-7. Provide a name for your project *ShoppingCartXXX*, where XXX is replaced by your group number.
+7. Provide a name for your project *ShoppingCart###*, where ### is replaced by your group number.
 
    ![Wizard-Project](images/Wizard-Project.png)
 
@@ -99,7 +99,7 @@ The following points 9. - 11. might or might not pop up after you pressed create
 
    ![AddFavoritePackage](images/AddFavoritePackage.png)
 
-17. Start typing *ZSHOP* and in the list of packages that comes up, choose the one that you just created, with XXX as your group number
+17. Start typing *ZSHOP* and in the list of packages that comes up, choose the one that you just created, with ### as your group number
 
    ![SelectPackage](images/SelectPackage.png)
 
@@ -113,7 +113,7 @@ The following points 9. - 11. might or might not pop up after you pressed create
 
    ![FIlterDatabase](images/FIlterDatabase.png)
 
-20. Provide the name *ZDBSHOPCARTXXX* with XXX being your group number for the database table. Choose a description for your table. Then press *Next*    
+20. Provide the name *ZDBSHOPCART###* with ### being your group number for the database table. Choose a description for your table. Then press *Next*    
 
    ![SpecifyDBTable](images/SpecifyDBTable.png)
 
@@ -121,7 +121,7 @@ The following points 9. - 11. might or might not pop up after you pressed create
 
    ![DBTransport](images/DBTransport.png)
 
-22. As a result a new editor is opened, it already contains a stub for your new database table which represents shopping cart data. Now let's add some properties to your table. Copy the below properties. Make sure that you replace the XXX with your group number
+22. As a result a new editor is opened, it already contains a stub for your new database table which represents shopping cart data. Now let's add some properties to your table. Copy the below properties. Make sure that you replace the ### with your group number
 
 ```CDS
 @EndUserText.label : 'Shopping Cart Table'
@@ -129,7 +129,7 @@ The following points 9. - 11. might or might not pop up after you pressed create
 @AbapCatalog.tableCategory : #TRANSPARENT
 @AbapCatalog.deliveryClass : #A
 @AbapCatalog.dataMaintenance : #RESTRICTED
-define table zdbshopcartXXX {
+define table zdbshopcart### {
 
   key client              : abap.clnt not null;
   key order_uuid          : sysuuid_x16 not null;
@@ -137,7 +137,7 @@ define table zdbshopcartXXX {
   ordered_item            : abap.char(40) not null;
   order_quantity          : abap.numc(4);
   requested_delivery_date : abap.dats;
-  @Semantics.amount.currencyCode : 'zdbshopcartXXX.currency'
+  @Semantics.amount.currencyCode : 'zdbshopcart###.currency'
   total_price             : abap.curr(11,2);
   currency                : abap.cuky;
   overall_status          : abap.char(30);
@@ -172,7 +172,7 @@ define table zdbshopcartXXX {
 
    ![GenerateUIService](images/GenerateUIService.png)
 
-   26. Select the package you have created earlier called *ZSHOPPINGCARTXXX* where *XXX* is your group number. Press *Next*
+   26. Select the package you have created earlier called *ZSHOPPINGCART###* where *###* is your group number. Press *Next*
 
    ![UIServiceName](images/UIServiceName.png)
 
@@ -218,7 +218,7 @@ Now we need to create a version of a service that is not going to be consumed in
 
    ![NewServiceBinding](images/NewServiceBinding.png)
 
-   36. Give the new service binding a name *Z_SHOPPINGCART_XXX_O2_API* where *XXX* is your group name. As description you can put *Service Binding for Shopping Card API XXX*. Select the Binding Type *OData V2 - Web API* and choose the Service Definition that was generated for you before: *ZUI_DBSHOPCART_XXX_O4* (again *XXX* is always your group number). Press *Next*
+   36. Give the new service binding a name *Z_SHOPPINGCART_###_O2_API* where *###* is your group name. As description you can put *Service Binding for Shopping Card API ###*. Select the Binding Type *OData V2 - Web API* and choose the Service Definition that was generated for you before: *ZUI_DBSHOPCART_###_O4* (again *###* is always your group number). Press *Next*
 
    ![NewServiceBindingName](images/NewServiceBindingName.png)
 
@@ -241,8 +241,8 @@ While the new API is now already activated, it cannot be consumed from outside t
 
    39. Pick the *ZSHOPPINGCART* package. Expand *Cloud Communication Management->Communication Scenario* and click on *Z_SHOPPINGCART_SCEN* to show the details in the editor on the right. Switch to the *Inbound* tab and press *Add* there.
 
-   > **Issue**   
-> As a number of people might access this scenario at the same time and want to add their service to it, it might be temporarily blocked by another user at the time you want to change it. In this case you have to wait for the user to be finished with this step for your turn.
+   > *Potential blocking issue**   
+   > As a number of people might access this scenario at the same time and want to add their service to it, it might be temporarily blocked by another user at the time you want to change it. In this case you have to wait for the user to be finished with this step for your turn.
 
    ![ShoppingCartScenario](images/ShoppingCartScenario.png)
 
@@ -250,7 +250,7 @@ While the new API is now already activated, it cannot be consumed from outside t
 
    ![BrowseServiceForScenario](images/BrowseServiceForScenario.png)
 
-   41. Type in *Z_SHOPPINGCART_XXX_O2_API_IWSG* and select this entry in the list. As usual XXX is your group number. Press *Finish*. 
+   41. Type in *Z_SHOPPINGCART_###_O2_API_IWSG* and select this entry in the list. As usual ### is your group number. Press *Finish*. 
 
    ![ServiceSelectionForScenario](images/ServiceSelectionForScenario.png)
 
@@ -260,16 +260,14 @@ While the new API is now already activated, it cannot be consumed from outside t
    ![AddedServiceToScenario](images/AddedServiceToScenario.png)
 
 
+This concludes the ABAP Cloud part. 
 
+## Summary  
+ 
+You have now created a new ABAP project from the Build Lobby. In the ABAP project you have created a new RAP service based on the ABAP Cloud Programming Model. You tested this service with a Fiori elements preview app. Then you enabled the service for consumption from outside the BTP ABAP envrionment by adding it to a communication scenario
+ 
+You can continue with the next exercise - **[Exercise 2: Create a Process in SAP Build Process Automation based on the Shopping Cart Service](../../build/exercises/README.md)**
 
-
-   ![aaa](images/aaa.png)
-   ![aaa](images/aaa.png)
-   ![aaa](images/aaa.png)
-   ![aaa](images/aaa.png)
-   ![aaa](images/aaa.png)
-   ![aaa](images/aaa.png)
-   ![aaa](images/aaa.png)
 
 
 

@@ -1,120 +1,133 @@
-# Exercise 1: Create Actions in SAP Build to access the Onlineshop API
+# Exercise 2: Create Actions in SAP Build to access the Onlineshop API
 
-From this exercise on, we will switch to SAP's Business Technology Platform (BTP) on which SAP's solution for citizen developers, SAP Build run.
+From this exercise on, we will switch to SAP Build Process Automation on the  Business Technology Platform (BTP).
 
-In this exercise we will create Actions in SAP Build that access the Onlineshop API on S/4HANA from the previous chapter. There will be 2 actions, one to read all the onlineshop entries and another one that creates a new onlineshop entry. 
+In this exercise we will create Actions in SAP Build that access the Shopping Cart API on the BTP ABAP Environment from the previous chapter. There will be 2 actions, one to read all the shopping cart entries and another one that creates a new shopping cart entry. 
 
-To create such Actions we need to prepare 2 things first:
-- create a destination in BTP to create the secure connectivity from a BTP subaccount to the Onlineshop API on S/4HANA from the previous chapters
-- download the OData metadata document of the Onlineshop API from the previous chapter
+To create such Actions we need to prepare one thing first:
+-Create a destination in BTP to create the secure connectivity in the BTP subaccount to the Shopping Cart API on the BTP ABAP Environment from the previous chapters
 
-## Exercise 1.1: Create a Destination in a BTP subaccount to access the Onlineshop API
+## Exercise 2.1: Create a Destination in a BTP subaccount to access the Shopping API
 
-We will now create the destination in a BTP subaccount to our Onlineshop API in the S/4HANA system from the previous chapter. The destination will ensure secure connectivity.
+We will now create the destination in a BTP subaccount to our Shopping Cart API on the BTP ABAP Environment from the previous chapter. The destination will ensure secure connectivity.
 
-1. In your ABAP Development Tools under **Business Services** -> **Service Bindings** -> **Z_ONLINESHOP_###** copy the **Service URL**, it should be `/sap/opu/odata4/sap/z_onlineshop_###/srvd_a2x/sap/z_onlineshop_###/0001/` (Make sure you don't use the service binding for the UI but the Web API!)
+1. In a browser open the [destinations (new) view in the BTP Cockpit](https://emea.cockpit.btp.cloud.sap/cockpit/?idp=lcap.accounts.ondemand.com#/globalaccount/47ae62c5-c35b-48a4-99b1-eee46b5b62bf/subaccount/f65e327c-d9e9-44cd-8d7b-e4e7ea8db474/destinationsnew). If you need to log on, log on with the user and the password that the instructors have given you
 
-![serviceurl](images/105.png)
+2. Press the *Create* button. On the pop up select 'From Scratch* and press *Create*
 
-2. In a browser open the [destinations view in the BTP Cockpit](https://emea.cockpit.btp.cloud.sap/cockpit/#/globalaccount/47ae62c5-c35b-48a4-99b1-eee46b5b62bf/subaccount/f65e327c-d9e9-44cd-8d7b-e4e7ea8db474/destinations)
+   ![NewDestinationFromScratch](images/NewDestinationFromScratch.png)
 
-3. Press the `New Destination` button.
-
-4. Fill in the following:
+3. Fill in the following:
 
     |  Porperty   | Value |
     |  :------------- | :------------- |
-    |  Name   | Onlineshop_### |
+    |  Name   | ShoppingCart### |
     |  Type   | HTTP |
-    |  Description   | Onlineshop_### on S4H |
-    |  URL   | http://s4h:443 + the copied Onlineshop URL (e.g. /sap/opu/odata4/sap/z_onlineshop_###/srvd_a2x/sap/z_onlineshop_###/0001/) |
-    |  Proxy Type   | OnPremise |
+    |  Description   | Shopping Cart API ### |
+    |  URL   | https://3f652f6e-fef3-4c3a-8b7f-0ffd0f835d54.abap.eu10.hana.ondemand.com/sap/opu/odata/sap/Z_SHOPPINGCART_###_O2_API |
+    |  Proxy Type   | Internet |
     |  Authentication   | BasicAuthentication |
-    |  Location ID   | CALCC |
-    |  User   | lowcode### |
-    |  Password   | ######xx |
+    |  User   | INBOUND_USER_TECHEDLCAP |
+    |  Password   | !!Password that is provided to you by the instructors!! |
 
-5. Then press the `New Property` button and add 
+    where *###* is your group number again (beware this has to be replaced in 3 values in the above list)    
+
+   ![NewDestination](images/NewDestination.png)
+
+4. Under *Additional Properties* press *Add Property* and add
 `sap.applicationdevelopment.actions.enabled` with value `true`
 
-6. Press the `New Property` button again and add 
+5. Under *Additional Properties* press *Add Property* again and add
 `sap.processautomation.enabled` with value `true`
 
-![destination](images/100.png)
+6. Under *Additional Properties* press *Add Property* again and add
+`sap.build.usage` with value `RAP`
 
-7. Press `Save`
+7. Press *Create*
 
-8. Press `Check Connection`: You should get a pop up that says `Connection to "Onlineshop_###" successful`
+   ![PropertiesForDestination](images/PropertiesForDestination.png)
 
-## Exercise 1.2: Download the OData metadata document of the Onlineshop API
+8. Back on the list of the destinations, select your new destination and press *Check Connection*. It should bring up a success messate
 
-In this exercise we will download the OData metadata document to a file to later use it for a definiton of an Action for SAP Build.
+   ![DestinationCheck](images/DestinationCheck.png)
 
-1. In your ABAP Development Tools you should still have the service binding ( under **Business Services** -> **Service Bindings** -> **Z_ONLINESHOP_###** ) open , this time, click on **Service URL**:
+## Exercise 2.2: Enable the destination for Actions
 
-![serviceurl](images/110.png)
+1. Go to lobby https://lcapteched.eu10.build.cloud.sap/lobby. Select *Control Tower* on the left and select the *Destinations* tile on the right
 
-2. A browser window opens. The URL will look like this: 
+   ![RegisterDestination](images/RegisterDestination.png)
 
-        https://YY.YYY.YYY.YY:44301/sap/opu/odata4/sap/z_onlineshop_###/srvd_a2x/sap/z_onlineshop_###/0001/?sap-client=100
+2. Press *Add* to add a new destination
 
-    Delete the `?sap-client=100` at the end and instead add `$metadata`, so the URL looks like this:
+   ![RegisterDestinationAdd](images/RegisterDestinationAdd.png)
 
-        https://YY.YYY.YYY.YY:44301/sap/opu/odata4/sap/z_onlineshop_###/srvd_a2x/sap/z_onlineshop_###/0001/$metadata
+3. Search for your new destination *ShoppingCart###*, select it in the list and press *Next*
 
-    Press `return` to load the metadata document
+   ![RegisterDestinationSelect](images/RegisterDestinationSelect.png)
 
-4. Right Mouse Click on the browser window and select `View Page Source` and press `Ctrl + A` + `Ctrl + C` (`Command + A` + `Command + C` on Mac) 
+4. Select *All Environments* and press *Add Destination* 
 
-5. Open a text editor on your computer, paste the copied content using `Ctrl + V` (`Command + V` on Mac) and save the file as `Onlineshop_###_metadata.xml` to a location of your liking on your computer
+   ![RegisterDestinationEnv](images/RegisterDestinationEnv.png)
 
-## Exercise 1.3: Create Actions from the Onlineshop API
+## Exercise 2.3: Create Actions from the Shopping Cart API
 
-1. Open the [lobby](https://lcapteched.eu10.build.cloud.sap/lobby) in the browser with
+1. In the lobby select *Actions* on the left and then press *Add* to create a new action.
 
-        User: lowcodeuser+0###@gmail.com
-    
-        PW: XXXXXXX
+   ![ActionsInLobby](images/ActionsInLobby.png)
 
-    that is provided by the instructors by the workshop (note this is not the same user as for the ABAP development tools, it is a BTP user)
+2. On the dialog choose the tile *ABAP RESTful Application Programming Model* as an API Source
 
-2. Press `Create`
+   ![RAPAction](images/RAPAction.png)
 
-![lobby](images/150.png)
+3. find your service *ShoppingCart###* (with ### being you group number) and select it.
 
-3. Select `Build an Automated Process`
+   ![ActionShoppingCart](images/ActionShoppingCart.png)
 
-![lobby](images/155.png)
+4. Browse through the possible actions you can create from your service and press *Next*
 
-4. Select `Actions`
+   ![InspectActions](images/InspectActions.png)
 
-![lobby](images/160.png)
+5. Give your new action project the name *ShoppingCart###Actions* and a description *Actions for API Shopping Cart ###* (with ### again your group name). Press *Create*
 
-5. As Project Name choose `Onlineshop###Action`. Use the `Browse` button to locate the metadata file that you have saved in the previous step on your computer. Press `Create` 
+   ![ActionProject](images/ActionProject.png)
 
-![lobby](images/165.png)
+6. Now select the actions you want to create. Look for the name of your entity (like *ZC_DBSHOPPINFCART###*) and select both the *Get entities* and the *Add new entity* ones and press *Add*
 
-6. Expand the entry `onlineshop` and select both, the `POST /onlineshop Add new entry to onlineshop` and the `Get /onlineshop Get entities from onlineshop`. Press `Add`
+   ![SelectActions1](images/SelectActions1.png)
 
-![lobby](images/170.png)
+   ![SelectActions2](images/SelectActions2.png)
 
-7. The 2 actions are now visible, select the `POST` one. In the right upper corner press the `Settings` button that looks like a gear wheel.
+7. Test the Get Action: Select it on the left hand side. Select the *Test* tab, select your *ShoppingCart###* destination and press *Test*
 
-![lobby](images/180.png)
+   ![TestGetAction](images/TestGetAction.png)
 
-## Exercise 1.4: Test Actions from the Onlineshop API
+8. After a short while you should see a result like this (with the entry that you created earler on in the Fiori elements preview application that you created)
 
-1. Switch `Enable CSRF` to `yes` and press `Save`
+   ![TestGetActionResult](images/TestGetActionResult.png)
 
-![lobby](images/185.png)
 
-2. To test the action, select the destination that you have created before `Onlineshop_###`. In the input fields below, write `AS02` for the `product` and a number into the `quantity` field. Press `Test`.
+   ![ActionEnableCSRF](images/ActionEnableCSRF.png)
 
-![lobby](images/190.png)
 
-3. The result should look like this:
+   ![aaa](images/aaa.png)
+   ![aaa](images/aaa.png)
+   ![aaa](images/aaa.png)
+   ![aaa](images/aaa.png)
+   ![aaa](images/aaa.png)
+   ![aaa](images/aaa.png)
+   ![aaa](images/aaa.png)
+   ![aaa](images/aaa.png)
+   ![aaa](images/aaa.png)
+   ![aaa](images/aaa.png)
+   ![aaa](images/aaa.png)
 
-![lobby](images/195.png)
+
+
+
+
+
+
+
 
 ## Exercise 1.5: Release the Action and Publish to Library
 
