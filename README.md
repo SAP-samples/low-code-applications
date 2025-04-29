@@ -2,8 +2,8 @@
 
 ## Description
 
-This repository contains the material for the workshop "Create an Extension with SAP Build containing the BTP ABAP Environment and SAP Build Process Automations"  
-We will create a new service using the ABAP RESTful Application Programming Model (RAP) using the ABAP Cloud Programming Model on a BTP ABAP Environment and then create a process using SAP Build Process, both on the SAP Business Technology Platform (BTP). 
+This repository contains the material for the workshop "Create an Extension with SAP Build containing the SAP BTP ABAP Environment and SAP Build Process Automation".  
+We will create a new service using the ABAP RESTful Application Programming Model (RAP) using the ABAP Cloud Programming Model on an SAP BTP ABAP Environment and then create a process using SAP Build Process Automation, both on the SAP Business Technology Platform (BTP). 
 
 ## Overview
 
