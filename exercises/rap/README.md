@@ -29,17 +29,7 @@ The figure below illustrates the high-level architecture components of the cloud
  ![architecture](images/100_SAP_S4_HANA_Extensibility_Patterns.png)
  
 
-## Exercises
-
-
-
-| Exercises |  
-| ------------- | 
-| [How to connect with ADT to your SAP S/4HANA system](exercises/ex99/README.md) |  
-| [Exercise 1: Create an ABAP Package](exercises/ex1/README.md) | 
-
-
-Continue to - [How to connect with ADT to your SAP S/4HANA system](exercises/ex99/README.md)
+Continue to - [Create an ABAP Cloud based RAP OData Service](exercises/ex1/README.md)
 
 ## How to obtain support
 

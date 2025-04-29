@@ -30,7 +30,7 @@ Go to [Getting Started - Preparation](exercises/ex0/README.md) to find out the i
 ## Exercises
 
 - [Getting Started - Preparation](exercises/ex0/README.md)
-- [Part 1 - ABAP Cloud on the BTP ABAP Environment ](exercises/rap/README.md)
+- [Part 1 - ABAP Cloud based RAP OData Service BTP ABAP Environment ](exercises/rap/README.md)
 - [Part 2 - SAP Build Process Automantion](exercises/build/exercises/ex2/README.md)
 
 Start the exercises [here](exercises/rap/exercises/ex1/README.md).

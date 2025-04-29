@@ -1,6 +1,6 @@
 [Home ](../../README.md)  
 
-# Exercise 1: Create an ABAP Package form the SAP Build Lobby
+# Exercise 1: Create an ABAP Cloud based RAP OData Service
 
 In this exercise, you will create an ABAP project from the Build Lobby
 
@@ -8,26 +8,9 @@ In this exercise, you will create an ABAP project from the Build Lobby
 > Don't forget to replace all occurences of the placeholder **`###`** with your group ID in the exercise steps below.    
 > If you don't have a group ID yet, please check with your instructor.    
 
-## Exercise 1.1: Create Package with language version ABAP for Cloud Development
+## Exercise 1.1: CCreate an ABAP Package form the SAP Build Lobby
 
 
-<!--
-   
-   1. In ADT, again the **Project Explorer** right-click on the package **`ZLOCAL`**, and select **New** > **ABAP Package** from the context menu. 
-
-   ![package](images/220_create_package.png)
-
-   
-   2. Maintain the required information (`###` is your group ID):
-       - Name: **`Z_ONLINESHOP_###`**
-       - Description: _**`Online Shop ###`**_
-       - Select the box **Add to favorites package**
-       
-      Click **Next >**.
-
-   ![package](images/230_create_package.png).
-
--->
 
 1. Open the lobby https://lcapteched.eu10.build.cloud.sap/lobby 
    
@@ -266,7 +249,7 @@ This concludes the ABAP Cloud part.
  
 You have now created a new ABAP project from the Build Lobby. In the ABAP project you have created a new RAP service based on the ABAP Cloud Programming Model. You tested this service with a Fiori elements preview app. Then you enabled the service for consumption from outside the BTP ABAP envrionment by adding it to a communication scenario
  
-You can continue with the next exercise - **[Exercise 2: Create a Process in SAP Build Process Automation based on the Shopping Cart Service](../../../build/exercises/README.md)**
+You can continue with the next exercise - **[Exercise 2: Create a Process in SAP Build Process Automation based on the Shopping Cart Service](../../../build/exercises/ex2/README.md)**
 
 
 
