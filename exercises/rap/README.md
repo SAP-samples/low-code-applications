@@ -22,12 +22,5 @@ You will create your own app with the ABAP RESTful Application Programming Model
  
  - You’ll build the application starting from a database table using an ADT wizard that generates a starter project wich contains all the needed development RAP artefacts that have to be implemented. 
 
-
-
-The figure below illustrates the high-level architecture components of the cloud extensibility model used in SAP S/4HANA public Cloud, SAP S/4HANA private cloud and SAP S/4HANA on premise systems.
- 
- ![architecture](images/100_SAP_S4_HANA_Extensibility_Patterns.png)
- 
-
 Continue to - [Create an ABAP Cloud based RAP OData Service](exercises/ex1/README.md)
 
