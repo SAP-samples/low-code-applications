@@ -6,7 +6,7 @@
 
    In the Lobby press the *Create* button and choose *Create*
 
-   ![lobby](images/Lobby.png)
+   ![lobby](../ex1/images/Lobby.png)
 
 2. In the wizard that comes up, choose the *Application* Tile and press *Next*
 
