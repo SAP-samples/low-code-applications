@@ -1,4 +1,4 @@
-# Exercise 1.5: Create a Web API
+# Exercise 1.6: Create a Web API
 
 Now we need to create a version of a service that is not going to be consumed in a UI but later in a Build Process. For this the service does need other qualities than a UI one, for example, the service should not have draft qualtities that save data from the UI for the current user only, even if the user has not yet pressed the save button.
 
@@ -19,7 +19,7 @@ Now we need to create a version of a service that is not going to be consumed in
    ![ServiceBindingCreated](images/ServiceBindingCreated.png)
    
  
-# Exercise 1.5: Expose the new API via a Communication System
+# Exercise 1.6: Expose the new API via a Communication System
 
 While the new API is now already activated, it cannot be consumed from outside the BTP ABAP Environment. Our goal however is, that this API can be called from a Build Process which runs on the BTP but not in the ABAP enviroment. Thus, we need to make the API consumable from outside. This can be achieved via so-called Communication Systems consisting of Communication Scenarios and Arrangements. To achieve this, we need to add our service to a Communication Scenario.
 
