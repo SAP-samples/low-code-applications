@@ -60,7 +60,7 @@ The following points 9. - 11. might or might not pop up after you pressed create
 
    ![ADT-NewProjectCheck](images/ADT-NewProjectCheck.png)
 
-12. In this step, your new ABAP project is connected to your BTP ABAP Environment instance. The ABAP Service Instance Service URL should already be prefilled 
+12. In this step, your new ABAP project is connected to your BTP ABAP Environment instance. The ABAP Service Instance Service URL (https://3f652f6e-fef3-4c3a-8b7f-0ffd0f835d54.abap.eu10.hana.ondemand.com) should already be prefilled 
 
    ![ADT-ServiceInstance](images/ADT-ServiceInstance.png)
 
