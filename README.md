@@ -1,9 +1,9 @@
-# Create an Extension with SAP Build containing the BTP ABAP Environment and SAP Build Process Automation
+# Create an Extension with SAP Build containing the SAP BTP ABAP Environment and SAP Build Process Automation
 
 ## Description
 
-This repository contains the material for the workshop "Create an Extension with SAP Build containing the BTP ABAP Environment and SAP Build Process Automations"  
-We will create a new service using the ABAP RESTful Application Programming Model (RAP) using the ABAP Cloud Programming Model on a BTP ABAP Environment and then create a process using SAP Build Process, both on the SAP Business Technology Platform (BTP). 
+This repository contains the material for the workshop "Create an Extension with SAP Build containing the SAP BTP ABAP Environment and SAP Build Process Automation".  
+We will create a new service using the ABAP RESTful Application Programming Model (RAP) using the ABAP Cloud Programming Model on an SAP BTP ABAP Environment and then create a process using SAP Build Process Automation, both on the SAP Business Technology Platform (BTP). 
 
 ## Overview
 
@@ -14,7 +14,7 @@ This session covers the basic app development steps using the ABAP Development T
 The goal is to create a UI from which a user can order a product with a quantity. This request for an order will go through an approval of an entitled person. If the order request is approved, a new shopping cart object is created for the order and this in turn creates a sales order in S/4HANA.
 
 In order to achieve this goal, there are several steps involved:
-- you will create a new OData service on the BTP ABAP environment for the shopping cart.
+- you will create a new OData service on the SAP BTP ABAP environment for the shopping cart.
 - you will create a process with a start UI for ordering the product, an approval step and an action which triggers a call of the shopping cart OData request in order to create a new shopping cart
 
 ## Requirements

@@ -5,7 +5,7 @@
 
 **ABAP Cloud**  
 … is the ABAP development model to build cloud-ready business apps, services and extensions  
-… comes with SAP BTP and SAP S/4HANA  
+… comes with SAP BTP ABAP Environment and SAP S/4HANA  
 … works with public or private cloud, and even on-premise  
 
 This hands-on workshop will guide you to build developer extensions using *ABAP Cloud* on a BTP ABAP Environment using RAP facades. 
