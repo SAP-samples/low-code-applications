@@ -106,9 +106,78 @@ We will now create the destination in a BTP subaccount to our Shopping Cart API 
    ![TestGetActionResult](images/TestGetActionResult.png)
 
 
+
+   ![ActionAddNewEntity](images/ActionAddNewEntity.png)
+
    ![ActionEnableCSRF](images/ActionEnableCSRF.png)
 
 
+   ![ActionAddDestination](images/ActionAddDestination.png)
+
+   ![ActionEnterValues](images/ActionEnterValues.png)
+
+
+   ![ActionNewEntity](images/ActionNewEntity.png)
+
+
+
+
+   ![ActionRelease](images/ActionRelease.png)
+   ![ActionReleaseVersion](images/ActionReleaseVersion.png)
+   ![ActionPublish](images/ActionPublish.png)
+   ![ActionPublishOk](images/ActionPublishOk.png)
+   ![ActionPublished](images/ActionPublished.png)
+
+
+
+   ## Process
+
+   ![ProcessCreate](images/ProcessCreate.png)
+   ![ProcessCreatePickPr](images/ProcessCreatePickPr.png)
+   ![ProcessCreatePickPr2](images/ProcessCreatePickPr2.png)
+   ![ProcessCreateName](images/ProcessCreateName.png)
+   ![ProcessCreateSummary](images/ProcessCreateSummary.png)
+   ![ProcessCreateProcess](images/ProcessCreateProcess.png)
+   ![ProcessAddTrigger](images/ProcessAddTrigger.png)
+   ![ProcessAddTriggerForm](images/ProcessAddTriggerForm.png)
+   ![ProcessAddTriggerFormBlank](images/ProcessAddTriggerFormBlank.png)
+   ![ProcessAddTriggerFormName](images/ProcessAddTriggerFormName.png)
+   ![ProcessAddTriggerFormEdit](images/ProcessAddTriggerFormEdit.png)
+   ![ProcessAddTriggerFormFields](images/ProcessAddTriggerFormFields.png)
+   ![ProcessAddCondition](images/ProcessAddCondition.png)
+   ![ProcessAddCondition2](images/ProcessAddCondition2.png)
+   ![ProcessAddCondition3](images/ProcessAddCondition3.png)
+   ![ProcessAddConditionName](images/ProcessAddConditionName.png)
+   ![CreateCondition](images/CreateCondition.png)
+   ![CreateCondition2](images/CreateCondition2.png)
+   ![AddApproval](images/AddApproval.png)
+   ![AddApproval2](images/AddApproval2.png)
+   ![AddApproval3](images/AddApproval3.png)
+   ![AddApprovalForm](images/AddApprovalForm.png)
+   ![AddApprovalFormParams](images/AddApprovalFormParams.png)
+   ![AddApprovalInput](images/AddApprovalInput.png)
+   ![AddReject](images/AddReject.png)
+   ![AddRejectEnd](images/AddRejectEnd.png)
+   ![AddRejectEnd2](images/AddRejectEnd2.png)
+   ![AddAction](images/AddAction.png)
+   ![AddAction2](images/AddAction2.png)
+   ![BrowseActions](images/BrowseActions.png)
+   ![AddActionNewEntity](images/AddActionNewEntity.png)
+   ![AddActionDestinationVariable](images/AddActionDestinationVariable.png)
+   ![CreateDestinationVariable](images/CreateDestinationVariable.png)
+   ![ActionMapProperties](images/ActionMapProperties.png)
+   ![ReleaseProcess](images/ReleaseProcess.png)
+   ![ReleaseProcess2](images/ReleaseProcess2.png)
+   ![ShowVersion](images/ShowVersion.png)
+   ![DeployProcess](images/DeployProcess.png)
+   ![ChooseEnvironment](images/ChooseEnvironment.png)
+   ![SelectDestinationVariable](images/SelectDestinationVariable.png)
+   ![SwitchToProcess](images/SwitchToProcess.png)
+   ![CopyProcessLink](images/CopyProcessLink.png)
+   ![ProcessStartUI](images/ProcessStartUI.png)
+   ![SuccessfulSubmit](images/SuccessfulSubmit.png)
+   ![NavToInbox](images/NavToInbox.png)
+   ![Approval](images/Approval.png)
    ![aaa](images/aaa.png)
    ![aaa](images/aaa.png)
    ![aaa](images/aaa.png)
@@ -117,9 +186,9 @@ We will now create the destination in a BTP subaccount to our Shopping Cart API 
    ![aaa](images/aaa.png)
    ![aaa](images/aaa.png)
    ![aaa](images/aaa.png)
-   ![aaa](images/aaa.png)
-   ![aaa](images/aaa.png)
-   ![aaa](images/aaa.png)
+
+
+
 
 
 
