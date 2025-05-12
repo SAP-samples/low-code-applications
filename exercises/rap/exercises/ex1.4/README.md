@@ -321,7 +321,7 @@ An appropriate message should be raised and displayed on the UI for each invalid
 
 > [!NOTE]  
 > Feel free to checkout further Joule Developer capabilities within ABAP Cloud:   
->  ![Discovery Center](https://discovery-center.cloud.sap/ai-feature/7f373198-9a41-4416-9eed-bdfca445d37a/)
+> [Discovery Center](https://discovery-center.cloud.sap/ai-feature/7f373198-9a41-4416-9eed-bdfca445d37a/)
 
 
 > [!TIP]
@@ -392,7 +392,7 @@ You can either refresh your application in the browser using **F5** if the brows
 3. Now click **Create**. You should get following error messages displayed:  
    **Requested delivery date is in the past** .
 
-    ![Preview](../ex1/images/05-050-test-validation-ui.png)
+    ![Preview](../ex1/images/05-050-UI_preview_with_validation.png)
 
 
 # Summary 
