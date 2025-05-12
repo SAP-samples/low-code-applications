@@ -225,7 +225,7 @@ In this exercise you will define the validation **`validateRequestedDeliveryDate
 
    For that, set the cursor on one of the validation names and press **Ctrl+1** to open the **Quick Assist** view and select the entry _**`Add the missing method of entity zr_{placeholder|userid} ...`**_.
 
-   ![quick fix validations](../ex1/images/05-020-add-validations-bdef-r-quick-fix.png)
+   ![quick fix validations](../ex1/images/05-020-add-validations-bdef-r-quick_fix.png)
 
    As a result, the **`FOR VALIDATE ON SAVE`** method **`validateRequestedDeliveryDate`** will be added to the local handler class `lcl_handler` of the behavior pool of the _ShoppingCart_ BO entity `ZBP_R_{placeholder|userid}`.
 
