@@ -356,6 +356,11 @@ We will now create the destination in a BTP subaccount to our Shopping Cart API 
 
    ![PreviewResult](images/PreviewResult.png)
 
+   This concludes the test of the process end to end.
+
 
 ## Summary  
+ 
+ This concludes this hand on workshop! You have created a shopping cart OData API with the ABAP Restful Programming Model (RAP) using ABAP Cloud on the BTP ABAP Environment. You have made this API available for consumption outside of the ABAP Envrionment. You have created SAP Build actions from the RAP API. Then you created an SAP Build Process which consists out of several steps: A start UI to create a shopping cart for a product and a quantity, a condition that auto approvs when the quantity is only 1, an approval step for approvers to approve or reject shopping carts with quantities other than 1 and an invocation of an action that creates a shopping cart entry by calling the RAP API. At the end you tested the entire process.
+
  
