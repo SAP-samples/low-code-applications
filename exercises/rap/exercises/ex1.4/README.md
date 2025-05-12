@@ -11,7 +11,9 @@ In the present exercise, you're going to define and implement one back-end valid
 
 The validation is only performed in the back-end (not on the UI) and is triggered independently of the caller, i.e. Fiori UIs or EML APIs.
 
-> ℹ **Frontend validation & Backend validations**
+> [!NOTE]
+> **Frontend validation & Backend validations**
+> 
 > Validations are used to ensure the data consistency.
 > As the name suggests, **frontend validations** are performed on the UI. They are used to improve the user experience by providing faster feedback and avoiding unnecessary roundtrips. In the RAP context, front-end validations are defined using CDS annotation or UI logic.  
 > On the other hand, **backend validations** are performed on the back-end. They are defined in the BO behavior definitons and implemented in the respective behavior pools.
@@ -28,8 +30,7 @@ A validation is implicitly invoked by the business object’s framework if the t
 
 
 ## Exercise 1.4.1: Define the Validation
-
-> In this exercise you will define the validation **`validateRequestedDeliveryDate`**.
+In this exercise you will define the validation **`validateRequestedDeliveryDate`**.
   
 1. Open your behavior definition **`ZR_{placeholder|userid}`**  
 
@@ -40,10 +41,77 @@ A validation is implicitly invoked by the business object’s framework if the t
     // mark mandatory fields
     field ( mandatory ) RequestedDeliveryDate;
 ```    
-
-   Your source code should look like this:   
-
-   ![mandatory fields bdef](../ex1/images/05-000-mandatory-fields-bdef-r.png)
+  > [!TIP]
+  > Your source code should look like this:   
+  > <details>
+  >
+  > <summary>Click to expand the source code</summary>
+  > 
+  > ```ABAP
+  >   managed implementation in class ZBP_R_DBSHOPCART### unique;
+  >   strict ( 2 );
+  >   with draft;
+  >   extensible;
+  >   define behavior for ZR_DBSHOPCART### alias ZrDbshopcart###
+  >   persistent table zdbshopcart###
+  >   extensible
+  >   draft table zdbshopcart###_d
+  >   etag master LocalLastChangedAt
+  >   lock master total etag LastChangedAt
+  >   authorization master ( global )
+  >   
+  >   {
+  >     field ( readonly )
+  >     OrderUuid,
+  >     CreatedBy,
+  >     CreatedAt,
+  >     LastChangedBy,
+  >     LastChangedAt,
+  >     LocalLastChangedAt;
+  >   
+  >     field ( mandatory ) RequestedDeliveryDate;
+  >   
+  >     field ( numbering : managed )
+  >     OrderUuid;
+  >   
+  >   
+  >     create;
+  >     update;
+  >     delete;
+  >   
+  >     draft action Activate optimized;
+  >     draft action Discard;
+  >     draft action Edit;
+  >     draft action Resume;
+  >     draft determine action Prepare;
+  >   
+  >     mapping for zdbshopcart### corresponding extensible
+  >       {
+  >         OrderUuid             = order_uuid;
+  >         OrderId               = order_id;
+  >         OrderedItem           = ordered_item;
+  >         OrderQuantity         = order_quantity;
+  >         RequestedDeliveryDate = requested_delivery_date;
+  >         TotalPrice            = total_price;
+  >         Currency              = currency;
+  >         OverallStatus         = overall_status;
+  >         SalesOrderStatus      = sales_order_status;
+  >         Salesorder            = salesorder;
+  >         BgpfStatus            = bgpf_status;
+  >         BgpgProcessName       = bgpg_process_name;
+  >         ManageSalesOrderUrl   = manage_sales_order_url;
+  >         Notes                 = notes;
+  >         CreatedBy             = created_by;
+  >         CreatedAt             = created_at;
+  >         LastChangedBy         = last_changed_by;
+  >         LastChangedAt         = last_changed_at;
+  >         LocalLastChangedAt    = local_last_changed_at;
+  >       }
+  >   
+  >   }
+  > ```
+  >
+  > </details>
 
 3. Define the validation **`validateRequestedDeliveryDate`**.
 
@@ -65,17 +133,91 @@ A validation is implicitly invoked by the business object’s framework if the t
     }
 ```
 
-   Your source code should look like this: 
+  > [!TIP]
+  > Your source code should look like this:   
+  > <details>
+  >
+  > <summary>Click to expand the source code</summary>
+  > 
+  > ```ABAP
+  >   managed implementation in class ZBP_R_DBSHOPCART### unique;
+  >   strict ( 2 );
+  >   with draft;
+  >   extensible;
+  >   define behavior for ZR_DBSHOPCART### alias ZrDbshopcart###
+  >   persistent table zdbshopcart###
+  >   extensible
+  >   draft table zdbshopcart###_d
+  >   etag master LocalLastChangedAt
+  >   lock master total etag LastChangedAt
+  >   authorization master ( global )
+  >   
+  >   {
+  >     field ( readonly )
+  >     OrderUuid,
+  >     CreatedBy,
+  >     CreatedAt,
+  >     LastChangedBy,
+  >     LastChangedAt,
+  >     LocalLastChangedAt;
+  >   
+  >     field ( mandatory ) RequestedDeliveryDate;
+  >   
+  >     field ( numbering : managed )
+  >     OrderUuid;
+  >   
+  >   
+  >     create;
+  >     update;
+  >     delete;
+  >   
+  >     draft action Activate optimized;
+  >     draft action Discard;
+  >     draft action Edit;
+  >     draft action Resume;
+  >
+  >     draft determine action Prepare
+  >     {
+  >       validation validateRequestedDeliveryDate;
+  >     }
+  >
+  >     validation validateRequestedDeliveryDate on save { create; field RequestedDeliveryDate; }
+  >   
+  >     mapping for zdbshopcart### corresponding extensible
+  >       {
+  >         OrderUuid             = order_uuid;
+  >         OrderId               = order_id;
+  >         OrderedItem           = ordered_item;
+  >         OrderQuantity         = order_quantity;
+  >         RequestedDeliveryDate = requested_delivery_date;
+  >         TotalPrice            = total_price;
+  >         Currency              = currency;
+  >         OverallStatus         = overall_status;
+  >         SalesOrderStatus      = sales_order_status;
+  >         Salesorder            = salesorder;
+  >         BgpfStatus            = bgpf_status;
+  >         BgpgProcessName       = bgpg_process_name;
+  >         ManageSalesOrderUrl   = manage_sales_order_url;
+  >         Notes                 = notes;
+  >         CreatedBy             = created_by;
+  >         CreatedAt             = created_at;
+  >         LastChangedBy         = last_changed_by;
+  >         LastChangedAt         = last_changed_at;
+  >         LocalLastChangedAt    = local_last_changed_at;
+  >       }
+  >   
+  >   }
+  > ```
+  >
+  > </details>
 
-   ![validations bdef](../ex1/images/05-010-add-validations-bdef-r.png)
 
-   **Short explanation**:
-   - Validations are always invoked during the save and specified with the keyword `on save`.
-   - `validateRequestedDeliveryDate` is a validation with trigger operation `create` and trigger field `RequestedDeliveryDate`.
-
-   **ℹ Hint**:
+   > [!NOTE]
+   > Validations are always invoked during the save and specified with the keyword `on save`.
    > In case a validation should be invoked at every change of the BO entity instance, then the trigger conditions `create`and `update`
    > must be specified: e.g. `validation validateRequestedDeliveryDate on save { create; update; }`
+   > 
+   > `validateRequestedDeliveryDate` is a validation with trigger operation `create` and trigger field `RequestedDeliveryDate` 
 
 5. Save and activate the changes.
 
@@ -83,26 +225,60 @@ A validation is implicitly invoked by the business object’s framework if the t
 
    For that, set the cursor on one of the validation names and press **Ctrl+1** to open the **Quick Assist** view and select the entry _**`Add the missing method of entity zr_{placeholder|userid} ...`**_.
 
-   ![quick fix validations](../ex1/images/05-020-add-validations-bdef-r-quick-fix.png)
+   ![quick fix validations](../ex1/images/05-020-add-validations-bdef-r-quick_fix.png)
 
-   As a result, the **`FOR VALIDATE ON SAVE`** method **`validateRequestedDeliveryDate`** will be added to the local handler class `lcl_handler` of the behavior pool of the _ShoppingCart_ BO entity ![inline](../ex1/images/ADT_class.png)`ZBP_R_{placeholder|userid}`.
+   As a result, the **`FOR VALIDATE ON SAVE`** method **`validateRequestedDeliveryDate`** will be added to the local handler class `lcl_handler` of the behavior pool of the _ShoppingCart_ BO entity `ZBP_R_{placeholder|userid}`.
 
-   ![quick fix validations result](../ex1/images/05-030-add-validations-bdef-r-quick-fix-result.png)
+> [!TIP]
+> Your source code should look like this:   
+> <details>
+>
+> <summary>Click to expand the source code</summary>
+> 
+> ```ABAP
+> CLASS lhc_zr_dbshopcart217 DEFINITION INHERITING FROM cl_abap_behavior_handler.
+>   PRIVATE SECTION.
+> 
+>     METHODS:
+>       get_global_authorizations FOR GLOBAL AUTHORIZATION
+>         IMPORTING
+>           REQUEST requested_authorizations FOR ZrDbshopcart217
+>         RESULT result,
+> 
+>       validateRequestedDeliveryDate FOR VALIDATE ON SAVE
+>         IMPORTING keys FOR ZrDbshopcart217~validateRequestedDeliveryDate.
+> 
+> ENDCLASS.
+> 
+> CLASS lhc_zr_dbshopcart217 IMPLEMENTATION.
+> 
+>   METHOD get_global_authorizations.
+> 
+>   ENDMETHOD.
+> 
+>   METHOD validateRequestedDeliveryDate.
+> 
+>   ENDMETHOD.
+> 
+> ENDCLASS.
+> ```
+>
+> </details>
+
 
 7. Save and activate the changes.
 
-> Hint:  
+> [!NOTE]  
 > If you get an error message in the behavior implementation `The entity "ZR_{placeholder|userid}" does not have a validation "VALIDATEREQUESTDELIVERYDATE".` try to activate the behvavior definition once again.  
 
 
 
 ## Exercise 1.4.2: Implement the Validations  
+Implement the validation, e.g. the validation `validateRequestedDeliveryDate` which checks if the respective date of field `RequestedDeliveryDate` is in the future.  
+An appropriate message should be raised and displayed on the UI for each invalid value.  
 
-> Implement the validation, e.g. the validation `validateRequestedDeliveryDate` which checks if the respective date of field `RequestedDeliveryDate` is in the future.  
-> An appropriate message should be raised and displayed on the UI for each invalid value.  
 
-
-1. First, check the interface of the new methods in the declaration part of the local handler class `lcl_handler` of the behavior pool of the _ShoppingCart_ BO entity ![class icon](../ex1/images/ADT_class.png)**`ZBP_R_{placeholder|userid}`**.
+1. First, check the interface of the new methods in the declaration part of the local handler class `lcl_handler` of the behavior pool of the _ShoppingCart_ BO entity **`ZBP_R_{placeholder|userid}`**.
 
    For that, set the cursor on the method name, e.g. **`validateRequestedDeliveryDate`**, press **F2** to open the **ABAP Element Info** view, and examine the full method interface.
 
@@ -122,7 +298,7 @@ A validation is implicitly invoked by the business object’s framework if the t
   
     The logic consists of the following main steps:
     1. Read the ShoppingCart instance(s) of the transferred keys (**`keys`**) using the EML statement **`READ ENTITIES`**.
-    2. The addition **`FIELDS`** is used to specify the fields to be read. E.g. only **`OrderedItem`** is relevant for the  validation `validateOrderedItem`.  
+    2. The addition **`FIELDS`** is used to specify the fields to be read. E.g. only **`RequestedDeliveryDate`** is relevant for the  validation `validateRequestedDeliveryDate`.  
        The addition `ALL FIELDS` can be used to read all fields.
     3. The addition **`IN LOCAL MODE`** is used to exclude feature controls and authorization checks.
     4. Read all the transfered (distinct, non-initial) customer IDs and check if they exist.  
@@ -130,73 +306,75 @@ A validation is implicitly invoked by the business object’s framework if the t
        and set the changing parameter **`reported`**
 
 
-   TODO: POSITION AI CODE COMPLETION HERE 
+3. Make use of Joule Developer Capabilities for ABAP to speed up the development process.
+   Activate "Automatic Triggering of Predictive Code Completion".
+   ![Automatic Triggering of Predictive Code Completion](../ex1/images/05-041-toggle_automatic_triggering_of_predictive_code_completion.png)
+
+4. Position your cursor in the method implementation and describe within a comment what you would like to implement.
+
+   Example: Read RequestedDeliveryDate from the keys
+   ![Read Requested Delivery Date](../ex1/images/05-042-read_requested_delivery_date.png)
+
+   Example: "Ensure RequestedDeliveryDate is in the future or today
+   ![Validate Requested Delivery Date](../ex1/images/05-042-validate_requested_delivery_date.png)
 
 
-   Replace the current method implementation with following code snippets.
-
-    - **`validateRequestedDeliveryDate`**
-
-   You can use the **F1 Help** to get detailed information on the different ABAP and EML statements.  
+> [!NOTE]  
+> Feel free to checkout further Joule Developer capabilities within ABAP Cloud:   
+> [Discovery Center](https://discovery-center.cloud.sap/ai-feature/7f373198-9a41-4416-9eed-bdfca445d37a/)
 
 
-2. Save and activate the changes.
+> [!TIP]
+> Your source code should look like this:   
+> <details>
+> 
+> <summary>Click to expand the source code</summary>
+> 
+> ```ABAP
+>   
+>  READ ENTITIES OF zr_dbshopcart### IN LOCAL MODE
+>        ENTITY ZrDbshopcart###
+>          FIELDS (  RequestedDeliveryDate )
+>          WITH CORRESPONDING #( keys )
+>        RESULT DATA(entities).
+> 
+>     LOOP AT entities INTO DATA(entity).
+>       APPEND VALUE #(  %tky               = entity-%tky
+>                        %state_area        = 'VALIDATE_DATES' ) TO reported-zrdbshopcart###.
+> 
+>       APPEND VALUE #(  %tky               = entity-%tky
+>                        %state_area        = 'OUTDATED_DATES' ) TO reported-zrdbshopcart###.
+> 
+>       IF entity-RequestedDeliveryDate IS INITIAL.
+>         APPEND VALUE #( %tky = entity-%tky ) TO failed-zrdbshopcart###.
+> 
+>         APPEND VALUE #( %tky               = entity-%tky
+>                         %state_area        = 'VALIDATE_DATES'
+>                          %msg              = NEW zcx_ac_exception(
+>                                                  textid   = zcx_ac_exception=>enter_requested_delivery_date
+>                                                  severity = if_abap_behv_message=>severity-error )
+>                         %element-requesteddeliverydate = if_abap_behv=>mk-on ) TO reported-zrdbshopcart###.
+> 
+>       ELSEIF entity-RequestedDeliveryDate < cl_abap_context_info=>get_system_date( ).
+>         APPEND VALUE #( %tky               = entity-%tky ) TO failed-zrdbshopcart###.
+> 
+>         APPEND VALUE #( %tky               = entity-%tky
+>                         %state_area        = 'OUTDATED_DATES'
+>                          %msg              = NEW zcx_ac_exception(
+>                                                                 textid     = zcx_ac_exception=>enter_future_delivery_date
+>                                                                 severity   = if_abap_behv_message=>severity-error )
+>                         %element-requesteddeliverydate = if_abap_behv=>mk-on ) TO reported-zrdbshopcart###.
+>       ENDIF.
+>     ENDLOOP.
+> ```
+> 
+> </details>
 
-#### ![inline](../ex1/images/source-code_grey_small.png) Code snippet **`validateRequestedDeliveryDate`**
+> [!NOTE]
+> You can use the **F1 Help** to get detailed information on the different ABAP and EML statements.  
 
-<hr>
 
-<details>
-
-<summary>Click to expand the source code</summary>
-
-```ABAP
-  
- METHOD validateRequestedDeliveryDate.
-
-    "For your convinience there is a central class ZAX_AC_EXCEPTIONS that is beeing used here.
-    
-    READ ENTITIES OF zr_{placeholder|userid} IN LOCAL MODE
-       ENTITY ShoppingCart
-         FIELDS (  RequestedDeliveryDate )
-         WITH CORRESPONDING #( keys )
-       RESULT DATA(entities).
-
-    LOOP AT entities INTO DATA(entity).
-      APPEND VALUE #(  %tky               = entity-%tky
-                       %state_area        = 'VALIDATE_DATES' ) TO reported-shoppingcart.
-
-      APPEND VALUE #(  %tky               = entity-%tky
-                       %state_area        = 'OUTDATED_DATES' ) TO reported-shoppingcart.
-
-      IF entity-RequestedDeliveryDate IS INITIAL.
-        APPEND VALUE #( %tky = entity-%tky ) TO failed-shoppingcart.
-
-        APPEND VALUE #( %tky               = entity-%tky
-                        %state_area        = 'VALIDATE_DATES'
-                         %msg              = NEW zcx_ac_exceptions(
-                                                 textid   = zcx_ac_exceptions=>enter_requested_delivery_date
-                                                 severity = if_abap_behv_message=>severity-error )
-                        %element-requesteddeliverydate = if_abap_behv=>mk-on ) TO reported-shoppingcart.
-
-      ELSEIF entity-RequestedDeliveryDate < cl_abap_context_info=>get_system_date( ).
-        APPEND VALUE #( %tky               = entity-%tky ) TO failed-shoppingcart.
-
-        APPEND VALUE #( %tky               = entity-%tky
-                        %state_area        = 'OUTDATED_DATES'
-                         %msg              = NEW zcx_ac_exceptions(
-                                                                textid     = zcx_ac_exceptions=>out_dated_req_delivery_date
-                                                                severity   = if_abap_behv_message=>severity-error )
-                        %element-requesteddeliverydate = if_abap_behv=>mk-on ) TO reported-shoppingcart.
-      ENDIF.
-    ENDLOOP.
-  ENDMETHOD.
-```
-
-</details>
-
-<hr>
-
+5. Save and activate the changes.
 
 
 ## Exercise 1.4.3: Preview and Test the enhanced Shopping Cart App
@@ -212,9 +390,9 @@ You can either refresh your application in the browser using **F5** if the brows
    The draft will be updated.
 
 3. Now click **Create**. You should get following error messages displayed:  
-   **Requested delivery date is in the past** .
+   **Delivery date needs to be in the future** .
 
-    ![Preview](../ex1/images/05-050-test-validation-ui.png)
+    ![Preview](../ex1/images/05-050-UI_preview_with_validation.png)
 
 
 # Summary 
