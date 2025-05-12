@@ -27,7 +27,11 @@
 
    ![UIServiceTransport](../ex1/images/UIServiceTransport.png)
 
+
    7. At the end of the generation process a number of new objects appear in the hierarchy of your package in the project explorer. Select the object in the *Service Binding* folder to bring up its details in an editor on the right. In this editor press *Publish*, this will expose the service.
+
+   > [!NOTE]
+   > The generation may take a couple of seconds. Please refer to the busy indicator in the right lower corner of your ADT installation.
 
    ![PublishRAPService](../ex1/images/PublishRAPService.png)
 
