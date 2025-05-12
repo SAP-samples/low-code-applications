@@ -390,7 +390,7 @@ You can either refresh your application in the browser using **F5** if the brows
    The draft will be updated.
 
 3. Now click **Create**. You should get following error messages displayed:  
-   **Requested delivery date is in the past** .
+   **Delivery date needs to be in the future** .
 
     ![Preview](../ex1/images/05-050-UI_preview_with_validation.png)
 
