@@ -108,6 +108,9 @@ We will now create the destination in a BTP subaccount to our Shopping Cart API 
 
 
    ![ActionAddNewEntity](images/ActionAddNewEntity.png)
+   
+   ![ActionAddNewEntityActive](images/ActionAddNewEntityActive.png)
+  
 
    ![ActionEnableCSRF](images/ActionEnableCSRF.png)
 
@@ -178,14 +181,8 @@ We will now create the destination in a BTP subaccount to our Shopping Cart API 
    ![SuccessfulSubmit](images/SuccessfulSubmit.png)
    ![NavToInbox](images/NavToInbox.png)
    ![Approval](images/Approval.png)
-   ![aaa](images/aaa.png)
-   ![aaa](images/aaa.png)
-   ![aaa](images/aaa.png)
-   ![aaa](images/aaa.png)
-   ![aaa](images/aaa.png)
-   ![aaa](images/aaa.png)
-   ![aaa](images/aaa.png)
-   ![aaa](images/aaa.png)
+   ![FioriPreview](images/FioriPreview.png)
+   ![PreviewResult](images/PreviewResult.png)
 
 
 
@@ -193,43 +190,6 @@ We will now create the destination in a BTP subaccount to our Shopping Cart API 
 
 
 
-
-
-
-
-
-## Exercise 1.5: Release the Action and Publish to Library
-
-In order to use the action inside SAP Build products like Process Automation, it has to be released first. Releasing means that the current state of the action is stored in an imutable way. Once the project is released, it can be published to library, which means that it is available inside SAP Build products like Process Automation, it can be discovered and used there.
-
-1. In the upper right corner of your action press `Release`
-
-![lobby](images/200.png)
-
-2. Optionally add some release notes and press `Release` on the dialog
-
-![lobby](images/205.png)
-
-3. After you released the action, in the same upper right corner the button has changed to `release to library`, press it 
-
-![lobby](images/210.png)
-
-4. Confirm that you want to publish, pressing the button
-
-![lobby](images/215.png)
-
-## Excercise 1.6: Add the Destination to the SAP Build Settings
-
-You have set up a destination in the BTP Cockpit to test our new actions and in the last step made the actions available for usage in SAP Build Process Automation. You now also need to register the destination with SAP Build to be used in a real environment of a process, not just for tests of actions.
-
-1. In the SAP Build choose `Settings` and then `Destinations` in the left pane.
-
-2. Press `New Destination` and search for your destination `Onlineshop_###` where of course `###` is your group ID. Select the destination and press `Add`.
-
-![lobby](images/90.png)
 
 ## Summary  
  
-You have created 2 actions based on the Onlineshop Service, you built on ABAP Cloud in the previous exercises. You have created a BTP destination to connect to the Online Service and you have tested the actions. You have released the action and published it to a library, so you can use it in the following chapter in a new SAP Build Process Automation. You have also registered the destination for usage in SAP Build. 
- 
-You can continue with the next exercise - **[Exercise 2: Create a Process in SAP Build Process Automation based on the Onlineshop Service](../ex2/README.md)**
