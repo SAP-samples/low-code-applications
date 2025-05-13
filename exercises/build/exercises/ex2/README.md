@@ -1,17 +1,17 @@
-# Exercise 2: Create Actions in SAP Build to access the Onlineshop API
+# Exercise 2: Create "actions" in SAP Build to access the Onlineshop API
 
-From this exercise on, we will switch to SAP Build Process Automation on the  Business Technology Platform (BTP).
+This exercise will be conducted in SAP Build Process Automation on the SAP Business Technology Platform (BTP).
 
-In this exercise we will create Actions in SAP Build that access the Shopping Cart API on the BTP ABAP Environment from the previous chapter. There will be 2 actions, one to read all the shopping cart entries and another one that creates a new shopping cart entry. 
+In this exercise, we will create Actions in SAP Build that access the Shopping Cart API on the SAP BTP ABAP Environment that has been developed in the previous chapter. There will be 2 actions, one to read all the shopping cart entries and another one that creates a new shopping cart entry. 
 
-To create such Actions we need to prepare one thing first:
--Create a destination in BTP to create the secure connectivity in the BTP subaccount to the Shopping Cart API on the BTP ABAP Environment from the previous chapters
+To create such actions, we need to prepare one thing first:
+- Create a destination in SAP BTP to create the secure connectivity in the SAP BTP subaccount to the Shopping Cart API on the SAP BTP ABAP Environment from the previous chapters
 
-## Exercise 2.1: Create a Destination in a BTP subaccount to access the Shopping API
+## Exercise 2.1: Create a destination in an SAP BTP subaccount to access the Shopping API
 
-We will now create the destination in a BTP subaccount to our Shopping Cart API on the BTP ABAP Environment from the previous chapter. The destination will ensure secure connectivity.
+We will now create the destination in a BTP subaccount to our Shopping Cart API on the SAP BTP ABAP Environment from the previous chapter. The destination will ensure secure connectivity.
 
-1. In a browser open the [destinations (new) view in the BTP Cockpit](https://emea.cockpit.btp.cloud.sap/cockpit/?idp=lcap.accounts.ondemand.com#/globalaccount/47ae62c5-c35b-48a4-99b1-eee46b5b62bf/subaccount/f65e327c-d9e9-44cd-8d7b-e4e7ea8db474/destinationsnew). If you need to log on, log on with the user and the password that the instructors have given you
+1. In a browser, open the [destinations (new) view in the BTP Cockpit](https://emea.cockpit.btp.cloud.sap/cockpit/?idp=lcap.accounts.ondemand.com#/globalaccount/47ae62c5-c35b-48a4-99b1-eee46b5b62bf/subaccount/f65e327c-d9e9-44cd-8d7b-e4e7ea8db474/destinationsnew). If you need to log on, log on with the user and the password that the instructors have given you.
 
 2. Press the *Create* button. On the pop up select 'From Scratch* and press *Create*
 
