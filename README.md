@@ -1,4 +1,4 @@
-# Create an Extension with SAP Build containing the SAP BTP ABAP Environment and SAP Build Process Automation
+# Create an extension with SAP Build containing the SAP BTP ABAP Environment and SAP Build Process Automation
 
 ## Description
 
