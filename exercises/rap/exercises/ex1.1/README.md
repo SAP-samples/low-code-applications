@@ -76,3 +76,5 @@ The following points 9. - 11. might or might not pop up after you pressed create
 
 # Summary
 TODO: Add summary
+
+You can continue with the next exercise - **[Exercise 1.2: Create a new database table](../ex1.2/README.md)**
