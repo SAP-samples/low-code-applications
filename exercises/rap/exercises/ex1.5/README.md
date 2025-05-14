@@ -387,3 +387,5 @@ Now that you have...
 - created a special `save_modified()` method,
 
 you can continue with the next exercise.
+
+You can continue with the next exercise - **[Exercise 1.6: Create a Web API](../ex1.6/README.md)**

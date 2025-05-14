@@ -56,3 +56,5 @@ TODO: POSITION AI EXPLAIN FUNCTIONALITY HERE?
 
 # Summary
 TODO: Add summary here
+
+You can continue with the next exercise - **[Exercise 1.4: Define a validation](../ex1.4/README.md)**

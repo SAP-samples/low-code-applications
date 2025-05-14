@@ -404,3 +404,5 @@ Now that you have...
 - previewed and tested the enhanced Fiori elements app,
 
 you can continue with the next exercise.
+
+You can continue with the next exercise - **[Excercise 1.5: Create a sales order within S/4HANA](../ex1.5/README.md)**

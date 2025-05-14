@@ -57,3 +57,5 @@ define table zdbshopcart### {
 
 # Summary
 TODO: Add summary here
+
+You can continue with the next exercise - **[Exercise 1.3: Create a new RAP service](../ex1.3/README.md)**

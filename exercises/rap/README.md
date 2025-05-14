@@ -24,5 +24,5 @@ You will create your own app with the ABAP RESTful Application Programming Model
  
  - You’ll build the application starting from a database table using an ADT wizard that generates a starter project wich contains all the needed development RAP artefacts that have to be implemented. 
 
-Continue to - [reate an ABAP Package form the SAP Build Lobby](exercises/ex1.1/README.md)
+Continue to - [Create an ABAP Package form the SAP Build Lobby](exercises/ex1.1/README.md)
 
