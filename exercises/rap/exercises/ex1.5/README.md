@@ -2,9 +2,7 @@
 
 ## Introduction
   
->
-> **Side-by-Side extension**
->
+**Side-by-Side extension**
 
 In the current exercise we want to trigger the creation of a sales order using a sales order API class that we have provided for your convenience. 
 The problem with side-by-side scenarios in general is, to have a logical unit of work that spans both systems, in our case the SAP BTP ABAP Environment and the SAP S/4HANA Cloud System.  
@@ -33,7 +31,7 @@ zcl_ac000000uxx_start_bgpf=>run_via_bgpf_tx_uncontrolled( i_rap_bo_key = create_
    
    It creates a **Salesorder** in the SAP S/4HANA Cloud backend system.
 
-   ![Test sales_order api via F9](./Images/04_000_test_sales_order_api_via_f9.png)
+   ![Test sales_order api via F9](../ex1/images/04_000_test_sales_order_api_via_f9.png)
 
 
 ## Exercise 1.5.2: Build a class for asynchronous sales order creation
@@ -53,164 +51,160 @@ zcl_ac000000uxx_start_bgpf=>run_via_bgpf_tx_uncontrolled( i_rap_bo_key = create_
 
    **Hint**: Grab the code snippet using copy and paste.
 
-
-   > Source code **`zcl_{placeholder|userid}_start_bgpf`**
-
-<hr>
-<details>
-
-<summary>Click to expand the source code</summary>
-
-```abap
-    CLASS zcl_{placeholder|userid}_start_bgpf DEFINITION
-    PUBLIC
-    FINAL
-    CREATE PUBLIC.
-
-    PUBLIC SECTION.
-
-    INTERFACES if_serializable_object.
-    INTERFACES if_bgmc_operation.
-    INTERFACES if_bgmc_op_single_tx_uncontr.
-    INTERFACES if_bgmc_op_single.
-
-    CLASS-METHODS run_via_bgpf
-      IMPORTING i_rap_bo_key                    TYPE sysuuid_x16
-      RETURNING VALUE(r_process_monitor_string) TYPE string.
-
-    CLASS-METHODS run_via_bgpf_tx_uncontrolled
-      IMPORTING i_rap_bo_key                    TYPE sysuuid_x16
-      RETURNING VALUE(r_process_monitor_string) TYPE string.
-
-    METHODS constructor
-      IMPORTING i_rap_bo_key TYPE sysuuid_x16.
-
-    CONSTANTS:
-      BEGIN OF bgpf_state,
-        unknown         TYPE int1 VALUE IS INITIAL,
-        erroneous       TYPE int1 VALUE 1,
-        new             TYPE int1 VALUE 2,
-        running         TYPE int1 VALUE 3,
-        successful      TYPE int1 VALUE 4,
-        started_from_bo TYPE int1 VALUE 99,
-      END OF bgpf_state.
-
-    PROTECTED SECTION.
-    PRIVATE SECTION.
-    DATA rap_bo_key TYPE sysuuid_x16.
-    CONSTANTS wait_time_in_seconds TYPE i VALUE 5.
-   ENDCLASS.
-
-
-   CLASS zcl_{placeholder|userid}_start_bgpf IMPLEMENTATION.
-   METHOD constructor.
-     rap_bo_key = i_rap_bo_key.
-   ENDMETHOD.
-
-   METHOD if_bgmc_op_single~execute.
-     "implement if controlled behavior is needed
-   ENDMETHOD.
-
-   METHOD if_bgmc_op_single_tx_uncontr~execute.
-     "implement if uncontrolled behavior is needed, e.g. commit work statements
-
-     "There is already a global class **zcl_ac_salesorder_api** available
-     DATA start_sales_order_create TYPE REF TO zcl_ac_salesorder_api.
-     "In one the next steps you will create your own implementation
-     "DATA start_sales_order_create TYPE REF TO zcl_{placeholder|userid}_so_api.
-
-     DATA update TYPE TABLE FOR UPDATE zr_{placeholder|userid}\\ShoppingCart.
-     DATA update_line TYPE STRUCTURE FOR UPDATE zr_{placeholder|userid}\\ShoppingCart .
-
-     DATA error_message TYPE string.
-
-     READ ENTITIES OF zr_{placeholder|userid}
-             ENTITY ShoppingCart
-             ALL FIELDS
-             WITH VALUE #( ( %is_draft = if_abap_behv=>mk-off
-                             %key-OrderUuid = rap_bo_key
-                            )  )
-             RESULT DATA(entities)
-             FAILED DATA(failed).
-
-     IF entities IS NOT INITIAL.
-       LOOP AT entities INTO DATA(entity).
-         "There is already a global class **zcl_ac_salesorder_api** available
-         start_sales_order_create = NEW zcl_ac_salesorder_api(
-      
-         "In one the next steps you will create your own implementation
-         "start_sales_order_create = NEW zcl_{placeholder|userid}_so_api(
-                                         i_material = entity-OrderedItem
-                                         i_purchase_order_by_customer = CONV #( sy-uname )
-                                         i_quantity = entity-OrderQuantity
-                                         i_requested_delivery_date = entity-RequestedDeliveryDate
-                                         ).
-
-         DATA(r_data) = start_sales_order_create->CreateSalesorder(
-                       IMPORTING
-                         r_error_message = error_message
-                     ).
-
-         update_line-%is_draft = if_abap_behv=>mk-off.
-         update_line-OrderUuid = entity-OrderUuid.
-
-         IF r_data-sales_order IS NOT INITIAL.
-           update_line-Salesorder    = r_data-sales_order.
-           update_line-TotalPrice    = r_data-total_net_amount.
-           update_line-SalesOrderStatus = zbp_r_{placeholder|userid}=>sales_order_state-created.
-           update_line-OverallStatus = zbp_r_{placeholder|userid}=>order_state-released.
-           update_line-ManageSalesOrderUrl =
-            | https://my413601.s4hana.cloud.sap/ui#SalesOrder-manageV2&/SalesOrderManage('{ r_data-sales_order }') |.
-         ELSE.
-           update_line-Notes = error_message.
-           update_line-OverallStatus = zbp_r_{placeholder|userid}=>order_state-new.
-           update_line-SalesOrderStatus = zbp_r_{placeholder|userid}=>sales_order_state-failed.
-         ENDIF.
-
-         APPEND update_line TO update.
-       ENDLOOP.
-
-       MODIFY ENTITIES OF zr_{placeholder|userid}
-        ENTITY ShoppingCart
-          UPDATE FIELDS ( SalesOrder OverallStatus SalesOrderStatus TotalPrice  ManageSalesOrderUrl Notes )
-            WITH update
-        REPORTED DATA(reported_ready)
-        FAILED DATA(failed_ready).
-     ENDIF.
-
-     COMMIT WORK.
-   ENDMETHOD.
-
-   METHOD run_via_bgpf.
-      TRY.
-        DATA(process_monitor) = cl_bgmc_process_factory=>get_default( )->create(
-                                              )->set_name( |Calculate order data { i_rap_bo_key }|
-                                              )->set_operation(  NEW zcl_{placeholder|userid}_start_bgpf( i_rap_bo_key = i_rap_bo_key )
-                                              )->save_for_execution( ).
-
-        r_process_monitor_string = process_monitor->to_string( ).
-        CATCH cx_bgmc INTO DATA(lx_bgmc).
-      ENDTRY.
-   ENDMETHOD.
-
-   METHOD run_via_bgpf_tx_uncontrolled.
-     TRY.
-        DATA(process_monitor) = cl_bgmc_process_factory=>get_default( )->create(
-                                              )->set_name( |Calculate order data { i_rap_bo_key }|
-                                              )->set_operation_tx_uncontrolled(  NEW zcl_{placeholder|userid}_start_bgpf( i_rap_bo_key = i_rap_bo_key )
-                                              )->save_for_execution( ).
-
-       r_process_monitor_string = process_monitor->to_string( ).
-       CATCH cx_bgmc INTO DATA(lx_bgmc).
-     ENDTRY.  
-   ENDMETHOD.
-
-ENDCLASS.
-```  
-
-</details>
-
-<hr>  
+>[!TIP]
+> Source code **`zcl_{placeholder|userid}_start_bgpf`**
+> <details>
+> 
+> <summary>Click to expand the source code</summary>
+> 
+> ```abap
+>     CLASS zcl_{placeholder|userid}_start_bgpf DEFINITION
+>     PUBLIC
+>     FINAL
+>     CREATE PUBLIC.
+> 
+>     PUBLIC SECTION.
+> 
+>     INTERFACES if_serializable_object.
+>     INTERFACES if_bgmc_operation.
+>     INTERFACES if_bgmc_op_single_tx_uncontr.
+>     INTERFACES if_bgmc_op_single.
+> 
+>     CLASS-METHODS run_via_bgpf
+>       IMPORTING i_rap_bo_key                    TYPE sysuuid_x16
+>       RETURNING VALUE(r_process_monitor_string) TYPE string.
+> 
+>     CLASS-METHODS run_via_bgpf_tx_uncontrolled
+>       IMPORTING i_rap_bo_key                    TYPE sysuuid_x16
+>       RETURNING VALUE(r_process_monitor_string) TYPE string.
+> 
+>     METHODS constructor
+>       IMPORTING i_rap_bo_key TYPE sysuuid_x16.
+> 
+>     CONSTANTS:
+>       BEGIN OF bgpf_state,
+>         unknown         TYPE int1 VALUE IS INITIAL,
+>         erroneous       TYPE int1 VALUE 1,
+>         new             TYPE int1 VALUE 2,
+>         running         TYPE int1 VALUE 3,
+>         successful      TYPE int1 VALUE 4,
+>         started_from_bo TYPE int1 VALUE 99,
+>       END OF bgpf_state.
+> 
+>     PROTECTED SECTION.
+>     PRIVATE SECTION.
+>     DATA rap_bo_key TYPE sysuuid_x16.
+>     CONSTANTS wait_time_in_seconds TYPE i VALUE 5.
+>    ENDCLASS.
+> 
+> 
+>    CLASS zcl_{placeholder|userid}_start_bgpf IMPLEMENTATION.
+>    METHOD constructor.
+>      rap_bo_key = i_rap_bo_key.
+>    ENDMETHOD.
+> 
+>    METHOD if_bgmc_op_single~execute.
+>      "implement if controlled behavior is needed
+>    ENDMETHOD.
+> 
+>    METHOD if_bgmc_op_single_tx_uncontr~execute.
+>      "implement if uncontrolled behavior is needed, e.g. commit work statements
+> 
+>      "There is already a global class **zcl_ac_salesorder_api** available
+>      DATA start_sales_order_create TYPE REF TO zcl_ac_salesorder_api.
+>      "In one the next steps you will create your own implementation
+>      "DATA start_sales_order_create TYPE REF TO zcl_{placeholder|userid}_so_api.
+> 
+>      DATA update TYPE TABLE FOR UPDATE zr_{placeholder|userid}\\ShoppingCart.
+>      DATA update_line TYPE STRUCTURE FOR UPDATE zr_{placeholder|userid}\\ShoppingCart .
+> 
+>      DATA error_message TYPE string.
+> 
+>      READ ENTITIES OF zr_{placeholder|userid}
+>              ENTITY ShoppingCart
+>              ALL FIELDS
+>              WITH VALUE #( ( %is_draft = if_abap_behv=>mk-off
+>                              %key-OrderUuid = rap_bo_key
+>                             )  )
+>              RESULT DATA(entities)
+>              FAILED DATA(failed).
+> 
+>      IF entities IS NOT INITIAL.
+>        LOOP AT entities INTO DATA(entity).
+>          "There is already a global class **zcl_ac_salesorder_api** available
+>          start_sales_order_create = NEW zcl_ac_salesorder_api(
+>       
+>          "In one the next steps you will create your own implementation
+>          "start_sales_order_create = NEW zcl_{placeholder|userid}_so_api(
+>                                          i_material = entity-OrderedItem
+>                                          i_purchase_order_by_customer = CONV #( sy-uname )
+>                                          i_quantity = entity-OrderQuantity
+>                                          i_requested_delivery_date = entity-RequestedDeliveryDate
+>                                          ).
+> 
+>          DATA(r_data) = start_sales_order_create->CreateSalesorder(
+>                        IMPORTING
+>                          r_error_message = error_message
+>                      ).
+> 
+>          update_line-%is_draft = if_abap_behv=>mk-off.
+>          update_line-OrderUuid = entity-OrderUuid.
+> 
+>          IF r_data-sales_order IS NOT INITIAL.
+>            update_line-Salesorder    = r_data-sales_order.
+>            update_line-TotalPrice    = r_data-total_net_amount.
+>            update_line-SalesOrderStatus = zbp_r_{placeholder|userid}=>sales_order_state-created.
+>            update_line-OverallStatus = zbp_r_{placeholder|userid}=>order_state-released.
+>            update_line-ManageSalesOrderUrl =
+>             | https://my413601.s4hana.cloud.sap/ui#SalesOrder-manageV2&/SalesOrderManage('{ r_data-sales_order }') |.
+>          ELSE.
+>            update_line-Notes = error_message.
+>            update_line-OverallStatus = zbp_r_{placeholder|userid}=>order_state-new.
+>            update_line-SalesOrderStatus = zbp_r_{placeholder|userid}=>sales_order_state-failed.
+>          ENDIF.
+> 
+>          APPEND update_line TO update.
+>        ENDLOOP.
+> 
+>        MODIFY ENTITIES OF zr_{placeholder|userid}
+>         ENTITY ShoppingCart
+>           UPDATE FIELDS ( SalesOrder OverallStatus SalesOrderStatus TotalPrice  ManageSalesOrderUrl Notes )
+>             WITH update
+>         REPORTED DATA(reported_ready)
+>         FAILED DATA(failed_ready).
+>      ENDIF.
+> 
+>      COMMIT WORK.
+>    ENDMETHOD.
+> 
+>    METHOD run_via_bgpf.
+>       TRY.
+>         DATA(process_monitor) = cl_bgmc_process_factory=>get_default( )->create(
+>                                               )->set_name( |Calculate order data { i_rap_bo_key }|
+>                                               )->set_operation(  NEW zcl_{placeholder|userid}_start_bgpf( i_rap_bo_key = i_rap_bo_key )
+>                                               )->save_for_execution( ).
+> 
+>         r_process_monitor_string = process_monitor->to_string( ).
+>         CATCH cx_bgmc INTO DATA(lx_bgmc).
+>       ENDTRY.
+>    ENDMETHOD.
+> 
+>    METHOD run_via_bgpf_tx_uncontrolled.
+>      TRY.
+>         DATA(process_monitor) = cl_bgmc_process_factory=>get_default( )->create(
+>                                               )->set_name( |Calculate order data { i_rap_bo_key }|
+>                                               )->set_operation_tx_uncontrolled(  NEW zcl_{placeholder|userid}_start_bgpf( i_rap_bo_key = i_rap_bo_key )
+>                                               )->save_for_execution( ).
+> 
+>        r_process_monitor_string = process_monitor->to_string( ).
+>        CATCH cx_bgmc INTO DATA(lx_bgmc).
+>      ENDTRY.  
+>    ENDMETHOD.
+> 
+> ENDCLASS.
+> ```  
+> 
+> </details>
 
 5. Save and activate the changes.  
 
@@ -236,7 +230,7 @@ Here we list a number of fields that are going to be updated asynchronously via 
 
    ```
 
-![side effect for events in bdef](./Images/04-020-side-effect-events_to_bdef.png) 
+![side effect for events in bdef](../ex1/images/04-020-side-effect-events_to_bdef.png) 
 
 ## Exercise 1.5.4: Enable side effects for events in the projection layer
 
@@ -257,7 +251,7 @@ And in addition we have to add the following statement in order to enable the ex
  use event statusUpdated;   
 ```
 
-![side effect for events in projection bdef](./Images/04-030-enable-side-effect-events_in_C_bdef.png)
+![side effect for events in projection bdef](../ex1/images/04-030-enable-side-effect-events_in_C_bdef.png)
 
 ## Exercise 1.5.5: Add an additional save 
 
@@ -284,11 +278,11 @@ Navigate to the behavior definition `ZR_{placeholder|userid}` either in the *Pro
 
   3. After having activated your changes select the key word `additional` and select **Ctrl + 1** to start the code assistant.
 
-     ![additional save](./Images/04-000-fix_additional_save.png)  
+     ![additional save](../ex1/images/04-000-fix_additional_save.png)  
   
      This will add a local saver class `lsc_zr_{placeholder|userid}` to the local classes of your behavior implementation class. The method `save_modified` is added to the      DEFINITION and the IMPLEMENTATION section of this local class.   
 
-     ![additional save](./Images/04-010-generated_saver_class.png)  
+     ![additional save](../ex1/images/04-010-generated_saver_class.png)  
      
      <!---
      <pre ABAP>
@@ -381,7 +375,7 @@ In this asynchronous call the sales order api will create a sales order by calli
 ```
 
 
-   ![ShoppingCart App Preview](./Images/04_100_app_with_save_and_events_enabled.gif)  
+   ![ShoppingCart App Preview](../ex1/images/04_100_app_with_save_and_events_enabled.gif)  
 
 
 # Summary

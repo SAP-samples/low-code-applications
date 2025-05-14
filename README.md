@@ -1,4 +1,4 @@
-# Create an Extension with SAP Build containing the SAP BTP ABAP Environment and SAP Build Process Automation
+# Create an extension with SAP Build containing the SAP BTP ABAP Environment and SAP Build Process Automation
 
 ## Description
 
@@ -7,21 +7,21 @@ We will create a new service using the ABAP RESTful Application Programming Mode
 
 ## Overview
 
-This session covers the basic app development steps using the ABAP Development Tools (ADT) to create a new OData service based on the ABAP RESTful Application Programming Model (RAP) on the BTP ABAP Environment. This service will then be used in a new process that will be created using SAP Build Process Automation that runs on the SAP Business Technology Platfrom (BTP). You will learn how this kind of Fusion Development, i.e. creating extensions that are based on different technologies and / or use different tools, creates an overall Extension Solution.  
+This session covers the basic app development steps using the ABAP Development Tools (ADT) to create a new OData service based on the ABAP RESTful Application Programming Model (RAP) on the BTP ABAP Environment. This service will then be used in a new process that will be created using SAP Build Process Automation that runs on the SAP Business Technology Platfrom (BTP). You will learn how this kind of fusion development, i.e. creating extensions that are based on different technologies and / or use different tools, creates an overall extension solution.  
 
 ## The use case
 
-The goal is to create a UI from which a user can order a product with a quantity. This request for an order will go through an approval of an entitled person. If the order request is approved, a new shopping cart object is created for the order and this in turn creates a sales order in S/4HANA.
+The goal is to create a UI from which a user can order a product with a quantity. This request for an order will go through an approval of an entitled person. If the order request is approved, a new shopping cart object is created for the order and this in turn creates a sales order in SAP S/4HANA.
 
 In order to achieve this goal, there are several steps involved:
 - you will create a new OData service on the SAP BTP ABAP environment for the shopping cart.
-- you will create a process with a start UI for ordering the product, an approval step and an action which triggers a call of the shopping cart OData request in order to create a new shopping cart
+- you will create a process with a start UI for ordering the product, an approval step, and an action which triggers a call of the shopping cart OData request in order to create a new shopping cart
 
 ## Requirements
 
 To carry out the exercises of this repository, you need to
 - install the ABAP Development Tools (ADT) for the ABAP development parts
-- have a browser ready, preferably Google Chrome, to access the SAP Build
+- have a browser ready, preferably Google Chrome, to access SAP Build
 
 The users for the development environment during the course are email addresses which are provided to you by the hosts.
 
