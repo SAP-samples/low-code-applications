@@ -18,9 +18,11 @@ You will create your own app with the ABAP RESTful Application Programming Model
 
  The scenario we will implement will be a shopping cart
  
- - A customer/partner wants to create a new business application that will allow employees of a company to order certain articles such as laptops for quick delivery using this shopping app. This can be realized with the ABAP RESTful Application Programming Model (RAP). 
+- A customer/partner wants to create a new service for a shopping cart
+
+ - A customer/partner wants to create a new business application that will allow employees of a company to order certain articles such as laptops for quick delivery. This can be realized with the ABAP RESTful Application Programming Model (RAP). 
  
  - You’ll build the application starting from a database table using an ADT wizard that generates a starter project wich contains all the needed development RAP artefacts that have to be implemented. 
 
-Continue to - [Create an ABAP Cloud based RAP OData Service](exercises/ex1/README.md)
+Continue to - [reate an ABAP Package form the SAP Build Lobby](exercises/ex1.1/README.md)
 
