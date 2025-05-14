@@ -58,12 +58,12 @@ zcl_ac000000uxx_start_bgpf=>run_via_bgpf_tx_uncontrolled( i_rap_bo_key = create_
 > <summary>Click to expand the source code</summary>
 > 
 > ```abap
->     CLASS zcl_{placeholder|userid}_start_bgpf DEFINITION
+> CLASS zcl_shoppingcart217_start_bgpf DEFINITION
 >     PUBLIC
 >     FINAL
 >     CREATE PUBLIC.
 > 
->     PUBLIC SECTION.
+>   PUBLIC SECTION.
 > 
 >     INTERFACES if_serializable_object.
 >     INTERFACES if_bgmc_operation.
@@ -91,115 +91,105 @@ zcl_ac000000uxx_start_bgpf=>run_via_bgpf_tx_uncontrolled( i_rap_bo_key = create_
 >         started_from_bo TYPE int1 VALUE 99,
 >       END OF bgpf_state.
 > 
->     PROTECTED SECTION.
->     PRIVATE SECTION.
+>   PROTECTED SECTION.
+>   PRIVATE SECTION.
 >     DATA rap_bo_key TYPE sysuuid_x16.
 >     CONSTANTS wait_time_in_seconds TYPE i VALUE 5.
->    ENDCLASS.
+> ENDCLASS.
 > 
 > 
->    CLASS zcl_{placeholder|userid}_start_bgpf IMPLEMENTATION.
->    METHOD constructor.
->      rap_bo_key = i_rap_bo_key.
->    ENDMETHOD.
+> CLASS zcl_shoppingcart217_start_bgpf IMPLEMENTATION.
+>   METHOD constructor.
+>     rap_bo_key = i_rap_bo_key.
+>   ENDMETHOD.
 > 
->    METHOD if_bgmc_op_single~execute.
->      "implement if controlled behavior is needed
->    ENDMETHOD.
+>   METHOD if_bgmc_op_single~execute.
+>     "implement if controlled behavior is needed
+>   ENDMETHOD.
 > 
->    METHOD if_bgmc_op_single_tx_uncontr~execute.
->      "implement if uncontrolled behavior is needed, e.g. commit work statements
+>   METHOD if_bgmc_op_single_tx_uncontr~execute.
 > 
->      "There is already a global class **zcl_ac_salesorder_api** available
->      DATA start_sales_order_create TYPE REF TO zcl_ac_salesorder_api.
->      "In one the next steps you will create your own implementation
->      "DATA start_sales_order_create TYPE REF TO zcl_{placeholder|userid}_so_api.
+>     DATA start_sales_order_create TYPE REF TO zcl_ac_salesorder_api.
+>     DATA update                   TYPE TABLE FOR UPDATE zr_dbshopcart217\\ZrDbshopcart217.
+>     DATA update_line              TYPE STRUCTURE FOR UPDATE zr_dbshopcart217\\ZrDbshopcart217.
+>     DATA error_message            TYPE string.
 > 
->      DATA update TYPE TABLE FOR UPDATE zr_{placeholder|userid}\\ShoppingCart.
->      DATA update_line TYPE STRUCTURE FOR UPDATE zr_{placeholder|userid}\\ShoppingCart .
+>     READ ENTITIES OF zr_dbshopcart217
+>             ENTITY ZrDbshopcart217
+>             ALL FIELDS
+>             WITH VALUE #( ( %is_draft = if_abap_behv=>mk-off
+>                             %key-OrderUuid = rap_bo_key
+>                            )  )
+>             RESULT DATA(entities)
+>             FAILED DATA(failed).
 > 
->      DATA error_message TYPE string.
+>     IF entities IS NOT INITIAL.
+>       LOOP AT entities INTO DATA(entity).
+>         start_sales_order_create = NEW zcl_ac_salesorder_api(
+>           i_material = entity-OrderedItem
+>           i_purchase_order_by_customer = CONV #( sy-uname )
+>           i_quantity = entity-OrderQuantity
+>           i_requested_delivery_date = entity-RequestedDeliveryDate
+>         ).
 > 
->      READ ENTITIES OF zr_{placeholder|userid}
->              ENTITY ShoppingCart
->              ALL FIELDS
->              WITH VALUE #( ( %is_draft = if_abap_behv=>mk-off
->                              %key-OrderUuid = rap_bo_key
->                             )  )
->              RESULT DATA(entities)
->              FAILED DATA(failed).
+>         DATA(r_data) = start_sales_order_create->CreateSalesorder(
+>           IMPORTING
+>             r_error_message = error_message
+>         ).
 > 
->      IF entities IS NOT INITIAL.
->        LOOP AT entities INTO DATA(entity).
->          "There is already a global class **zcl_ac_salesorder_api** available
->          start_sales_order_create = NEW zcl_ac_salesorder_api(
->       
->          "In one the next steps you will create your own implementation
->          "start_sales_order_create = NEW zcl_{placeholder|userid}_so_api(
->                                          i_material = entity-OrderedItem
->                                          i_purchase_order_by_customer = CONV #( sy-uname )
->                                          i_quantity = entity-OrderQuantity
->                                          i_requested_delivery_date = entity-RequestedDeliveryDate
->                                          ).
+>         update_line-%is_draft = if_abap_behv=>mk-off.
+>         update_line-OrderUuid = entity-OrderUuid.
 > 
->          DATA(r_data) = start_sales_order_create->CreateSalesorder(
->                        IMPORTING
->                          r_error_message = error_message
->                      ).
+>         IF r_data-sales_order IS NOT INITIAL.
+>           update_line-Salesorder            = r_data-sales_order.
+>           update_line-TotalPrice            = r_data-total_net_amount.
+>           update_line-SalesOrderStatus      = 'CREATED'.
+>           update_line-OverallStatus         = 'SAVED'.
+>           update_line-ManageSalesOrderUrl   =
+>            | https://my301102-api.s4hana.ondemand.com/ui#SalesOrder-manageV2&/SalesOrderManage('{ r_data-sales_order }') |.
+>         ELSE.
+>           update_line-Notes                 = error_message.
+>           update_line-OverallStatus         = 'SAVED'.
+>           update_line-SalesOrderStatus      = 'FAILED'.
+>         ENDIF.
 > 
->          update_line-%is_draft = if_abap_behv=>mk-off.
->          update_line-OrderUuid = entity-OrderUuid.
+>         APPEND update_line TO update.
+>       ENDLOOP.
 > 
->          IF r_data-sales_order IS NOT INITIAL.
->            update_line-Salesorder    = r_data-sales_order.
->            update_line-TotalPrice    = r_data-total_net_amount.
->            update_line-SalesOrderStatus = zbp_r_{placeholder|userid}=>sales_order_state-created.
->            update_line-OverallStatus = zbp_r_{placeholder|userid}=>order_state-released.
->            update_line-ManageSalesOrderUrl =
->             | https://my413601.s4hana.cloud.sap/ui#SalesOrder-manageV2&/SalesOrderManage('{ r_data-sales_order }') |.
->          ELSE.
->            update_line-Notes = error_message.
->            update_line-OverallStatus = zbp_r_{placeholder|userid}=>order_state-new.
->            update_line-SalesOrderStatus = zbp_r_{placeholder|userid}=>sales_order_state-failed.
->          ENDIF.
+>       MODIFY ENTITIES OF zr_dbshopcart217
+>        ENTITY ZrDbshopcart217
+>          UPDATE FIELDS ( SalesOrder OverallStatus SalesOrderStatus TotalPrice  ManageSalesOrderUrl Notes )
+>            WITH update
+>        REPORTED DATA(reported_ready)
+>        FAILED DATA(failed_ready).
+>     ENDIF.
 > 
->          APPEND update_line TO update.
->        ENDLOOP.
+>     COMMIT WORK.
+>   ENDMETHOD.
 > 
->        MODIFY ENTITIES OF zr_{placeholder|userid}
->         ENTITY ShoppingCart
->           UPDATE FIELDS ( SalesOrder OverallStatus SalesOrderStatus TotalPrice  ManageSalesOrderUrl Notes )
->             WITH update
->         REPORTED DATA(reported_ready)
->         FAILED DATA(failed_ready).
->      ENDIF.
-> 
->      COMMIT WORK.
->    ENDMETHOD.
-> 
->    METHOD run_via_bgpf.
->       TRY.
+>   METHOD run_via_bgpf.
+>     TRY.
 >         DATA(process_monitor) = cl_bgmc_process_factory=>get_default( )->create(
 >                                               )->set_name( |Calculate order data { i_rap_bo_key }|
->                                               )->set_operation(  NEW zcl_{placeholder|userid}_start_bgpf( i_rap_bo_key = i_rap_bo_key )
+>                                               )->set_operation(  NEW zcl_shoppingcart217_start_bgpf( i_rap_bo_key = i_rap_bo_key )
 >                                               )->save_for_execution( ).
 > 
 >         r_process_monitor_string = process_monitor->to_string( ).
->         CATCH cx_bgmc INTO DATA(lx_bgmc).
->       ENDTRY.
->    ENDMETHOD.
+>       CATCH cx_bgmc INTO DATA(lx_bgmc).
+>     ENDTRY.
+>   ENDMETHOD.
 > 
->    METHOD run_via_bgpf_tx_uncontrolled.
->      TRY.
+>   METHOD run_via_bgpf_tx_uncontrolled.
+>     TRY.
 >         DATA(process_monitor) = cl_bgmc_process_factory=>get_default( )->create(
 >                                               )->set_name( |Calculate order data { i_rap_bo_key }|
->                                               )->set_operation_tx_uncontrolled(  NEW zcl_{placeholder|userid}_start_bgpf( i_rap_bo_key = i_rap_bo_key )
+>                                               )->set_operation_tx_uncontrolled(  NEW zcl_shoppingcart217_start_bgpf( i_rap_bo_key = i_rap_bo_key )
 >                                               )->save_for_execution( ).
 > 
->        r_process_monitor_string = process_monitor->to_string( ).
->        CATCH cx_bgmc INTO DATA(lx_bgmc).
->      ENDTRY.  
->    ENDMETHOD.
+>         r_process_monitor_string = process_monitor->to_string( ).
+>       CATCH cx_bgmc INTO DATA(lx_bgmc).
+>     ENDTRY.
+>   ENDMETHOD.
 > 
 > ENDCLASS.
 > ```  
@@ -296,45 +286,57 @@ Navigate to the behavior definition `ZR_{placeholder|userid}` either in the *Pro
      --->  
      
 4. Implement the `save_modified()` method as follows:
-  
-   ```abap
-        METHOD save_modified.
-        DATA : ShoppingCarts       TYPE STANDARD TABLE OF z{placeholder|userid},
-              ShoppingCart        TYPE                   z{placeholder|userid},
-              events_to_be_raised TYPE TABLE FOR EVENT zr_{placeholder|userid}~statusUpdated.
 
-        IF create-shoppingcart IS NOT INITIAL.
-          LOOP AT create-shoppingcart INTO DATA(create_shoppingcart).
-            IF create_shoppingcart-%control-OverallStatus = if_abap_behv=>mk-on
-              " AND create_shoppingcart-OverallStatus = zbp_r_{placeholder|userid}=>order_state-in_process.
-              AND create_shoppingcart-OverallStatus = zbp_r_{placeholder|userid}=>order_state-saved.
-              zcl_{placeholder|userid}_start_bgpf=>run_via_bgpf_tx_uncontrolled( i_rap_bo_key = create_shoppingcart-OrderUuid ).
-            ENDIF.
-          ENDLOOP.
-        ENDIF.
-        
-        "the salesorder and the status is updated via BGPF
-        IF update-shoppingcart IS NOT INITIAL.
-          LOOP AT update-shoppingcart into data(update_shoppingcart).
-            IF update_shoppingcart-%control-SalesOrderStatus = if_abap_behv=>mk-on.
-              CLEAR events_to_be_raised.
-              APPEND INITIAL LINE TO events_to_be_raised.
-              events_to_be_raised[ 1 ] = CORRESPONDING #( update_shoppingcart ).
-              RAISE ENTITY EVENT zr_{placeholder|userid}~statusUpdated FROM events_to_be_raised.
-            ENDIF.
-
-            IF update_shoppingcart-%control-OverallStatus = if_abap_behv=>mk-on
-              "AND update_shoppingcart-OverallStatus = zbp_r_{placeholder|userid}=>order_state-in_process.
-              AND update_shoppingcart-OverallStatus = zbp_r_{placeholder|userid}=>order_state-saved.
-              zcl_{placeholder|userid}_start_bgpf=>run_via_bgpf_tx_uncontrolled( i_rap_bo_key = update_shoppingcart-OrderUuid ).
-            ENDIF.
-          ENDLOOP.
-        ENDIF.
-        ENDMETHOD.
-
-        ENDCLASS.
- 
-   ```
+>[!TIP]
+> Source code **`zcl_{placeholder|userid}_start_bgpf`**
+> <details>
+> 
+> <summary>Click to expand the source code</summary>
+> 
+> ```abap
+> CLASS lsc_zr_dbshopcart217 DEFINITION INHERITING FROM cl_abap_behavior_saver.
+> 
+>   PROTECTED SECTION.
+> 
+>     METHODS save_modified REDEFINITION.
+> 
+> ENDCLASS.
+> 
+> CLASS lsc_zr_dbshopcart217 IMPLEMENTATION.
+> 
+>   METHOD save_modified.
+>      DATA : ShoppingCarts       TYPE STANDARD TABLE OF zr_dbshopcart217,
+>             ShoppingCart        TYPE                   zr_dbshopcart217,
+>             events_to_be_raised TYPE TABLE FOR EVENT zr_dbshopcart217~statusUpdated.
+> 
+>      "Create a sales order in S/4HANA if Order Quantity is given  
+>      IF create-zrdbshopcart217 IS NOT INITIAL.
+>        LOOP AT create-zrdbshopcart217 INTO DATA(create_shoppingcart).
+>          IF create_shoppingcart-%control-OrderQuantity = if_abap_behv=>mk-on.
+>            zcl_shoppingcart217_start_bgpf=>run_via_bgpf_tx_uncontrolled( i_rap_bo_key = create_shoppingcart-OrderUuid ).
+>          ENDIF.
+>        ENDLOOP.
+>      ENDIF.
+> 
+>      "Aync process will update additional fields (like total price). Once they have changed, an event-driven side effect will update the UI
+>      IF update-zrdbshopcart217 IS NOT INITIAL.
+>        LOOP AT update-zrdbshopcart217 into data(update_shoppingcart).
+> 
+>         IF update_shoppingcart-%control-TotalPrice = if_abap_behv=>mk-on.
+>            CLEAR events_to_be_raised.
+>            APPEND INITIAL LINE TO events_to_be_raised.
+>            events_to_be_raised[ 1 ] = CORRESPONDING #( update_shoppingcart ).
+>            RAISE ENTITY EVENT zr_dbshopcart217~statusUpdated FROM events_to_be_raised.
+>          ENDIF.
+>        ENDLOOP.
+>      ENDIF.
+> 
+>   ENDMETHOD.
+> 
+> ENDCLASS.
+> ```  
+> 
+> </details>
 
 ## Exercise 1.5.6: Preview and Test the enhanced ShoppingCart App
 
