@@ -56,6 +56,6 @@ define table zdbshopcart### {
    ![DBActivate](../ex1/images/DBActivate.png)
 
 # Summary
-TODO: Add summary here
+You have now created a new database table for shopping carts. This will be used as a basis for an OData service that you will build using the ABAP Cloud Programming model in the next chapter.
 
 You can continue with the next exercise - **[Exercise 1.3: Create a new RAP service](../ex1.3/README.md)**

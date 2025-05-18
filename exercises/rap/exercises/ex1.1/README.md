@@ -75,6 +75,6 @@ The following points 9. - 11. might or might not pop up after you pressed create
    ![SelectPackage](../ex1/images/SelectPackage.png)
 
 # Summary
-TODO: Add summary
+You have now created a new ABAP Cloud package in the BTP ABAP envrionment starting from the SAP Build Lobby. The package is available in the ABAP Developer Tools (ADT)
 
 You can continue with the next exercise - **[Exercise 1.2: Create a new database table](../ex1.2/README.md)**

@@ -52,9 +52,8 @@
 
 This concludes the creation of the UI service and a test using a Fiori elements UI application.
 
-TODO: POSITION AI EXPLAIN FUNCTIONALITY HERE?
 
 # Summary
-TODO: Add summary here
+You have now created a new ABAP RESTful Programming Model (RAP) Service on top of the database from the exercise before for shopping carts. You have also tested the service with a Fiori elements application.
 
 You can continue with the next exercise - **[Exercise 1.4: Define a validation](../ex1.4/README.md)**
