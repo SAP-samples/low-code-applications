@@ -7,7 +7,7 @@ In this exercise, we will create Actions in SAP Build that access the Shopping C
 Then we will create a process using SAP Build Process Automation. The process will consist of 
 - a start UI which a user can use to order a product with a quantity
 - a condition that checks whether the quantity is 1. If it is, the condition auto approves the product order. If it isn't there will be an approval setp
-- am approval step where an approver (e.g. a manager) gets the order of the user in the approver's inbox and can either approve or reject the order request
+- an approval step where an approver (e.g. a manager) gets the order of the user in the approver's inbox and can either approve or reject the order request
 - an action step in which approved order requests invoke the call of the ABAP Cloud based RAP API. The call creates a new shopping cart in the BTP ABAP environment.
 
 When this is finished, you will test the process from start to finish.
