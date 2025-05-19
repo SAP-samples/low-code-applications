@@ -30,7 +30,7 @@
 
    ![FioriPreview](../ex2/images/FioriPreview.png)
 
-   8. Press *Go*. Your new enntry should come up in the list
+   8. Press *Go*. Your new entry should come up in the list
 
    ![PreviewResult](../ex2/images/PreviewResult.png)
 
