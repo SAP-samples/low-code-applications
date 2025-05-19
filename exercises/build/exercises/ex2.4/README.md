@@ -2,7 +2,7 @@
 
    In this exercise, we will create a new process in SAP Build. In this process, there will be a UI that lets users create a shopping cart with a product and a quantity. Upon the submission of this shopping cart, there will be a condition in the process that checks whether only one piece of the product is requested. In case it is, the request is automatically approved. If a bigger number is requested, an approval step in the process will be carried out, that an entitled person will find in the person's inbox. The person will then either decline or approve the request. In case the request is approved, the action that adds a new shopping cart entry invoking the RAP service that we built earlier.
 
-   1. Let's start to create the process. Switch to the lobby back to the lobby (Lobby entry is on the top left). Select *Create* and *Create* in the menu
+   1. Let's start to create the process. Switch back to the lobby (Lobby entry is on the top left). Select *Create* and then *Create* in the menu.
 
    ![ProcessCreate](../ex2/images/ProcessCreate.png)
 
