@@ -2,7 +2,7 @@
 
    In this section we will test the process. First we will fill out a new shopping cart request and submit it. Then we will put ourselves into the shoes of the approver and enter the approver's inbox. Then we will approve the request and check whether this resulted in the proper invocation of the action and in turn the shopping cart RAP API on ABAP.
 
-   1. As a first step we need to get a URL for the start UI. For thi, switch to the *Overview* tab of the process. Click the link of the *ShoppingCart###Process*.
+   1. As a first step we need to get a URL for the start UI. For this, switch to the *Overview* tab of the process. Click the link of the *ShoppingCart###Process*.
 
    ![SwitchToProcess](../ex2/images/SwitchToProcess.png)
 
