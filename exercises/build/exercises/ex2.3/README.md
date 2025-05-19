@@ -8,7 +8,7 @@
 
    ![RAPAction](../ex2/images/RAPAction.png)
 
-3. find your service *ShoppingCart###* (with ### being you group number) and select it.
+3. Find your service *ShoppingCart###* (with ### being you unique number) and select it.
 
    ![ActionShoppingCart](../ex2/images/ActionShoppingCart.png)
 
