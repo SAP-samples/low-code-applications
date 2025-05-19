@@ -10,7 +10,7 @@
 
    ![CopyProcessLink](../ex2/images/CopyProcessLink.png)
 
-   3. Switch to a new browser tab and paste the URL that you just copied. The start UI comes up. Enter a product name and a quantity of your likining and the press *Submit*.
+   3. Switch to a new browser tab and paste the URL that you just copied. The start UI comes up. Enter a product name and a quantity of your liking and then press *Submit*.
 
    ![ProcessStartUI](../ex2/images/ProcessStartUI.png)
 
