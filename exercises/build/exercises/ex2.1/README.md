@@ -38,7 +38,7 @@ We will now create the destination in a BTP subaccount to our Shopping Cart API 
 
    ![PropertiesForDestination](../ex2/images/PropertiesForDestination.png)
 
-8. Back on the list of the destinations, select your new destination and press *Check Connection*. It should bring up a success messate
+8. Back on the list of the destinations, select your new destination and press *Check Connection*. It should bring up a success message
 
    ![DestinationCheck](../ex2/images/DestinationCheck.png)
 
