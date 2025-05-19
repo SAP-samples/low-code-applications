@@ -38,11 +38,11 @@
 
    ![ActionAddNewEntity](../ex2/images/ActionAddNewEntity.png)
 
-10. Now select the *isActiveEntity* property, switch the *Mandatory* switch to *Off*, also set the value to *true*. This is related to the draf concepts, which means that in a UI when users edit an object it is constantly saved even in unfinished, inconsistent states. However, it is only saved for the current user in a draft state, all other users don't see the object in its unfinished state, they either see no object or the last active version. Only if the user finally saves the valuated object it changes from draft to active state. In our case, we want to add entities using the action in a way that all these entities are immediately active.
+10. Now select the *isActiveEntity* property, switch the *Mandatory* switch to *Off*, also set the value to *true*. This is related to the draft concepts, which means that in a UI when users edit an object, it is constantly saved even in unfinished, inconsistent states. However, it is only saved for the current user in a draft state, all other users don't see the object in its unfinished state, they either see no object or the last active version. Only if the user finally saves the valuated object, it changes from draft to active state. In our case, we want to add entities using the action in a way that all these entities are immediately active.
    
    ![ActionAddNewEntityActive](../ex2/images/ActionAddNewEntityActive.png)
   
-11. APIs that carry out changing operations normally need a so-called CSRF token from the server for security reasons. Without going deeper into what the mechanics behind this security measure are, we need such a token in our case as well. In order to make the action framework to generate one, press the settings button in the upper right corner and switch the *Enable CSRF* to on and press *Save*.
+11. APIs that carry out changing operations normally need a so-called CSRF token from the server for security reasons. Without going deeper into what the mechanics behind this security measure are, we need such a token in our case, as well. In order to make the action framework to generate one, press the settings button in the upper right corner and switch the *Enable CSRF* to on and press *Save*.
 
    ![ActionEnableCSRF](../ex2/images/ActionEnableCSRF.png)
 
@@ -55,7 +55,7 @@
 
    ![ActionEnterValues](../ex2/images/ActionEnterValues.png)
 
-14. After a couple of seconds you should see the result in the lower part of the screen. A JSON representing the data that was just posted and is now persisted on the database should be shown, it indicates a successful invocation of the API
+14. After a couple of seconds you should see the result in the lower part of the screen. A JSON representing the data that was just posted and is now persisted on the database should be shown, it indicates a successful invocation of the API.
 
    ![ActionNewEntity](../ex2/images/ActionNewEntity.png)
 
@@ -67,7 +67,7 @@
 
    ![ActionReleaseVersion](../ex2/images/ActionReleaseVersion.png)
 
-16. The now released version of the actions can now be published for others to consume. Press the *Publish* button on the upper right.
+16. The released version of the actions can now be published for others to consume. Press the *Publish* button on the upper right.
 
    ![ActionPublish](../ex2/images/ActionPublish.png)
 
@@ -82,6 +82,6 @@
 
 
 # Summary
-This concludes the creation of an action project which consumes some parts of the ABAP RAP API for shopping carts that you created earlier. This action project can now be consumed within a SAP Build Process, that we are going to create in the next chapter
+This concludes the creation of an action project which consumes some parts of the ABAP RAP API for shopping carts that you created earlier. This action project can now be consumed within a SAP Build Process, that we are going to create in the next chapter.
       
 You can continue with the next exercise - **[Exercise 2.4: Create an SAP Build Process](../ex2.4/README.md)**
