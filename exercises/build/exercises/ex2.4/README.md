@@ -169,4 +169,4 @@
 # Summary
 You have now built a process with Build Process Automation that includes a start UI, a condition, an approval step and the invocation of an action which in turn creates a new shopping cart entry usind the ABAP Cloud based RAP OData service. The process is deployed and can be used and tried out.
          
-You can continue with the next exercise - **[Exercise 2.5: Test thhe process, the approval and the invocation of the RAP API ](../ex2.5/README.md)**
+You can continue with the next exercise - **[Exercise 2.5: Test the process, the approval, and the invocation of the RAP API ](../ex2.5/README.md)**
