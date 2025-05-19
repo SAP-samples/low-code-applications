@@ -14,7 +14,7 @@
 
    ![ProcessCreatePickPr2](../ex2/images/ProcessCreatePickPr2.png)
 
-   4. Provide a name like *ShoppingCart###Process* where *###* is again your group number. Press *Next*. 
+   4. Provide a name like *ShoppingCart###Process* where *###* is again your unique number. Press *Next*. 
 
    ![ProcessCreateName](../ex2/images/ProcessCreateName.png)
 
@@ -30,7 +30,7 @@
 
    ![ProcessAddTrigger](../ex2/images/ProcessAddTrigger.png)
 
-   8. Select *Submit a Form*. There are a number of ways to start a process. For example it can be started by an API call or it can be started when a certain event occurs (e.g. the creation of a Sales Order in S/4HANA). In our case, we want to create a start UI, a form that when it is submitted, will start the process. Press *Submit a Form*.
+   8. Select *Submit a Form*. There are a number of ways to start a process. For example, it can be started by an API call or it can be started when a certain event occurs (e.g. the creation of a Sales Order in SAP S/4HANA). In our case, we want to create a start UI, a form that when it is submitted, will start the process. Press *Submit a Form*.
 
    ![ProcessAddTriggerForm](../ex2/images/ProcessAddTriggerForm.png)
 
