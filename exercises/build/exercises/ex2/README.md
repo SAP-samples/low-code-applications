@@ -1,4 +1,4 @@
-# Exercise 2: Create "actions" in SAP Build to access the Onlineshop API
+# Exercise 2: Create a Process in SAP Build Process Automation based on the Shopping Cart Service
 
 This exercise will be conducted in SAP Build Process Automation on the SAP Business Technology Platform (BTP).
 
