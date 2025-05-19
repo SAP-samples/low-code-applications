@@ -144,7 +144,7 @@
 
    ![ReleaseProcess](../ex2/images/ReleaseProcess.png)
 
-   26. A pop up comes up that shows the release version for the project and and optional note for the release. Press *Relelase*.
+   26. A pop up comes up that shows the release version for the project and and optional note for the release. Press *Release*.
 
    ![ReleaseProcess2](../ex2/images/ReleaseProcess2.png)
 
