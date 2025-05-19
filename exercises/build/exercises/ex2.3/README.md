@@ -16,7 +16,7 @@
 
    ![InspectActions](../ex2/images/InspectActions.png)
 
-5. Give your new action project the name *ShoppingCart###Actions* and a description *Actions for API Shopping Cart ###* (with ### again your group name). Press *Create*
+5. Give your new action project the name *ShoppingCart###Actions* and a description *Actions for API Shopping Cart ###* (with ### again your reference number). Press *Create*
 
    ![ActionProject](../ex2/images/ActionProject.png)
 
