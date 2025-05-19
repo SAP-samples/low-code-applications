@@ -14,7 +14,7 @@ When this is finished, you will test the process from start to finish.
 
 Now let's start with creating the actions that are needed for the process. To create such actions, we need to prepare two things first:
 - Create a destination in SAP BTP to create the secure connectivity in the SAP BTP subaccount to the Shopping Cart API on the SAP BTP ABAP Environment from the previous chapters
-- Register this destination to be used for sctions
+- Register this destination to be used for actions
 
 You can continue with the first exercise - **[Exercise 2.1: Create a destination in an SAP BTP subaccount to access the Shopping API](../ex2.1/README.md)**
 
