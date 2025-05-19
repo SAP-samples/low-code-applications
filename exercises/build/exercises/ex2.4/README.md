@@ -1,8 +1,8 @@
 ## Exercise 2.4: Create an SAP Build Process
 
-   In this exercise we will create a new process in SAP Build. In this process there will be a UI that lets users create a shopping cart with a product and a quantity. Upon the submission of this shopping cart, there will be a condition in the process that checks whether only one piece of the product is requested and if it is, the request is automatically approved. If a bigger number is requested an approval step in the process will be carried out, that an entiteld person will find in the person's inbox. The person will then either request or approve the request and in the case the request is approved, the action that adds a new shopping cart entry invoking the RAP service that we built earlier.
+   In this exercise, we will create a new process in SAP Build. In this process, there will be a UI that lets users create a shopping cart with a product and a quantity. Upon the submission of this shopping cart, there will be a condition in the process that checks whether only one piece of the product is requested. In case it is, the request is automatically approved. If a bigger number is requested, an approval step in the process will be carried out, that an entitled person will find in the person's inbox. The person will then either decline or approve the request. In case the request is approved, the action that adds a new shopping cart entry invoking the RAP service that we built earlier.
 
-   1. Let's start to create the process. Switch to the lobby back to the lobby (Lobby entry is on the top left). Select *Create* and *Create* in the menu
+   1. Let's start to create the process. Switch back to the lobby (Lobby entry is on the top left). Select *Create* and then *Create* in the menu.
 
    ![ProcessCreate](../ex2/images/ProcessCreate.png)
 
@@ -10,11 +10,11 @@
 
    ![ProcessCreatePickPr](../ex2/images/ProcessCreatePickPr.png)
 
-   3. Choose *ProcessÜ and press *Next*.
+   3. Choose *Process* and press *Next*.
 
    ![ProcessCreatePickPr2](../ex2/images/ProcessCreatePickPr2.png)
 
-   4. Provide a name like *ShoppingCart###Process* where *###* is again your group number. Press *Next*. 
+   4. Provide a name like *ShoppingCart###Process* where *###* is again your unique number. Press *Next*. 
 
    ![ProcessCreateName](../ex2/images/ProcessCreateName.png)
 
@@ -30,7 +30,7 @@
 
    ![ProcessAddTrigger](../ex2/images/ProcessAddTrigger.png)
 
-   8. Select *Submit a Form*. There are a number of ways to start a process. For example it can be started by an API call or it can be started when a certain event occurs (e.g. the creation of a Sales Order in S/4HANA). In our case, we want to create a start UI, a form that when it is submitted, will start the process. Press *Submit a Form*.
+   8. Select *Submit a Form*. There are a number of ways to start a process. For example, it can be started by an API call or it can be started when a certain event occurs (e.g. the creation of a Sales Order in SAP S/4HANA). In our case, we want to create a start UI, a form that when it is submitted, will start the process. Press *Submit a Form*.
 
    ![ProcessAddTriggerForm](../ex2/images/ProcessAddTriggerForm.png)
 
@@ -144,7 +144,7 @@
 
    ![ReleaseProcess](../ex2/images/ReleaseProcess.png)
 
-   26. A pop up comes up that shows the release version for the project and and optional note for the release. Press *Relelase*.
+   26. A pop up comes up that shows the release version for the project and and optional note for the release. Press *Release*.
 
    ![ReleaseProcess2](../ex2/images/ReleaseProcess2.png)
 
@@ -169,4 +169,4 @@
 # Summary
 You have now built a process with Build Process Automation that includes a start UI, a condition, an approval step and the invocation of an action which in turn creates a new shopping cart entry usind the ABAP Cloud based RAP OData service. The process is deployed and can be used and tried out.
          
-You can continue with the next exercise - **[Exercise 2.5: Test thhe process, the approval and the invocation of the RAP API ](../ex2.5/README.md)**
+You can continue with the next exercise - **[Exercise 2.5: Test the process, the approval, and the invocation of the RAP API ](../ex2.5/README.md)**

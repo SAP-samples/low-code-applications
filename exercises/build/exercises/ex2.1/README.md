@@ -38,11 +38,11 @@ We will now create the destination in a BTP subaccount to our Shopping Cart API 
 
    ![PropertiesForDestination](../ex2/images/PropertiesForDestination.png)
 
-8. Back on the list of the destinations, select your new destination and press *Check Connection*. It should bring up a success messate
+8. Back on the list of the destinations, select your new destination and press *Check Connection*. It should bring up a success message
 
    ![DestinationCheck](../ex2/images/DestinationCheck.png)
 
    # Summary
-   You have now created a destination on the BTP with which the Shopping Cart API can be envoked from outside the BTP ABAP Environment. It can now be inovked from a Build action which we will create in the follow up chapters
+   You have now created a destination on the BTP with which the Shopping Cart API can be envoked from outside the BTP ABAP Environment. It can now be invoked from a Build action which we will create in the following chapters
    
    You can continue with the next exercise - **[Exercise 2.2: Enable the destination for Actions](../ex2.2/README.md)**

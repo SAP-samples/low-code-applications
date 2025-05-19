@@ -1,6 +1,6 @@
 ## Exercise 2.2: Enable the destination for Actions
 
-1. Go to lobby https://lcapteched.eu10.build.cloud.sap/lobby. Select *Control Tower* on the left and select the *Destinations* tile on the right
+1. Go to the lobby https://lcapteched.eu10.build.cloud.sap/lobby. Select *Control Tower* on the left and select the *Destinations* tile on the right
 
    ![RegisterDestination](../ex2/images/RegisterDestination.png)
 
