@@ -16,7 +16,7 @@ You will create your own app with the ABAP RESTful Application Programming Model
 
 ### Business Scenario 
 
- The scenario we will implement will be a shopping cart
+In this scenario, we will implement a shopping cart.
  
 - A customer/partner wants to create a new service for a shopping cart
 

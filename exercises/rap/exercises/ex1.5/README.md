@@ -58,7 +58,7 @@ zcl_ac000000uxx_start_bgpf=>run_via_bgpf_tx_uncontrolled( i_rap_bo_key = create_
 > <summary>Click to expand the source code</summary>
 > 
 > ```abap
-> CLASS zcl_shoppingcart217_start_bgpf DEFINITION
+> CLASS zcl_shoppingcart###_start_bgpf DEFINITION
 >     PUBLIC
 >     FINAL
 >     CREATE PUBLIC.
@@ -98,7 +98,7 @@ zcl_ac000000uxx_start_bgpf=>run_via_bgpf_tx_uncontrolled( i_rap_bo_key = create_
 > ENDCLASS.
 > 
 > 
-> CLASS zcl_shoppingcart217_start_bgpf IMPLEMENTATION.
+> CLASS zcl_shoppingcart###_start_bgpf IMPLEMENTATION.
 >   METHOD constructor.
 >     rap_bo_key = i_rap_bo_key.
 >   ENDMETHOD.
@@ -110,12 +110,12 @@ zcl_ac000000uxx_start_bgpf=>run_via_bgpf_tx_uncontrolled( i_rap_bo_key = create_
 >   METHOD if_bgmc_op_single_tx_uncontr~execute.
 > 
 >     DATA start_sales_order_create TYPE REF TO zcl_ac_salesorder_api.
->     DATA update                   TYPE TABLE FOR UPDATE zr_dbshopcart217\\ZrDbshopcart217.
->     DATA update_line              TYPE STRUCTURE FOR UPDATE zr_dbshopcart217\\ZrDbshopcart217.
+>     DATA update                   TYPE TABLE FOR UPDATE zr_dbshopcart###\\ZrDbshopcart###.
+>     DATA update_line              TYPE STRUCTURE FOR UPDATE zr_dbshopcart###\\ZrDbshopcart###.
 >     DATA error_message            TYPE string.
 > 
->     READ ENTITIES OF zr_dbshopcart217
->             ENTITY ZrDbshopcart217
+>     READ ENTITIES OF zr_dbshopcart###
+>             ENTITY ZrDbshopcart###
 >             ALL FIELDS
 >             WITH VALUE #( ( %is_draft = if_abap_behv=>mk-off
 >                             %key-OrderUuid = rap_bo_key
@@ -156,8 +156,8 @@ zcl_ac000000uxx_start_bgpf=>run_via_bgpf_tx_uncontrolled( i_rap_bo_key = create_
 >         APPEND update_line TO update.
 >       ENDLOOP.
 > 
->       MODIFY ENTITIES OF zr_dbshopcart217
->        ENTITY ZrDbshopcart217
+>       MODIFY ENTITIES OF zr_dbshopcart###
+>        ENTITY ZrDbshopcart###
 >          UPDATE FIELDS ( SalesOrder OverallStatus SalesOrderStatus TotalPrice  ManageSalesOrderUrl Notes )
 >            WITH update
 >        REPORTED DATA(reported_ready)
@@ -171,7 +171,7 @@ zcl_ac000000uxx_start_bgpf=>run_via_bgpf_tx_uncontrolled( i_rap_bo_key = create_
 >     TRY.
 >         DATA(process_monitor) = cl_bgmc_process_factory=>get_default( )->create(
 >                                               )->set_name( |Calculate order data { i_rap_bo_key }|
->                                               )->set_operation(  NEW zcl_shoppingcart217_start_bgpf( i_rap_bo_key = i_rap_bo_key )
+>                                               )->set_operation(  NEW zcl_shoppingcart###_start_bgpf( i_rap_bo_key = i_rap_bo_key )
 >                                               )->save_for_execution( ).
 > 
 >         r_process_monitor_string = process_monitor->to_string( ).
@@ -183,7 +183,7 @@ zcl_ac000000uxx_start_bgpf=>run_via_bgpf_tx_uncontrolled( i_rap_bo_key = create_
 >     TRY.
 >         DATA(process_monitor) = cl_bgmc_process_factory=>get_default( )->create(
 >                                               )->set_name( |Calculate order data { i_rap_bo_key }|
->                                               )->set_operation_tx_uncontrolled(  NEW zcl_shoppingcart217_start_bgpf( i_rap_bo_key = i_rap_bo_key )
+>                                               )->set_operation_tx_uncontrolled(  NEW zcl_shoppingcart###_start_bgpf( i_rap_bo_key = i_rap_bo_key )
 >                                               )->save_for_execution( ).
 > 
 >         r_process_monitor_string = process_monitor->to_string( ).
@@ -294,7 +294,7 @@ Navigate to the behavior definition `ZR_{placeholder|userid}` either in the *Pro
 > <summary>Click to expand the source code</summary>
 > 
 > ```abap
-> CLASS lsc_zr_dbshopcart217 DEFINITION INHERITING FROM cl_abap_behavior_saver.
+> CLASS lsc_zr_dbshopcart### DEFINITION INHERITING FROM cl_abap_behavior_saver.
 > 
 >   PROTECTED SECTION.
 > 
@@ -302,31 +302,31 @@ Navigate to the behavior definition `ZR_{placeholder|userid}` either in the *Pro
 > 
 > ENDCLASS.
 > 
-> CLASS lsc_zr_dbshopcart217 IMPLEMENTATION.
+> CLASS lsc_zr_dbshopcart### IMPLEMENTATION.
 > 
 >   METHOD save_modified.
->      DATA : ShoppingCarts       TYPE STANDARD TABLE OF zr_dbshopcart217,
->             ShoppingCart        TYPE                   zr_dbshopcart217,
->             events_to_be_raised TYPE TABLE FOR EVENT zr_dbshopcart217~statusUpdated.
+>      DATA : ShoppingCarts       TYPE STANDARD TABLE OF zr_dbshopcart###,
+>             ShoppingCart        TYPE                   zr_dbshopcart###,
+>             events_to_be_raised TYPE TABLE FOR EVENT zr_dbshopcart###~statusUpdated.
 > 
 >      "Create a sales order in S/4HANA if Order Quantity is given  
->      IF create-zrdbshopcart217 IS NOT INITIAL.
->        LOOP AT create-zrdbshopcart217 INTO DATA(create_shoppingcart).
+>      IF create-zrdbshopcart### IS NOT INITIAL.
+>        LOOP AT create-zrdbshopcart### INTO DATA(create_shoppingcart).
 >          IF create_shoppingcart-%control-OrderQuantity = if_abap_behv=>mk-on.
->            zcl_shoppingcart217_start_bgpf=>run_via_bgpf_tx_uncontrolled( i_rap_bo_key = create_shoppingcart-OrderUuid ).
+>            zcl_shoppingcart###_start_bgpf=>run_via_bgpf_tx_uncontrolled( i_rap_bo_key = create_shoppingcart-OrderUuid ).
 >          ENDIF.
 >        ENDLOOP.
 >      ENDIF.
 > 
 >      "Aync process will update additional fields (like total price). Once they have changed, an event-driven side effect will update the UI
->      IF update-zrdbshopcart217 IS NOT INITIAL.
->        LOOP AT update-zrdbshopcart217 into data(update_shoppingcart).
+>      IF update-zrdbshopcart### IS NOT INITIAL.
+>        LOOP AT update-zrdbshopcart### into data(update_shoppingcart).
 > 
 >         IF update_shoppingcart-%control-TotalPrice = if_abap_behv=>mk-on.
 >            CLEAR events_to_be_raised.
 >            APPEND INITIAL LINE TO events_to_be_raised.
 >            events_to_be_raised[ 1 ] = CORRESPONDING #( update_shoppingcart ).
->            RAISE ENTITY EVENT zr_dbshopcart217~statusUpdated FROM events_to_be_raised.
+>            RAISE ENTITY EVENT zr_dbshopcart###~statusUpdated FROM events_to_be_raised.
 >          ENDIF.
 >        ENDLOOP.
 >      ENDIF.
