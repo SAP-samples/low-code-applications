@@ -30,7 +30,7 @@
 
    ![TestGetAction](../ex2/images/TestGetAction.png)
 
-8. After a short while you should see a result like this (with the entry that you created earler on in the Fiori elements preview application that you created)
+8. After a short while, you should see a result like this (with the entry that you created earlier on in the Fiori elements preview application that you created).
 
    ![TestGetActionResult](../ex2/images/TestGetActionResult.png)
 
