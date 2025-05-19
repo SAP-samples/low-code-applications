@@ -20,7 +20,7 @@
 
    ![ActionProject](../ex2/images/ActionProject.png)
 
-6. Now select the actions you want to create. Look for the name of your entity (like *ZC_DBSHOPPINFCART###*) and select both the *Get entities* and the *Add new entity* ones and press *Add*
+6. Now select the actions you want to create. Look for the name of your entity (like *ZC_DBSHOPPINGCART###*) and select both the *Get entities* and the *Add new entity* ones and press *Add*
 
    ![SelectActions1](../ex2/images/SelectActions1.png)
 
