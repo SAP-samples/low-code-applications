@@ -1,4 +1,4 @@
-## Exercise 2.5: Test thhe process, the approval and the invocation of the RAP API 
+## Exercise 2.5: Test the process, the approval, and the invocation of the RAP API 
 
    In this section we will test the process. First we will fill out a new shopping cart request and submit it. Then we will put ourselves into the shoes of the approver and enter the approver's inbox. Then we will approve the request and check whether this resulted in the proper invocation of the action and in turn the shopping cart RAP API on ABAP.
 
