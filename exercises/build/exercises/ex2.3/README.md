@@ -34,7 +34,7 @@
 
    ![TestGetActionResult](../ex2/images/TestGetActionResult.png)
 
-9. Now select the *Post* action on the left hand side. On the right hand side on the *Input* tab, select the *OrderUuid* property and switch off the *Mandator* switch. This is, because the API doesn't really need the *OrderUuid* to be passed, if there is none available, the RAP service creates one automatically
+9. Now select the *Post* action on the left hand side. On the right hand side on the *Input* tab, select the *OrderUuid* property and switch off the *Mandatory* switch. This is, because the API doesn't really need the *OrderUuid* to be passed, if there is none available, the RAP service creates one automatically.
 
    ![ActionAddNewEntity](../ex2/images/ActionAddNewEntity.png)
 
