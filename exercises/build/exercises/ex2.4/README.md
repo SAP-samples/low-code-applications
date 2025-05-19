@@ -10,7 +10,7 @@
 
    ![ProcessCreatePickPr](../ex2/images/ProcessCreatePickPr.png)
 
-   3. Choose *ProcessÜ and press *Next*.
+   3. Choose *Process* and press *Next*.
 
    ![ProcessCreatePickPr2](../ex2/images/ProcessCreatePickPr2.png)
 
